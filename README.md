@@ -16,7 +16,7 @@ Or build docker image using:
 
 Run docker container, expose port 8080 and exit using CTRL-C:
 
-- docker run -it --rm -p 0.0.0.0:8080:8080 finnish-dep-parser
+- docker run -it --rm -p 0.0.0.0:8080:8080 kazhar/finnish-dep-parser
 
 Post file to to parser using curl
 
