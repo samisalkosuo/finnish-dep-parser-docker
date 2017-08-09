@@ -15,6 +15,7 @@ import SocketServer
 import subprocess
 import io
 import codecs
+import sys
 
 class S(BaseHTTPRequestHandler):
     def _set_headers(self):
@@ -32,25 +33,26 @@ class S(BaseHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         postedData = self.rfile.read(content_length)
+        if (len(postedData) > 0):
+          print >> sys.stderr, postedData
+          dir="/Finnish-dep-parser"
 
-        dir="/Finnish-dep-parser"
+          #write incoming data to file
+          #note: if incoming data has newlines parsing may not be as expected
+          #remember to remove newlines before posting text to this server.
+          #TODO: write as UTF-8 or write in memory
+          f=open(dir+"/data.txt", "w")
+          f.write(postedData)
+          f.close()
 
-        #write incoming data to file
-        #note: if incoming data has newlines parsing may not be as expected
-        #remember to remove newlines before posting text to this server.
-        #TODO: write as UTF-8 or write in memory
-        f=open(dir+"/data.txt", "w")
-        f.write(postedData)
-        f.close()
-
-        f=open(dir+"/data.txt", "r")
-        #call parser subprocess
-        #write subprocess output directory to output
-        self._set_headers()
-        cmdArgs=[dir+"/parser_wrapper.sh"]
-        proc=subprocess.Popen(cmdArgs,stdin=f,stdout=self.wfile)
-        proc.wait()
-        f.close()
+          f=open(dir+"/data.txt", "r")
+          #call parser subprocess
+          #write subprocess output directory to output
+          self._set_headers()
+          cmdArgs=[dir+"/parser_wrapper.sh"]
+          proc=subprocess.Popen(cmdArgs,stdin=f,stdout=self.wfile)
+          proc.wait()
+          f.close()
 
 def run(server_class=HTTPServer, handler_class=S, port=8080):
     server_address = ('', port)
