@@ -14,7 +14,7 @@ scripts and source code. Please see server-directory to find out what code is us
 One such code is [HFST optimized-lookup standalone library and command line tool](https://github.com/hfst/hfst-optimized-lookup) by Helsinki Finite-State Technology.
 
 Unfortunately, the code used in Finnish dependency parser appears not to handle concurrent requests well, so
-the server is currently single threaded. Please see the code for details.
+the server is currently forced to process one request at a time. Please see the code for details.
 
 # Usage
 
