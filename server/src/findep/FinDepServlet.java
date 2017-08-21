@@ -23,13 +23,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 
+import opennlp.tools.sentdetect.SentenceDetectorME;
+import opennlp.tools.sentdetect.SentenceModel;
+import opennlp.tools.tokenize.Tokenizer;
+import opennlp.tools.tokenize.TokenizerME;
+import opennlp.tools.tokenize.TokenizerModel;
+
 public class FinDepServlet extends HttpServlet {
 
 	private final static String SENTENCE_MODEL_FILE = "model/fi-sent.bin";
 	private final static String TOKEN_MODEL_FILE = "model/fi-token.bin";
 
-	// private SentenceDetectorME sentenceDetector = null;
-	// private Tokenizer tokenizer =null;
+	private SentenceDetectorME sentenceDetector = null;
+	private Tokenizer tokenizer = null;
+
 	private String workDirName = "/Finnish-dep-parser";
 	private Path workDir;
 
@@ -37,7 +44,9 @@ public class FinDepServlet extends HttpServlet {
 	private String outputFileName = "parsed_text.conllu";
 	private String errorFileName = "syserr.txt";
 
-	private int waitTimeForLockInSeconds = 3600*4;//four hours in case there are huge amount of requests incoming
+	private int waitTimeForLockInSeconds = 3600 * 4;// four hours in case there
+													// are huge amount of
+													// requests incoming
 	// Hfst may run into problems is accessing many times
 	// workaround to make it singlethreaded
 	private final static Semaphore lock = new Semaphore(1, true);
@@ -52,18 +61,19 @@ public class FinDepServlet extends HttpServlet {
 		super.init();
 
 		workDir = FileSystems.getDefault().getPath(workDirName);
-		/*
-		 * try { SentenceModel sentenceModel = new SentenceModel(new
-		 * File(SENTENCE_MODEL_FILE)); sentenceDetector = new
-		 * SentenceDetectorME(sentenceModel);
-		 * 
-		 * TokenizerModel model = new TokenizerModel(new
-		 * File(TOKEN_MODEL_FILE)); tokenizer = new TokenizerME(model);
-		 * 
-		 * } catch (IOException e) {
-		 * System.err.println("Sentence model load failed."); throw new
-		 * ServletException(e); }
-		 */
+
+		try {
+			SentenceModel sentenceModel = new SentenceModel(new File(SENTENCE_MODEL_FILE));
+			sentenceDetector = new SentenceDetectorME(sentenceModel);
+
+			TokenizerModel model = new TokenizerModel(new File(TOKEN_MODEL_FILE));
+			tokenizer = new TokenizerME(model);
+
+		} catch (IOException e) {
+			System.err.println("Sentence model load failed.");
+			throw new ServletException(e);
+		}
+
 	}
 
 	@Override
@@ -100,25 +110,35 @@ public class FinDepServlet extends HttpServlet {
 		}
 		br.close();
 
-		// TODO: add opennlp to this servlet
-		// detect sentences
-		
-		/*
-		 * String[] sentences = sentenceDetector.sentDetect(sb.toString());
-		 * //tokenize sb=new StringBuilder(); for (String sentence : sentences)
-		 * { sb.append(tokenizer.) }
-		 */
 		Path tmpDir = null;
 		int rv = -1;
 		String errorString = "";
 		try {
-			//TODO: multithreading
+			// TODO: multithreading
 			if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
 				try {
+
+					// detect sentences
+					String[] sentences = sentenceDetector.sentDetect(sb.toString());
+					sb = new StringBuilder();
+					for (String sentence : sentences) {
+
+						// tokenize
+						String[] tokens = tokenizer.tokenize(sentence);
+						// replaces txt_to_09.py
+						for (int i = 0; i < tokens.length; i++) {
+							String token = tokens[i];
+							sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
+						}
+						sb.append("\n");
+					}
+
+					String inputText = sb.toString();
+
 					// create tmpDir for this request
 					tmpDir = Files.createTempDirectory(workDir, "tmp_data");
 					// call parser
-					rv = callParserProcess(sb.toString(), tmpDir);
+					rv = callParserProcess(inputText, tmpDir);
 
 				} finally {
 					lock.release();
@@ -179,7 +199,7 @@ public class FinDepServlet extends HttpServlet {
 	}
 
 	private int callParserProcess(String inputText, Path tmpDir) throws IOException {
-		// calls parser_wrapper.sh script
+		// calls my_parser_wrapper.sh script
 
 		File f = new File(tmpDir.toFile(), inputFileName);
 		FileWriter fw = new FileWriter(f);
@@ -205,7 +225,6 @@ public class FinDepServlet extends HttpServlet {
 		// can be found to cut the chunks)
 		env.put("SEN_CHUNK", "33");
 		env.put("PYTHON", "python");
-		env.put("PATH", env.get("PATH") + ":" + workDir + "/LIBS/apache-opennlp-1.5.3/bin/:" + workDir + "/LIBS/");
 
 		// log("ENV: "+pb.environment());
 
