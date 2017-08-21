@@ -6,11 +6,10 @@ Parser takes Finnish text as input and outputs [CoNLL-U format](http://universal
 
 # Implementation
 
-Finnish dependency parser is used as a command line tool. The code in this repository replaces some of the 
-scripts/code with Java servlets. The result is that it is much faster to parse text.
+Finnish dependency parser is originally used as a command line tool, but in this Docker container the parser is wrapped in HTTP server. The server code replaces some of the scripts/code with Java servlet and the result is that it is much faster to parse text.
 
 Fortunately, Finnish dependency parser uses open source code, so I could include and modify some of the 
-scripts and source code. Please see server-directory to find out what code is used and modified.
+scripts and source code. Please see the server-directory to find out what code is used and modified.
 One such code is [HFST optimized-lookup standalone library and command line tool](https://github.com/hfst/hfst-optimized-lookup) by Helsinki Finite-State Technology.
 
 Unfortunately, the code used in Finnish dependency parser appears not to handle concurrent requests well, so
@@ -49,4 +48,3 @@ Everything in this repo, including all code is "AS IS". No support, no warranty,
 The Finnish dependency parsing pipeline is licensed under GPL-2.0. Other licenses may apply to other code in this repo. See files in this repo for any info. I guess this repo is also GPL-2.0 but I can not tell for sure, so I don't claim any licensing.
 
 If you want to know more and be sure, please seek legal advice.
-
