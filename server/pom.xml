@@ -3,10 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>findep.parser</groupId>
 	<artifactId>fin-dep-parser-server</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	<name>FINDEPParserServer</name>
 	<description>Finnish Dependency Parser server based on http://turkunlp.github.io/Finnish-dep-parser/.</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
 		<jettyVersion>9.4.6.v20170531</jettyVersion>
 	</properties>
