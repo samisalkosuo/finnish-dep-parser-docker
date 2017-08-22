@@ -6,7 +6,7 @@ Parser takes Finnish text as input and outputs [CoNLL-U format](http://universal
 
 # Implementation
 
-Finnish dependency parser is originally used as a command line tool, but in this Docker container the parser is wrapped in HTTP server. The server code replaces some of the scripts/code with Java servlet and the result is that it is much faster to parse text.
+Finnish dependency parser is originally used as a command line tool, but in this Docker container the parser is wrapped in HTTP server. The server code replaces some of the scripts/code with Java servlets and the result is that it is much faster to parse text.
 
 Fortunately, Finnish dependency parser uses open source code, so I could include and modify some of the 
 scripts and source code. Please see the server-directory to find out what code is used and modified.
