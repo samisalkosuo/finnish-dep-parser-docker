@@ -31,6 +31,7 @@ public class OmorfiServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
+		log("Initializing "+getClass().getName());
 
 		// load models
 		try {

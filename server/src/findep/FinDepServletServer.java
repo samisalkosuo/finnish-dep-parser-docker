@@ -18,20 +18,24 @@ public class FinDepServletServer {
 		ServletHandler handler = new ServletHandler();
 		server.setHandler(handler);
 
-		// Passing in the class for the Servlet allows jetty to instantiate an
-		// instance of that Servlet and mount it on a given context path.
 
-		// IMPORTANT:
-		// This is a raw Servlet, not a Servlet that has been configured
-		// through a web.xml @WebServlet annotation, or anything similar.
-		handler.addServletWithMapping(FinDepServlet.class, "/");
-		handler.addServletWithMapping(OmorfiServlet.class, "/omorfi");
-		handler.addServletWithMapping(MarmotServlet.class, "/marmot");
 
 		try {
-			// Start things up!
-			server.start();
+			// Passing in the class for the Servlet allows jetty to instantiate an
+			// instance of that Servlet and mount it on a given context path.
 
+			// IMPORTANT:
+			// This is a raw Servlet, not a Servlet that has been configured
+			// through a web.xml @WebServlet annotation, or anything similar.
+			handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(0);
+			handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
+			handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
+			handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
+
+			// Start things up!			
+			server.start();
+			
+			
 			// The use of server.join() the will make the current thread join
 			// and
 			// wait until the server is done executing.

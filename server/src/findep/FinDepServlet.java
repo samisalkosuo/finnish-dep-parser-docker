@@ -59,7 +59,7 @@ public class FinDepServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-
+		log("Initializing "+getClass().getName());
 		workDir = FileSystems.getDefault().getPath(workDirName);
 
 		try {
@@ -189,6 +189,7 @@ public class FinDepServlet extends HttpServlet {
 				// tmpdir delete failed
 				log("Temp dir delete failed: " + ioe.toString());
 			}
+			
 		}
 		long endTime = System.currentTimeMillis();
 

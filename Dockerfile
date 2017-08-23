@@ -7,6 +7,7 @@ RUN apk add --no-cache bash
 RUN apk update && apk add ca-certificates wget && update-ca-certificates   
 RUN apk add --no-cache openjdk8
 RUN apk add --no-cache git 
+RUN apk add --update --no-cache curl-dev curl
 
 WORKDIR /
 
@@ -44,18 +45,20 @@ ADD server/omorfi_wrapper.py .
 ADD server/marmot-tag.py .
 ADD server/init.sh .
 ADD server/my_parser_wrapper.sh .
+ADD server/parse.sh .
+
 RUN chmod 755 my_parser_wrapper.sh
+RUN chmod 755 parse.sh
 
 #add testfiles
-RUN mkdir testfiles
-ADD test ./testfiles/
-#test within image: test using cat testfiles/text2.txt | ./parser_wrapper.sh
-#test using curl: curl -H "Content-Type: text/plain" -d "@testfiles/text2.txt" http://127.0.0.1:9876
+#RUN mkdir testfiles
+#ADD test ./testfiles/
 
 #Port 9876 is hardcoded servlet server port
 EXPOSE 9876
 CMD ["java","-Xmx2g","-jar","server/target/fin-dep-parser-server-jar-with-dependencies.jar"] 
 
-#execute server within image: java -Xmx2g -jar server/target/fin-dep-parser-server-jar-with-dependencies.jar
+#execute server within image: 
+#java -Xmx2g -jar server/target/fin-dep-parser-server-jar-with-dependencies.jar
 #CMD ["/bin/bash"]
 

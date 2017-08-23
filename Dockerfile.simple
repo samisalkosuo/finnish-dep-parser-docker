@@ -18,3 +18,4 @@ RUN ./install.sh
 ADD webserver.py .
 
 CMD ["python","webserver.py"]
+#CMD ["/bin/bash"]
