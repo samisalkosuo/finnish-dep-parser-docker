@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 
+import findep.utils.SimpleStats;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.tokenize.Tokenizer;
@@ -50,6 +51,8 @@ public class FinDepServlet extends HttpServlet {
 	// Hfst may run into problems is accessing many times
 	// workaround to make it singlethreaded
 	private final static Semaphore lock = new Semaphore(1, true);
+
+	private SimpleStats SIMPLE_STATS= SimpleStats.getInstance();
 
 	/**
 	 * 
@@ -80,15 +83,19 @@ public class FinDepServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/plain");
 		resp.setStatus(HttpServletResponse.SC_OK);
-		resp.getWriter()
-				.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
+		PrintWriter pw=resp.getWriter();
+		pw.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
+
+		pw.println("");
+		pw.println(SIMPLE_STATS.getStatistics());
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		long startTimeNano = System.nanoTime();
+		long startTimeMsec = System.currentTimeMillis();
 		log("START");
-		long startTime = System.currentTimeMillis();
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
 		// TODO: convert scripts to this servlet
@@ -98,9 +105,11 @@ public class FinDepServlet extends HttpServlet {
 		BufferedReader br = req.getReader();
 		String line = br.readLine();
 		StringBuilder sb = new StringBuilder();
+		int inputSize = 0;
 		while (line != null) {
 			log(line);
 			sb.append(line);
+			inputSize = inputSize + line.length();
 			line = br.readLine();
 			// add space after each line
 			// so this removes all new lines from input text
@@ -113,6 +122,7 @@ public class FinDepServlet extends HttpServlet {
 		Path tmpDir = null;
 		int rv = -1;
 		String errorString = "";
+		boolean errorHappened=false;
 		try {
 			// TODO: multithreading
 			if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
@@ -159,6 +169,7 @@ public class FinDepServlet extends HttpServlet {
 			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			pw.println("Waiting for lock interrupted.");
 			pw.println(errorString);
+			errorHappened=true;
 		} else {
 			// read output file
 			File f;
@@ -171,6 +182,7 @@ public class FinDepServlet extends HttpServlet {
 				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 				// if error, read stderr file
 				f = new File(tmpDir.toFile(), errorFileName);
+				errorHappened=true;
 			}
 
 			br = new BufferedReader(new FileReader(f));
@@ -191,11 +203,14 @@ public class FinDepServlet extends HttpServlet {
 			}
 			
 		}
-		long endTime = System.currentTimeMillis();
+		long endTimeNano = System.nanoTime();
+		long endTimeMsec = System.currentTimeMillis();
 
-		double elapsedTime = (endTime - startTime) / 1000.0;
-		log("END " + elapsedTime + " seconds");
+		double elapsedTime = (endTimeMsec - startTimeMsec) / 1000.0;
+		log("END " + elapsedTime + " secs");
 		log("");
+
+		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize,errorHappened);
 
 	}
 
