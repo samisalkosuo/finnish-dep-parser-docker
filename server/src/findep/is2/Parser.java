@@ -1,21 +1,13 @@
 package findep.is2;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map.Entry;
-import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
 
 import findep.is2.io.CONLLReader09;
 import findep.is2.io.CONLLWriter09;
@@ -57,6 +49,8 @@ public class Parser implements Tool {
 	DataFES d2;
 	public Parse d = null;
 
+	private String[] types;
+
 	/**
 	 * Initialize the parser
 	 * 
@@ -67,7 +61,7 @@ public class Parser implements Tool {
 		this.options = options;
 		Runtime runtime = Runtime.getRuntime();
 		THREADS = runtime.availableProcessors();
-		is2.parser.Parser.THREADS=THREADS; 
+		is2.parser.Parser.THREADS = THREADS;
 
 		pipe = new Pipe(options);
 
@@ -156,6 +150,11 @@ public class Parser implements Tool {
 
 		dis.close();
 
+		// moved from out-method
+		this.types = new String[pipe.mf.getFeatureCounter().get(PipeGen.REL)];
+		for (Entry<String, Integer> e : MFO.getFeatureSet().get(PipeGen.REL).entrySet())
+			this.types[e.getValue()] = e.getKey();
+
 		DB.println("Reading data finnished");
 
 		Decoder.NON_PROJECTIVITY_THRESHOLD = (float) options.decodeTH;
@@ -176,13 +175,11 @@ public class Parser implements Tool {
 			ParametersFloat params, boolean maxInfo, boolean labelOnly) throws Exception {
 
 		long start = System.currentTimeMillis();
-		
+
 		CONLLReader09 depReader = new CONLLReader09(inputReader, options.testfile, options.formatTask);
 		CONLLWriter09 depWriter = new CONLLWriter09(outputWriter, options.outfile, options.formatTask);
 
 		int cnt = 0;
-		int del = 0;
-		long last = System.currentTimeMillis();
 
 		if (maxInfo)
 			System.out.println("\nParsing Information ");
@@ -192,7 +189,10 @@ public class Parser implements Tool {
 		if (maxInfo && !options.decodeProjective)
 			System.out.println("" + Decoder.getInfo());
 
-		System.out.print("Processing Sentence: ");
+		// these are for printing
+		// int del = 0;
+		// long last = System.currentTimeMillis();
+		System.out.print("Processing sentences...");
 
 		while (true) {
 
@@ -209,9 +209,13 @@ public class Parser implements Tool {
 			SentenceData09 i09 = this.parse(instance, params, labelOnly, options);
 
 			depWriter.write(i09);
-			del = PipeGen.outValue(cnt, del, last);
+
+			// does only printing
+			// del = PipeGen.outValue(cnt, del, last);
 
 		}
+		System.out.println(String.format(" processed sentences: %d", cnt));
+
 		// pipe.close();
 		depWriter.finishWriting();
 		long end = System.currentTimeMillis();
@@ -234,11 +238,14 @@ public class Parser implements Tool {
 	 */
 	public SentenceData09 parse(SentenceData09 instance, ParametersFloat params, boolean labelOnly,
 			OptionsSuper options) {
-
-		String[] types = new String[pipe.mf.getFeatureCounter().get(PipeGen.REL)];
-		for (Entry<String, Integer> e : MFO.getFeatureSet().get(PipeGen.REL).entrySet())
-			types[e.getValue()] = e.getKey();
-
+		// moved types to readmodel-method and as instance variable
+		/*
+		 * String[] types = new
+		 * String[pipe.mf.getFeatureCounter().get(PipeGen.REL)]; for
+		 * (Entry<String, Integer> e :
+		 * MFO.getFeatureSet().get(PipeGen.REL).entrySet()) types[e.getValue()]
+		 * = e.getKey();
+		 */
 		is = new Instances();
 		is.init(1, new MFO(), options.formatTask);
 		new CONLLReader09().insert(is, instance);
@@ -346,38 +353,36 @@ public class Parser implements Tool {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	private void writeModell(OptionsSuper options, ParametersFloat params, String extension, Cluster cs)
-			throws FileNotFoundException, IOException {
-
-		String name = extension == null ? options.modelName : options.modelName + extension;
-		// System.out.println("Writting model: "+name);
-		ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(name)));
-		zos.putNextEntry(new ZipEntry("data"));
-		DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(zos));
-
-		MFO.writeData(dos);
-		cs.write(dos);
-
-		params.write(dos);
-
-		dos.writeBoolean(options.stack);
-		dos.writeInt(options.featureCreation);
-
-		Edges.write(dos);
-
-		dos.writeBoolean(options.decodeProjective);
-
-		dos.writeInt(Extractor.maxForm);
-
-		dos.writeInt(5); // Info count
-		dos.writeUTF("Used parser   " + Parser.class.toString());
-		dos.writeUTF("Creation date " + (new SimpleDateFormat("yyyy.MM.dd HH:mm:ss")).format(new Date()));
-		dos.writeUTF("Training data " + options.trainfile);
-		dos.writeUTF("Iterations    " + options.numIters + " Used sentences " + options.count);
-		dos.writeUTF("Cluster       " + options.clusterFile);
-
-		dos.flush();
-		dos.close();
-	}
-
+	/*
+	 * private void writeModell(OptionsSuper options, ParametersFloat params,
+	 * String extension, Cluster cs) throws FileNotFoundException, IOException {
+	 * 
+	 * String name = extension == null ? options.modelName : options.modelName +
+	 * extension; // System.out.println("Writting model: "+name);
+	 * ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new
+	 * FileOutputStream(name))); zos.putNextEntry(new ZipEntry("data"));
+	 * DataOutputStream dos = new DataOutputStream(new
+	 * BufferedOutputStream(zos));
+	 * 
+	 * MFO.writeData(dos); cs.write(dos);
+	 * 
+	 * params.write(dos);
+	 * 
+	 * dos.writeBoolean(options.stack); dos.writeInt(options.featureCreation);
+	 * 
+	 * Edges.write(dos);
+	 * 
+	 * dos.writeBoolean(options.decodeProjective);
+	 * 
+	 * dos.writeInt(Extractor.maxForm);
+	 * 
+	 * dos.writeInt(5); // Info count dos.writeUTF("Used parser   " +
+	 * Parser.class.toString()); dos.writeUTF("Creation date " + (new
+	 * SimpleDateFormat("yyyy.MM.dd HH:mm:ss")).format(new Date()));
+	 * dos.writeUTF("Training data " + options.trainfile);
+	 * dos.writeUTF("Iterations    " + options.numIters + " Used sentences " +
+	 * options.count); dos.writeUTF("Cluster       " + options.clusterFile);
+	 * 
+	 * dos.flush(); dos.close(); }
+	 */
 }
