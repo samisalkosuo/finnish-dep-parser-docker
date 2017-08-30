@@ -36,8 +36,11 @@ Start docker container in detached mode and restart when container goes down:
 Post file to parser using curl:
 
 - curl -H "Content-Type: text/plain" --data-binary "@test/text.txt" http://127.0.0.1:8080
+- Use any programming language to HTTP POST Finnish text to this server and get CoNLL-U format back.
 
-Use any programming language to HTTP POST Finnish text to this server and get CoNLL-U format back.
+Get simple statistics of the parser:
+
+- http://127.0.0.1:8080, a normal HTTP GET
 
 # Disclaimer
 
