@@ -51,3 +51,4 @@ Everything in this repo, including all code is "AS IS". No support, no warranty,
 The Finnish dependency parsing pipeline is licensed under GPL-2.0. Other licenses may apply to other code in this repo. See files in this repo for any info. I guess this repo is also GPL-2.0 but I can not tell for sure, so I don't claim any licensing.
 
 If you want to know more and be sure, please seek legal advice.
+
