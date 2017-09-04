@@ -1,6 +1,7 @@
 package findep.utils;
 
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,6 +63,20 @@ public class SimpleStats {
 
 		Date dt = new Date(startTimeOfThis);
 		pw.println("  Start time             : " + dt);
+
+		// get ip address/hostname, because this server can run on many Docker
+		// containers/hosts
+		String ipAddress = "n/a";
+		String hostName = "n/a";
+		try {
+			InetAddress ia = InetAddress.getLocalHost();
+			ipAddress = ia.getHostAddress();
+			hostName = ia.getHostName();
+
+		} catch (Exception e) {
+			// ignore all exceptions
+		}
+		pw.println(String.format("  Host                   : %s (%s)", ipAddress, hostName));
 		pw.println("  Uptime                 : " + elapsedTime(System.currentTimeMillis() - startTimeOfThis));
 		pw.println("  Requests               : " + numberOfRequestsHandled + ", failed: " + errors);
 		if (numberOfRequestsHandled > 0) {
