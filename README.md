@@ -29,14 +29,17 @@ Run docker container, expose port 9876 and exit using CTRL-C:
 
 - docker run -it --rm -p 0.0.0.0:8080:9876 kazhar/finnish-dep-parser
 
-Start docker container in detached mode and restart when container goes down:
+Start docker container in detached mode and restart if container goes down:
 
 - docker run --restart always -d -p 0.0.0.0:8080:9876 kazhar/finnish-dep-parser
 
 Post file to parser using curl:
 
-- curl -H "Content-Type: text/plain" --data-binary "@test/text.txt" http://127.0.0.1:8080
-- Use any programming language to HTTP POST Finnish text to this server and get CoNLL-U format back.
+- curl -H "Content-Type: text/plain" --data-binary "@test/text_1k.txt" http://127.0.0.1:8080
+- or
+- cat test/text_1k.txt | curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:8080
+
+Use any programming language to HTTP POST Finnish text to this server and get CoNLL-U format back.
 
 Get simple statistics of the parser:
 
