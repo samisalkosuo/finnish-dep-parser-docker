@@ -54,6 +54,9 @@ RUN chmod 755 parse.sh
 #RUN mkdir testfiles
 #ADD test ./testfiles/
 
+#remove files not needed runtime
+RUN rm -rf LIBS LIBS-LOCAL/ apache-maven-3.5.0 apache-maven-3.5.0-bin.zip /root/.m2
+
 #Port 9876 is hardcoded servlet server port
 EXPOSE 9876
 CMD ["java","-Xmx2g","-jar","server/target/fin-dep-parser-server-jar-with-dependencies.jar"] 
