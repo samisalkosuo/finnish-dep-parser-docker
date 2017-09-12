@@ -17,11 +17,12 @@ RUN git clone https://github.com/TurkuNLP/Finnish-dep-parser.git
 
 WORKDIR Finnish-dep-parser
 
-RUN ./install.sh
+#install Finnish dependency parser and remove unnecessary files
+RUN ./install.sh && rm -rf LIBS LIBS-LOCAL/
 
 #Maven
-RUN wget -q http://www.nic.funet.fi/pub/mirrors/apache.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip
-RUN unzip -q apache-maven-3.5.0-bin.zip
+RUN wget -q http://www.nic.funet.fi/pub/mirrors/apache.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip && unzip -q apache-maven-3.5.0-bin.zip && rm apache-maven-3.5.0-bin.zip
+#RUN unzip -q apache-maven-3.5.0-bin.zip
 
 #server4dev is for development use
 #when building docker, mvn dependencies are always downloaded
@@ -36,7 +37,7 @@ RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server4dev && mv
 RUN mkdir server
 ADD server ./server/
 
-RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server && mvn package
+RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server && mvn package 
 
 #add modified Finnish dependency parser files
 ADD server/resolve_readings.py .
@@ -53,9 +54,6 @@ RUN chmod 755 parse.sh
 #add testfiles
 #RUN mkdir testfiles
 #ADD test ./testfiles/
-
-#remove files not needed runtime
-RUN rm -rf LIBS LIBS-LOCAL/ apache-maven-3.5.0 apache-maven-3.5.0-bin.zip /root/.m2
 
 #Port 9876 is hardcoded servlet server port
 EXPOSE 9876
