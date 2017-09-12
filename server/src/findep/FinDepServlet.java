@@ -26,7 +26,6 @@ import org.apache.commons.io.FileUtils;
 import findep.utils.SimpleStats;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
-import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 
@@ -35,8 +34,9 @@ public class FinDepServlet extends HttpServlet {
 	private final static String SENTENCE_MODEL_FILE = "model/fi-sent.bin";
 	private final static String TOKEN_MODEL_FILE = "model/fi-token.bin";
 
-	private SentenceDetectorME sentenceDetector = null;
-	private Tokenizer tokenizer = null;
+	// models are instantiated once
+	private SentenceModel sentenceModel;
+	private TokenizerModel tokenModel;
 
 	private String workDirName = "/Finnish-dep-parser";
 	private Path workDir;
@@ -52,7 +52,7 @@ public class FinDepServlet extends HttpServlet {
 	// workaround to make it singlethreaded
 	private final static Semaphore lock = new Semaphore(1, true);
 
-	private SimpleStats SIMPLE_STATS= SimpleStats.getInstance();
+	private SimpleStats SIMPLE_STATS = SimpleStats.getInstance();
 
 	/**
 	 * 
@@ -62,16 +62,13 @@ public class FinDepServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		log("Initializing "+getClass().getName());
+		log("Initializing " + getClass().getName());
 		workDir = FileSystems.getDefault().getPath(workDirName);
 
 		try {
-			SentenceModel sentenceModel = new SentenceModel(new File(SENTENCE_MODEL_FILE));
-			sentenceDetector = new SentenceDetectorME(sentenceModel);
-
-			TokenizerModel model = new TokenizerModel(new File(TOKEN_MODEL_FILE));
-			tokenizer = new TokenizerME(model);
-
+			// models are loaded once
+			sentenceModel = new SentenceModel(new File(SENTENCE_MODEL_FILE));
+			tokenModel = new TokenizerModel(new File(TOKEN_MODEL_FILE));
 		} catch (IOException e) {
 			System.err.println("Sentence model load failed.");
 			throw new ServletException(e);
@@ -83,7 +80,7 @@ public class FinDepServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/plain");
 		resp.setStatus(HttpServletResponse.SC_OK);
-		PrintWriter pw=resp.getWriter();
+		PrintWriter pw = resp.getWriter();
 		pw.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
 
 		pw.println("");
@@ -122,13 +119,17 @@ public class FinDepServlet extends HttpServlet {
 		Path tmpDir = null;
 		int rv = -1;
 		String errorString = "";
-		boolean errorHappened=false;
+		boolean errorHappened = false;
 		try {
 			// TODO: multithreading
 			if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
 				try {
 
-					// detect sentences
+					// instantiate sentence detector and tokenizer using
+					// preloaded models
+					SentenceDetectorME sentenceDetector = new SentenceDetectorME(sentenceModel);
+					TokenizerME tokenizer = new TokenizerME(tokenModel);
+
 					String[] sentences = sentenceDetector.sentDetect(sb.toString());
 					sb = new StringBuilder();
 					for (String sentence : sentences) {
@@ -169,7 +170,7 @@ public class FinDepServlet extends HttpServlet {
 			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			pw.println("Waiting for lock interrupted.");
 			pw.println(errorString);
-			errorHappened=true;
+			errorHappened = true;
 		} else {
 			// read output file
 			File f;
@@ -182,7 +183,7 @@ public class FinDepServlet extends HttpServlet {
 				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 				// if error, read stderr file
 				f = new File(tmpDir.toFile(), errorFileName);
-				errorHappened=true;
+				errorHappened = true;
 			}
 
 			br = new BufferedReader(new FileReader(f));
@@ -201,7 +202,7 @@ public class FinDepServlet extends HttpServlet {
 				// tmpdir delete failed
 				log("Temp dir delete failed: " + ioe.toString());
 			}
-			
+
 		}
 		long endTimeNano = System.nanoTime();
 		long endTimeMsec = System.currentTimeMillis();
@@ -210,7 +211,7 @@ public class FinDepServlet extends HttpServlet {
 		log("END " + elapsedTime + " secs");
 		log("");
 
-		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize,errorHappened);
+		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize, errorHappened);
 
 	}
 
