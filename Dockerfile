@@ -11,20 +11,15 @@ RUN apk add --update --no-cache curl-dev curl
 
 WORKDIR /
 
-#Finnish-dep-parser
-RUN git clone https://github.com/TurkuNLP/Finnish-dep-parser.git
-
+#Finnish-dep-parser and Maven install
+ADD install.sh .
+RUN ["/bin/bash" ,"install.sh"]
 
 WORKDIR Finnish-dep-parser
 
-#install Finnish dependency parser and remove unnecessary files
-RUN ./install.sh && rm -rf LIBS LIBS-LOCAL/
-
-#Maven
-RUN wget -q http://www.nic.funet.fi/pub/mirrors/apache.org/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.zip && unzip -q apache-maven-3.5.0-bin.zip && rm apache-maven-3.5.0-bin.zip
-#RUN unzip -q apache-maven-3.5.0-bin.zip
-
 #server4dev is for development use
+#Docker uses layered filesystem and each line of Dockerfile is maintained in the image
+#TODO: more refactoring for image size http://blog.replicated.com/refactoring-a-dockerfile-for-image-size/
 #when building docker, mvn dependencies are always downloaded
 #using this server4dev dir and packaging it, mvn downloads dependencies once and image with dependencies is stored to docker cache
 #and if you change Dockerfile after the following three lines, Docker uses cached image where dependencies are already downloaded.
@@ -37,7 +32,7 @@ RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server4dev && mv
 RUN mkdir server
 ADD server ./server/
 
-RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server && mvn package 
+RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server && mvn package && cd .. && mv server/target/fin-dep-parser-server-jar-with-dependencies.jar . && rm -rf server/target
 
 #add modified Finnish dependency parser files
 ADD server/resolve_readings.py .
@@ -57,9 +52,10 @@ RUN chmod 755 parse.sh
 
 #Port 9876 is hardcoded servlet server port
 EXPOSE 9876
-CMD ["java","-Xmx2g","-jar","server/target/fin-dep-parser-server-jar-with-dependencies.jar"] 
+
+CMD ["java","-Xmx2g","-jar","fin-dep-parser-server-jar-with-dependencies.jar"] 
 
 #execute server within image: 
-#java -Xmx2g -jar server/target/fin-dep-parser-server-jar-with-dependencies.jar
+#java -Xmx2g -jar fin-dep-parser-server-jar-with-dependencies.jar
 #CMD ["/bin/bash"]
 
