@@ -31,8 +31,8 @@ RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server4dev && mv
 #add server code
 RUN mkdir server
 ADD server ./server/
-
-RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server && mvn package && cd .. && mv server/target/fin-dep-parser-server-jar-with-dependencies.jar . && rm -rf server/target
+ADD package.sh .
+RUN ["/bin/bash" ,"package.sh"]
 
 #add modified Finnish dependency parser files
 ADD server/resolve_readings.py .
@@ -43,8 +43,7 @@ ADD server/init.sh .
 ADD server/my_parser_wrapper.sh .
 ADD server/parse.sh .
 
-RUN chmod 755 my_parser_wrapper.sh
-RUN chmod 755 parse.sh
+RUN chmod 755 my_parser_wrapper.sh parse.sh
 
 #add testfiles
 #RUN mkdir testfiles
