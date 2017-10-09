@@ -243,10 +243,10 @@ input_tagged_1.conll09
 
 					//System.out.println("POS"+w.getPosTag());
 					//System.out.println("MorphTag"+w.getMorphTag()); 
-					System.out.println("****TAGS:"+tags.get(i).get(0));
+//					System.out.println("****TAGS:"+tags.get(i).get(0));
 					// This will contain all the variants
 					String morphoString = hfst_morphology.runTransducer(FORM);
-					System.out.println("****morphoString:\n"+morphoString);
+//					System.out.println("****morphoString:\n"+morphoString);
 					
 					// then we need to use the sentence information, i.e. POS 
 					String UCPOS = tags.get(i).get(0); //getPOS(w.getPosTag()); 
