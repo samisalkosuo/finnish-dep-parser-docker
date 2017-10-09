@@ -243,10 +243,10 @@ input_tagged_1.conll09
 
 					//System.out.println("POS"+w.getPosTag());
 					//System.out.println("MorphTag"+w.getMorphTag()); 
-	//				System.out.println("****TAGS:"+tags.get(i).get(0));
+					System.out.println("****TAGS:"+tags.get(i).get(0));
 					// This will contain all the variants
 					String morphoString = hfst_morphology.runTransducer(FORM);
-	//				System.out.println("****morphoString:\n"+morphoString);
+					System.out.println("****morphoString:\n"+morphoString);
 					
 					// then we need to use the sentence information, i.e. POS 
 					String UCPOS = tags.get(i).get(0); //getPOS(w.getPosTag()); 
@@ -342,9 +342,8 @@ input_tagged_1.conll09
 		tagMap.put("CONJ", "CC");
 		tagMap.put("SCONJ", "CS");
 		tagMap.put("PRON", "Pron");
-		tagMap.put("ADV", "Pcle");
+		tagMap.put("ADV", "Adv"); // or Pcle or N
 		tagMap.put("NUM", "Num");
-		tagMap.put("SCONJ", "CS");
 		tagMap.put("INTJ", "Interj");
 		tagMap.put("PROPN", "N");
 		tagMap.put("ADP", "Adp");
@@ -420,7 +419,7 @@ case "CCONJ":
 		// in case of trouble we set the original word as the lemma
 		String lemma = form;
 		
-		// Punctuations are easy
+		// Punctuations are easy. Should we add DET also in here ?
 		if("PUNCT".equals(pos)||"X".equals(pos)||"SYM".equals(pos))
 			return form;
 	
@@ -436,6 +435,20 @@ case "CCONJ":
 				lemma = parseLemma(line);
 			}
 		}
+		
+		// Coding support for ADV: Adv did not match, but N and Pcle are still valid responses
+		if(match == false && "ADV".equals(pos)) {
+			lineToknizer = new StringTokenizer(morphoString,"\n");
+			while(lineToknizer.hasMoreTokens() && !match) {
+				String line = lineToknizer.nextToken();
+				String tag = getFirstTag(line);
+				if(("Pcle").equals(tag) || "N".equals(tag) ) {
+					match = true;
+					lemma = parseLemma(line);
+				}
+			}
+		}
+		
 		return lemma;
 	}
 				
