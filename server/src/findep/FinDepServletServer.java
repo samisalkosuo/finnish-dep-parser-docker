@@ -27,7 +27,7 @@ public class FinDepServletServer {
 			// IMPORTANT:
 			// This is a raw Servlet, not a Servlet that has been configured
 			// through a web.xml @WebServlet annotation, or anything similar.
-			//handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(0);
+			handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
 			handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
 			handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
 			handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(1);
