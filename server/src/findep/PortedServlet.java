@@ -57,18 +57,14 @@ public class PortedServlet extends HttpServlet {
 	private Tokenizer tokenizer = null;
 
 	private String workDirName = "/Finnish-dep-parser";
-	private Path workDir;
 
-	private String inputFileName = "input_from_client.txt";
-	private String outputFileName = "parsed_text.conllu";
-	private String errorFileName = "syserr.txt";
-
+	// ???
 	private int waitTimeForLockInSeconds = 3600 * 4;// four hours in case there
 													// are huge amount of
 													// requests incoming
 	// Hfst may run into problems is accessing many times
 	// workaround to make it singlethreaded
-	//private final static Semaphore lock = new Semaphore(1, true);
+	private final static Semaphore lock = new Semaphore(1, true);
 
 	private SimpleStats SIMPLE_STATS= SimpleStats.getInstance();
 
@@ -81,8 +77,6 @@ public class PortedServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		log("Initializing "+getClass().getName());
-		workDir = FileSystems.getDefault().getPath(workDirName);
-
 		
 		try {
 			// Not 100% sure do we have to use this - anyhow....
@@ -116,15 +110,6 @@ public class PortedServlet extends HttpServlet {
 		pw.println("");
 		pw.println(SIMPLE_STATS.getStatistics());
 	}
-
-	/* THESE DID NOT HELP 
-	public synchronized String[] safeSentences(String in) {
-		return sentenceDetector.sentDetect(in);
-	}
-	public synchronized String[] safeTokens(String in) {
-		return tokenizer.tokenize(in);
-	}
-	*/
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -133,9 +118,6 @@ public class PortedServlet extends HttpServlet {
 		long startTimeMsec = System.currentTimeMillis();
 		log("START");
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
-
-		// TODO: convert scripts to this servlet
-		// TODO: use input and outputstreams directly without files
 
 		// read input to string
 		BufferedReader br = req.getReader();
@@ -161,10 +143,13 @@ public class PortedServlet extends HttpServlet {
 		
 		String errorString = "";
 		boolean errorHappened=false;
-		//try {
+		try {
 			// TODO: multithreading ADD HERE OR USE ONLY ONE THREAD + CONFIGURE QUEUE LENGTH TO THE APP SERVER
-		//	if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
-		//		try {
+			// It is better, if queu length runs out, then requests fail quick. This indicates node corrupt, 
+			// and can be restarted. Thus setting thread pool size 1 for this servlet with configured queue length
+			// makes more sense.
+			if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
+				try {
 
 					// detect sentences
 					String[] sentences = sentenceDetector.sentDetect(sb.toString()); //safeSentences(sb.toString()); 
@@ -188,21 +173,17 @@ public class PortedServlet extends HttpServlet {
 					}
 
 					String inputText = sb.toString();
-
-					// create tmpDir for this request
-				//	tmpDir = Files.createTempDirectory(workDir, "tmp_data");
 					// call parser
 					outputText = callParserProcess(inputText, tmpDir);
 
-			//} finally {
-			//	lock.release();
-			//}
-			//}
-	//	} catch (InterruptedException e) {
-	//		errorString = e.toString();
-	//		e.printStackTrace();
-			//rv = -234566;
-	//	}
+		} finally {
+			lock.release();
+		}
+			}
+		} catch (InterruptedException e) {
+			log("InterruptedException:\n"+e);
+			outputText=null;
+		}
 
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -215,49 +196,13 @@ public class PortedServlet extends HttpServlet {
 			pw.println(errorString);
 			errorHappened=true;
 		} else {
-			// read output file
-			/*
-			File f;
-			if (rv == 0) {
-				resp.setStatus(HttpServletResponse.SC_OK);
-				// if success, read stdout file
-				f = new File(tmpDir.toFile(), outputFileName);
-
-			} else {
-				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				// if error, read stderr file
-				f = new File(tmpDir.toFile(), errorFileName);
-				errorHappened=true;
-			}
-
-			br = new BufferedReader(new FileReader(f));
-			for (line = br.readLine(); line != null; line = br.readLine()) {
-				pw.println(line);
-			}
-			br.close();
-*/
-			pw.print(outputText);
-			
-			// delete temp dir
-			/*
-			try {
-				if (tmpDir != null) {
-					FileUtils.deleteDirectory(tmpDir.toFile());
-				}
-
-			} catch (IOException ioe) {
-				// tmpdir delete failed
-				log("Temp dir delete failed: " + ioe.toString());
-			}
-			*/
-			
+			pw.print(outputText);			
 		}
 		long endTimeNano = System.nanoTime();
 		long endTimeMsec = System.currentTimeMillis();
 
 		double elapsedTime = (endTimeMsec - startTimeMsec) / 1000.0;
 		log("END " + elapsedTime + " secs");
-		//log("");
 
 		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize,errorHappened);
 
@@ -277,56 +222,10 @@ public class PortedServlet extends HttpServlet {
 		try {
 			// log.debug("in:\n"+inputText);
 			outputText = tag.quickParse(inputText);
-			//log.debug(""+outputText);
-			//String input09Text = uconverter.convertUto09(inputText);
-			//log.debug("09:\n"+input09Text);
-			//Set words = tag.sortUnique(input09Text);
-			//log.debug("Called set");
-			//outputText+=words.toString();
-			// TODO add the rest
 		} catch (Exception e) {
 			log.error("Failed to parse", e);
 		}
-		
-		// calls my_parser_wrapper.sh script
-		/*
-		File f = new File(tmpDir.toFile(), inputFileName);
-		FileWriter fw = new FileWriter(f);
-		fw.write(inputText);
-		fw.close();
-
-		List<String> command = new ArrayList<String>();
-		command.add("./my_parser_wrapper.sh");
-
-		ProcessBuilder pb = new ProcessBuilder(command);
-		pb.directory(new File(workDirName));
-
-		// set environment variables for parser scripts
-		Map<String, String> env = pb.environment();
-		env.put("TMPDIR", tmpDir.toString());
-		env.put("INPUT_TEXT_FILE", inputFileName);
-		env.put("OUTPUT_CONLLU_FILE", outputFileName);
-		env.put("ERROR_FILE", errorFileName);
-		// sentences longer than this will be chopped and parsed chunked
-		env.put("MAX_SEN_LEN", "100");
-		// length of the chunk into which the sentences will be chopped (the
-		// actual chunk size will differ a bit, depending where a suitable place
-		// can be found to cut the chunks)
-		env.put("SEN_CHUNK", "33");
-		env.put("PYTHON", "python");
-
-		// log("ENV: "+pb.environment());
-
-		Process p = pb.start();
-		int rv = -1;
-		try {
-			rv = p.waitFor();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-		log("parser completed. "); //return value: " + rv);
+		log("parser completed. "); 
 
 		return outputText;
 	}
