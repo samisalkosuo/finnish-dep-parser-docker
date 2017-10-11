@@ -116,6 +116,8 @@ public class FinDepServlet extends HttpServlet {
 		}
 		br.close();
 
+		String inputText=sb.toString();
+		
 		Path tmpDir = null;
 		int rv = -1;
 		String errorString = "";
@@ -130,7 +132,7 @@ public class FinDepServlet extends HttpServlet {
 					SentenceDetectorME sentenceDetector = new SentenceDetectorME(sentenceModel);
 					TokenizerME tokenizer = new TokenizerME(tokenModel);
 
-					String[] sentences = sentenceDetector.sentDetect(sb.toString());
+					String[] sentences = sentenceDetector.sentDetect(inputText);
 					sb = new StringBuilder();
 					for (String sentence : sentences) {
 
@@ -144,7 +146,7 @@ public class FinDepServlet extends HttpServlet {
 						sb.append("\n");
 					}
 
-					String inputText = sb.toString();
+					inputText = sb.toString();
 
 					// create tmpDir for this request
 					tmpDir = Files.createTempDirectory(workDir, "tmp_data");
