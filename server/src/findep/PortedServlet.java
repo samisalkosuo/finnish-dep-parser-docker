@@ -48,11 +48,11 @@ public class PortedServlet extends HttpServlet {
 
 	private final static String MODEL_MORPHOLOGY = "model/morphology.finntreebank.hfstol";
 	private HfstOptimizedLookupObj hfst_morphology = null;
-	
+
 	// marmot stuff
 	private final static String MODEL_MARMOT="model/fin_model.marmot";
 	private MorphTagger tagger=null;
-	
+
 	private SentenceDetectorME sentenceDetector = null;
 	private Tokenizer tokenizer = null;
 
@@ -60,8 +60,8 @@ public class PortedServlet extends HttpServlet {
 
 	// ???
 	private int waitTimeForLockInSeconds = 3600 * 4;// four hours in case there
-													// are huge amount of
-													// requests incoming
+	// are huge amount of
+	// requests incoming
 	// Hfst may run into problems is accessing many times
 	// workaround to make it singlethreaded
 	private final static Semaphore lock = new Semaphore(1, true);
@@ -77,7 +77,7 @@ public class PortedServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		log("Initializing "+getClass().getName());
-		
+
 		try {
 			// Not 100% sure do we have to use this - anyhow....
 			SentenceModel sentenceModel = new SentenceModel(new File(SENTENCE_MODEL_FILE));
@@ -92,7 +92,7 @@ public class PortedServlet extends HttpServlet {
 			// this is used to parse the 'POS' for each word,
 			// so comparing the pos from here to the 'treebank' hits - we select the correct lemma
 			tagger= marmot.util.FileUtils.loadFromFile(MODEL_MARMOT);
-			
+
 		} catch (Exception e) {
 			System.err.println("Sentence model load failed.");
 			throw new ServletException(e);
@@ -110,7 +110,7 @@ public class PortedServlet extends HttpServlet {
 		pw.println("");
 		pw.println(SIMPLE_STATS.getStatistics());
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -125,7 +125,7 @@ public class PortedServlet extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		int inputSize = 0;
 		while (line != null) {
-		//	log(line);
+			//	log(line);
 			sb.append(line);
 			inputSize = inputSize + line.length();
 			line = br.readLine();
@@ -140,50 +140,28 @@ public class PortedServlet extends HttpServlet {
 		Path tmpDir = null;
 		//int rv = -1;
 		String outputText = "";
-		
+
 		String errorString = "";
 		boolean errorHappened=false;
-		try {
+	//	try {
 			// TODO: multithreading ADD HERE OR USE ONLY ONE THREAD + CONFIGURE QUEUE LENGTH TO THE APP SERVER
 			// It is better, if queu length runs out, then requests fail quick. This indicates node corrupt, 
 			// and can be restarted. Thus setting thread pool size 1 for this servlet with configured queue length
 			// makes more sense.
-			if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
-				try {
+		//	if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
+		//		try {
 
-					// detect sentences
-					String[] sentences = sentenceDetector.sentDetect(sb.toString()); //safeSentences(sb.toString()); 
-					sb = new StringBuilder();
-					for (String sentence : sentences) {
+									outputText = callParserProcess(sb.toString());
 
-						// tokenize NOTE THIS HAS BEEN CHANGED TO JUST PASS CLEAR TEXT IN 
-						String[] tokens = tokenizer.tokenize(sentence); //safeTokens(sentence); 
-						// replaces txt_to_09.py
-						for (int i = 0; i < tokens.length; i++) {
-							String token = tokens[i];
-							//sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
-							// This is alternative way - we want to use marmot as the parser
-							// In this case we want to go one sentence at a time.
-							sb.append(token);
-							if(i<tokens.length-1) {
-								sb.append(" ");
-							}
-						}
-						sb.append("\n");
-					}
-
-					String inputText = sb.toString();
-					// call parser
-					outputText = callParserProcess(inputText, tmpDir);
-
-		} finally {
-			lock.release();
-		}
-			}
-		} catch (InterruptedException e) {
-			log("InterruptedException:\n"+e);
-			outputText=null;
-		}
+		//		} finally {
+		//			lock.release();
+		//		}
+		//	}
+	//	} catch (InterruptedException e) {
+	//		log("InterruptedException:\n"+e);
+	//		outputText=null;
+	//		lock.release(); 
+	//	}
 
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -208,17 +186,41 @@ public class PortedServlet extends HttpServlet {
 
 	}
 
+	public synchronized String callParserProcess(String in) throws IOException {
+
+		// detect sentences
+		String[] sentences = sentenceDetector.sentDetect(in); //safeSentences(sb.toString()); 
+		StringBuilder sb = new StringBuilder();
+		for (String sentence : sentences) {
+
+			// tokenize NOTE THIS HAS BEEN CHANGED TO JUST PASS CLEAR TEXT IN 
+			String[] tokens = tokenizer.tokenize(sentence); //safeTokens(sentence); 
+			// replaces txt_to_09.py
+			for (int i = 0; i < tokens.length; i++) {
+				String token = tokens[i];
+				//sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
+				// This is alternative way - we want to use marmot as the parser
+				// In this case we want to go one sentence at a time.
+				sb.append(token);
+				if(i<tokens.length-1) {
+					sb.append(" ");
+				}
+			}
+			sb.append("\n");
+		}
+
+		String inputText = sb.toString();
+		// call parser
+
 		
-	private String callParserProcess(String inputText, Path tmpDir) throws IOException {
-	
 		// This is similar to the FinDepServlet, but carrying out operations
 		// without calling the python scripts
 		ParserLog log = new ParserLogImpl();
 		//UConverter uconverter = new UConverterImpl(log);
 		Tag tag = new TagImpl(log,hfst_morphology,tagger);
-		
+
 		String outputText = "";
-		
+
 		try {
 			// log.debug("in:\n"+inputText);
 			outputText = tag.quickParse(inputText);
