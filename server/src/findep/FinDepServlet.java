@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.activemq.util.LFUCache;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 
 import findep.utils.SimpleStats;
@@ -54,6 +56,9 @@ public class FinDepServlet extends HttpServlet {
 
 	private SimpleStats SIMPLE_STATS = SimpleStats.getInstance();
 
+	private boolean useConlluCache = false;
+	private LFUCache<String, String> lfuCache=null;
+	
 	/**
 	 * 
 	 */
@@ -63,6 +68,25 @@ public class FinDepServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		log("Initializing " + getClass().getName());
+
+		String cacheSize = System.getenv("conllu.cache.size");
+		if (cacheSize != null) {
+			log("conllu.cache.size: " + cacheSize);
+			try {
+				int _cacheSize = Integer.parseInt(cacheSize);
+				// set up cache
+				useConlluCache = true;
+				lfuCache=new LFUCache<>(_cacheSize, 0.2f);
+
+			} catch (NumberFormatException nfe) {
+				log(nfe.toString());
+			}
+		}
+		else
+		{
+			log("conllu cache is not used");
+		}
+
 		workDir = FileSystems.getDefault().getPath(workDirName);
 
 		try {
@@ -115,9 +139,21 @@ public class FinDepServlet extends HttpServlet {
 			sb.append("\n");
 		}
 		br.close();
-
-		String inputText=sb.toString();
+				
+		boolean errorHappened = false;
+		String inputText = sb.toString();
+		ParseReturnObject pro=new ParseReturnObject();
 		
+		if (useConlluCache == true) {
+			//check from cache
+			String md5Hex = DigestUtils.md5Hex(inputText);
+			
+		}
+		else
+		{
+			pro=parse(inputText);
+		}
+/*
 		Path tmpDir = null;
 		int rv = -1;
 		String errorString = "";
@@ -162,40 +198,42 @@ public class FinDepServlet extends HttpServlet {
 			e.printStackTrace();
 			rv = -234566;
 		}
-
+*/
+		
+		
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
-
+		errorHappened=pro.errorHappened;
 		PrintWriter pw = resp.getWriter();
-		if (rv == -234566) {
+		if (pro.rv == -234566) {
 			// error when executing this servlet
 			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			pw.println("Waiting for lock interrupted.");
-			pw.println(errorString);
-			errorHappened = true;
+			pw.println(pro.errorString);
+//			errorHappened = true;
 		} else {
 			// read output file
-			File f;
-			if (rv == 0) {
+		//	File f;
+			if (pro.rv == 0) {
 				resp.setStatus(HttpServletResponse.SC_OK);
 				// if success, read stdout file
-				f = new File(tmpDir.toFile(), outputFileName);
+				//f = new File(tmpDir.toFile(), outputFileName);
 
 			} else {
 				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 				// if error, read stderr file
-				f = new File(tmpDir.toFile(), errorFileName);
-				errorHappened = true;
+				//f = new File(tmpDir.toFile(), errorFileName);
+	//			errorHappened = true;
 			}
 
-			br = new BufferedReader(new FileReader(f));
+			br = pro.reader;//new BufferedReader(new FileReader(f));
 			for (line = br.readLine(); line != null; line = br.readLine()) {
 				pw.println(line);
 			}
 			br.close();
-
+			pro.deleteTmpDir();
 			// delete temp dir
-			try {
+	/*		try {
 				if (tmpDir != null) {
 					FileUtils.deleteDirectory(tmpDir.toFile());
 				}
@@ -204,7 +242,7 @@ public class FinDepServlet extends HttpServlet {
 				// tmpdir delete failed
 				log("Temp dir delete failed: " + ioe.toString());
 			}
-
+*/
 		}
 		long endTimeNano = System.nanoTime();
 		long endTimeMsec = System.currentTimeMillis();
@@ -216,7 +254,76 @@ public class FinDepServlet extends HttpServlet {
 		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize, errorHappened);
 
 	}
+	
+	private ParseReturnObject parse(String inputText) throws IOException
+	{
+		ParseReturnObject pro=new ParseReturnObject();
+		Path tmpDir = null;
+		int rv = -1;
+		String errorString = "";
 
+		try {
+			// TODO: multithreading
+			if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
+				try {
+
+					// instantiate sentence detector and tokenizer using
+					// preloaded models
+					SentenceDetectorME sentenceDetector = new SentenceDetectorME(sentenceModel);
+					TokenizerME tokenizer = new TokenizerME(tokenModel);
+
+					String[] sentences = sentenceDetector.sentDetect(inputText);
+					StringBuilder sb = new StringBuilder();
+					for (String sentence : sentences) {
+
+						// tokenize
+						String[] tokens = tokenizer.tokenize(sentence);
+						// replaces txt_to_09.py
+						for (int i = 0; i < tokens.length; i++) {
+							String token = tokens[i];
+							sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
+						}
+						sb.append("\n");
+					}
+
+					String _inputText = sb.toString();
+
+					// create tmpDir for this request
+					tmpDir = Files.createTempDirectory(workDir, "tmp_data");
+					pro.tmpDir=tmpDir;
+					
+					// call parser
+					rv = callParserProcess(_inputText, tmpDir);
+					pro.rv=rv;
+					
+					//set reader
+					File f;
+					String fileName=outputFileName;
+					if (rv != 0) {
+						// if error, read stderr file
+						fileName = errorFileName;
+						pro.errorHappened=true;
+					}
+					f = new File(tmpDir.toFile(), fileName);
+					pro.reader=new BufferedReader(new FileReader(f));
+					pro.errorHappened=false;
+				} finally {
+					lock.release();
+				}
+			}
+		} catch (InterruptedException e) {
+			errorString = e.toString();
+			e.printStackTrace();
+			rv = -234566;
+			pro.errorString=errorString;
+			pro.rv=rv;
+			pro.errorHappened=true;
+		}
+		
+		return pro;
+	
+	}
+	
 	private int callParserProcess(String inputText, Path tmpDir) throws IOException {
 		// calls my_parser_wrapper.sh script
 
@@ -276,4 +383,31 @@ public class FinDepServlet extends HttpServlet {
 		return rv;
 	}
 
+	private class ParseReturnObject
+	{
+		boolean errorHappened=false;
+		String errorString=null;
+		BufferedReader reader=null;
+		Path tmpDir=null;
+		int rv=0;
+		
+		public ParseReturnObject()
+		{
+			
+		}
+		
+		public void deleteTmpDir()
+		{
+				try {
+					if (tmpDir != null) {
+						FileUtils.deleteDirectory(tmpDir.toFile());
+					}
+
+				} catch (IOException ioe) {
+					// tmpdir delete failed
+					log("Temp dir delete failed: " + ioe.toString());
+				}
+				
+		}
+	}
 }
