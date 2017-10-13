@@ -45,6 +45,13 @@ Get simple statistics of the parser:
 
 - http://127.0.0.1:8080, a normal HTTP GET
 
+# Environment variables
+
+Supported environment variables.
+
+- *conllu.cache.size*, set size for parser conllu documents. Default is no cache.
+- *server.feature*, set features to start, DEP, LEMMA, ALL. Default is ALL to start all features.
+
 # Disclaimer
 
 Everything in this repo, including all code is "AS IS". No support, no warranty, no fitness for any purpose, nothing is expressed or implied, not by me (nor my employer).
