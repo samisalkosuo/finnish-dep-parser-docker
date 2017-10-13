@@ -20,7 +20,8 @@ function test
 
 }
 
+test test/text_1k.txt "404c3acfc1920fae4d8f667980ca968c *-"
 test test/text.txt "a98ebd447c1d2a73bd8af1cc23d2b853 *-"
 test test/text2.txt "82435da5e746361666bcf8ba6af8ebb8 *-"
 test test/text3.txt "f6744c8a428c05e5a2b6a9ea3ce24e33 *-"
-test test/text_1k.txt "404c3acfc1920fae4d8f667980ca968c *-"
+test test/text4.txt "dd98c6d8f63c82c1c26fe5874e50fa18 *-"
