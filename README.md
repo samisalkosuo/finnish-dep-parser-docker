@@ -27,30 +27,34 @@ Or build docker image using:
 
 Run docker container, expose port 9876 and exit using CTRL-C:
 
-- docker run -it --rm -p 0.0.0.0:8080:9876 kazhar/finnish-dep-parser
+- docker run -it --rm -p 0.0.0.0:9876:9876 kazhar/finnish-dep-parser
 
 Start docker container in detached mode and restart if container goes down:
 
-- docker run --restart always -d -p 0.0.0.0:8080:9876 kazhar/finnish-dep-parser
+- docker run --restart always -d -p 0.0.0.0:9876:9876 kazhar/finnish-dep-parser
+
+Run parser using cache:
+
+- docker run -it --rm -p 0.0.0.0:9876:9876 -e "conllu.cache.size=100" kazhar/finnish-dep-parser
 
 Post file to parser using curl:
 
-- curl -H "Content-Type: text/plain" --data-binary "@test/text_1k.txt" http://127.0.0.1:8080
+- curl -H "Content-Type: text/plain" --data-binary "@test/text_1k.txt" http://127.0.0.1:9876
 - or
-- cat test/text_1k.txt | curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:8080
+- cat test/text_1k.txt | curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876
 
 Use any programming language to HTTP POST Finnish text to this server and get CoNLL-U format back.
 
 Get simple statistics of the parser:
 
-- http://127.0.0.1:8080, a normal HTTP GET
+- http://127.0.0.1:9876, a normal HTTP GET
 
 # Environment variables
 
 Supported environment variables.
 
 - *conllu.cache.size*, set size for parser conllu documents. Default is no cache.
-- *server.feature*, set features to start, DEP, LEMMA, ALL. Default is ALL to start all features.
+- *server.feature*, set features to start: DEP, LEMMA or ALL. Default is ALL to start all features.
 
 # Disclaimer
 
