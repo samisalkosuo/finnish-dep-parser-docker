@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.activemq.util.LFUCache;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.output.StringBuilderWriter;
 
 import findep.utils.SimpleStats;
 import opennlp.tools.sentdetect.SentenceDetectorME;
@@ -57,11 +59,8 @@ public class FinDepServlet extends HttpServlet {
 	private SimpleStats SIMPLE_STATS = SimpleStats.getInstance();
 
 	private boolean useConlluCache = false;
-	private LFUCache<String, String> lfuCache=null;
-	
-	/**
-	 * 
-	 */
+	private LFUCache<String, String> lfuCache = null;
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -76,15 +75,14 @@ public class FinDepServlet extends HttpServlet {
 				int _cacheSize = Integer.parseInt(cacheSize);
 				// set up cache
 				useConlluCache = true;
-				lfuCache=new LFUCache<>(_cacheSize, 0.2f);
+				lfuCache = new LFUCache<String, String>(_cacheSize, 0.2f);
 
 			} catch (NumberFormatException nfe) {
 				log(nfe.toString());
+				log("conllu LFU cache is not used");
 			}
-		}
-		else
-		{
-			log("conllu cache is not used");
+		} else {
+			log("conllu LFU cache is not used");
 		}
 
 		workDir = FileSystems.getDefault().getPath(workDirName);
@@ -139,110 +137,42 @@ public class FinDepServlet extends HttpServlet {
 			sb.append("\n");
 		}
 		br.close();
-				
+
 		boolean errorHappened = false;
 		String inputText = sb.toString();
-		ParseReturnObject pro=new ParseReturnObject();
-		
+
+		ParseReturnObject pro = new ParseReturnObject();
 		if (useConlluCache == true) {
-			//check from cache
-			String md5Hex = DigestUtils.md5Hex(inputText);
-			
+			// check from cache
+			pro = getFromCache(inputText);
+		} else {
+			pro = parse(inputText);
 		}
-		else
-		{
-			pro=parse(inputText);
-		}
-/*
-		Path tmpDir = null;
-		int rv = -1;
-		String errorString = "";
-		boolean errorHappened = false;
-		try {
-			// TODO: multithreading
-			if (lock.tryAcquire(1, waitTimeForLockInSeconds, TimeUnit.SECONDS)) {
-				try {
 
-					// instantiate sentence detector and tokenizer using
-					// preloaded models
-					SentenceDetectorME sentenceDetector = new SentenceDetectorME(sentenceModel);
-					TokenizerME tokenizer = new TokenizerME(tokenModel);
-
-					String[] sentences = sentenceDetector.sentDetect(inputText);
-					sb = new StringBuilder();
-					for (String sentence : sentences) {
-
-						// tokenize
-						String[] tokens = tokenizer.tokenize(sentence);
-						// replaces txt_to_09.py
-						for (int i = 0; i < tokens.length; i++) {
-							String token = tokens[i];
-							sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
-						}
-						sb.append("\n");
-					}
-
-					inputText = sb.toString();
-
-					// create tmpDir for this request
-					tmpDir = Files.createTempDirectory(workDir, "tmp_data");
-					// call parser
-					rv = callParserProcess(inputText, tmpDir);
-
-				} finally {
-					lock.release();
-				}
-			}
-		} catch (InterruptedException e) {
-			errorString = e.toString();
-			e.printStackTrace();
-			rv = -234566;
-		}
-*/
-		
-		
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		errorHappened=pro.errorHappened;
+		errorHappened = pro.errorHappened;
 		PrintWriter pw = resp.getWriter();
+
 		if (pro.rv == -234566) {
 			// error when executing this servlet
 			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			pw.println("Waiting for lock interrupted.");
 			pw.println(pro.errorString);
-//			errorHappened = true;
 		} else {
-			// read output file
-		//	File f;
 			if (pro.rv == 0) {
 				resp.setStatus(HttpServletResponse.SC_OK);
-				// if success, read stdout file
-				//f = new File(tmpDir.toFile(), outputFileName);
 
 			} else {
 				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				// if error, read stderr file
-				//f = new File(tmpDir.toFile(), errorFileName);
-	//			errorHappened = true;
 			}
 
-			br = pro.reader;//new BufferedReader(new FileReader(f));
+			br = pro.reader;
 			for (line = br.readLine(); line != null; line = br.readLine()) {
 				pw.println(line);
 			}
 			br.close();
 			pro.deleteTmpDir();
-			// delete temp dir
-	/*		try {
-				if (tmpDir != null) {
-					FileUtils.deleteDirectory(tmpDir.toFile());
-				}
-
-			} catch (IOException ioe) {
-				// tmpdir delete failed
-				log("Temp dir delete failed: " + ioe.toString());
-			}
-*/
 		}
 		long endTimeNano = System.nanoTime();
 		long endTimeMsec = System.currentTimeMillis();
@@ -254,10 +184,44 @@ public class FinDepServlet extends HttpServlet {
 		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize, errorHappened);
 
 	}
-	
-	private ParseReturnObject parse(String inputText) throws IOException
-	{
-		ParseReturnObject pro=new ParseReturnObject();
+
+	private ParseReturnObject getFromCache(String inputText) throws IOException {
+		ParseReturnObject pro = new ParseReturnObject();
+
+		String md5Hex = DigestUtils.md5Hex(inputText);
+		String conlluText = lfuCache.get(md5Hex);
+		if (conlluText != null) {
+			// found from cache
+			log("found from LFU cache");
+			int freq = lfuCache.frequencyOf(md5Hex);
+			log(String.format("Doc %s accessed >= %d times", md5Hex, freq));
+		} else {
+			// not in cache
+			log("not found from LFU cache");
+			pro = parse(inputText);
+			BufferedReader br = pro.reader;// new BufferedReader(new
+											// FileReader(f));
+			StringBuilder sb = new StringBuilder();
+			PrintWriter pw = new PrintWriter(new StringBuilderWriter(sb));
+			for (String line = br.readLine(); line != null; line = br.readLine()) {
+				pw.println(line);
+			}
+			pw.close();
+			br.close();
+			conlluText = sb.toString();
+			lfuCache.put(md5Hex, conlluText);
+			pro.deleteTmpDir();
+			log(String.format("Doc %s added to LFU cache", md5Hex));
+		}
+		// set reader
+		pro.reader = new BufferedReader(new StringReader(conlluText));
+
+		return pro;
+	}
+
+	private ParseReturnObject parse(String inputText) throws IOException {
+
+		ParseReturnObject pro = new ParseReturnObject();
 		Path tmpDir = null;
 		int rv = -1;
 		String errorString = "";
@@ -290,23 +254,23 @@ public class FinDepServlet extends HttpServlet {
 
 					// create tmpDir for this request
 					tmpDir = Files.createTempDirectory(workDir, "tmp_data");
-					pro.tmpDir=tmpDir;
-					
+					pro.tmpDir = tmpDir;
+
 					// call parser
 					rv = callParserProcess(_inputText, tmpDir);
-					pro.rv=rv;
-					
-					//set reader
+					pro.rv = rv;
+
+					// set reader
 					File f;
-					String fileName=outputFileName;
+					String fileName = outputFileName;
 					if (rv != 0) {
 						// if error, read stderr file
 						fileName = errorFileName;
-						pro.errorHappened=true;
+						pro.errorHappened = true;
 					}
 					f = new File(tmpDir.toFile(), fileName);
-					pro.reader=new BufferedReader(new FileReader(f));
-					pro.errorHappened=false;
+					pro.reader = new BufferedReader(new FileReader(f));
+					pro.errorHappened = false;
 				} finally {
 					lock.release();
 				}
@@ -315,15 +279,15 @@ public class FinDepServlet extends HttpServlet {
 			errorString = e.toString();
 			e.printStackTrace();
 			rv = -234566;
-			pro.errorString=errorString;
-			pro.rv=rv;
-			pro.errorHappened=true;
+			pro.errorString = errorString;
+			pro.rv = rv;
+			pro.errorHappened = true;
 		}
-		
+
 		return pro;
-	
+
 	}
-	
+
 	private int callParserProcess(String inputText, Path tmpDir) throws IOException {
 		// calls my_parser_wrapper.sh script
 
@@ -383,31 +347,28 @@ public class FinDepServlet extends HttpServlet {
 		return rv;
 	}
 
-	private class ParseReturnObject
-	{
-		boolean errorHappened=false;
-		String errorString=null;
-		BufferedReader reader=null;
-		Path tmpDir=null;
-		int rv=0;
-		
-		public ParseReturnObject()
-		{
-			
-		}
-		
-		public void deleteTmpDir()
-		{
-				try {
-					if (tmpDir != null) {
-						FileUtils.deleteDirectory(tmpDir.toFile());
-					}
+	private class ParseReturnObject {
+		boolean errorHappened = false;
+		String errorString = null;
+		BufferedReader reader = null;
+		Path tmpDir = null;
+		int rv = 0;
 
-				} catch (IOException ioe) {
-					// tmpdir delete failed
-					log("Temp dir delete failed: " + ioe.toString());
+		public ParseReturnObject() {
+
+		}
+
+		public void deleteTmpDir() {
+			try {
+				if (tmpDir != null) {
+					FileUtils.deleteDirectory(tmpDir.toFile());
+					tmpDir = null;
 				}
-				
+
+			} catch (IOException ioe) {
+				// tmpdir delete failed
+				log("Temp dir delete failed: " + ioe.toString());
+			}
 		}
 	}
 }
