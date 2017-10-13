@@ -23,16 +23,32 @@ public class FinDepServletServer {
 		try {
 			// Passing in the class for the Servlet allows jetty to instantiate an
 			// instance of that Servlet and mount it on a given context path.
-
+			
+			//server.feature is one of: DEP,LEMMA,ALL
+			//default is ALL
+			String serverFeature = System.getenv("server.feature");
+			if (serverFeature == null)
+			{
+				serverFeature="ALL"; 
+			}
+			
+			if (serverFeature.equals("ALL") || serverFeature.equals("LEMMA"))
+			{
+				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(1);
+				
+			}
+			
+			if (serverFeature.equals("ALL") || serverFeature.equals("DEP"))
+			{
+				handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
+				handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
+				handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
+				handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(0);				
+			}
 			// IMPORTANT:
 			// This is a raw Servlet, not a Servlet that has been configured
 			// through a web.xml @WebServlet annotation, or anything similar.
-			handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
-			handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
-			handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
-			handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(1);
-			handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(0);
-			
+
 			// Start things up!			
 			server.start();
 			
