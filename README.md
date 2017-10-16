@@ -35,7 +35,7 @@ Start docker container in detached mode and restart if container goes down:
 
 Run parser using cache:
 
-- docker run -it --rm -p 0.0.0.0:9876:9876 -e "conllu.cache.size=100" kazhar/finnish-dep-parser
+- docker run -it --rm -p 0.0.0.0:9876:9876 -e "conllu_cache_size=100" kazhar/finnish-dep-parser
 
 Post file to parser using curl:
 
