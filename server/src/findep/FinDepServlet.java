@@ -68,9 +68,9 @@ public class FinDepServlet extends HttpServlet {
 		super.init();
 		log("Initializing " + getClass().getName());
 
-		String cacheSize = System.getenv("conllu.cache.size");
+		String cacheSize = System.getenv("conllu_cache_size");
 		if (cacheSize != null) {
-			log("conllu.cache.size: " + cacheSize);
+			log("conllu_cache_size: " + cacheSize);
 			try {
 				int _cacheSize = Integer.parseInt(cacheSize);
 				// set up cache

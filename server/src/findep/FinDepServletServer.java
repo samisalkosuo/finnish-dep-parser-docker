@@ -26,7 +26,7 @@ public class FinDepServletServer {
 			
 			//server.feature is one of: DEP,LEMMA,ALL
 			//default is ALL
-			String serverFeature = System.getenv("server.feature");
+			String serverFeature = System.getenv("server_feature");
 			if (serverFeature == null)
 			{
 				serverFeature="ALL"; 

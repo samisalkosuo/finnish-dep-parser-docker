@@ -53,8 +53,8 @@ Get simple statistics of the parser:
 
 Supported environment variables.
 
-- *conllu.cache.size*, set size for parser conllu documents. Default is no cache.
-- *server.feature*, set features to start: DEP, LEMMA or ALL. Default is ALL to start all features.
+- *conllu_cache_size*, set cache size for parsed conllu documents. Default is no cache.
+- *server_feature*, set features to start: DEP, LEMMA or ALL. Default is ALL to start all features.
 
 # Disclaimer
 
