@@ -1,0 +1,22 @@
+
+Tekoäly Watson oppii suomea turkulaisilta
+Turun yliopiston tutkijat ovat jo kymmenen vuoden ajan kehittäneet teknologiaa, joka kykenee tulkitsemaan suomen kieltä. Teknologiayritys IBM hyödyntää turkulaisten kehittämää tekniikkaa opettaakseen tekoäly Watsonille suomea.
+​Filip Ginter ja Tapio Salakoski pitävät yhteistyötä IBM:n kanssa hyvänä esimerkkinä avoimen tieteen hyödyistä.
+
+Noin kuusi vuotta sitten tekoäly Watson päihitti ihmisen amerikkalaisessa tv-tietokilpailu Jeopardyssa. Tällä hetkellä Watsonilta odotetaan paljon esimerkiksi terveydenhuollon alalla. Turun yliopiston tutkijoiden kehittämän teknologian ansiosta Watson osaa nyt myös suomea.
+
+– Kehittämämme teknologia on avoimen tieteen hengessä verkossa kaikkien saatavilla – ja IBM sattui tarvitsemaan juuri tällaista tekniikkaa. He ottivat meihin yhteyttä ja pidimme useita seminaareja, joissa autoimme heitä hyödyntämään kieliteknologiaamme. Tämän tuloksena IBM rakensi teknologiaa osaksi Watsonia – ja hekin laittoivat parantelemansa version avoimesti jakoon. Tämä on hieno esimerkki avoimen tieteen mahdollisuuksista, joista kaikki hyötyvät, sanovat matemaattis-luonnontieteellisen tiedekunnan dekaani Tapio Salakoski ja tulevaisuuden teknologioiden laitoksen apulaisprofessori Filip Ginter Turun yliopistosta.
+
+– Erityisesti terveydenhoidon alueella, muun muassa potilaskirjauksissa, olisi tärkeää tietoa analysoitavaksi uuden teknologian avulla. Tähän asti suomen kieli on ollut esteenä datan täysimittaiselle hyödyntämiselle. Turun yliopiston kehittämän tekniikan avulla tietoon päästään nyt paremmin käsiksi ja suomenkielistäkin tekstiä päästään louhimaan. Tämä avaa uusia mahdollisuuksia esimerkiksi hoitotiimien yhdistämiseen, trendien havainnointiin, hypoteesien validointiin tai esimerkiksi tietoaltaiden rikastamiseen, toteaa IBM Suomen yhteiskunta- ja yliopistosuhteiden johtaja Maarit Palo.
+
+Tutkijat ovat itse hyödyntäneet teknologiaa muun muassa terveydenhuollon suurten tekstimäärien käsittelyssä. Kieliteknologia voi auttaa esimerkiksi lääkäriä, jonka potilaalla on hyvin harvinaiset oireet. Tietokoneen on mahdollista käydä läpi suuria määriä potilastietoja ja etsiä toisia potilaita, joilla on ollut samankaltaisia oireita.
+
+– Terveydenhuollon potilastiedot ovat suuri hyödyntämätön potentiaali. Laki edellyttää tietojen keräämistä, mutta niitä ei vielä hyödynnetä parhaalla mahdollisella tavalla. Tietokone kykenee lukemaan nopeasti sellaisia tekstimääriä, joita ihminen ei ehdi käymään läpi, Salakoski toteaa.
+
+– Terveydenhuollon tekstit edellyttävät kuitenkin suomenkielen ymmärtämisen lisäksi myös niin sanotun sairaalaslangin ymmärtämistä. Tässä auttaa monitieteinen tutkimusryhmämme, jossa on kielen, tekoälyn ja terveysalan tutkijoita, sanoo Turun yliopiston kliinisen hoitotieteen professori Sanna Salanterä IKITIK-tutkimusryhmästä.
+
+Maailmassa kieliteknologiaa on kehitetty 1950-luvulta lähtien, mutta vasta viime aikoina verkkoon kertynyt massiivinen data on mahdollistanut sen viemisen uudelle tasolle. Aikaisemmin tekoälyä yritettiin opettaa ymmärtämään kieltä syöttämällä sille tarkkoja sääntöjä. Sittemmin ymmärrettiin, että kone oppii kieltä kuin lapsi, eli esimerkkien kautta.
+
+– Samoin kuin lapsi, kone altistetaan suurelle määrälle esimerkkejä, joiden avulla se oppii kielen. Lisäksi täytyy koodata tekoäly, jonka avulla kieli opitaan. Tällä hetkellä dataa on verkossa niin paljon, että tämä on mahdollista, Ginter sanoo.
+
+Teksti ja kuva: Jenni Valta
