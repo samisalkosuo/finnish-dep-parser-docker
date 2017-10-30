@@ -5,8 +5,10 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.activemq.util.LFUCache;
 import org.apache.commons.io.output.StringBuilderWriter;
 
 public class SimpleStats {
@@ -31,6 +33,9 @@ public class SimpleStats {
 	private double BILLION = 1000000000.0;
 	private double KB = 1024.0;
 
+	public int maxCacheSize=0;
+	private long cacheHits=0;
+	
 	private SimpleStats() {
 
 	}
@@ -39,6 +44,11 @@ public class SimpleStats {
 		return instance;
 	}
 
+	public void increaseCacheHits()
+	{
+		cacheHits=cacheHits+1;
+	}
+	
 	public void addRequest(long startNano, long endNano, long startMsec, long endMsec, long bytesProcessed,
 			boolean errorHappened) {
 		numberOfRequestsHandled = numberOfRequestsHandled + 1;
@@ -56,6 +66,10 @@ public class SimpleStats {
 	}
 
 	public String getStatistics() {
+		return getStatistics(null);
+	
+	}
+	public String getStatistics(LFUCache<String, String> cacheInstance) {
 
 		StringBuilderWriter sbw = new StringBuilderWriter();
 		PrintWriter pw = new PrintWriter(sbw);
@@ -79,6 +93,31 @@ public class SimpleStats {
 		pw.println(String.format("  Host                   : %s (%s)", ipAddress, hostName));
 		pw.println("  Uptime                 : " + elapsedTime(System.currentTimeMillis() - startTimeOfThis));
 		pw.println("  Requests               : " + numberOfRequestsHandled + ", failed: " + errors);
+		
+		//cache stats
+		if (cacheInstance!= null)
+		{
+			int cacheSize=cacheInstance.size();
+			Set<String> keys=cacheInstance.keySet();
+			long totalCachedBytes=0;
+			for (String key : keys)
+			{
+				totalCachedBytes=totalCachedBytes+cacheInstance.get(key).length();
+			}
+			   
+			pw.println("  Cache hits             : " + cacheHits);
+			pw.println("  Cached documents       : " + cacheSize+"/"+maxCacheSize);
+			pw.println("  Cached documents size  : " + String.format("%.02f KB",(totalCachedBytes) / KB));
+		}
+		else
+		{
+			pw.println("  Cache not used.");
+
+		}
+			
+		//memory 
+		//check this https://stackoverflow.com/questions/17374743/how-can-i-get-the-memory-that-my-java-program-uses-via-javas-runtime-api
+		
 		if (numberOfRequestsHandled > 0) {
 			try {
 				long totalProcessingTime = totalProcessingTimeNano;

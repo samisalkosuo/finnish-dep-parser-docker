@@ -75,6 +75,7 @@ public class FinDepServlet extends HttpServlet {
 				int _cacheSize = Integer.parseInt(cacheSize);
 				// set up cache
 				useConlluCache = true;
+				SIMPLE_STATS.maxCacheSize=_cacheSize;
 				lfuCache = new LFUCache<String, String>(_cacheSize, 0.2f);
 
 			} catch (NumberFormatException nfe) {
@@ -106,7 +107,7 @@ public class FinDepServlet extends HttpServlet {
 		pw.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
 
 		pw.println("");
-		pw.println(SIMPLE_STATS.getStatistics());
+		pw.println(SIMPLE_STATS.getStatistics(lfuCache));
 	}
 
 	@Override
@@ -193,6 +194,7 @@ public class FinDepServlet extends HttpServlet {
 		if (conlluText != null) {
 			// found from cache
 			log("found from LFU cache");
+			SIMPLE_STATS.increaseCacheHits();
 			int freq = lfuCache.frequencyOf(md5Hex);
 			log(String.format("Doc %s accessed >= %d times", md5Hex, freq));
 		} else {
