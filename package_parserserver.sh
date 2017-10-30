@@ -1,6 +1,6 @@
 #package parser server
 
-PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH
+PATH=/maven/bin:$PATH
 cd server
 mvn package
 mv target/fin-dep-parser-server-jar-with-dependencies.jar ..

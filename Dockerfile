@@ -3,19 +3,14 @@
 
 FROM python:2.7-alpine
 
-RUN apk add --no-cache bash 
-RUN apk update && apk add ca-certificates wget && update-ca-certificates   
-RUN apk add --no-cache openjdk8
-RUN apk add --no-cache git 
-RUN apk add --update --no-cache curl-dev curl
+RUN apk add --update --no-cache bash openjdk8 curl-dev curl wget
+RUN apk update && apk add ca-certificates && update-ca-certificates   
 
 WORKDIR /
 
-#Finnish-dep-parser and Maven install
-ADD install.sh .
-RUN ["/bin/bash" ,"install.sh"]
-
-WORKDIR Finnish-dep-parser
+#Install Maven
+ADD install_maven.sh .
+RUN ["/bin/bash" ,"install_maven.sh","3.5.2"]
 
 #server4dev is for development use
 #Docker uses layered filesystem and each line of Dockerfile is maintained in the image
@@ -26,13 +21,21 @@ WORKDIR Finnish-dep-parser
 #if adding new dependencies to pom.xml, copy pom.xml from server directory to server4dev directory before building docker image
 RUN mkdir server4dev
 ADD server4dev ./server4dev/
-RUN PATH=/Finnish-dep-parser/apache-maven-3.5.0/bin:$PATH && cd server4dev && mvn package
+RUN PATH=/maven/bin:$PATH && cd server4dev && mvn package
+
+ADD install_findepparser.sh .
+#Install Finnish-dep-parser
+#Uses fork: https://github.com/samisalkosuo/Finnish-dep-parser
+#uses specific commit ID as parameter
+RUN ["/bin/bash" ,"install_findepparser.sh","eb74556296ec6fca41ec229afb69b6ae1d31931d"]
+
+WORKDIR /Finnish-dep-parser
 
 #add server code
 RUN mkdir server
 ADD server ./server/
-ADD package.sh .
-RUN ["/bin/bash" ,"package.sh"]
+ADD package_parserserver.sh .
+RUN ["/bin/bash" ,"package_parserserver.sh"]
 
 #add modified Finnish dependency parser files
 ADD server/resolve_readings.py .

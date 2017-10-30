@@ -361,7 +361,7 @@ public class FinDepServlet extends HttpServlet {
 		}
 
 		public void deleteTmpDir() {
-			try {
+		/*	try {
 				if (tmpDir != null) {
 					FileUtils.deleteDirectory(tmpDir.toFile());
 					tmpDir = null;
@@ -371,6 +371,7 @@ public class FinDepServlet extends HttpServlet {
 				// tmpdir delete failed
 				log("Temp dir delete failed: " + ioe.toString());
 			}
+			*/
 		}
 	}
 }
