@@ -1,0 +1,52 @@
+
+Watson auttaa lääkäriä löytämään potilaan siiloista, suomeksi
+
+Julkaistu 17.10.2017
+
+Suomenkielinen tekstianalytiikka auttaa lääkäriä löytämään potilaan siiloista
+
+Kuvittele, että jokaisella lääkärillä olisi työssään apuna kone, jossa on 20 vuoden hoitohistoria heidän osaamisalueensa potilaista. Lääkärillä olisi heti käytössään kaikki se tieto ja tulkinta, mitä kyseisiä potilaita hoitaneet tahot ovat koskaan kirjanneet. Kaiken tämän tiedon perusteella kone osaisi neuvoa lääkäriä myös nykyisen potilaan kanssa. Kone voisi antaa suosituksia perustuen tietoon lukemattomista aiemmista vastaavista hoitotilanteista.
+
+Tämä saattaa kuulostaa tällä hetkellä science fiction -elokuvalta, muttei enää kauan. Ottamalla käyttöön älykkäät tiedonkäsittelyn työkalut terveydenhuollossa tämä voi pian olla todellisuutta.
+
+ 
+
+Maailman kärkeä sähköisissä potilas- ja asiakastietojärjestelmissä
+
+Suomi on edelläkävijä sähköisten sosiaali- ja terveyshuoltojärjestelmien käyttöönotossa. Olemme keränneet ja tallentaneet valtavasti tietoa vuosien mittaan, mutta kokonaiskuva on pirstaleinen ja siiloutunut. Tiedot ovat eri järjestelmissä, eri omistajilla ja eri muodossa, eikä niiden yhteensovittaminen onnistu perinteisellä järjestelmien integraatiolla.
+
+Meillä olisi valtavasti potentiaalia terveydenhuollon tiedon hyödyntämisessä, mutta tällä hetkellä se on vielä pitkälti käyttämättä. Hoitohenkilökunnan ajasta kuluu kohtuuton osuus järjestelmiin kirjautumiseen, tiedon hakuun eri paikoista ja jo kertaalleen kerätyn tiedon syöttämiseen uudelleen.
+
+Jos eri järjestelmien yhdistäminen integraatiolla ei onnistu, täytyy tietomassaan käydä käsiksi toisella tavalla: laitetaan kone oppimaan − käymään läpi kaikki tieto eri järjestelmistä ja löytämään siitä olennaisimmat tiedonjyvät.
+
+Valtavasta tietomassasta voi koota erilaisia kokonaisuuksia luokittelemalla ja indeksoimalla. Voidaan kerätä kaikki tieto tiettyyn potilaaseen, sairauteen, hoitojaksoon tai palveluun liittyen. Tehokkaalla tietojenkäsittelyllä on mahdollista saada aikaan kokonaiskuva potilaan kaikista oireista ja hänen saamistaan hoidoista ilman, että hoitavan lääkärin tarvitsee itse käydä läpi monta eri järjestelmää.
+
+ 
+
+Selkoa sekaviin merkintöihin
+
+Vanha vitsi lääkärin käsialasta pätee valitettavan usein myös sähköisessä muodossa oleviin terveydenhuollon merkintöihin. Hoitoalalla on aivan oma sanastonsa, lyhenteiden käyttö nopeuttaa työtä ja kiireessä syntyy helposti kirjoitusvirheitä. Suomen kielen koukerot tuovat oman lisänsä tekstinkäsittelyn ja analysoimisen haasteisiin, eikä suomea ole taivutusmuotojen takia helppo tietojärjestelmissä käsitellä.
+
+Me päätimme löytää tähän haasteeseen ratkaisun yhdessä Turun yliopiston Tulevaisuuden teknologioiden laitoksen kieliteknologian tutkimusryhmän kanssa. Lähdimme kehittämään IBM Watson Explorerin suomen kielen osaamista, jotta Watson voisi paremmin auttaa lääkäreitä työssään.
+
+Kieliteknologian avulla hoitohenkilökunnan muistiinpanoista opitaan automaattisesti tunnistamaan muun muassa oireita, diagnooseja, toimenpiteitä, lääkityksiä sekä piileviä tekijöitä, kuten alkoholin käyttöä, sukurasituksia ja toimintakyvyn arviointia.
+
+ 
+
+Tuloksena yksilöllisempää hoitoa
+
+Kun tieto aiemmista hoidoista tai oireista on helposti saatavilla, on uudenkin vaivan hoidon arvioiminen helpompaa. Oireet ja sairaudet ilmenevät harvoin yksinään tai ilmestyvät tyhjästä, vaan ihmisen fyysinen ja psyykkinen terveys on kokonaisuus, jonka osat vaikuttavat toisiinsa.
+
+Laajempi kokonaiskuva auttaa hoitohenkilökuntaa löytämään syitä ja seurauksia sekä suunnittelemaan tehokkaampaa ja yksilöllisempää hoitoa. Kun tietoa saa helpommin myös muista samantyyppisistä vaivoista kärsivistä potilaista ja heidän hoidostaan, on mahdollista tunnistaa epidemioita tai tutkiskella tietyn hoidon tehokkuutta laajemmassakin mittakaavassa.
+
+Myös itse hoitotyötä ja sen laadun vaikutusta voidaan tarkastella paremmin kokonaisvaltaisemman tiedon avulla. Jos kirjaukset ovat luokkaa ”aamupesut tehty, syönyt hyvin, vatsa toiminut”, eikä potilaan psyykkisestä voinnista tai muista hyvinvointiin vaikuttavista tekijöistä ole mitään mainintoja, voidaan pysähtyä miettimään, onko potilaan vointiin ja tilaan kiinnitetty tarpeeksi huomioita. Tämän kaltaisen hoitotyön arvioinnin avulla huomio saadaan kiinnitettyä kehitettäviin seikkoihin ja hoidon laatua voidaan parantaa.
+
+Tiedon helpompi saatavuus vapauttaa myös runsaasti hoitohenkilökunnan aikaa itse hoitotyöhön. Aikaa ei mene jatkuvaan järjestelmästä toiseen kirjautumiseen ja tiedon etsimiseen. Koneellisesti laskettua ja analysoitua tilastotietoa potilaskertomuksissa esiintyvistä syy-seuraussuhteista vuosikymmenten ajalta voi myös käyttää diagnosoinnin ja päätöksenteon tukena.
+
+Valtavan terveyteen liittyvän tietomäärän – niin kätevästi valmiiksi koodatun kuin epämääräisinä muistiinpanoina kirjatun – monipuolinen ja reaaliaikainen käyttö on etu niin jokaiselle potilaalle kuin koko terveydenhuollolle sekä jokapäiväisessä työssä että kehitystehtävissä. Lopputuloksena on siis yksinkertaisesti parempaa ja yksilöllisempää hoitoa.
+
+ 
+
+Voit kuunnella lisää teemasta täältä.
+
+Ratkaisun pohjana on Watson Explorer -ohjelmisto.
