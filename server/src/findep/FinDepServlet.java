@@ -61,6 +61,9 @@ public class FinDepServlet extends HttpServlet {
 	private boolean useConlluCache = false;
 	private LFUCache<String, String> lfuCache = null;
 
+	// for testing
+	private boolean doNotDeleteTempDir = false;
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -75,7 +78,7 @@ public class FinDepServlet extends HttpServlet {
 				int _cacheSize = Integer.parseInt(cacheSize);
 				// set up cache
 				useConlluCache = true;
-				SIMPLE_STATS.maxCacheSize=_cacheSize;
+				SIMPLE_STATS.maxCacheSize = _cacheSize;
 				lfuCache = new LFUCache<String, String>(_cacheSize, 0.2f);
 
 			} catch (NumberFormatException nfe) {
@@ -85,6 +88,8 @@ public class FinDepServlet extends HttpServlet {
 		} else {
 			log("conllu LFU cache is not used");
 		}
+
+		doNotDeleteTempDir = Boolean.parseBoolean(System.getenv("do_not_delete_tmp_dir"));
 
 		workDir = FileSystems.getDefault().getPath(workDirName);
 
@@ -361,17 +366,19 @@ public class FinDepServlet extends HttpServlet {
 		}
 
 		public void deleteTmpDir() {
-		/*	try {
-				if (tmpDir != null) {
-					FileUtils.deleteDirectory(tmpDir.toFile());
-					tmpDir = null;
-				}
+			if (doNotDeleteTempDir != true) {
+				try {
+					if (tmpDir != null) {
+						FileUtils.deleteDirectory(tmpDir.toFile());
+						tmpDir = null;
+					}
 
-			} catch (IOException ioe) {
-				// tmpdir delete failed
-				log("Temp dir delete failed: " + ioe.toString());
+				} catch (IOException ioe) {
+					// tmpdir delete failed
+					log("Temp dir delete failed: " + ioe.toString());
+				}
 			}
-			*/
+
 		}
 	}
 }
