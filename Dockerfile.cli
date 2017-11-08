@@ -1,0 +1,32 @@
+#Docker file to install latest version of Finnish dep parser
+#from https://github.com/samisalkosuo/Finnish-dep-parser
+
+#used to test dep parser using CLI
+
+#build using:
+#docker build -f Dockerfile.cli -t findep-cli .
+
+#run:
+#docker run -it --rm findep-cli
+
+FROM python:2.7-alpine
+
+RUN apk add --update --no-cache bash openjdk8 git wget
+RUN apk update && apk add ca-certificates && update-ca-certificates   
+
+WORKDIR /
+
+RUN git clone https://github.com/samisalkosuo/Finnish-dep-parser.git
+WORKDIR  /Finnish-dep-parser
+
+RUN ./install.sh 
+
+ADD test/ test/
+
+ADD scripts/generate_md5.sh .
+RUN chmod 755 generate_md5.sh
+
+RUN ls -1 test/ | awk '{print "echo generateMD5 test/" $1 " >> generate_md5.sh"}' | sh
+
+CMD ["/bin/bash"]
+
