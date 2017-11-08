@@ -16,7 +16,7 @@ import opennlp.tools.tokenize.TokenSampleStream;
 import opennlp.tools.tokenize.TokenizerFactory;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
-import opennlp.tools.util.InputStreamFactory;
+//import opennlp.tools.util.InputStreamFactory;
 import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.TrainingParameters;
@@ -24,7 +24,7 @@ import opennlp.tools.util.TrainingParameters;
 public class OpenNlpTokenizerTrainer {
 	
 	public final static int CUTOFF = 1;
-	
+	/*
 	public Tokenizer train(String path) throws IOException {
 		TokenizerModel model;
 
@@ -58,4 +58,5 @@ public class OpenNlpTokenizerTrainer {
 		
 		System.out.println(tokenizer.tokenize("Shouldn't this work, now?"));
 	}
+	*/
 }

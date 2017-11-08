@@ -35,6 +35,7 @@ public class IS2ParserServlet extends HttpServlet {
 		parser = new Parser(MODEL_PARSER);
 		try {
 			//load model
+			log(String.format("Loading %s...", MODEL_PARSER));
 			parser.loadModel();
 			
 			//do initial parse to do final init of parser

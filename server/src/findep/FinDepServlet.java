@@ -1,12 +1,16 @@
 package findep;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -25,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.activemq.util.LFUCache;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.commons.io.output.StringBuilderWriter;
 
 import findep.utils.SimpleStats;
@@ -32,6 +37,11 @@ import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
+import opennlp.tools.tokenize.TokenizerStream;
+import opennlp.tools.tokenize.WhitespaceTokenStream;
+import opennlp.tools.util.ObjectStream;
+import opennlp.tools.util.ParagraphStream;
+import opennlp.tools.util.PlainTextByLineStream;
 
 public class FinDepServlet extends HttpServlet {
 
@@ -123,29 +133,33 @@ public class FinDepServlet extends HttpServlet {
 		log("START");
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
-		// TODO: convert scripts to this servlet
-		// TODO: use input and outputstreams directly without files
-
 		// read input to string
-		BufferedReader br = req.getReader();
-		String line = br.readLine();
-		StringBuilder sb = new StringBuilder();
+		BufferedInputStream bis = new BufferedInputStream(req.getInputStream());
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		int b = bis.read();
 		int inputSize = 0;
-		while (line != null) {
-			log(line);
-			sb.append(line);
-			inputSize = inputSize + line.length();
-			line = br.readLine();
-			// add space after each line
-			// so this removes all new lines from input text
-			// sb.append(" ");
-			// or add new line so that text is like incoming text
-			sb.append("\n");
+		while (b > -1) {
+			baos.write(b);
+			inputSize = inputSize + 1;
+			b = bis.read();
 		}
-		br.close();
+		baos.close();
+		String inputText = new String(baos.toByteArray(), Charset.forName(StandardCharsets.UTF_8.name()));
+		log(inputText);
+		// BufferedReader br = null;
+		// String line = null;
+		/*
+		 * BufferedReader br = req.getReader(); String line = br.readLine();
+		 * StringBuilder sb = new StringBuilder(); int inputSize = 0; while
+		 * (line != null) { log(line); sb.append(line); inputSize = inputSize +
+		 * line.length(); line = br.readLine(); // add space after each line //
+		 * so this removes all new lines from input text // sb.append(" "); //
+		 * or add new line so that text is like incoming text if (line != null)
+		 * { //add new line if not already at the end of input sb.append("\n");
+		 * } } br.close(); String inputText = sb.toString();
+		 */
 
 		boolean errorHappened = false;
-		String inputText = sb.toString();
 
 		ParseReturnObject pro = new ParseReturnObject();
 		if (useConlluCache == true) {
@@ -173,8 +187,8 @@ public class FinDepServlet extends HttpServlet {
 				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			}
 
-			br = pro.reader;
-			for (line = br.readLine(); line != null; line = br.readLine()) {
+			BufferedReader br = pro.reader;
+			for (String line = br.readLine(); line != null; line = br.readLine()) {
 				pw.println(line);
 			}
 			br.close();
@@ -243,20 +257,39 @@ public class FinDepServlet extends HttpServlet {
 					SentenceDetectorME sentenceDetector = new SentenceDetectorME(sentenceModel);
 					TokenizerME tokenizer = new TokenizerME(tokenModel);
 
-					String[] sentences = sentenceDetector.sentDetect(inputText);
+					// this is how sentencedetector works in opennlp command
+					// line tool
+					// opennlp used by Finnish-dep-parser is 1.5.3
+					ObjectStream<String> paraStream = new ParagraphStream(
+							new PlainTextByLineStream(new InputStreamReader(
+									new ByteArrayInputStream(inputText.getBytes(StandardCharsets.UTF_8.name())))));
 					StringBuilder sb = new StringBuilder();
-					for (String sentence : sentences) {
 
-						// tokenize
-						String[] tokens = tokenizer.tokenize(sentence);
-						// replaces txt_to_09.py
-						for (int i = 0; i < tokens.length; i++) {
-							String token = tokens[i];
-							sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
+					String para;
+					while ((para = paraStream.read()) != null) {
+
+						String[] sentences = sentenceDetector.sentDetect(para);
+						for (String sentence : sentences) {
+							// this is how tokenizer works in opennlp command
+							// line tool
+							ObjectStream<String> untokenizedLineStream = new PlainTextByLineStream(
+									new InputStreamReader(new ByteArrayInputStream(
+											sentence.getBytes(StandardCharsets.UTF_8.name()))));
+
+							ObjectStream<String> tokenizedLineStream = new WhitespaceTokenStream(
+									new TokenizerStream(tokenizer, untokenizedLineStream));
+
+							String tokenizedLine;
+							while ((tokenizedLine = tokenizedLineStream.read()) != null) {
+								if (tokenizedLine.equals(""))
+									continue;
+
+								String[] tokens = tokenizedLine.split(" ");
+								addTokens(sb, tokens);
+							}
 						}
-						sb.append("\n");
 					}
-
+					paraStream.close();
 					String _inputText = sb.toString();
 
 					// create tmpDir for this request
@@ -293,6 +326,15 @@ public class FinDepServlet extends HttpServlet {
 
 		return pro;
 
+	}
+
+	private void addTokens(StringBuilder sb, String[] tokens) {
+		// replaces txt_to_09.py
+		for (int i = 0; i < tokens.length; i++) {
+			String token = tokens[i];
+			sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
+		}
+		sb.append("\n");
 	}
 
 	private int callParserProcess(String inputText, Path tmpDir) throws IOException {

@@ -34,10 +34,12 @@ public class OmorfiServlet extends HttpServlet {
 
 		// load models
 		try {
+			log(String.format("Loading %s...", MODEL_MORPHOLOGY));
 			hfst_morphology = new HfstOptimizedLookupObj(MODEL_MORPHOLOGY);
+			log(String.format("Loading %s...", MODEL_GENERATION));
 			hfst_generation = new HfstOptimizedLookupObj(MODEL_GENERATION);
 		} catch (Exception e) {
-			System.err.println("Init failed: " + e.toString());
+			log("Init failed: " + e.toString(),e);
 			throw new ServletException(e);
 
 		}

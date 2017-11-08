@@ -9,7 +9,7 @@ RUN apk update && apk add ca-certificates && update-ca-certificates
 WORKDIR /
 
 #Install Maven
-ADD install_maven.sh .
+ADD scripts/install_maven.sh .
 RUN ["/bin/bash" ,"install_maven.sh","3.5.2"]
 
 #server4dev is for development use
@@ -23,18 +23,25 @@ RUN mkdir server4dev
 ADD server4dev ./server4dev/
 RUN PATH=/maven/bin:$PATH && cd server4dev && mvn package
 
-ADD install_findepparser.sh .
+ADD scripts/install_findepparser.sh .
 #Install Finnish-dep-parser
 #Uses fork: https://github.com/samisalkosuo/Finnish-dep-parser
 #uses specific commit ID as parameter
-RUN ["/bin/bash" ,"install_findepparser.sh","eb74556296ec6fca41ec229afb69b6ae1d31931d"]
+#eb74556296ec6fca41ec229afb69b6ae1d31931d
+
+RUN ["/bin/bash" ,"install_findepparser.sh","76bad0fe39a03ab94ccf872cc9804f153a5c34c7"]
 
 WORKDIR /Finnish-dep-parser
+
+#convert pickle to sqlite
+ADD scripts/convert_vocab_fi.py .
+RUN python convert_vocab_fi.py > word_counts.csv
+
 
 #add server code
 RUN mkdir server
 ADD server ./server/
-ADD package_parserserver.sh .
+ADD scripts/package_parserserver.sh .
 RUN ["/bin/bash" ,"package_parserserver.sh"]
 
 #add modified Finnish dependency parser files

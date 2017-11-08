@@ -9,9 +9,13 @@ logging.basicConfig(level=logging.WARNING)
 
 import traceback
 import omorfi_pos as omor
+import cPickle as pickle
+import gzip
+
+#remember to import these to call marmot servlet
 import urllib
 import urllib2
-from random import randint
+
 
 def load_readings(m_readings):
     words={} #{wordform -> set of (lemma,pos,feat)}
@@ -33,11 +37,35 @@ def score(ppos,pfeat,pos,feat):
     s+=len(pfeat_set & feat_set)
     return s
 
-def best_reading(plemma,ppos,pfeat,readings):
+wordsLooked=[]
+wordCounts=dict()
+
+def getWordCount(word):
+    
+    if word in wordsLooked:
+        return wordCounts[word]
+    else:
+        data = {}
+        data['wordCount']=word.encode('utf-8')
+        url_values = urllib.urlencode(data)
+        url = 'http://127.0.0.1:9876/marmot'
+        full_url = url + '?' + url_values
+        #print >> sys.stderr, "marmot-tag, url: %s" % full_url
+        response = urllib2.urlopen(full_url)
+        data = response.read()
+        print >> sys.stderr, "marmot-tag get word count, result: %s" % data
+        wordsLooked.append(word)
+        count=int(data)
+        wordCounts[word]=count
+        return count
+
+def best_reading(plemma,ppos,pfeat,readings,word_counts={}):
     if not readings:
         return plemma,ppos,pfeat
-    
-    best=max(((lemma,pos,feat,(score(ppos,pfeat,pos,feat),-lemma.count(u"#"))) for lemma,pos,feat in readings),key=lambda k:k[3])
+    alternatives=list(((lemma,pos,feat,(score(ppos,pfeat,pos,feat),-lemma.count(u"#"),getWordCount(lemma))) for lemma,pos,feat in readings))
+    #alternatives=list(((lemma,pos,feat,(score(ppos,pfeat,pos,feat),-lemma.count(u"#"),word_counts.get(lemma,0))) for lemma,pos,feat in readings))
+#    print >> sys.stderr, "ALTERNATIVES", alternatives
+    best=max(alternatives,key=lambda k:k[3])
     if options.hard: 
         return best[0],best[1],best[2]
     elif options.hardpos and ppos in (x[1] for x in readings): ###Uncomment to improve your LAS by 2pp :)
@@ -57,12 +85,20 @@ if __name__=="__main__":
     parser.add_option("--ud",action="store_true", default=False,help="UD")
     parser.add_option("--hard",action="store_true", default=False,help="Use OMorFi hard constraint.")
     parser.add_option("--hardpos",action="store_true", default=False,help="Use OMorFi hard constraint if pos matches.")
+    parser.add_option("--word-counts",dest="wordcounts",action="store",default=None, help="Pickled dictionary of words and counts, used as an optional hint when resolving ambiguities")
     (options, args) = parser.parse_args()
 
     if options.mreadings:
         readings=load_readings(options.mreadings)
     else:
         readings=None
+#no load, always used from servlet
+#    if options.wordcounts:
+#        with gzip.open(options.wordcounts,"rb") as f:
+#            word_counts=pickle.load(f)
+#    else:
+#        
+    word_counts={}
 
     if options.train:
         for line in sys.stdin:
@@ -129,11 +165,10 @@ if __name__=="__main__":
         #Now invoke marmot
         try:
             name_in=os.path.join(options.tempdir,"marmot_in")
-            #name_out=os.path.join(options.tempdir,"marmot_out%d" % randint(0, 999))
             name_out=os.path.join(options.tempdir,"marmot_out")
-
+            
+            
             #calls marmotservlet instead of starting subprocess
-            #print >> sys.stderr, "marmot-tag, call: name_in=%s, name_out=%s" % (name_in,name_out)
             data = {}
             data['predfile']=name_out
             data['testfile']="form-index=0,token-feature-index=1,"+name_in
@@ -146,9 +181,7 @@ if __name__=="__main__":
             print >> sys.stderr, "marmot-tag, result: %s" % data
 
 
-            #args=["java","-cp",options.marmotbin,"marmot.morph.cmd.Annotator","--model-file",options.model,"--pred-file",name_out,"--test-file","form-index=0,token-feature-index=1,"+name_in]
-            #print >> sys.stderr, "marmot-tag, call: %s" % (" ".join(args))
-            #p=subprocess.call(args)
+
 
             f=codecs.open(name_out,"r","utf-8")
             predictions=[]
@@ -181,11 +214,17 @@ if __name__=="__main__":
                     print
                     newSent=True
                     continue #New sentence starts
+
+                #print  >> sys.stderr, "inLine, inCols[1] and pred[1]"                
+                #print >> sys.stderr, inLine.encode("utf-8") 
+                #print >> sys.stderr, inCols[1].encode("utf-8") 
+                #print >> sys.stderr, pred[1].encode("utf-8") 
+
                 assert inCols[1]==pred[1] #Tokens must match
                 txt=inCols[1]
                 ppos=pred[5]
                 pfeat=pred[7]
-                plemma,ppos,pfeat=best_reading(txt,ppos,pfeat,readings.get(txt,[]))
+                plemma,ppos,pfeat=best_reading(txt,ppos,pfeat,readings.get(txt,[]),word_counts)
                 if len(inCols)==10:
                     inCols[2],inCols[3],inCols[5]=plemma,ppos,pfeat
                 else:

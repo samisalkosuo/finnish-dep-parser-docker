@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>findep.parser</groupId>
 	<artifactId>fin-dep-parser-server</artifactId>
-	<version>0.8</version>
+	<version>0.11</version>
 	<name>FINDEPParserServer</name>
 	<description>Finnish Dependency Parser server based on http://turkunlp.github.io/Finnish-dep-parser/.</description>
 	<properties>
@@ -87,7 +87,7 @@
 		<dependency>
 			<groupId>org.apache.opennlp</groupId>
 			<artifactId>opennlp-tools</artifactId>
-			<version>1.8.1</version>
+			<version>1.5.3</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.martiansoftware/jsap -->
