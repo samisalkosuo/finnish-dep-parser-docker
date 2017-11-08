@@ -3,7 +3,7 @@
 
 FROM python:2.7-alpine
 
-RUN apk add --update --no-cache bash openjdk8 curl-dev curl wget
+RUN apk add --update --no-cache bash openjdk8 curl-dev curl wget zip
 RUN apk update && apk add ca-certificates && update-ca-certificates   
 
 WORKDIR /
@@ -23,20 +23,14 @@ RUN mkdir server4dev
 ADD server4dev ./server4dev/
 RUN PATH=/maven/bin:$PATH && cd server4dev && mvn package
 
+ADD scripts/convert_vocab_fi.py .
 ADD scripts/install_findepparser.sh .
 #Install Finnish-dep-parser
 #Uses fork: https://github.com/samisalkosuo/Finnish-dep-parser
 #uses specific commit ID as parameter
-#eb74556296ec6fca41ec229afb69b6ae1d31931d
-
 RUN ["/bin/bash" ,"install_findepparser.sh","76bad0fe39a03ab94ccf872cc9804f153a5c34c7"]
 
 WORKDIR /Finnish-dep-parser
-
-#convert pickle to sqlite
-ADD scripts/convert_vocab_fi.py .
-RUN python convert_vocab_fi.py > word_counts.csv
-
 
 #add server code
 RUN mkdir server

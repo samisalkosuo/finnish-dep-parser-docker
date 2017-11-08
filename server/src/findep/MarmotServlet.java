@@ -1,9 +1,15 @@
 package findep;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,11 +47,26 @@ public class MarmotServlet extends HttpServlet {
 		annotator = new Annotator(MODEL_MARMOT);
 
 		log("Reading word counts from vocab-fi...");
-		String file = "word_counts.csv";
+		String file = "word_counts.csv.zip";
 		long wordCount = 0;
 		long totalCount=0;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
+			//read file from zip
+			//https://stackoverflow.com/a/26257086
+			// outputName, name of the file to extract from the zip file
+			String csvFileName= "word_counts.csv";
+			// location to store the extracted file to
+			File csvFile = new File(csvFileName);
+			// path to the zip file
+			Path zipFile = Paths.get(file);
+			// load zip file as filesystem
+			FileSystem fileSystem = FileSystems.newFileSystem(zipFile, null);
+			// copy file from zip file to output location
+			Path source = fileSystem.getPath(csvFileName);
+			Files.copy(source, csvFile.toPath());
+			
+			BufferedReader br = new BufferedReader(new FileReader(csvFile));
+
 			String line = br.readLine();
 			while (line != null) {
 				wordCount=wordCount+1;
@@ -77,8 +98,8 @@ public class MarmotServlet extends HttpServlet {
 				output = "0";
 			} else {
 				output = Integer.toString(c);
-
 			}
+			//log(String.format("Word: %s, count: %s",getWordCount,output));
 			
 		} else {
 
