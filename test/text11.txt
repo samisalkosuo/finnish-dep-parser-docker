@@ -1,0 +1,108 @@
+	
+
+
+Asiointitililiittymän ohjelmointiohje
+Java esimerkki-client
+
+ 
+
+Sisällysluettelo
+1	Yleistä	3
+2	Testiympäristö	3
+3	Tarvittavat asennukset ja käännökset	4
+3.1	Vaihtoehto 1 – Netbeans	4
+3.2	Vaihtoehto 2 – Maven build	4
+4	Kuvaus ohjelmasta ja build-ohjeet	5
+5	Versiohistoria, viittaukset ja termistö	7
+
+
+
+ 
+
+1	Yleistä
+Tämä dokumentti esimerkkeineen on tarkoitettu helpottamaan liittymistä asiointitiliin rajapintojen kautta, käyttäen Java ohjelmointikieltä. Esimerkki on mahdollisimman yksinkertainen ja sen oleellisin osa on allekirjoituksen luomisessa lähetettävään viestiin. Ohjeistus on tarkoitettu tekniselle henkilölle, joka on toteuttanut integraatioita aiemmin ja tuntee tekniset peruskäsitteet, sekä yleisesti käytetyt työkalut. Ohjeistus ei opasta yksityiskohtaisesti jokaista tarvittavaa tehtävää. Itse asiointitiliin liittymisestä löytyy tietoa suomi.fi portaalin työtilasta (viite 1).
+Lähetettäessä SOAP sanomia VIA palveluväylän kautta asiointitilin rajapintoihin, tulee lähetettyjen sanomien olla oikein allekirjoitettuja (WS-Security Signature, jossa on sekä Body että Timestamp osan allekirjoitus). Ilman allekirjoitusta olevat, tai väärin muodostetut allekirjoitukset hylätään ja viestien lähetys ei onnistu.
+Tätä ohjetta ja esimerkkiä voidaan käyttää sellaisenaan kokeilemaan että yhteys ja allekirjoituksen muodostus VIA suuntaan onnistuu. Tässä ohjeessa ei kuitenkaan oteta kantaa viestien sisältöön tai VIA tekniseen ympäristöön tai palvelun osoitteisiin, vaan ne on kuvattu suomi.fi portaalissa sijaitsevissa muissa dokumenteissa (viite 1). On huomioitavaa että viestin lähetyksen epäonnistuminen voi olla myös jokin muu kuin tekninen ongelma, esim. viestin sisältöön liittyvä (lähetetään viestiä esim. päällekkäisellä tunnisteella).
+Huomaa että on kaksi vaihtoehtoista tapaa tehdä build ja testaus, jotka molemmat tämä ohje kattaa. Molempiin on olemassa oma zip tiedosto:
+•	VIATestiClientNetBeans.zip
+•	AsiointitiliClientExampleMaven.zip
+2	Testiympäristö
+Esimerkkisovellus on toteutettu ja testattu seuraavanlaisessa ympäristössä:
+•	Käyttöjärjestelmä Windows 7, 64-bit (testattu myös CentOS 6.3 Linux 64-bit)
+•	Netbeans IDE 7.2.1
+•	Java(TM) SE Runtime Environment (build 1.7.0_11-b21), 64-bit
+•	Käytetyt Java kirjastot (sijaitsevat zip tiedoston lib hakemistossa):
+o	Metro 2.0 
+o	Apache wss4j  1.6.9
+o	Apache Axis 1.4
+3	Tarvittavat asennukset ja käännökset
+VIATestiClientNetBeans.zip paketti sisältää mukanaan kaikki tarvittavat tiedostot ja kirjastot (myös Metro, wss4j ja Axis). Näin ollen ko. kirjastoja ei tarvitse erikseen hakea tai asentaa ko. pakettia käytettäessä.
+Toinen zip paketti (AsiointitiliClientExampleMaven.zip) tukee Maven buildia. Tällöin kirjastot ladataan Maven repositorysta verkosta.
+Tilanteesta riippuen voi valita, kumpaa tapaa haluaa käyttää. Toiminnallisuus on molemmissa täysin sama.
+3.1	Vaihtoehto 1 – Netbeans
+Lataa Netbeans 7.2.1 koneellesi osoitteesta: http://netbeans.org/downloads/ ja asenna se.
+Käynnistä Netbeans ja tuo projekti VIATestiClientNetBeans komennolla 
+File -> Import project -> from ZIP…
+ 
+Varmista että yhteys VIA:aan on kunnossa. 
+Testaa toimivuus tekemällä projektille Clean and Build. Lopputuloksen pitäisi olla tämän näköinen:
+BUILD SUCCESSFUL (total time: 4 seconds)
+Ennen varsinaista testiä tulee muokata asetuksia kohdan 4 mukaan.
+3.2	Vaihtoehto 2 – Maven build
+Varmista että käytössäsi on Java 7 versio ja JAVA_HOME viittaa ko. versioon. 
+Varmista että käytössäsi on Apache Maven 3.0.4 tai uudempi ja että se on asennettu oikein ja vastaa komentoriviltä käskyyn mvn.
+Pura AsiointitiliClientExampleMaven.zip valitsemaasi hakemistoon ja avaa command prompt ko. hakemistoon.  
+Suorita ensin kohdassa 4 kuvatut muutokset koodiin ja konfigurointitiedostoihin (muussa tapauksessa suoritus epäonnistuu automaattisesti).  Projektiin on määritelty testi, joka ajaa automaattisesti kohdassa 4 kuvatut toiminnot.
+Anna sen muutosten jälkeen käsky mvn clean install:
+C:\temp\VIATesti>mvn clean install
+Jos kaikki menee ok, lopuksi tulee seuraavan tyyppinen viesti:
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12.191s
+[INFO] Finished at: Thu Feb 07 13:09:31 EET 2013
+[INFO] Final Memory: 9M/164M
+[INFO] ------------------------------------------------------------------------
+              Total time: 12 seconds
+Jos ensimmäinen clean install epäonnistuu, aja perään mvn install.
+Käännösvirheiden sattuessa tms. tarkista ensin että kaikki java ja maven konfiguraatiot ovat kunnossa.
+4	Kuvaus ohjelmasta ja build-ohjeet
+Ohjelma toimii seuraavasti.
+Oletuksena se lukee mukana tulevan examplemessage.txt tiedoston levyltä (Viranomaispalvelut, operaatio LisaaKohteita), lisää siihen allekirjoituksen ja tulostaa sen ruudulle. Tämän sanoman voi kopioida sellaisenaan ja lähettää viestin (minuutin sisällä ettei aikaleima vanhene) esim. SOAP UI:lla VIA osoitteeseen. Ennen lähetystä tulee kuitenkin varmistaa että tarvittavat sertifikaatit ja tunnukset on konfiguroitu suomi.fi portaalissa kuvatun prosessin mukaan VIA ympäristöihin jonne viesti lähetetään. 
+Ennen testiä, muokkaa seuraavat arvot kuntoon:
+Keystoren konfiguraatio (sijainti, salasana) on annettu (Source Packages/<default package>) crypto.properties tiedostossa:
+org.apache.ws.security.crypto.merlin.keystore.file=c:/temp/mykeystore.jks
+org.apache.ws.security.crypto.merlin.keystore.password=mypasswdforks
+
+Avaimen alias ja salasana on kovakoodattu luokan com.st.example.test.TestClient metodissa signSOAPEnvelope:
+      String alias = "myalias";
+      String password = "mypasswd";
+      signer.setUserInfo(alias, password); 
+Vaihda näihin käyttämäsi keystoren ja avaimen tiedot.
+Lisäksi oletustoimintaa voi muuttaa avaamalla luokan com.st.example.test.TestClient ja vaihtamalla viestin lähetysasetuksen arvoksi true. 
+boolean lahetaViesti = false; -> boolean lahetaViesti = true;
+Muutoksen jälkeen ohjelma lähettää muodostetun viestin VIA osoitteeseen 
+https://it1.integraatiopalvelu.fi/Asiointitili/Liittymatesti/ViranomaispalvelutWSInterface 
+Tätä osoitetta voit halutessasi muuttaa editoimalla tiedostoa ViranomaispalvelutWSInterface.wsdl (xml-resources haarassa) ja suorittamalla uudelleenkäännöksen.  Muista myös lisätä osoitteet saataville esim. hosts tiedostoon ja varmistaa että yhteys VIA palveluun toimii, jotta lähetys on mahdollista. Tarvittaessa lisää myös sertifikaatti Javan käyttämään trusted storeen (esim. cacerts). 
+VIA palauttama vastaussanoma tulostuu putkelle. Paluusanomat on kuvattu suomi.fi portaalissa. 
+Koodi jossa viestin muodostus (allekirjoitus) tehdään on sijoitettu luokkaan com.st.example.test.TestClient ja on sieltä vapaasti kopioitavissa omiin tarpeisiin. Oleellista on että allekirjoitus suoritetaan Body ja Timestamp osille. Muodostettava viesti voi kohdistua myös muihin operaatioihin (viranomaispalveluissa tai paluukanavassa), kunhan lahetaViesti = false. Ohjelma muodostaa allekirjoituksen myös näille muille operaatioille, mutta lähetys on toteutettu vain viranomaispalveluihin. 
+NetBeans: Muutosten jälkeen tee koodille ”Clean and Build” ja testaa valitsemalla valikosta VIATestClient  ”Run” (tai valitsemalla TestClient.java  ja ”Run File”).
+Huom. Saatat joutua korjaamaan liitettyjen kirjastojen (jar tiedostot lib hakemistossa) polkua. Sen voit tehdä valitsemalla projektista Properties ja sieltä Libraries ja AddJAR/Folder (tai vastaavasti Remove). 
+ 
+
+Ajo Mavenilla
+Tee muutosten jälkeen mvn clean install kohdan 3.2 mukaan. Tällöin ajetaan automaattisesti testi, joka suorittaa allekirjoitetun viestin tulostuksen ruudulle ja halutessa viestin lähetyksen VIA palveluun.
+5	Versiohistoria, viittaukset ja termistö
+Versiohistoria
+Versio	Päiväys	Tila	Tekijä	Kuvaus
+0.5	5.2.2013	Ehdotus	TR, Digia	Ensimmäinen versio
+1.0	8.2.2013	Valmis	TR, Digia	Testattu 1.0 versio
+Viittaukset
+
+1) Asiointitili, tekninen rajapinta - Suomi.fi portaali
+http://www.suomi.fi/suomifi/tyohuone/yhteiset_palvelut/asiointitili/tekninen_rajapinta 
+
+Termistö
+Lyhenne/termi	Kuvaus
+VIA	Valtion yhteinen integraatiopalvelu
+
