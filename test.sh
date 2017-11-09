@@ -4,13 +4,22 @@
 #then run: docker run -it --rm -p 0.0.0.0:9876:9876 finnish-dep-parser
 #and then execute this script
 
-url=http://127.0.0.1:9876
+if [[ "$PARSER_URL" == "" ]] ; then
+  if [[ "$1" == "" ]] ; then
+    echo "Usage: test.sh <PARSER_URL>"
+	  PARSER_URL=http://127.0.0.1:9876
+  else
+    PARSER_URL=$1
+  fi  
+fi
+
+echo "Calling parser $PARSER_URL..."
 
 function test
 {
   file=$1
   md5=$2
-  md5sum=$(curl -H "Content-Type: text/plain" -s --data-binary "@${file}" ${url} | md5sum -b | awk '{print  $1}')
+  md5sum=$(curl -H "Content-Type: text/plain" -s --data-binary "@${file}" ${PARSER_URL} | md5sum -b | awk '{print  $1}')
   if [ "$md5sum" = "$md5" ]; then
     echo "OK " $file
   else
@@ -36,4 +45,3 @@ test test/text10.txt "6e5258db67aeb5d8f3e52423f640cdd9"
 test test/text11.txt "581a6b80c737e98603ed996d257b7ce9"
 test test/text12.txt "4284e2a2c956ac859e8583ea95ae1138"
 test test/text13.txt "975fcbe6bce50574d0ad85f358171c63"
-
