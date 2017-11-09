@@ -32,6 +32,7 @@ public class SimpleStats {
 	private double MILLION = 1000000.0;
 	private double BILLION = 1000000000.0;
 	private double KB = 1024.0;
+	private double MB = KB*KB;
 
 	public int maxCacheSize=0;
 	private long cacheHits=0;
@@ -93,6 +94,12 @@ public class SimpleStats {
 		pw.println(String.format("  Host                   : %s (%s)", ipAddress, hostName));
 		pw.println("  Uptime                 : " + elapsedTime(System.currentTimeMillis() - startTimeOfThis));
 		pw.println("  Requests               : " + numberOfRequestsHandled + ", failed: " + errors);
+		
+		//vm stats
+		//see also https://stackoverflow.com/a/12807848		
+		pw.println("  Processors (cores)     : " +Runtime.getRuntime().availableProcessors());
+		long maxmemory=Math.min(Runtime.getRuntime().totalMemory(), Runtime.getRuntime().maxMemory());
+		pw.println("  Free memory (approx.)  : " + String.format("%.03f / %.03f MB",Runtime.getRuntime().freeMemory()/ MB,maxmemory/MB));
 		
 		//cache stats
 		if (cacheInstance!= null)
