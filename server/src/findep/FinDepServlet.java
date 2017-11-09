@@ -136,28 +136,17 @@ public class FinDepServlet extends HttpServlet {
 		// read input to string
 		BufferedInputStream bis = new BufferedInputStream(req.getInputStream());
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		int b = bis.read();
 		int inputSize = 0;
-		while (b > -1) {
-			baos.write(b);
-			inputSize = inputSize + 1;
-			b = bis.read();
+		byte[] inputBytes = new byte[1024];
+		int bytesRead = 0;
+		while ((bytesRead = bis.read(inputBytes)) != -1) {
+			inputSize = inputSize + bytesRead;
+			baos.write(inputBytes, 0, bytesRead);
 		}
 		baos.close();
+
 		String inputText = new String(baos.toByteArray(), Charset.forName(StandardCharsets.UTF_8.name()));
 		log(inputText);
-		// BufferedReader br = null;
-		// String line = null;
-		/*
-		 * BufferedReader br = req.getReader(); String line = br.readLine();
-		 * StringBuilder sb = new StringBuilder(); int inputSize = 0; while
-		 * (line != null) { log(line); sb.append(line); inputSize = inputSize +
-		 * line.length(); line = br.readLine(); // add space after each line //
-		 * so this removes all new lines from input text // sb.append(" "); //
-		 * or add new line so that text is like incoming text if (line != null)
-		 * { //add new line if not already at the end of input sb.append("\n");
-		 * } } br.close(); String inputText = sb.toString();
-		 */
 
 		boolean errorHappened = false;
 
