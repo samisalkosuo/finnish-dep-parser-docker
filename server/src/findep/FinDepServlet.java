@@ -108,7 +108,7 @@ public class FinDepServlet extends HttpServlet {
 			sentenceModel = new SentenceModel(new File(SENTENCE_MODEL_FILE));
 			tokenModel = new TokenizerModel(new File(TOKEN_MODEL_FILE));
 		} catch (IOException e) {
-			System.err.println("Sentence model load failed.");
+			log("Sentence model load failed.",e);
 			throw new ServletException(e);
 		}
 
@@ -120,8 +120,8 @@ public class FinDepServlet extends HttpServlet {
 		resp.setStatus(HttpServletResponse.SC_OK);
 		PrintWriter pw = resp.getWriter();
 		pw.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
-
 		pw.println("");
+		
 		pw.println(SIMPLE_STATS.getStatistics(lfuCache));
 	}
 
@@ -357,28 +357,11 @@ public class FinDepServlet extends HttpServlet {
 		// log("ENV: "+pb.environment());
 
 		Process p = pb.start();
-		/*
-		 * BufferedOutputStream toProcessInputStream=new
-		 * BufferedOutputStream(p.getOutputStream());
-		 * 
-		 * StringReader sr=new StringReader(inputText);
-		 * 
-		 * for(int b=sr.read();b!=-1;b=sr.read()) {
-		 * toProcessInputStream.write(b); }
-		 * 
-		 * toProcessInputStream.flush();
-		 * 
-		 * BufferedOutputStream bos=new BufferedOutputStream(output);
-		 * InputStream fromProcessOutputStream=p.getInputStream(); for(int
-		 * b=fromProcessOutputStream.read();b!=-1;b=fromProcessOutputStream.read
-		 * ()) { bos.write(b); } bos.flush();
-		 */
 		int rv = -1;
 		try {
 			rv = p.waitFor();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log(e.toString(),e);
 		}
 		log("parser completed. return value: " + rv);
 
