@@ -8,8 +8,9 @@
 	<description>Finnish Dependency Parser server based on http://turkunlp.github.io/Finnish-dep-parser/.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ -->
-		<jettyVersion>9.4.6.v20170531</jettyVersion>
+		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ 
+			or https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
+		<jettyVersion>9.4.7.v20170914</jettyVersion>
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
