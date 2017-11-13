@@ -56,6 +56,20 @@ Supported environment variables.
 - *conllu_cache_size*, set cache size for parsed conllu documents. Default is no cache.
 - *server_feature*, set features to start: DEP, LEMMA or ALL. Default is ALL to start all features.
 
+# Farming
+
+Directory 'parserfarm' includes scripts to start finnish-dep-parser farm, 1 or more parser containers within single host accessible via proxy. Farm is implemented using scripts and plain containers without docker-compose or other similar stuff in order to have nothing but Docker runtime as a prereq.
+
+Files in parserfarm-directory:
+
+- *start_parser_farm.sh*, this script starts parser farm. Usage: 
+  - ./start_parser_farm.sh <NUMBER_OF_FINNISH_DEPENDENCY_PARSERS> <DOCKER_IMAGE_VERSION>
+  - Default version is 'latest'
+  - If necessary, modify this script to your needs.
+- *stop_parser_farm.sh*, this script stops all containers started with previous script.
+- *haproxy_template.cfg*, Config file template for haproxy. Modify to your needs. Copied to *haproxy.cfg" when starting the farm.
+- *Dockerfile*, Dockerfile to build local haproxy image.
+
 # Disclaimer
 
 Everything in this repo, including all code is "AS IS". No support, no warranty, no fitness for any purpose, nothing is expressed or implied, not by me (nor my employer).
