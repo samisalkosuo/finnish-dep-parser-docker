@@ -108,7 +108,7 @@ public class FinDepServlet extends HttpServlet {
 			sentenceModel = new SentenceModel(new File(SENTENCE_MODEL_FILE));
 			tokenModel = new TokenizerModel(new File(TOKEN_MODEL_FILE));
 		} catch (IOException e) {
-			log("Sentence model load failed.",e);
+			log("Sentence model load failed.", e);
 			throw new ServletException(e);
 		}
 
@@ -121,7 +121,7 @@ public class FinDepServlet extends HttpServlet {
 		PrintWriter pw = resp.getWriter();
 		pw.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
 		pw.println("");
-		
+
 		pw.println(SIMPLE_STATS.getStatistics(lfuCache));
 	}
 
@@ -148,41 +148,53 @@ public class FinDepServlet extends HttpServlet {
 		String inputText = new String(baos.toByteArray(), Charset.forName(StandardCharsets.UTF_8.name()));
 		log(inputText);
 
-		boolean errorHappened = false;
-
-		ParseReturnObject pro = new ParseReturnObject();
-		if (useConlluCache == true) {
-			// check from cache
-			pro = getFromCache(inputText);
-		} else {
-			pro = parse(inputText);
-		}
-
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		errorHappened = pro.errorHappened;
 		PrintWriter pw = resp.getWriter();
+		boolean errorHappened = false;
 
-		if (pro.rv == -234566) {
-			// error when executing this servlet
-			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			pw.println("Waiting for lock interrupted.");
-			pw.println(pro.errorString);
+		// check if input is empty
+		if (inputText.trim().equals("")) {
+			// do not parse empty input, finnish dependency parser does not handle empty input
+			// send single empty CoNLL-U line as response
+			String emptyLine = "1	 	 	_	_	_	_	_	_	_";
+			pw.println(emptyLine);
+
 		} else {
-			if (pro.rv == 0) {
-				resp.setStatus(HttpServletResponse.SC_OK);
+			// input is not empty, parse it
 
+			ParseReturnObject pro = new ParseReturnObject();
+			if (useConlluCache == true) {
+				// check from cache
+				pro = getFromCache(inputText);
 			} else {
-				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				pro = parse(inputText);
 			}
 
-			BufferedReader br = pro.reader;
-			for (String line = br.readLine(); line != null; line = br.readLine()) {
-				pw.println(line);
+			errorHappened = pro.errorHappened;
+
+			if (pro.rv == -234566) {
+				// error when executing this servlet
+				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				pw.println("Waiting for lock interrupted.");
+				pw.println(pro.errorString);
+			} else {
+				if (pro.rv == 0) {
+					resp.setStatus(HttpServletResponse.SC_OK);
+
+				} else {
+					resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				}
+
+				BufferedReader br = pro.reader;
+				for (String line = br.readLine(); line != null; line = br.readLine()) {
+					pw.println(line);
+				}
+				br.close();
+				pro.deleteTmpDir();
 			}
-			br.close();
-			pro.deleteTmpDir();
 		}
+
 		long endTimeNano = System.nanoTime();
 		long endTimeMsec = System.currentTimeMillis();
 
@@ -361,7 +373,7 @@ public class FinDepServlet extends HttpServlet {
 		try {
 			rv = p.waitFor();
 		} catch (InterruptedException e) {
-			log(e.toString(),e);
+			log(e.toString(), e);
 		}
 		log("parser completed. return value: " + rv);
 
