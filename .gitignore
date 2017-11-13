@@ -1,2 +1,3 @@
 server/target/
 tmp/
+scripts/perf-test.log
