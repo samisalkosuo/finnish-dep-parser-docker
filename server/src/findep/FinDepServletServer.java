@@ -34,7 +34,7 @@ public class FinDepServletServer {
 			
 			if (serverFeature.equals("ALL") || serverFeature.equals("LEMMA"))
 			{
-				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(1);
+				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(2);
 				
 			}
 			
@@ -43,7 +43,7 @@ public class FinDepServletServer {
 				handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
 				handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
 				handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
-				handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(0);				
+				handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(1);				
 			}
 			// IMPORTANT:
 			// This is a raw Servlet, not a Servlet that has been configured
