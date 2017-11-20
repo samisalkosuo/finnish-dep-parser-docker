@@ -1,6 +1,6 @@
 # finnish-dep-parser-docker
 
-Docker container and server for [Finnish dependency parser](https://github.com/TurkuNLP/Finnish-dep-parser).
+Docker container and HTTP server for [Finnish dependency parser](https://github.com/TurkuNLP/Finnish-dep-parser).
 
 Parser takes Finnish text as input and outputs [CoNLL-U format](http://universaldependencies.org/format.html).
 
@@ -51,10 +51,19 @@ Get simple statistics of the parser:
 
 # Environment variables
 
-Supported environment variables.
+Some environment variables can be used. 
 
-- *conllu_cache_size*, set cache size for parsed conllu documents. Default is no cache.
-- *server_feature*, set features to start: DEP, LEMMA or ALL. Default is ALL to start all features.
+- *conllu_cache_size*, set cache size for parsed conllu documents. 
+  - Default is no cache.
+- *server_feature*, set features to start: DEP, LEMMA or ALL. 
+  - Default is ALL to start all features.
+  - LEMMA-feature starts a servlet that returns only lemmas. Context root is /lemma.
+- *log_level*, set level of logging. 
+  - 0=no logging after starting the container.
+  - 1=log elapsed time and excerpt of parsed text.
+  - 2=log elapsed time and full text. 
+  - Default is 1.
+  - If log_level=0, you can see latest parsed text by using GET-request to parser.
 
 # Farming
 
