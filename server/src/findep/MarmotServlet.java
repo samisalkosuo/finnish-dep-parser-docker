@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +23,7 @@ import findep.marmot.Annotator;
  * Replaces marmot annotator java subprocess in marmot-tag.py
  * Replaces call to marmot.morph.cmd.Annotator class
  */
-public class MarmotServlet extends HttpServlet {
+public class MarmotServlet extends SuperServlet {
 
 	/**
 	 * 
@@ -40,13 +39,13 @@ public class MarmotServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		log("Initializing " + getClass().getName());
-		log(String.format("Loading model %s...",MODEL_MARMOT));
+		SYSOUTLOGGER.sysout(-1,"Initializing " + getClass().getName());
+		SYSOUTLOGGER.sysout(-1,String.format("Loading model %s...",MODEL_MARMOT));
 
 		// load models
 		annotator = new Annotator(MODEL_MARMOT);
 
-		log("Reading word counts from vocab-fi...");
+		SYSOUTLOGGER.sysout(-1,"Reading word counts from vocab-fi...");
 		String file = "word_counts.csv.zip";
 		long wordCount = 0;
 		long totalCount=0;
@@ -75,11 +74,11 @@ public class MarmotServlet extends HttpServlet {
 				totalCount=totalCount+count;
 				wordCounts.put(items[0], count);
 				if (wordCount % 500000 == 0) {
-					log(String.format("Words: %d, Counts: %d",wordCount,totalCount));
+					SYSOUTLOGGER.sysout(-1,String.format("Words: %d, Counts: %d",wordCount,totalCount));
 				}				
 				line = br.readLine();
 			}
-			log(String.format("Words: %d, Counts: %d",wordCount,totalCount));
+			SYSOUTLOGGER.sysout(-1,String.format("Words: %d, Counts: %d",wordCount,totalCount));
 			br.close();
 		} catch (Exception e) {
 			throw new ServletException(e);			

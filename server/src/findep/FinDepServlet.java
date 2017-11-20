@@ -22,7 +22,6 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -43,7 +42,7 @@ import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.ParagraphStream;
 import opennlp.tools.util.PlainTextByLineStream;
 
-public class FinDepServlet extends HttpServlet {
+public class FinDepServlet extends SuperServlet {
 
 	private final static String SENTENCE_MODEL_FILE = "model/fi-sent.bin";
 	private final static String TOKEN_MODEL_FILE = "model/fi-token.bin";
@@ -79,11 +78,12 @@ public class FinDepServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		log("Initializing " + getClass().getName());
+
+		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
 
 		String cacheSize = System.getenv("conllu_cache_size");
 		if (cacheSize != null) {
-			log("conllu_cache_size: " + cacheSize);
+			SYSOUTLOGGER.sysout(-1,"conllu_cache_size: " + cacheSize);
 			try {
 				int _cacheSize = Integer.parseInt(cacheSize);
 				// set up cache
@@ -92,11 +92,11 @@ public class FinDepServlet extends HttpServlet {
 				lfuCache = new LFUCache<String, String>(_cacheSize, 0.2f);
 
 			} catch (NumberFormatException nfe) {
-				log(nfe.toString());
-				log("conllu LFU cache is not used");
+				SYSOUTLOGGER.sysout(-1, nfe.toString());
+				SYSOUTLOGGER.sysout(-1, "conllu LFU cache is not used");
 			}
 		} else {
-			log("conllu LFU cache is not used");
+			SYSOUTLOGGER.sysout(-1,"conllu LFU cache is not used");
 		}
 
 		doNotDeleteTempDir = Boolean.parseBoolean(System.getenv("do_not_delete_tmp_dir"));
@@ -130,7 +130,7 @@ public class FinDepServlet extends HttpServlet {
 
 		long startTimeNano = System.nanoTime();
 		long startTimeMsec = System.currentTimeMillis();
-		log("START");
+		SYSOUTLOGGER.sysout(2, "START");
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
 		// read input to string
@@ -146,7 +146,7 @@ public class FinDepServlet extends HttpServlet {
 		baos.close();
 
 		String inputText = new String(baos.toByteArray(), Charset.forName(StandardCharsets.UTF_8.name()));
-		log(inputText);
+		SYSOUTLOGGER.sysout(2, inputText);
 
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -155,7 +155,8 @@ public class FinDepServlet extends HttpServlet {
 
 		// check if input is empty
 		if (inputText.trim().equals("")) {
-			// do not parse empty input, finnish dependency parser does not handle empty input
+			// do not parse empty input, finnish dependency parser does not
+			// handle empty input
 			// send single empty CoNLL-U line as response
 			String emptyLine = "1	 	 	_	_	_	_	_	_	_";
 			pw.println(emptyLine);
@@ -199,10 +200,23 @@ public class FinDepServlet extends HttpServlet {
 		long endTimeMsec = System.currentTimeMillis();
 
 		double elapsedTime = (endTimeMsec - startTimeMsec) / 1000.0;
-		log("END " + elapsedTime + " secs");
-		log("");
+		SYSOUTLOGGER.sysout(2, "END " + elapsedTime + " secs");
+		SYSOUTLOGGER.sysout(2, "");
 
-		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize, errorHappened);
+		String logText = null;
+		if (SYSOUTLOGGER.LOG_LEVEL == 1) {
+			// log only if log level is 1
+			logText = elapsedTime + " secs, " + inputText;
+			SYSOUTLOGGER.sysout(1, logText);
+		}
+
+		if (SYSOUTLOGGER.LOG_LEVEL != 0) {
+			// do not add logtext unless log level is 0
+			logText = null;
+		}
+		// add latest parsed time and excerpt to stats
+		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize, errorHappened,
+				logText);
 
 	}
 
@@ -213,13 +227,13 @@ public class FinDepServlet extends HttpServlet {
 		String conlluText = lfuCache.get(md5Hex);
 		if (conlluText != null) {
 			// found from cache
-			log("found from LFU cache");
+			SYSOUTLOGGER.sysout(2,"found from LFU cache");
 			SIMPLE_STATS.increaseCacheHits();
 			int freq = lfuCache.frequencyOf(md5Hex);
-			log(String.format("Doc %s accessed >= %d times", md5Hex, freq));
+			SYSOUTLOGGER.sysout(2, String.format("Doc %s accessed >= %d times", md5Hex, freq));
 		} else {
 			// not in cache
-			log("not found from LFU cache");
+			SYSOUTLOGGER.sysout(2, "not found from LFU cache");
 			pro = parse(inputText);
 			BufferedReader br = pro.reader;// new BufferedReader(new
 											// FileReader(f));
@@ -233,7 +247,7 @@ public class FinDepServlet extends HttpServlet {
 			conlluText = sb.toString();
 			lfuCache.put(md5Hex, conlluText);
 			pro.deleteTmpDir();
-			log(String.format("Doc %s added to LFU cache", md5Hex));
+			SYSOUTLOGGER.sysout(2, String.format("Doc %s added to LFU cache", md5Hex));
 		}
 		// set reader
 		pro.reader = new BufferedReader(new StringReader(conlluText));
@@ -375,7 +389,7 @@ public class FinDepServlet extends HttpServlet {
 		} catch (InterruptedException e) {
 			log(e.toString(), e);
 		}
-		log("parser completed. return value: " + rv);
+		SYSOUTLOGGER.sysout(2, "parser completed. return value: " + rv);
 
 		return rv;
 	}

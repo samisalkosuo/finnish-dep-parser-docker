@@ -3,6 +3,8 @@ package findep;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 
+import findep.utils.SystemOutLogger;
+
 public class FinDepServletServer {
 
 	public static void main(String[] args) {
@@ -18,41 +20,80 @@ public class FinDepServletServer {
 		ServletHandler handler = new ServletHandler();
 		server.setHandler(handler);
 
+		// set log level at the end of the init method
+		// log level
+		// 0=no log after start
+		// 1=not so much log, text excerpt
+		// 2=more log, all text
+		//default is 1
+		int LOG_LEVEL = 1;
+		SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
 
+		String _logLevel = System.getenv("log_level");
+		if (_logLevel == null) {
+			_logLevel = "1";
+		}
+		try {
+			int logLevel = Integer.parseInt(_logLevel);
+
+			switch (logLevel) {
+			case 0:
+				LOG_LEVEL = 0;
+				break;
+			case 1:
+				LOG_LEVEL = 1;
+				break;
+			case 2:
+				LOG_LEVEL = 2;
+				break;
+
+			default:
+				LOG_LEVEL = 1;
+				break;
+			}
+
+		} catch (NumberFormatException nfe) {
+			SYSOUTLOGGER.LOG_LEVEL = LOG_LEVEL;
+		}
+
+		SYSOUTLOGGER.LOG_LEVEL = LOG_LEVEL;
+		SYSOUTLOGGER.sysout(-1, "using log level: " + LOG_LEVEL);
+
+		if (LOG_LEVEL == 0) {
+			SYSOUTLOGGER.sysout(-1, "After start, nothing but errors logged.");
+		}
 
 		try {
-			// Passing in the class for the Servlet allows jetty to instantiate an
+			// Passing in the class for the Servlet allows jetty to instantiate
+			// an
 			// instance of that Servlet and mount it on a given context path.
-			
-			//server.feature is one of: DEP,LEMMA,ALL
-			//default is ALL
+
+			// server.feature is one of: DEP,LEMMA,ALL
+			// default is ALL
 			String serverFeature = System.getenv("server_feature");
-			if (serverFeature == null)
-			{
-				serverFeature="ALL"; 
+			if (serverFeature == null) {
+				serverFeature = "ALL";
 			}
-			
-			if (serverFeature.equals("ALL") || serverFeature.equals("LEMMA"))
-			{
-				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(2);
-				
-			}
-			
-			if (serverFeature.equals("ALL") || serverFeature.equals("DEP"))
-			{
-				handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
-				handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
-				handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
-				handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(1);				
-			}
+
 			// IMPORTANT:
 			// This is a raw Servlet, not a Servlet that has been configured
 			// through a web.xml @WebServlet annotation, or anything similar.
 
-			// Start things up!			
+			if (serverFeature.equals("ALL") || serverFeature.equals("LEMMA")) {
+				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(2);
+
+			}
+
+			if (serverFeature.equals("ALL") || serverFeature.equals("DEP")) {
+				handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
+				handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
+				handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
+				handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(1);
+			}
+
+			// Start things up!
 			server.start();
-			
-			
+
 			// The use of server.join() the will make the current thread join
 			// and
 			// wait until the server is done executing.

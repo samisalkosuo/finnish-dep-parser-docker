@@ -15,6 +15,8 @@ public class SimpleStats {
 
 	private static SimpleStats instance = new SimpleStats();
 
+	private SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
+
 	// start time of program
 	private long startTimeOfThis = System.currentTimeMillis();
 
@@ -32,11 +34,17 @@ public class SimpleStats {
 	private double MILLION = 1000000.0;
 	private double BILLION = 1000000000.0;
 	private double KB = 1024.0;
-	private double MB = KB*KB;
+	private double MB = KB * KB;
 
-	public int maxCacheSize=0;
-	private long cacheHits=0;
-	
+	public int maxCacheSize = 0;
+	private long cacheHits = 0;
+
+	// fixed length FIFO queue:
+	// http://fabian-kostadinov.github.io/2014/11/25/implementing-a-fixed-length-fifo-queue-in-java/
+	// latest parsed texts
+	private String[] initString = { "", "", "", "", "" };
+	private StringFixedLengthFifoQueue strQueue = new StringFixedLengthFifoQueue(initString);
+
 	private SimpleStats() {
 
 	}
@@ -45,13 +53,18 @@ public class SimpleStats {
 		return instance;
 	}
 
-	public void increaseCacheHits()
-	{
-		cacheHits=cacheHits+1;
+	public void increaseCacheHits() {
+		cacheHits = cacheHits + 1;
 	}
-	
+
 	public void addRequest(long startNano, long endNano, long startMsec, long endMsec, long bytesProcessed,
 			boolean errorHappened) {
+		addRequest(startNano, endNano, startMsec, endMsec, bytesProcessed, errorHappened, null);
+
+	}
+
+	public void addRequest(long startNano, long endNano, long startMsec, long endMsec, long bytesProcessed,
+			boolean errorHappened, String logText) {
 		numberOfRequestsHandled = numberOfRequestsHandled + 1;
 		if (errorHappened == true) {
 			errors = errors + 1;
@@ -63,13 +76,20 @@ public class SimpleStats {
 			startTimesMsec.add(startMsec);
 			endTimesMsec.add(endMsec);
 			processedBytes.add(bytesProcessed);
+
+			if (logText != null) {
+				strQueue.add(String.format("%s: %s", StringUtils.now(),
+						StringUtils.shorten(StringUtils.replaceNewLines(logText))));
+			}
+
 		}
 	}
 
 	public String getStatistics() {
 		return getStatistics(null);
-	
+
 	}
+
 	public String getStatistics(LFUCache<String, String> cacheInstance) {
 
 		StringBuilderWriter sbw = new StringBuilderWriter();
@@ -94,37 +114,35 @@ public class SimpleStats {
 		pw.println(String.format("  Host                   : %s (%s)", ipAddress, hostName));
 		pw.println("  Uptime                 : " + elapsedTime(System.currentTimeMillis() - startTimeOfThis));
 		pw.println("  Requests               : " + numberOfRequestsHandled + ", failed: " + errors);
-		
-		//vm stats
-		//see also https://stackoverflow.com/a/12807848		
-		pw.println("  Processors (cores)     : " +Runtime.getRuntime().availableProcessors());
-		long maxmemory=Math.min(Runtime.getRuntime().totalMemory(), Runtime.getRuntime().maxMemory());
-		pw.println("  Free memory (approx.)  : " + String.format("%.03f / %.03f MB",Runtime.getRuntime().freeMemory()/ MB,maxmemory/MB));
-		
-		//cache stats
-		if (cacheInstance!= null)
-		{
-			int cacheSize=cacheInstance.size();
-			Set<String> keys=cacheInstance.keySet();
-			long totalCachedBytes=0;
-			for (String key : keys)
-			{
-				totalCachedBytes=totalCachedBytes+cacheInstance.get(key).length();
+
+		// vm stats
+		// see also https://stackoverflow.com/a/12807848
+		pw.println("  Processors (cores)     : " + Runtime.getRuntime().availableProcessors());
+		long maxmemory = Math.min(Runtime.getRuntime().totalMemory(), Runtime.getRuntime().maxMemory());
+		pw.println("  Free memory (approx.)  : "
+				+ String.format("%.03f / %.03f MB", Runtime.getRuntime().freeMemory() / MB, maxmemory / MB));
+
+		// cache stats
+		if (cacheInstance != null) {
+			int cacheSize = cacheInstance.size();
+			Set<String> keys = cacheInstance.keySet();
+			long totalCachedBytes = 0;
+			for (String key : keys) {
+				totalCachedBytes = totalCachedBytes + cacheInstance.get(key).length();
 			}
-			   
+
 			pw.println("  Cache hits             : " + cacheHits);
-			pw.println("  Cached documents       : " + cacheSize+"/"+maxCacheSize);
-			pw.println("  Cached documents size  : " + String.format("%.02f KB",(totalCachedBytes) / KB));
-		}
-		else
-		{
+			pw.println("  Cached documents       : " + cacheSize + "/" + maxCacheSize);
+			pw.println("  Cached documents size  : " + String.format("%.02f KB", (totalCachedBytes) / KB));
+		} else {
 			pw.println("  Cache not used.");
 
 		}
-			
-		//memory 
-		//check this https://stackoverflow.com/questions/17374743/how-can-i-get-the-memory-that-my-java-program-uses-via-javas-runtime-api
-		
+
+		// memory
+		// check this
+		// https://stackoverflow.com/questions/17374743/how-can-i-get-the-memory-that-my-java-program-uses-via-javas-runtime-api
+
 		if (numberOfRequestsHandled > 0) {
 			try {
 				long totalProcessingTime = totalProcessingTimeNano;
@@ -150,6 +168,15 @@ public class SimpleStats {
 				pw.println();
 				pw.println("  " + t.toString());
 			}
+		}
+
+		if (SYSOUTLOGGER.LOG_LEVEL == 0) {
+			// show only if log level is 0
+			pw.println();
+			pw.println("Latest parsed texts:");
+			pw.println();
+			pw.println(strQueue.toString());
+
 		}
 
 		pw.close();

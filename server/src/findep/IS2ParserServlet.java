@@ -7,7 +7,6 @@ import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +14,7 @@ import org.apache.commons.io.output.StringBuilderWriter;
 
 import findep.is2.Parser;
 
-public class IS2ParserServlet extends HttpServlet {
+public class IS2ParserServlet extends SuperServlet {
 
 	/**
 	 * 
@@ -29,13 +28,13 @@ public class IS2ParserServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		log("Initializing "+getClass().getName());
+		SYSOUTLOGGER.sysout(-1,"Initializing "+getClass().getName());
 
 		//init parser
 		parser = new Parser(MODEL_PARSER);
 		try {
 			//load model
-			log(String.format("Loading %s...", MODEL_PARSER));
+			SYSOUTLOGGER.sysout(-1,String.format("Loading %s...", MODEL_PARSER));
 			parser.loadModel();
 			
 			//do initial parse to do final init of parser

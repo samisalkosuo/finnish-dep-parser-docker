@@ -11,6 +11,7 @@ import java.util.zip.ZipInputStream;
 
 import findep.is2.io.CONLLReader09;
 import findep.is2.io.CONLLWriter09;
+import findep.utils.SystemOutLogger;
 import is2.data.Cluster;
 import is2.data.DataFES;
 import is2.data.F2SF;
@@ -50,6 +51,8 @@ public class Parser implements Tool {
 	public Parse d = null;
 
 	private String[] types;
+	
+	private SystemOutLogger SYSOUTLOGGER=SystemOutLogger.getInstance();
 
 	/**
 	 * Initialize the parser
@@ -192,7 +195,8 @@ public class Parser implements Tool {
 		// these are for printing
 		// int del = 0;
 		// long last = System.currentTimeMillis();
-		System.out.print("Processing sentences...");
+		
+		SYSOUTLOGGER.sysout(2,"Processing sentences...");
 
 		while (true) {
 
@@ -214,7 +218,7 @@ public class Parser implements Tool {
 			// del = PipeGen.outValue(cnt, del, last);
 
 		}
-		System.out.println(String.format(" processed sentences: %d", cnt));
+		SYSOUTLOGGER.sysout(2,String.format("Processed sentences: %d", cnt));
 
 		// pipe.close();
 		depWriter.finishWriting();

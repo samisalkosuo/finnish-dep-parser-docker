@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +13,7 @@ import net.sf.hfst.HfstOptimizedLookupObj;
  * Replaces hsft-process in omorfi_wrapper.py
  * 
  */
-public class OmorfiServlet extends HttpServlet {
+public class OmorfiServlet extends SuperServlet {
 
 	/**
 	 * 
@@ -30,13 +29,13 @@ public class OmorfiServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		log("Initializing "+getClass().getName());
+		SYSOUTLOGGER.sysout(-1,"Initializing "+getClass().getName());
 
 		// load models
 		try {
-			log(String.format("Loading %s...", MODEL_MORPHOLOGY));
+			SYSOUTLOGGER.sysout(-1,String.format("Loading %s...", MODEL_MORPHOLOGY));
 			hfst_morphology = new HfstOptimizedLookupObj(MODEL_MORPHOLOGY);
-			log(String.format("Loading %s...", MODEL_GENERATION));
+			SYSOUTLOGGER.sysout(-1,String.format("Loading %s...", MODEL_GENERATION));
 			hfst_generation = new HfstOptimizedLookupObj(MODEL_GENERATION);
 		} catch (Exception e) {
 			log("Init failed: " + e.toString(),e);
