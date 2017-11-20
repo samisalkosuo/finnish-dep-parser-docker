@@ -83,7 +83,7 @@ public class FinDepServlet extends SuperServlet {
 
 		String cacheSize = System.getenv("conllu_cache_size");
 		if (cacheSize != null) {
-			SYSOUTLOGGER.sysout(-1,"conllu_cache_size: " + cacheSize);
+			SYSOUTLOGGER.sysout(-1, "conllu_cache_size: " + cacheSize);
 			try {
 				int _cacheSize = Integer.parseInt(cacheSize);
 				// set up cache
@@ -96,7 +96,7 @@ public class FinDepServlet extends SuperServlet {
 				SYSOUTLOGGER.sysout(-1, "conllu LFU cache is not used");
 			}
 		} else {
-			SYSOUTLOGGER.sysout(-1,"conllu LFU cache is not used");
+			SYSOUTLOGGER.sysout(-1, "conllu LFU cache is not used");
 		}
 
 		doNotDeleteTempDir = Boolean.parseBoolean(System.getenv("do_not_delete_tmp_dir"));
@@ -203,10 +203,9 @@ public class FinDepServlet extends SuperServlet {
 		SYSOUTLOGGER.sysout(2, "END " + elapsedTime + " secs");
 		SYSOUTLOGGER.sysout(2, "");
 
-		String logText = null;
+		String logText = elapsedTime + " secs, " + inputText;
 		if (SYSOUTLOGGER.LOG_LEVEL == 1) {
 			// log only if log level is 1
-			logText = elapsedTime + " secs, " + inputText;
 			SYSOUTLOGGER.sysout(1, logText);
 		}
 
@@ -227,7 +226,7 @@ public class FinDepServlet extends SuperServlet {
 		String conlluText = lfuCache.get(md5Hex);
 		if (conlluText != null) {
 			// found from cache
-			SYSOUTLOGGER.sysout(2,"found from LFU cache");
+			SYSOUTLOGGER.sysout(2, "found from LFU cache");
 			SIMPLE_STATS.increaseCacheHits();
 			int freq = lfuCache.frequencyOf(md5Hex);
 			SYSOUTLOGGER.sysout(2, String.format("Doc %s accessed >= %d times", md5Hex, freq));
