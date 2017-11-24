@@ -28,7 +28,7 @@ ADD scripts/install_findepparser.sh .
 #Install Finnish-dep-parser
 #Uses fork: https://github.com/samisalkosuo/Finnish-dep-parser
 #uses specific commit ID as parameter
-RUN ["/bin/bash" ,"install_findepparser.sh","76bad0fe39a03ab94ccf872cc9804f153a5c34c7"]
+RUN ["/bin/bash" ,"install_findepparser.sh","fc8511cd16541e3b07072352d5801b54a5c05cf3"]
 
 WORKDIR /Finnish-dep-parser
 
