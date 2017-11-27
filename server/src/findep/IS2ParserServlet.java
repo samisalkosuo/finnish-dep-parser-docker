@@ -28,20 +28,20 @@ public class IS2ParserServlet extends SuperServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		SYSOUTLOGGER.sysout(-1,"Initializing "+getClass().getName());
+		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
 
-		//init parser
+		// init parser
 		parser = new Parser(MODEL_PARSER);
 		try {
-			//load model
-			SYSOUTLOGGER.sysout(-1,String.format("Loading %s...", MODEL_PARSER));
+			// load model
+			SYSOUTLOGGER.sysout(-1, String.format("Loading %s...", MODEL_PARSER));
 			parser.loadModel();
-			
-			//do initial parse to do final init of parser
-			BufferedReader br=new BufferedReader(new StringReader("1\thei\thei\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_"));
-			BufferedWriter sbw=new BufferedWriter (new StringBuilderWriter());
-			parser.parse(br,sbw);
-			
+
+			// do initial parse to do final init of parser
+			BufferedReader br = new BufferedReader(new StringReader("1\thei\thei\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_"));
+			BufferedWriter sbw = new BufferedWriter(new StringBuilderWriter());
+			parser.parse(br, sbw);
+
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
@@ -52,35 +52,56 @@ public class IS2ParserServlet extends SuperServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/plain");
 		resp.setStatus(HttpServletResponse.SC_OK);
-		resp.getWriter()
-				.println("Hello from servlet. GET not supported.");
+		resp.getWriter().println("Hello from servlet. GET not supported.");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		
+
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		resp.setStatus(HttpServletResponse.SC_OK);
-		
+
 		try {
-			//reads requst input to parser and parser writes output to response
-			BufferedReader br=req.getReader();
-			BufferedWriter bw=new BufferedWriter(resp.getWriter());
-			parser.parse(br, bw);
-				
+			// reads requst input to parser and parser writes output to response
+			BufferedReader br = req.getReader();
+			BufferedWriter bw = new BufferedWriter(resp.getWriter());
+
+			StringBuilder sb = new StringBuilder();
+			BufferedWriter bw2 = new BufferedWriter(new StringBuilderWriter(sb));
+			parser.parse(br, bw2);
+
+			// replaced $PYTHON conllUtil.py --swap HEAD:=PHEAD,DEPREL:=PDEPREL
+			// in my_parser_wrapper.sh
+			String text = sb.toString();
+			for (String line : text.split("\n")) {
+				String[] cols = line.split("\t");
+				if (cols.length >= 11) {
+					// HEAD=column 8
+					// PHEAD=column 9
+					// DEPREL=column 10
+					// PDEPREL=column 11
+					cols[8] = cols[9];
+					cols[10] = cols[10];
+					bw.write(String.join("\t", cols));
+				}
+				bw.write("\n");
+			}
+
+			// System.out.println(text);
+			// bw.write(text);
+			bw.flush();
+
 		} catch (Exception e) {
-			log("Parsing failed.",e);
+			log("Parsing failed.", e);
 			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			
-		}
-		finally
-		{
+
+		} finally {
 			resp.flushBuffer();
 		}
-		
+
 	}
 
 }
