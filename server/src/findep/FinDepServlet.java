@@ -1,6 +1,5 @@
 package findep;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -28,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.activemq.util.LFUCache;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.commons.io.output.StringBuilderWriter;
 
 import findep.utils.SimpleStats;
@@ -134,6 +131,7 @@ public class FinDepServlet extends SuperServlet {
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
 		// read input to string
+		/*
 		BufferedInputStream bis = new BufferedInputStream(req.getInputStream());
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		int inputSize = 0;
@@ -146,6 +144,10 @@ public class FinDepServlet extends SuperServlet {
 		baos.close();
 
 		String inputText = new String(baos.toByteArray(), Charset.forName(StandardCharsets.UTF_8.name()));
+		*/
+		String inputText = readInputStreamToString(req.getInputStream());
+		int inputSize = inputText.length();
+		
 		SYSOUTLOGGER.sysout(2, inputText);
 
 		resp.setContentType("text/plain");
