@@ -79,6 +79,8 @@ Files in parserfarm-directory:
 - *haproxy_template.cfg*, Config file template for haproxy. Modify to your needs. Copied to *haproxy.cfg" when starting the farm.
 - *Dockerfile*, Dockerfile to build local haproxy image.
 
+This kind of farming is not intended for production use. Use for example [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production. There also Community Edition available: https://hub.docker.com/r/ibmcom/icp-inception/.
+
 # Disclaimer
 
 Everything in this repo, including all code is "AS IS". No support, no warranty, no fitness for any purpose, nothing is expressed or implied, not by me (nor my employer).
