@@ -16,6 +16,7 @@ cd ..
 #replaced in IS parser servlet
 cat $TMPDIR/tagger_input.conll09 | $PYTHON marmot-tag.py --marmot $THIS/LIBS/marmot.jar --tempdir $TMPDIR --ud --hardpos --mreadings $TMPDIR/all_readings.ud --word-counts model/vocab-fi.pickle.gz -m model/fin_model.marmot 
 
+
 #cat $TMPDIR/tagger_input.conll09 | $PYTHON marmot-tag.py --marmot $THIS/LIBS/marmot.jar --tempdir $TMPDIR --ud --hardpos --mreadings $TMPDIR/all_readings.ud --word-counts model/vocab-fi.pickle.gz -m model/fin_model.marmot > $TMPDIR/input_tagged_1.conll09
 
 #if [[ $? -ne 0 ]]
