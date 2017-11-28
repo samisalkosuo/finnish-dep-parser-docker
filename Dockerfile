@@ -47,7 +47,7 @@ ADD server/init.sh .
 ADD server/my_parser_wrapper.sh .
 ADD server/tag.sh .
 
-RUN chmod 755 my_parser_wrapper.sh
+RUN chmod 755 my_parser_wrapper.sh tag.sh
 
 #add testfiles
 #RUN mkdir testfiles
