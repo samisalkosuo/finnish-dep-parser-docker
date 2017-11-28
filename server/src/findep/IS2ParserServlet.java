@@ -65,8 +65,28 @@ public class IS2ParserServlet extends SuperServlet {
 		resp.setStatus(HttpServletResponse.SC_OK);
 
 		try {
-			// reads requst input to parser and parser writes output to response
-			BufferedReader br = req.getReader();
+			//read input to string
+			String inputText=readInputStreamToString(req.getInputStream());
+			
+			//#                             1  2    3     4      5   6    7    8     9    10    11     12      13      14  
+			//for colIdx,col in enumerate("ID FORM LEMMA PLEMMA POS PPOS FEAT PFEAT HEAD PHEAD DEPREL PDEPREL FILLPRED PRED".split()):
+			//replaces $PYTHON conllUtil.py --swap LEMMA:=PLEMMA,POS:=PPOS,FEAT:=PFEAT
+			//in tag.sh
+			StringBuilder sbi=new StringBuilder();
+			for (String line : inputText.split("\n")) {
+				String[] cols = line.split("\t");
+				if (cols.length >= 11) {
+					cols[2] = cols[3];
+					cols[4] = cols[5];
+					cols[6] = cols[7];
+					sbi.append(String.join("\t", cols));
+				}
+				sbi.append("\n");
+			}
+			inputText=sbi.toString();
+			
+			BufferedReader br = new BufferedReader(new StringReader(inputText));
+			//BufferedReader br = req.getReader();
 			BufferedWriter bw = new BufferedWriter(resp.getWriter());
 
 			StringBuilder sb = new StringBuilder();

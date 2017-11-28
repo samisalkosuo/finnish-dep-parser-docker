@@ -45,6 +45,7 @@ ADD server/omorfi_wrapper.py .
 ADD server/marmot-tag.py .
 ADD server/init.sh .
 ADD server/my_parser_wrapper.sh .
+ADD server/tag.sh .
 
 RUN chmod 755 my_parser_wrapper.sh
 
