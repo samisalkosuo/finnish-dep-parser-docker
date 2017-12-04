@@ -57,6 +57,7 @@ Some environment variables can be used.
   - Default is no cache.
 - *server_feature*, set features to start: DEP, LEMMA or ALL. 
   - Default is ALL to start all features.
+  - DEP-feature starts dependency parser.
   - LEMMA-feature starts a servlet that returns only lemmas. Context root is /lemma.
 - *log_level*, set level of logging. 
   - 0=no logging after starting the container.
@@ -67,9 +68,9 @@ Some environment variables can be used.
 
 # Farming
 
-Directory 'parserfarm' includes scripts to start finnish-dep-parser farm, 1 or more parser containers within single host accessible via proxy. Farm is implemented using scripts and plain containers without docker-compose or other similar stuff in order to have nothing but Docker runtime as a prereq.
+Directory *parserfarm* includes scripts to start finnish-dep-parser farm, 1 or more parser containers within single host accessible via proxy. Farm is implemented using scripts and plain containers without docker-compose or other similar stuff in order to have nothing but Docker runtime as a prereq.
 
-The parsing text is CPU intensive. If you use many parsers, they may consume all CPU. If you use few parsers, they may not take advantage of CPU capacity. Good starting point is to have about as many parser containers as there are CPU cores in the server.
+Parsing of text is CPU intensive. If you use many parsers, they may consume all CPU resources. If you use few parsers, they may not take advantage of all resources. Good starting point is to have about as many parser containers as there are CPU cores in the server.
 
 Files in parserfarm-directory:
 
@@ -85,9 +86,9 @@ Example:
 
 - *nproc*, command to check number of cores in the Linux server.
   - assume 4 cores
-- *start_parser_farm.sh 4 0.13*, starts proxy and 4 parsers of version 0.13.
+- *start_parser_farm.sh 4 0.14*, starts proxy and 4 parsers of version 0.14.
 
-This kind of farmin/scalability is not intended for production use. Use for example [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production. There is Community Edition available: https://hub.docker.com/r/ibmcom/icp-inception/.
+This kind of farmin/scalability is not intended for production use. Use for example [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production. [Community Edition is available](https://hub.docker.com/r/ibmcom/icp-inception/) to be used to check out IBM Cloud Private.
 
 # Disclaimer
 
