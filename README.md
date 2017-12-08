@@ -70,7 +70,7 @@ Some environment variables can be used.
 
 Directory *parserfarm* includes scripts to start finnish-dep-parser farm, 1 or more parser containers within single host accessible via proxy. Farm is implemented using scripts and plain containers without docker-compose or other similar stuff in order to have nothing but Docker runtime as a prereq.
 
-Parsing of text is CPU intensive. If you use many parsers, they may consume all CPU resources. If you use few parsers, they may not take advantage of all resources. Good starting point is to have about as many parser containers as there are CPU cores in the server.
+Parsing of text is CPU intensive. If you use many parsers, they may consume all CPU resources. If you use few parsers, they may not take advantage of all resources. Good starting point is to have about half as many parser containers as there are CPU cores in the server.
 
 Files in parserfarm-directory:
 
@@ -86,9 +86,9 @@ Example:
 
 - *nproc*, command to check number of cores in the Linux server.
   - assume 4 cores
-- *start_parser_farm.sh 4 0.14*, starts proxy and 4 parsers of version 0.14.
+- *start_parser_farm.sh 2 0.14*, starts proxy and 2 parsers of version 0.14.
 
-This kind of farmin/scalability is not intended for production use. Use for example [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production. [Community Edition is available](https://hub.docker.com/r/ibmcom/icp-inception/) to be used to check out IBM Cloud Private.
+This kind of farming/scalability is not intended for production use. Use for example [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production. [Community Edition is available](https://hub.docker.com/r/ibmcom/icp-inception/) to be used to check out IBM Cloud Private.
 
 # Disclaimer
 
