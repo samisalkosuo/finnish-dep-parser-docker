@@ -1,0 +1,47 @@
+
+FinnWordNet - the Finnish WordNet
+=================================
+
+
+FinnWordNet
+-----------
+
+FinnWordNet is a wordnet for Finnish. For more information about
+FinnWordNet, please see the README file in the parent directory or
+visit the FinnWordNet project Web page
+
+    http://www.ling.helsinki.fi/en/lt/research/finnwordnet/
+
+The rest of this README file describes the contents of this directory.
+
+
+dict: FinnWordNet data files in the Princeton WordNet database format
+---------------------------------------------------------------------
+
+The directory 'dict' contains FinnWordNet data files in the Princeton
+WordNet (PWN) database format:
+
+    http://wordnet.princeton.edu/wordnet/man/wndb.5WN.html
+
+The data can be used with the PWN 'wn' search tool:
+
+    http://wordnet.princeton.edu/wordnet/man/wn.1WN.html
+
+The FinnWordNet data can be searched by setting the environment
+variable 'WNSEARCHDIR' to point to the 'dict' directory.
+
+The FinnWordNet data causes a buffer overflow in the original version
+of 'wn', but the version patched by Debian works:
+
+    http://packages.debian.org/source/squeeze/wordnet
+
+'wn' searches Finnish words normalized using English morphological
+rules; for example, a search of "alas" shows results for the word
+"ala" in addition to "alas".
+
+
+Bugs
+----
+
+* Finnish verbs have a dummy verb frame (number 1) in order for the
+  data to work with the 'wn' search tool.

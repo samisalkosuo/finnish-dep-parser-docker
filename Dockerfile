@@ -35,6 +35,7 @@ WORKDIR /Finnish-dep-parser
 #add server code
 RUN mkdir server
 ADD server ./server/
+ADD server/resources ./server/resources
 ADD scripts/package_parserserver.sh .
 RUN ["/bin/bash" ,"package_parserserver.sh"]
 

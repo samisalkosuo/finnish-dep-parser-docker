@@ -33,10 +33,6 @@ Start docker container in detached mode and restart if container goes down:
 
 - docker run --restart always -d -p 0.0.0.0:9876:9876 kazhar/finnish-dep-parser
 
-Run parser using cache:
-
-- docker run -it --rm -p 0.0.0.0:9876:9876 -e "conllu_cache_size=100" kazhar/finnish-dep-parser
-
 Post file to parser using curl:
 
 - curl -H "Content-Type: text/plain" --data-binary "@test/text_1k.txt" http://127.0.0.1:9876
@@ -55,9 +51,14 @@ Some environment variables can be used.
 
 - *enable_cache*, enable cache for parsed conllu documents, 'true' or 'false'
   - Default is 'true'.
-- *server_feature*, set features to start: DEP, LEMMA or ALL. 
+  - Cache is 100MB in-memory cache.
+- *server_feature*, set features to start: DEP, LEMMA, FWN or ALL. 
+  - Separate features using comma to set features. For example: -e "server_feature=DEP,FWN"
   - Default is ALL to start all features.
   - DEP-feature starts dependency parser.
+  - FWN-feature enables FinWordNet servlet. Context root is /finwordnet.
+    - Requests are like */finwordnet?word=sana*.
+    - Response is un-compliant custom JSON.
   - LEMMA-feature starts a servlet that returns only lemmas. Context root is /lemma.
 - *log_level*, set level of logging. 
   - 0=no logging after starting the container.
@@ -86,7 +87,7 @@ Example:
 
 - *nproc*, command to check number of cores in the Linux server.
   - assume 4 cores
-- *start_parser_farm.sh 2 0.14*, starts proxy and 2 parsers of version 0.14.
+- *start_parser_farm.sh 2 0.15*, starts proxy and 2 parsers of version 0.15.
 
 This kind of farming/scalability is not intended for production use. Use for example [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production. [Community Edition is available](https://hub.docker.com/r/ibmcom/icp-inception/) to be used to check out IBM Cloud Private.
 

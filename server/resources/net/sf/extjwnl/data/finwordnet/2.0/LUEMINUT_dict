@@ -1,0 +1,48 @@
+
+FinnWordNet - suomen wordnet
+============================
+
+
+FinnWordNet
+-----------
+
+FinnWordNet on suomen wordnet. Lisätietoja FinnWordNetistä saa
+ylähakemiston LUEMINUT-tiedostosta sekä FinnWordNet-projektin
+WWW-sivulta:
+
+    http://www.ling.helsinki.fi/kieliteknologia/tutkimus/finnwordnet/
+
+Tämän LUEMINUT-tiedoston loppuosa kuvaa tämän hakemiston sisältöä.
+
+
+dict: FinnWordNet-aineisto Princeton WordNetin tietokantamuodossa
+-----------------------------------------------------------------
+
+Hakemisto 'dict' sisältää FinnWordNetin datatiedostot Princeton
+WordNetin (PWN) tietokantamuodossa:
+
+    http://wordnet.princeton.edu/wordnet/man/wndb.5WN.html
+
+Dataa voi käyttää PWN:n 'wn'-hakuohjelmalla:
+
+    http://wordnet.princeton.edu/wordnet/man/wn.1WN.html
+
+FinnWordNet-datasta voi hakea asettamalla ympäristömuuttujan
+'WNSEARCHDIR' arvoksi 'dict'-hakemiston.
+
+FinnWordNet-data aiheuttaa puskurin ylivuodon 'wn'-ohjelman
+alkuperäisellä versiolla, mutta Debian-projektin korjaama versio
+toimii:
+
+    http://packages.debian.org/source/squeeze/wordnet
+
+'wn' hakee suomenkielisiä sanoja normalisoituina englannin
+morfologisilla säännöillä: esimerkiksi haku "alas" näyttää tulokset
+paitsi sanalle "alas" myös sanalle "ala".
+
+
+Vikoja
+------
+
+* Suomen verbeillä on keinotekoinen verbikehys (numero 1), jotta
+  'wn'-ohjelma toimisi datan kanssa.

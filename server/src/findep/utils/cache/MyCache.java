@@ -43,6 +43,7 @@ public class MyCache {
 
 		// TODO: this as env variable
 		int cacheSize = 100;
+		SYSOUTLOGGER.sysout(-1, "Cache is used. Cache size: "+cacheSize+"MB.");
 
 		CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
 				.withCache("stringCache",

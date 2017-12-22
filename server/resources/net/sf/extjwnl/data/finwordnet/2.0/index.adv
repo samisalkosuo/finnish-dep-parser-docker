@@ -1,0 +1,4006 @@
+  1 This software and database is being provided to you, the LICENSEE, by  
+  2 Princeton University under the following license.  By obtaining, using  
+  3 and/or copying this software and database, you agree that you have  
+  4 read, understood, and will comply with these terms and conditions.:  
+  5   
+  6 Permission to use, copy, modify and distribute this software and  
+  7 database and its documentation for any purpose and without fee or  
+  8 royalty is hereby granted, provided that you agree to comply with  
+  9 the following copyright notice and statements, including the disclaimer,  
+  10 and that the same appear on ALL copies of the software, database and  
+  11 documentation, including modifications that you make for internal  
+  12 use or for distribution.  
+  13   
+  14 WordNet 3.0 Copyright 2006 by Princeton University.  All rights reserved.  
+  15   
+  16 THIS SOFTWARE AND DATABASE IS PROVIDED "AS IS" AND PRINCETON  
+  17 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  
+  18 IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PRINCETON  
+  19 UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES OF MERCHANT-  
+  20 ABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE  
+  21 OF THE LICENSED SOFTWARE, DATABASE OR DOCUMENTATION WILL NOT  
+  22 INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR  
+  23 OTHER RIGHTS.  
+  24   
+  25 The name of Princeton University or Princeton may not be used in  
+  26 advertising or publicity pertaining to distribution of the software  
+  27 and/or database.  Title to copyright in this software, database and  
+  28 any associated documentation shall at all times remain with  
+  29 Princeton University and LICENSEE agrees to preserve same.  
+-kaan r 1 0 1 0 00027057  
+-kin r 1 0 1 0 00051501  
+-kään r 1 0 1 0 00027057  
+24_tunnin_ajan r 1 0 1 0 00164904  
+a_cappella r 1 0 1 0 00001740  
+a_la_carte r 1 0 1 0 00276961  
+a_la_mode r 1 0 1 0 00524099  
+a_posteriori r 1 1 ! 1 0 00269221  
+a_priori r 1 1 ! 1 0 00269452  
+a_propos r 1 0 1 0 00168824  
+aakkosellisesti r 1 1 \ 1 0 00217323  
+aakkosjärjestyksessä r 1 1 \ 1 0 00217323  
+aakkostettuna r 1 1 \ 1 0 00217323  
+aamupäivällä r 1 1 ; 1 0 00268978  
+aavemaisen r 1 0 1 0 00347873  
+aavemaisesti r 1 0 1 0 00347873  
+abaksiaalisesti r 1 2 ! \ 1 0 00538622  
+aboradisesti r 1 2 ! \ 1 0 00186086  
+absoluuttisesti r 2 0 2 0 00009637 00008076  
+abstraktisti r 1 1 ! 1 0 00212523  
+ad_infinitum r 1 0 1 0 00095027  
+ad_interim r 1 0 1 0 00095994  
+adjektiivisesti r 2 1 \ 2 0 00538804 00287301  
+adverbiaalisesti r 1 1 \ 1 0 00287419  
+aggressiivisesti r 1 0 1 0 00054049  
+ahdasmielisesti r 2 2 ! \ 2 0 00430850 00404764  
+ahdistavan r 1 0 1 0 00123764  
+ahdistuneesti r 1 0 1 0 00341880  
+ahkerasti r 2 1 \ 2 0 00397523 00293419  
+ahnaasti r 5 1 \ 5 0 00519713 00447034 00372533 00298220 00287101  
+ahneesti r 2 1 \ 2 0 00463986 00298220  
+ahtaasti r 1 1 ! 1 0 00237372  
+aidosti r 3 0 3 0 00463130 00289455 00040740  
+aiemmin r 6 0 6 0 00379567 00278161 00180284 00128164 00065946 00065627  
+aiheellisesti r 2 1 ! 2 0 00220123 00219941  
+aiheettomasti r 1 1 \ 1 0 00373406  
+aihetodisteiden_perusteella r 1 0 1 0 00525447  
+aika r 3 1 ! 3 0 00038953 00020364 00019863  
+aika_ajoin r 3 0 3 0 00404510 00228334 00023198  
+aika_lailla r 1 0 1 0 00019863  
+aikaa_vastaan r 1 0 1 0 00163709  
+aikaansaamattomasti r 1 1 ! 1 0 00348630  
+aikaisemmin r 4 0 4 0 00278161 00180284 00065946 00065627  
+aikaisessa_vaiheessa r 1 0 1 0 00108764  
+aikaisin r 1 0 1 0 00108645  
+aikaisintaan r 1 0 1 0 00037973  
+aikajärjestyksessä r 1 0 1 0 00070119  
+aikamoinen r 1 0 1 0 00020541  
+aikanaan r 1 0 1 0 00178168  
+aikoinaan r 1 0 1 0 00128164  
+ailahtelevasti r 1 0 1 0 00304228  
+aina r 6 1 ! 6 0 00354954 00022264 00022098 00021575 00021421 00021003  
+aina_joskus r 1 0 1 0 00023877  
+aina_välillä r 1 0 1 0 00023198  
+aina_välistä r 1 0 1 0 00182196  
+ainakaan r 1 1 ; 1 0 00112943  
+ainakin r 4 1 ; 4 0 00172332 00112943 00029679 00028965  
+aineellisesti r 1 1 \ 1 0 00147529  
+aineenvaihdunnallisesti r 1 1 \ 1 0 00123349  
+aineettomasti r 1 0 1 0 00403570  
+ainoana r 1 1 \ 1 0 00188929  
+ainoastaan r 2 0 2 0 00009235 00005048  
+ainutlaatuisesti r 1 2 ! \ 1 0 00393989  
+aistikkaasti r 1 2 ! \ 1 0 00499733  
+aistillisesti r 1 1 \ 1 0 00474164  
+aivan r 13 1 ; 13 0 00530193 00495774 00490959 00392103 00299721 00263458 00219830 00162409 00099796 00098984 00020143 00011299 00010067  
+aivan_alusta r 1 0 1 0 00172690  
+aivan_erityisen r 1 0 1 0 00533179  
+aivan_erityisesti r 1 0 1 0 00162740  
+aivan_ilmeisesti r 1 0 1 0 00174280  
+aivan_liian r 1 0 1 0 00267746  
+aivan_vieressä r 1 0 1 0 00267472  
+aivan_yhtä r 1 0 1 0 00024166  
+aivo- r 1 1 \ 1 0 00143715  
+aivoissa r 1 1 \ 1 0 00143715  
+aivokuoren r 1 0 1 0 00101190  
+aivottomasti r 1 0 1 0 00426062  
+ajallaan r 1 0 1 0 00070369  
+ajallisesti r 1 1 \ 1 0 00137175  
+ajan_mittaan r 2 0 2 0 00180440 00051640  
+ajan_oloon r 1 0 1 0 00180440  
+ajan_pitkään r 1 0 1 0 00180440  
+ajattelemattomasti r 5 2 ! \ 5 0 00392415 00232750 00197181 00176971 00166330  
+ajoissa r 3 0 3 0 00184596 00180884 00108645  
+ajoittain r 4 1 \ 4 0 00404510 00170116 00023877 00023198  
+ajoittaisesti r 1 1 \ 1 0 00404510  
+akaksiaalisesti r 1 1 ! 1 0 00538722  
+akateemisesti r 2 1 \ 2 0 00136097 00130746  
+aksiaalisesti r 1 1 \ 1 0 00083386  
+aksiomaattisesti r 1 1 \ 1 0 00131172  
+aktiivisesti r 1 1 ! 1 0 00086196  
+akustisesti r 1 1 \ 1 0 00145380  
+akuutisti r 1 2 ! \ 1 0 00152153  
+ala- r 1 0 1 0 00277221  
+ala-arvoisesti r 1 1 \ 1 0 00477432  
+alakautta r 1 0 1 0 00512585  
+alakerrassa r 1 0 1 0 00102015  
+alakuloisesti r 1 0 1 0 00321523  
+alakynnessä r 1 0 1 0 00262171  
+alamäkeen r 1 0 1 0 00344356  
+alamäkeä\,_alamäkeen\,_alamäessä r 2 0 2 0 00344515 00344356  
+alapuolella r 4 1 ! 4 0 00513428 00513212 00086910 00086435  
+alapuolelle r 3 1 ! 3 0 00511912 00086910 00086435  
+alas r 3 1 ! 3 0 00344356 00104969 00103006  
+alaspäin r 2 1 ! 2 0 00344515 00103006  
+alasti r 1 1 \ 1 0 00430482  
+alati r 4 1 ! 4 0 00022264 00022098 00021421 00021003  
+alemmassa_kerroksessa r 1 0 1 0 00102015  
+alempana r 1 0 1 0 00277221  
+alentavasti r 1 1 \ 1 0 00226536  
+alentuvasti r 1 1 \ 1 0 00314486  
+algebrallisesti r 1 1 \ 1 0 00141853  
+alhaalla r 2 0 2 0 00512078 00102015  
+alhaisesti r 3 1 \ 3 0 00486929 00422109 00326209  
+alias r 1 0 1 0 00290970  
+alimpana r 1 0 1 0 00417623  
+alistuneesti r 1 0 1 0 00466296  
+alistuvasti r 2 1 \ 2 0 00497094 00436893  
+alitajuisesti r 1 1 \ 1 0 00262816  
+alituiseen r 2 1 ! 2 0 00169631 00038358  
+alituisesti r 1 0 1 0 00305261  
+alkeellisesti r 2 1 \ 2 0 00456411 00295759  
+alkuaan r 1 0 1 0 00456542  
+alkuperäisesti r 2 0 2 0 00289455 00063442  
+alkusoinnullisesti r 1 1 \ 1 0 00291501  
+alla r 3 1 ! 3 0 00511736 00086910 00086435  
+alle r 6 1 ! 6 0 00512480 00511991 00511847 00477782 00086910 00086435  
+allegorisesti r 1 1 \ 1 0 00145764  
+allegretto r 1 2 \ ; 1 0 00291146  
+allegro r 1 2 \ ; 1 0 00291313  
+altruistisesti r 1 1 \ 1 0 00291637  
+alueellisesti r 2 1 \ 2 0 00146151 00137528  
+aluksen_sivulla r 1 0 1 0 00267472  
+aluksessa r 1 0 1 0 00267258  
+aluksi r 2 0 2 0 00180284 00111323  
+alun_alkaen r 1 0 1 0 00180284  
+alun_perin r 3 0 3 0 00456542 00180284 00111323  
+alussa r 1 0 1 0 00108764  
+alusta r 1 1 ; 1 0 00122210  
+alusta_alkaen r 1 0 1 0 00172690  
+alusta_loppuun r 2 0 2 0 00164576 00111225  
+alustavasti r 1 1 \ 1 0 00192881  
+amatöörimäisesti r 1 1 ! 1 0 00229944  
+ammatillisesti r 1 1 \ 1 0 00047935  
+ammattimaisesti r 1 1 \ 1 0 00140795  
+amoraalisesti r 1 0 1 0 00388257  
+anakronistisesti r 1 1 \ 1 0 00244670  
+analogisesti r 1 1 \ 1 0 00076620  
+analyyttisesti r 1 1 \ 1 0 00257219  
+anarkistisesti r 1 1 \ 1 0 00257532  
+anatomisesti r 1 1 \ 1 0 00069733  
+andante r 1 2 \ ; 1 0 00287865  
+anelevasti r 1 0 1 0 00301051  
+anellen r 1 0 1 0 00301051  
+anisotrooppisesti r 1 1 \ 1 0 00003458  
+ankarasti r 5 1 \ 5 0 00487048 00373253 00257741 00241566 00099546  
+ankeasti r 1 1 \ 1 0 00188664  
+anomaalisesti r 1 1 \ 1 0 00291822  
+anonyymisti r 1 1 \ 1 0 00282318  
+anovasti r 1 1 \ 1 0 00301051  
+ansaitsemattomasti r 1 2 ! \ 1 0 00323977  
+ansaitusti r 3 1 ! 3 0 00323818 00239255 00220123  
+ansiokkaasti r 1 1 \ 1 0 00425087  
+antagonistisesti r 1 1 \ 1 0 00285364  
+anteeksiannettavasti r 1 2 ! \ 1 0 00355462  
+anteeksiantamattoman r 1 1 \ 1 0 00255370  
+anteeksiantamattomasti r 1 2 ! \ 1 0 00355638  
+anteeksiantavasti r 1 2 ! \ 1 0 00365229  
+anteeksipyytävästi r 1 1 \ 1 0 00187383  
+anteliaasti r 3 1 \ 3 0 00302432 00211213 00202049  
+antoisasti r 1 1 \ 1 0 00135670  
+apaattisesti r 2 1 \ 2 0 00320453 00285623  
+aposteriorisesti r 1 1 ! 1 0 00269221  
+appositiona r 1 0 1 0 00130874  
+appositionaalisesti r 1 1 \ 1 0 00130874  
+apriorisesti r 1 1 ! 1 0 00269452  
+apropos r 1 0 1 0 00294966  
+arasti r 3 0 3 0 00479838 00304845 00245437  
+aristokraattisesti r 1 1 \ 1 0 00217523  
+aritmeettisesti r 1 1 \ 1 0 00292426  
+arkikielessä r 1 0 1 0 00309079  
+arkipäiväisesti r 3 1 \ 3 0 00507017 00458308 00429041  
+arkisesti r 1 1 \ 1 0 00167296  
+arkkitehtonisesti r 1 1 \ 1 0 00288286  
+armeliaasti r 1 1 \ 1 0 00207450  
+armottomasti r 3 1 \ 3 0 00470985 00470351 00424752  
+arvaamattomasti r 2 1 \ 2 0 00304228 00116315  
+arvailemalla r 1 1 \ 1 0 00021840  
+arviolta r 1 0 1 0 00007569  
+arvoituksellisesti r 1 1 \ 1 0 00319232  
+arvokkaasti r 1 1 \ 1 0 00523007  
+arvon_mukaan r 1 0 1 0 00268828  
+arvoon_perustuva r 1 0 1 0 00268828  
+arvostaen r 1 1 ! 1 0 00291976  
+arvostavasti r 1 1 ! 1 0 00291976  
+arvostelukyvyttömästi r 1 2 ! \ 1 0 00409178  
+arvottomasti r 2 1 \ 2 0 00523100 00516158  
+asap r 1 0 1 0 00037426  
+aseksuaalisesti r 1 0 1 0 00079789  
+asetuksen_mukaan r 1 0 1 0 00491480  
+asiaankuulumattomasti r 1 2 ! \ 1 0 00406906  
+asiaankuuluvasti r 1 1 ! 1 0 00465132  
+asiakohtaisesti r 1 0 1 0 00268592  
+asianmukaisesti r 7 1 ! 7 0 00393253 00300615 00210777 00150527 00070369 00068643 00068356  
+asiantuntevasti r 1 1 ! 1 0 00229828  
+asiayhteydestä_irrotettuna r 1 0 1 0 00042049  
+askeettisen r 1 1 \ 1 0 00297980  
+askeettisesti r 2 1 \ 2 0 00297980 00286208  
+askel_askeleelta r 1 0 1 0 00116618  
+askel_kerrallaan r 2 0 2 0 00232046 00116618  
+askelittain r 2 0 2 0 00232046 00116618  
+asteittain r 3 1 \ 3 0 00446665 00232046 00116618  
+asuen r 1 1 \ 1 0 00537404  
+asukasta_kohti r 1 0 1 0 00527440  
+asymptoottisesti r 1 1 \ 1 0 00079903  
+atonaalisesti r 1 1 \ 1 0 00253313  
+attributiivisesti r 1 2 \ ; 1 0 00288908  
+auliisti r 2 2 ! \ 2 0 00375142 00302432  
+auraalisesti r 1 1 \ 1 0 00083242  
+aurinkoisesti r 2 1 \ 2 0 00235017 00054464  
+autenttisesti r 1 1 \ 1 0 00289455  
+autokraattisesti r 1 0 1 0 00217646  
+automaattisesti r 2 1 \ 2 0 00123184 00005938  
+auttamatta r 1 0 1 0 00407645  
+autuaasti r 1 1 \ 1 0 00296076  
+avajaisten_johdosta r 1 1 \ 1 0 00528018  
+avaramielisesti r 1 2 ! \ 1 0 00431081  
+avaruudellisesti r 1 1 \ 1 0 00140913  
+avaruuteen r 1 0 1 0 00541473  
+avio- r 1 1 \ 1 0 00525623  
+avioliiton_ulkopuolella r 2 0 2 0 00386224 00184788  
+aviollisesti r 1 1 \ 1 0 00525623  
+aviorikoksellisesti r 1 1 \ 1 0 00145500  
+avioton r 1 0 1 0 00184788  
+aviottomasti r 1 2 ! \ 1 0 00386224  
+avoimesti r 8 2 ! \ 8 0 00440047 00336507 00298494 00234001 00174752 00105377 00085166 00057812  
+avojaloin r 1 0 1 0 00300355  
+avokätisesti r 3 0 3 0 00302432 00211213 00202049  
+avuliaasti r 1 2 ! \ 1 0 00198341  
+avuttomasti r 3 1 \ 3 0 00452990 00244810 00223886  
+bakteerien_välityksellä r 1 1 \ 1 0 00140154  
+barbaarisesti r 1 1 \ 1 0 00300086  
+bilateraalisesti r 1 1 \ 1 0 00271255  
+biokemiallisesti r 1 1 \ 1 0 00144508  
+biologisesti r 1 1 \ 1 0 00144132  
+brutaalisti r 1 0 1 0 00215701  
+byrokraattisesti r 2 1 \ 2 0 00303685 00303558  
+ceteris_paribus r 1 0 1 0 00274289  
+cum_laude r 1 1 \ 1 0 00313542  
+de_facto r 1 0 1 0 00065221  
+de_novo r 1 1 ; 1 0 00122210  
+demokraattisesti r 1 2 ! \ 1 0 00131980  
+departementin r 1 1 \ 1 0 00537038  
+diagrammin_muodossa r 1 0 1 0 00333213  
+dialektisesti r 1 1 \ 1 0 00265313  
+didaktisesti r 1 1 \ 1 0 00334029  
+digitaalisesti r 1 1 \ 1 0 00132559  
+diktatorisesti r 1 0 1 0 00333823  
+diplomaattisesti r 1 2 ! \ 1 0 00217791  
+distaalisesti r 1 2 \ ; 1 0 00189830  
+dogmaattisen r 1 1 \ 1 0 00342892  
+dogmaattisesti r 2 1 \ 2 0 00342892 00342808  
+dolce r 1 1 ; 1 0 00539404  
+draamallisesti r 1 0 1 0 00202846  
+dramaattisesti r 2 2 ! \ 2 0 00263991 00149866  
+dynaamisesti r 1 1 \ 1 0 00345666  
+e.a.a. r 1 0 1 0 00002373  
+eaa r 1 0 1 0 00002373  
+edelleen r 3 1 ! 3 0 00075172 00073043 00034298  
+edellä r 5 1 ! 5 0 00273213 00163875 00086676 00073267 00072545  
+edeltäkäsin r 1 0 1 0 00072816  
+edeltävästi r 2 2 ! \ 2 0 00514696 00065627  
+edemmäs r 2 0 2 0 00032609 00032609  
+edempänä r 2 0 2 0 00032609 00032609  
+edes r 2 1 ; 2 0 00112943 00018947  
+edes_vähän r 1 0 1 0 00162615  
+edessä r 2 0 2 0 00073267 00072545  
+edessäpäin r 1 0 1 0 00072545  
+edestakaisin r 2 0 2 0 00083072 00082791  
+edullisesti r 1 0 1 0 00306513  
+edustavasti r 1 1 \ 1 0 00455092  
+eespäin r 3 0 3 0 00112032 00074130 00073043  
+eettisesti r 1 2 ! \ 1 0 00352691  
+egoistisesti r 1 0 1 0 00349096  
+ehdottoman r 2 1 \ 2 0 00009637 00008076  
+ehdottomasti r 8 1 \ 8 0 00391010 00286786 00162138 00094530 00058972 00051071 00040482 00009637  
+ehkä r 2 1 ; 2 0 00444433 00322579  
+ehkäisevästi r 1 0 1 0 00315682  
+ehkäpä r 1 0 1 0 00322579  
+ehtimiseen r 1 0 1 0 00190515  
+ehtymättömästi r 1 0 1 0 00056732  
+ei r 2 0 2 0 00026470 00026187  
+ei-leksikaalisesti r 1 1 \ 1 0 00147414  
+ei_enempää r 2 0 2 0 00054905 00034564  
+ei_ensinkään r 1 0 1 0 00026364  
+ei_enää r 1 1 ! 1 0 00034564  
+ei_enää_ikinä r 1 0 1 0 00433902  
+ei_enää_koskaan r 1 0 1 0 00433902  
+ei_koskaan r 1 0 1 0 00022543  
+ei_lainkaan r 5 0 5 0 00347566 00054905 00026839 00026735 00022958  
+ei_merkki- r 1 0 1 0 00370029  
+ei_milloinkaan r 1 1 ! 1 0 00022543  
+ei_millään_lailla r 1 0 1 0 00436015  
+ei_millään_tavalla r 1 0 1 0 00436015  
+ei_minnekään r 1 0 1 0 00027755  
+ei_missään r 1 0 1 0 00027755  
+ei_missään_nimessä r 1 2 ! ; 1 0 00062039  
+ei_mistään_hinnasta r 1 0 1 0 00172208  
+ei_mitenkään r 2 0 2 0 00436015 00434877  
+ei_paljoakaan r 1 0 1 0 00107922  
+ei_sallittujen_rajojen_sisällä r 1 2 ! \ 1 0 00094346  
+ei_suinkaan r 1 2 ! ; 1 0 00062039  
+ei_uskottavasti r 1 1 ! 1 0 00318162  
+ei_varmasti r 1 0 1 0 00181962  
+eilen r 2 0 2 0 00533910 00533793  
+eilispäivänä r 1 0 1 0 00533793  
+ekologisesti r 1 1 \ 1 0 00347050  
+ekr. r 1 0 1 0 00002194  
+eksentrisesti r 1 1 \ 1 0 00539656  
+eksplisiittisesti r 1 2 ! \ 1 0 00390841  
+eksponentiaalisesti r 1 0 1 0 00356952  
+eksyksiin r 1 0 1 0 00221208  
+eksyksissä r 1 0 1 0 00221208  
+eleettömästi r 2 0 2 0 00488761 00428480  
+elegantisti r 2 2 ! \ 2 0 00349654 00349424  
+elektronisesti r 1 1 \ 1 0 00133292  
+elektrostaattisesti r 1 0 1 0 00152657  
+eli r 1 0 1 0 00206161  
+elinvoimaisesti r 1 1 \ 1 0 00263344  
+eliön_ulkopuolella r 1 0 1 0 00540113  
+ellei r 1 0 1 0 00049118  
+elliptisesti r 1 1 \ 1 0 00056915  
+eloisasti r 4 1 \ 4 0 00519500 00519395 00262960 00038072  
+elottomana r 1 1 \ 1 0 00413532  
+elottomasti r 3 1 \ 3 0 00517699 00327195 00301796  
+eläimellisesti r 1 1 \ 1 0 00302947  
+elävässä_organismissa r 1 0 1 0 00196395  
+empaattisesti r 1 0 1 0 00206765  
+empien r 1 0 1 0 00157901  
+empiirisellä_tutkimuksella r 1 0 1 0 00091378  
+empiirisesti r 2 2 ! \ 2 0 00092750 00091378  
+empimättä r 1 0 1 0 00052774  
+endogeenisesti r 1 0 1 0 00539787  
+enemmän r 3 1 ! 3 0 00107622 00107259 00049345  
+enemmän_tai_vähemmän r 1 0 1 0 00039747  
+enenevässä_määrin r 1 0 1 0 00064854  
+energisesti r 1 1 \ 1 0 00098090  
+enimmäkseen r 3 1 \ 3 0 00168143 00080205 00006547  
+enintään r 1 1 ! 1 0 00112774  
+eniten r 2 1 ! 2 0 00120682 00018718  
+enkelimäisesti r 1 1 \ 1 0 00288141  
+ennakkoluulottomasti r 1 2 ! \ 1 0 00431081  
+ennakolta r 2 1 ; 2 0 00477990 00072816  
+ennalta r 1 1 ! 1 0 00269452  
+ennalta_arvaamatta r 1 2 ! \ 1 0 00514770  
+ennalta_odottamatta r 1 0 1 0 00508395  
+ennalta_tietävästi r 1 0 1 0 00454847  
+ennemmin r 1 0 1 0 00124766  
+ennen r 2 0 2 0 00128164 00065946  
+ennen_kaikkea r 3 0 3 0 00275770 00170912 00162740  
+ennen_kristuksen_syntymää r 1 0 1 0 00002194  
+ennen_pitkää r 2 0 2 0 00168000 00037208  
+ennen_puoltapäivää r 1 1 ; 1 0 00268978  
+ennenaikaisesti r 2 1 \ 2 0 00454687 00454554  
+ensi_alkuun r 1 0 1 0 00111582  
+ensi_näkemältä r 2 0 2 0 00111582 00111433  
+ensi_silmäyksellä r 1 0 1 0 00111433  
+ensiksi r 1 0 1 0 00110894  
+ensimmäinen_kerta r 1 0 1 0 00111709  
+ensimmäisessä_luokassa r 1 0 1 0 00362584  
+ensimmäistä_kertaa r 1 0 1 0 00111709  
+ensin r 3 0 3 0 00533054 00273213 00110894  
+ensinnäkin r 2 0 2 0 00149295 00110894  
+ensinäkemältä r 2 0 2 0 00279647 00111433  
+ensisijaisesti r 3 2 ! \ 3 0 00149295 00110894 00080205  
+ensisilmäyksellä r 1 0 1 0 00111433  
+enää r 1 0 1 0 00034696  
+epäaidosti r 1 0 1 0 00358492  
+epäaktiivisesti r 1 0 1 0 00412976  
+epäasiallisesti r 1 1 \ 1 0 00327442  
+epädemokraattisesti r 1 2 ! \ 1 0 00132185  
+epädiplomaattisesti r 1 1 ! 1 0 00217945  
+epädramaattisesti r 1 2 ! \ 1 0 00150029  
+epäedullisesti r 1 1 ! 1 0 00015029  
+epäeettisesti r 1 2 ! \ 1 0 00352896  
+epäherrasmiesmäisesti r 1 2 ! \ 1 0 00510210  
+epähuomiossa r 1 1 ! 1 0 00067976  
+epähygieenisesti r 1 2 ! \ 1 0 00384065  
+epäilemättä r 6 1 ; 6 0 00397000 00162138 00156268 00085703 00042608 00040482  
+epäilevästi r 5 2 ! \ 5 0 00471144 00344083 00342331 00318809 00257904  
+epäilyksettä r 1 1 \ 1 0 00397000  
+epäilyttävästi r 2 0 2 0 00462489 00462025  
+epäinhimillisen r 1 0 1 0 00248879  
+epäinhimillisesti r 1 2 ! \ 1 0 00382986  
+epäisänmaallisesti r 1 2 ! \ 1 0 00442941  
+epäitsekkäästi r 3 2 ! \ 3 0 00349259 00337918 00291637  
+epäjohdonmukaisesti r 2 2 ! \ 2 0 00387188 00130239  
+epäjumalallisesti r 1 1 \ 1 0 00385524  
+epäjärjestyksellisesti r 1 2 ! \ 1 0 00130019  
+epäjärjestyksessä r 1 0 1 0 00293185  
+epäkilpailullisesti r 1 1 ! 1 0 00260429  
+epäkohteliaasti r 1 2 ! \ 1 0 00234384  
+epäkunnioittavasti r 3 2 ! \ 3 0 00407481 00407188 00341455  
+epäkypsästi r 1 2 ! \ 1 0 00408041  
+epäkäytännöllisesti r 1 0 1 0 00391597  
+epälojaalisti r 1 2 ! \ 1 0 00338442  
+epäloogisesti r 1 2 ! \ 1 0 00387188  
+epäluotettavasti r 2 2 ! \ 2 0 00358093 00239825  
+epäluuloisesti r 5 2 ! \ 5 0 00342331 00292869 00292663 00257904 00242535  
+epämiehekkäästi r 1 2 ! \ 1 0 00415223  
+epämiellyttävän r 2 2 ! \ 2 0 00441227 00281338  
+epämiellyttävästi r 2 2 ! \ 2 0 00329455 00235190  
+epämieluisan r 1 1 \ 1 0 00510667  
+epämukavasti r 1 2 ! \ 1 0 00167690  
+epämuodikkaasti r 1 1 ! 1 0 00359679  
+epämuodollisesti r 3 2 ! \ 3 0 00283651 00236819 00200649  
+epämääräiseksi_ajaksi r 1 0 1 0 00276192  
+epämääräisesti r 5 1 \ 5 0 00538089 00395786 00249081 00227229 00045852  
+epänormaalisti r 1 1 \ 1 0 00243658  
+epäoikeudenmukaisesti r 8 2 ! \ 8 0 00468632 00406068 00399277 00352224 00307555 00255370 00220320 00219584  
+epäonnistuneesti r 1 1 ! 1 0 00361703  
+epäorgaanisesti r 1 2 ! \ 1 0 00122643  
+epäpätevästi r 1 2 ! \ 1 0 00199732  
+epärealistisesti r 1 2 ! \ 1 0 00231477  
+epärehellisesti r 3 2 ! \ 3 0 00424267 00402526 00336723  
+epärehellisin_keinoin r 1 0 1 0 00332576  
+epäreilusti r 2 2 ! \ 2 0 00475476 00307555  
+epäromanttisesti r 1 1 ! 1 0 00496305  
+epäröiden r 2 2 ! \ 2 0 00258454 00157901  
+epäröivästi r 1 1 \ 1 0 00344083  
+epäselvästi r 6 2 ! \ 6 0 00350226 00288722 00264279 00249081 00236043 00042756  
+epäsiististi r 2 0 2 0 00483973 00425208  
+epäsointuisasti r 1 2 ! \ 1 0 00429534  
+epäsointuisesti r 2 2 ! \ 2 0 00423413 00252819  
+epäsopivasti r 1 1 ! 1 0 00150838  
+epäsosiaalisesti r 1 2 ! \ 1 0 00485945  
+epäsovinnaisesti r 1 2 ! \ 1 0 00025815  
+epäsuhtaisesti r 1 1 ! 1 0 00189272  
+epäsuorasti r 6 2 ! \ 6 0 00518885 00498690 00463575 00390698 00063766 00063308  
+epäsuotuisasti r 1 2 ! \ 1 0 00233428  
+epäsymmetrisesti r 1 1 ! 1 0 00189272  
+epäsäännöllisesti r 2 1 ! 2 0 00209800 00205165  
+epätarkasti r 2 2 ! \ 2 0 00391874 00219287  
+epätasaisesti r 6 2 ! \ 6 0 00463712 00463453 00442265 00354201 00353947 00353838  
+epätasapuolisesti r 1 2 ! \ 1 0 00354671  
+epätavallisen r 3 1 \ 3 0 00480148 00138223 00115788  
+epätavallisesti r 3 2 ! \ 3 0 00510918 00243658 00138223  
+epätieteellisesti r 1 1 \ 1 0 00119099  
+epätodennäköisesti r 1 1 \ 1 0 00318162  
+epätoivoisesti r 3 2 ! \ 3 0 00532929 00324169 00214925  
+epätyydyttävän r 1 1 ! 1 0 00060299  
+epätyydyttävästi r 1 2 ! \ 1 0 00016985  
+epätyypillisen r 1 2 ! \ 1 0 00138223  
+epätyypillisesti r 1 2 ! \ 1 0 00264941  
+epätäsmällisesti r 1 2 ! \ 1 0 00391874  
+epätäydellisesti r 2 2 ! \ 2 0 00170538 00010837  
+epäurheilijamaisesti r 1 2 ! \ 1 0 00489929  
+epäuskoisesti r 2 2 ! \ 2 0 00318809 00257904  
+epäuskottavasti r 2 2 ! \ 2 0 00318162 00207236  
+epävarmasti r 8 2 ! \ 8 0 00510101 00476160 00401565 00401197 00331568 00286622 00187515 00016985  
+epävieraanvaraisesti r 1 2 ! \ 1 0 00382368  
+epäviisaasti r 3 2 ! \ 3 0 00409178 00356202 00216664  
+epävirallisesti r 4 2 ! \ 4 0 00309079 00261197 00200649 00123612  
+epäystävällisesti r 3 2 ! \ 3 0 00018369 00014213 00004799  
+erehtymättömästi r 1 1 \ 1 0 00248479  
+eri r 2 0 2 0 00148757 00034970  
+eri_kohdissa_teosta r 1 0 1 0 00275956  
+eri_tavalla r 1 0 1 0 00122292  
+eri_tavoin r 1 1 \ 1 0 00056488  
+erikoisen r 1 1 \ 1 0 00091574  
+erikseen r 4 2 ! \ 4 0 00474635 00342184 00222641 00194970  
+erilleen r 2 0 2 0 00251040 00195188  
+erillisesti r 2 0 2 0 00475371 00222641  
+erillään r 3 0 3 0 00250811 00195352 00132375  
+erillään_muusta_maailmasta r 1 0 1 0 00042049  
+erinomaisen r 3 1 ; 3 0 00362842 00197419 00050909  
+erinomaisesti r 3 1 ! 3 0 00372822 00196610 00015720  
+eriskummallisesti r 4 1 \ 4 0 00539656 00539566 00359226 00038765  
+eritoten r 1 0 1 0 00150276  
+erittäin r 15 3 ! \ ; 15 0 00479474 00453777 00446902 00409409 00196499 00121073 00115788 00096911 00091574 00061460 00059602 00050221 00035955 00035393 00034970  
+erittäin_huonosti r 1 0 1 0 00059745  
+erittäin_kovaa r 1 0 1 0 00366585  
+erittäin_nopeasti r 2 1 ; 2 0 00448164 00178863  
+erittäin_ohut r 1 1 \ 1 0 00542644  
+erittäin_paljon r 1 0 1 0 00064149  
+erittäin_voimakkaasti r 1 1 ! 1 0 00366585  
+erityis- r 1 0 1 0 00268592  
+erityisen r 6 1 \ 6 0 00520684 00265735 00092141 00091574 00050909 00050221  
+erityisesti r 4 2 ! \ 4 0 00528903 00266017 00265735 00045424  
+eriyttävästi r 1 1 \ 1 0 00334167  
+eroottisesti r 1 1 \ 1 0 00539853  
+erottamattomasti r 2 2 ! \ 2 0 00474780 00397682  
+erotuksetta r 1 0 1 0 00076736  
+esiin r 1 0 1 0 00111934  
+esikaupungissa r 1 1 ! 1 0 00202207  
+esim. r 1 0 1 0 00171886  
+esimerkiksi r 1 0 1 0 00171886  
+eskatologisesti r 1 1 \ 1 0 00092540  
+esteettisesti r 1 1 \ 1 0 00280619  
+estävästi r 1 0 1 0 00437833  
+eteenpäin r 9 2 ! ; 9 0 00112032 00104344 00081861 00081086 00074976 00074130 00073826 00073574 00073043  
+etelä- r 1 1 \ 1 0 00488482  
+eteläinen r 1 1 \ 1 0 00488482  
+eteläkaakkoon r 2 0 2 0 00487699 00487699  
+eteläkaakossa r 2 0 2 0 00487699 00487699  
+etelälounaaseen r 2 0 2 0 00487862 00487862  
+etelälounaassa r 1 0 1 0 00487862  
+etelään r 3 2 ! \ 3 0 00488642 00260973 00103238  
+etenevässä_määrin r 1 0 1 0 00064854  
+etenkin r 2 0 2 0 00266017 00150276  
+etevästi r 2 1 \ 2 0 00457630 00083668  
+etnisesti r 1 1 \ 1 0 00133405  
+etu- r 1 0 1 0 00153116  
+etuajassa r 1 1 ! 1 0 00108035  
+etukäteen r 1 0 1 0 00072816  
+etummaisena r 1 1 \ 1 0 00285505  
+etuoikeutetusti r 1 0 1 0 00198734  
+etupäässä r 3 0 3 0 00173890 00080205 00006547  
+etäisesti r 4 1 \ 4 0 00542485 00465425 00377745 00341612  
+etäälle r 1 0 1 0 00109180  
+etäällä r 2 0 2 0 00282904 00109180  
+etäältä r 1 0 1 0 00109180  
+etäämmälle r 1 0 1 0 00032225  
+etäämmällä r 1 0 1 0 00032225  
+evolutionistisesti r 1 1 \ 1 0 00353491  
+ex_tempore r 2 0 2 0 00357467 00278566  
+fanaattisesti r 1 1 \ 1 0 00359081  
+farmakologisesti r 1 1 \ 1 0 00445878  
+feodaalisesti r 1 1 \ 1 0 00152988  
+fiksusti r 1 0 1 0 00201917  
+filantrooppisesti r 1 0 1 0 00446162  
+filosofian_kannalta r 1 1 \ 1 0 00527744  
+filosofisesti r 1 1 \ 1 0 00142753  
+flegmaattisesti r 1 0 1 0 00446394  
+flirttailevasti r 1 1 \ 1 0 00325476  
+foneemisesti r 1 1 \ 1 0 00142290  
+foneettisesti r 1 1 \ 1 0 00142193  
+fortena r 1 1 ! 1 0 00366240  
+fortissimo r 1 2 ! \ 1 0 00366585  
+fotometrisesti r 1 1 \ 1 0 00131560  
+frontaalisesti r 1 0 1 0 00153116  
+fuuga- r 1 2 \ ; 1 0 00031859  
+fylogeneettisesti r 1 1 \ 1 0 00124322  
+fysiologisesti r 1 1 \ 1 0 00124583  
+fyysisesti r 1 0 1 0 00124485  
+genealogisesti r 1 1 \ 1 0 00369762  
+geneettisesti r 1 1 \ 1 0 00133620  
+geologisesti r 1 1 \ 1 0 00370264  
+geometrisesti r 2 2 ! \ 2 0 00153201 00097544  
+geotermaalisesti r 1 1 \ 1 0 00137823  
+geotermisesti r 1 1 \ 1 0 00137823  
+glissando r 1 1 ; 1 0 00371150  
+globaalisesti r 1 1 \ 1 0 00139010  
+graafisesti r 3 1 \ 3 0 00333213 00143165 00133736  
+groteskilla_tavalla r 1 1 \ 1 0 00374349  
+haaveksivasti r 1 1 \ 1 0 00344803  
+haavoittuvaisesti r 1 0 1 0 00519949  
+haihahtelevasti r 1 0 1 0 00462962  
+haikaillen r 1 0 1 0 00413754  
+haikeasti r 1 0 1 0 00522296  
+haitallisesti r 4 2 ! \ 4 0 00402085 00332272 00280486 00015029  
+hajaannuttavasti r 1 1 \ 1 0 00537507  
+hajalle r 1 0 1 0 00195188  
+hajamielisesti r 1 1 \ 1 0 00071879  
+hajanaisesti r 2 1 \ 2 0 00526516 00205047  
+hajareisin r 1 0 1 0 00297520  
+halki r 3 0 3 0 00504500 00504398 00293985  
+hallinnassa r 1 1 ! 1 0 00160226  
+hallinnollisesti r 1 1 \ 1 0 00285073  
+hallitsemattomasti r 1 1 \ 1 0 00511177  
+hallituksen r 1 1 \ 1 0 00140588  
+hallitus- r 1 1 \ 1 0 00140588  
+halpamaisesti r 3 1 \ 3 0 00519103 00422109 00326209  
+haltioituneesti r 1 1 \ 1 0 00347214  
+halukkaasti r 2 1 ! 2 0 00370621 00327578  
+halusimme_tai_emme r 1 0 1 0 00261587  
+haluttomasti r 2 2 ! \ 2 0 00409880 00327828  
+halvalla r 2 1 \ 2 0 00306513 00171316  
+halveksien r 1 1 \ 1 0 00407188  
+halveksivasti r 3 1 \ 3 0 00431326 00087828 00087738  
+halveksuttavasti r 1 1 \ 1 0 00331707  
+halveksuvasti r 1 1 \ 1 0 00087828  
+halventavasti r 2 0 2 0 00443776 00339637  
+hampaisiin_asti r 1 0 1 0 00269744  
+hankalan r 1 1 ! 1 0 00414795  
+hankalasti r 4 2 ! \ 4 0 00399795 00212117 00209308 00063603  
+happamasti r 3 1 \ 3 0 00496486 00488337 00259203  
+haptisesti r 1 1 \ 1 0 00213047  
+hapuilevasti r 1 1 \ 1 0 00374260  
+harhaan r 2 0 2 0 00521809 00221208  
+harhaanjohtavan r 2 1 \ 2 0 00330849 00089414  
+harhateille r 1 0 1 0 00221208  
+harhateillä r 1 0 1 0 00221208  
+harkitsemattomasti r 7 2 ! \ 7 0 00396636 00393063 00390222 00378202 00378062 00356032 00216229  
+harkitsevasti r 1 2 ! \ 1 0 00392779  
+harkitusti r 2 1 ! 2 0 00259598 00067453  
+harmaan- r 1 1 \ 1 0 00373799  
+harmillisesti r 1 1 \ 1 0 00542563  
+harmittavan r 2 0 2 0 00449798 00335246  
+harmittomasti r 2 2 ! \ 2 0 00332408 00329657  
+harmonisesti r 2 1 \ 2 0 00377034 00145264  
+hartaasti r 1 1 \ 1 0 00332798  
+harvakseen r 2 1 ! 2 0 00503398 00502800  
+harvalukuisesti r 1 1 \ 1 0 00488935  
+harvassa r 2 1 ! 2 0 00503398 00502800  
+harvinaisen r 3 1 \ 3 0 00510450 00497560 00045105  
+harvoin r 2 2 ! \ 2 0 00398306 00038667  
+hassahtavasti r 1 0 1 0 00326339  
+hassusti r 1 0 1 0 00462183  
+hatarasti r 2 1 \ 2 0 00476160 00363846  
+hauskasti r 1 1 \ 1 0 00101795  
+havainnollisesti r 1 1 \ 1 0 00444301  
+havaittavasti r 2 1 \ 2 0 00389166 00007147  
+hedelmällisesti r 1 1 ! 1 0 00229357  
+hedelmättömästi r 1 2 ! \ 1 0 00229611  
+heikosti r 5 3 ! \ ; 5 0 00503709 00360953 00360818 00191099 00012398  
+heiveröisesti r 1 0 1 0 00244268  
+hekumallisesti r 1 0 1 0 00474010  
+helkkarin r 1 1 ; 1 0 00372641  
+hellittämättömästi r 2 0 2 0 00301051 00154522  
+hellästi r 4 2 \ ; 4 0 00501569 00497952 00245571 00084438  
+hellävaraisesti r 1 1 \ 1 0 00415456  
+hellävaroen r 1 0 1 0 00194468  
+helposti r 4 1 ; 4 0 00507162 00174058 00159807 00013471  
+helppohoitoisen r 1 2 ! \ 1 0 00414641  
+heltymättömästi r 1 0 1 0 00233646  
+helvetillisen r 1 2 \ ; 1 0 00142867  
+helvetin r 1 0 1 0 00035825  
+hemmetin r 1 1 ; 1 0 00050645  
+hengellisesti r 4 1 \ 4 0 00346902 00226858 00204643 00192145  
+hengenvaarallisesti r 1 0 1 0 00532699  
+hengettömästi r 1 0 1 0 00488013  
+henkensä_edestä r 1 0 1 0 00171460  
+henkeä_kohti r 1 0 1 0 00527440  
+henkeäsalpaavasti r 1 1 \ 1 0 00235457  
+henkilökohtaisesti r 5 2 ! \ 5 0 00389866 00389730 00142650 00142482 00048280  
+henkilönä r 1 0 1 0 00142389  
+henkisesti r 3 1 \ 3 0 00245263 00226858 00143935  
+hennon r 1 1 \ 1 0 00483306  
+hennosti r 1 1 \ 1 0 00483306  
+herjaavasti r 1 0 1 0 00481747  
+herkeämättä r 1 0 1 0 00305261  
+herkkäuskoisesti r 1 2 ! \ 1 0 00319044  
+herkullisen r 1 1 \ 1 0 00418067  
+herkästi r 2 1 \ 2 0 00495945 00110664  
+hermeettisesti r 1 1 \ 1 0 00379953  
+hermostuneesti r 3 1 \ 3 0 00433759 00433511 00368682  
+herran_vuonna r 1 0 1 0 00001837  
+herttaisesti r 1 0 1 0 00285205  
+hervottomasti r 1 0 1 0 00415945  
+heti r 5 0 5 0 00496607 00113798 00113463 00052774 00036723  
+heti_alussa r 1 0 1 0 00180284  
+heti_kun r 1 0 1 0 00195645  
+heti_paikalla r 1 0 1 0 00052774  
+heti_tämän_jälkeen r 1 0 1 0 00379837  
+hetimmiten r 1 0 1 0 00052774  
+hetkeksi r 2 0 2 0 00505946 00058860  
+hetkellisesti r 1 0 1 0 00506256  
+hetken r 2 0 2 0 00155961 00100370  
+hetken_aikaa r 1 0 1 0 00155961  
+hetken_heilautuksesta r 1 0 1 0 00184245  
+hetkessä r 1 0 1 0 00178863  
+hevosen_selässä r 1 0 1 0 00002513  
+hieman r 5 0 5 0 00194365 00100370 00039747 00036939 00036856  
+hienojakoisesti r 1 2 ! \ 1 0 00205412  
+hienostelevasti r 1 1 \ 1 0 00485440  
+hienosti r 7 1 \ 7 0 00376464 00326513 00242429 00225715 00110793 00110664 00057324  
+hienostuneesti r 1 0 1 0 00517169  
+hienotunteisesti r 1 1 ! 1 0 00197046  
+hienovaraisesti r 2 2 ! \ 2 0 00495945 00396307  
+hierarkkisesti r 1 1 \ 1 0 00274535  
+hieroglyfein r 1 1 \ 1 0 00153773  
+hiljaa r 4 2 ! \ 4 0 00366065 00276289 00245911 00121223  
+hiljaisesti r 2 0 2 0 00498690 00076082  
+hiljalleen r 2 0 2 0 00446665 00168553  
+hiljattain r 1 0 1 0 00116021  
+hillittömästi r 2 0 2 0 00515010 00511177  
+hillitysti r 2 0 2 0 00501316 00309269  
+hilpeästi r 5 1 \ 5 0 00415543 00408629 00237250 00176093 00054464  
+himmeästi r 1 0 1 0 00253055  
+himoitsevasti r 2 1 \ 2 0 00325622 00298220  
+himokkaasti r 5 1 \ 5 0 00526595 00459277 00418240 00410914 00298220  
+hinnalla_millä_hyvänsä r 1 0 1 0 00165510  
+hirmuisesti r 1 1 \ 1 0 00374349  
+hirveällä_tavalla r 2 1 \ 2 0 00380208 00374349  
+hirveän r 1 0 1 0 00126542  
+hirveästi r 2 1 \ 2 0 00061251 00059745  
+hirvittävällä_tavalla r 1 1 \ 1 0 00374349  
+hirvittävästi r 4 1 \ 4 0 00380208 00379154 00375352 00059745  
+hirviömäisesti r 1 1 \ 1 0 00374349  
+historiallisesti r 2 1 \ 2 0 00118669 00118547  
+hitaammin r 1 0 1 0 00093976  
+hitaasti r 2 2 ! ; 2 0 00412896 00174490  
+hitaasti_ja_leveästi r 1 2 \ ; 1 0 00071155  
+hitaimmin r 1 0 1 0 00094105  
+hiton r 1 1 ; 1 0 00027331  
+hitonmoisen r 1 0 1 0 00449798  
+hiukan r 2 0 2 0 00039747 00036939  
+hivelevästi r 1 0 1 0 00479716  
+hoikasti r 1 1 \ 1 0 00483306  
+hoippuen r 1 0 1 0 00187515  
+hoitamattomasti r 1 0 1 0 00475870  
+holhoavasti r 2 1 \ 2 0 00442331 00314486  
+holtittomasti r 1 0 1 0 00176810  
+homeostaattisesti r 1 1 \ 1 0 00153883  
+homssuisesti r 1 0 1 0 00344234  
+horjahtamatta r 1 1 ! 1 0 00187805  
+horjuen r 1 1 ! 1 0 00187515  
+horjumatta r 1 0 1 0 00227648  
+horjumattomasti r 2 1 \ 2 0 00392247 00055055  
+houkuttelevasti r 3 1 \ 3 0 00472739 00308680 00210488  
+housut_nilkoissa r 1 0 1 0 00477575  
+huikean r 1 0 1 0 00521389  
+huikentelevasti r 1 0 1 0 00368913  
+huimapäisesti r 1 0 1 0 00326746  
+huipputyylikkäästi r 1 0 1 0 00326985  
+hujan_hajan r 1 0 1 0 00274648  
+hullun_lailla r 3 2 \ ; 3 0 00529558 00181676 00088180  
+hullun_lailla_kiintyneesti r 1 0 1 0 00517559  
+hulluna r 1 1 \ 1 0 00188363  
+hullusti r 2 1 \ 2 0 00292976 00088180  
+hulvattomasti r 1 1 \ 1 0 00409529  
+humisten r 1 1 \ 1 0 00536613  
+huokeasti r 1 0 1 0 00356510  
+huolehtivaisesti r 1 0 1 0 00311979  
+huolella r 1 0 1 0 00092251  
+huolellisesti r 4 2 ! \ 4 0 00201801 00194247 00166186 00092251  
+huolestuneena r 1 0 1 0 00200348  
+huolestuneesti r 1 1 \ 1 0 00486242  
+huolestuttavan r 3 1 \ 3 0 00342661 00340924 00006047  
+huolettoman_itsevarmasti r 1 0 1 0 00431805  
+huolettomasti r 3 2 \ ; 3 0 00376617 00237107 00160058  
+huolimatta r 3 1 ; 3 0 00127922 00127696 00029871  
+huolimatta_siitä\,_että r 1 0 1 0 00019549  
+huolimattomasti r 3 2 \ ; 3 0 00483695 00376617 00299721  
+huolissaan r 2 1 \ 2 0 00522839 00200348  
+huolitellusti r 1 0 1 0 00007414  
+huolta_aiheuttaen r 1 1 \ 1 0 00522749  
+huomaamatta r 1 1 ! 1 0 00406253  
+huomaamattomasti r 4 2 ! \ 4 0 00437444 00403570 00394718 00388919  
+huomaavaisesti r 2 1 ! 2 0 00248083 00232590  
+huomattavan r 2 0 2 0 00479474 00115788  
+huomattavasti r 7 2 ! \ 7 0 00536048 00453392 00389166 00223531 00015394 00007147 00006719  
+huomattavissa_määrin r 1 0 1 0 00350573  
+huomenna r 1 0 1 0 00505037  
+huominen r 1 0 1 0 00505037  
+huomionarvoinen r 1 0 1 0 00234547  
+huomiota_herättämättömästi r 1 1 ! 1 0 00396307  
+huomiota_herättävä r 1 0 1 0 00473500  
+huomiota_herättävästi r 2 2 ! \ 2 0 00437333 00394456  
+huonoimmin r 1 0 1 0 00018718  
+huonolla_käsialalla r 1 0 1 0 00386009  
+huonomaineisesti r 1 2 ! \ 1 0 00341041  
+huonommin r 1 1 ; 1 0 00018550  
+huonosti r 10 3 ! \ ; 10 0 00344234 00229177 00018369 00018020 00015869 00014213 00013194 00012398 00011095 00010837  
+huonovointisesti r 1 0 1 0 00461891  
+hupaisasti r 1 1 \ 1 0 00196909  
+hupsusti r 1 0 1 0 00326339  
+hurjan r 1 1 ; 1 0 00059602  
+hurjan_hauskasti r 1 1 \ 1 0 00409529  
+hurjasti r 2 1 \ 2 0 00262548 00114434  
+hurmaavasti r 5 1 \ 5 0 00464131 00301327 00285205 00253489 00253429  
+hurmioituneesti r 1 0 1 0 00347214  
+hurskastelevasti r 1 0 1 0 00470680  
+hutiloivasti r 1 0 1 0 00482564  
+huumorittomasti r 1 2 ! \ 1 0 00383311  
+huvittavasti r 2 2 ! \ 2 0 00383138 00101795  
+hydraulisesti r 1 1 \ 1 0 00383745  
+hygieenisesti r 1 2 ! \ 1 0 00383927  
+hymyilemättä r 1 2 ! \ 1 0 00484333  
+hymyilevästi r 1 1 ! 1 0 00484172  
+hyperbolisesti r 1 1 \ 1 0 00204041  
+hypnoosin_avulla r 1 1 \ 1 0 00539931  
+hypotalamuksen r 1 1 \ 1 0 00101451  
+hypoteettisesti r 1 1 \ 1 0 00183080  
+hysteerisesti r 1 1 \ 1 0 00384227  
+hyveellisesti r 2 1 \ 2 0 00388102 00306263  
+hyvin r 17 2 ! ; 17 0 00227987 00199481 00109523 00097127 00096911 00062386 00061460 00057324 00050221 00034970 00016045 00014772 00014624 00014426 00013725 00013018 00011952  
+hyvin_arvosanoin r 1 1 \ 1 0 00313634  
+hyvin_hiljaa r 1 0 1 0 00366431  
+hyvin_mielin r 1 0 1 0 00253195  
+hyvin_nälkäisesti r 1 0 1 0 00383585  
+hyvin_paljon r 1 0 1 0 00064149  
+hyvin_pian r 1 0 1 0 00037726  
+hyvin_todennäköisesti r 1 0 1 0 00149494  
+hyvin_vähän r 1 0 1 0 00107922  
+hyvinkin r 1 0 1 0 00013471  
+hyvissä_ajoin r 1 0 1 0 00108645  
+hyvä_on r 3 1 ; 3 0 00057324 00057324 00016679  
+hyväenteisesti r 1 0 1 0 00458168  
+hyväksyen r 1 2 ! \ 1 0 00281508  
+hyväksyvästi r 1 2 ! \ 1 0 00281508  
+hyvällä r 1 0 1 0 00282177  
+hyvämaineisesti r 1 2 ! \ 1 0 00341146  
+hyvänlaatuisesti r 1 1 \ 1 0 00300918  
+hyväntahtoisesti r 2 2 ! \ 2 0 00419007 00004542  
+hyväntuulisesti r 1 0 1 0 00325357  
+hyväuskoisesti r 1 1 ! 1 0 00319044  
+hyvää r 1 1 ! 1 0 00014050  
+hyvää_tarkoittaen r 1 2 ! \ 1 0 00419007  
+hyödyllisesti r 1 1 ! 1 0 00517299  
+hyödyttömästi r 1 1 \ 1 0 00034200  
+hyökkäävästi r 5 2 ! \ 5 0 00507538 00507396 00329223 00259368 00054049  
+hyönteismyrkyn_avulla r 1 1 \ 1 0 00067293  
+hädin_tuskin r 3 0 3 0 00244268 00003270 00002706  
+häijyllä_tavalla r 1 0 1 0 00302947  
+häijysti r 4 1 \ 4 0 00451298 00331815 00302947 00289302  
+häikäilemättömästi r 1 1 \ 1 0 00515113  
+häikäisevästi r 1 1 \ 1 0 00372822  
+häiritsevästi r 1 0 1 0 00090100  
+häkeltynyt r 1 0 1 0 00082106  
+hämillään r 1 0 1 0 00444950  
+hämmentyneesti r 1 1 \ 1 0 00209421  
+hämmentynyt r 1 0 1 0 00082106  
+hämmentävän r 1 0 1 0 00224417  
+hämmentävästi r 2 0 2 0 00224417 00089317  
+hämmästyneesti r 1 1 \ 1 0 00497670  
+hämmästyttävän r 2 1 \ 2 0 00491358 00228639  
+hämmästyttävästi r 2 1 \ 2 0 00228639 00208466  
+hämmästyttävää_kyllä r 1 1 \ 1 0 00228639  
+hämäräperäisesti r 1 1 \ 1 0 00462025  
+hämärästi r 6 1 \ 6 0 00429304 00284537 00249081 00227391 00227229 00076290  
+häpeissään r 1 2 ! \ 1 0 00286327  
+häpeällisen r 1 1 \ 1 0 00335938  
+häpeämättömästi r 3 2 ! \ 3 0 00271911 00256049 00224781  
+härkäpäisesti r 1 0 1 0 00213477  
+hätiköidysti r 3 2 \ ; 3 0 00378333 00299721 00221357  
+häveliään r 1 0 1 0 00321949  
+häveliäästi r 1 0 1 0 00314256  
+hävettävän r 1 0 1 0 00335938  
+häviävän r 1 0 1 0 00527906  
+häviölle r 1 0 1 0 00512206  
+häviöllä r 1 0 1 0 00238897  
+hävyttömän r 1 0 1 0 00314111  
+hävyttömästi r 4 2 ! \ 4 0 00389972 00306648 00224781 00083552  
+hölmösti r 1 0 1 0 00345322  
+höppänästi r 1 0 1 0 00326339  
+ib. r 1 0 1 0 00274791  
+ibidem r 1 0 1 0 00274791  
+id_est r 1 0 1 0 00206161  
+identtisesti r 1 1 \ 1 0 00384574  
+ideografisesti r 1 1 \ 1 0 00133848  
+ideologisesti r 1 0 1 0 00384851  
+idiomaattisesti r 1 1 \ 1 0 00384960  
+idioottimaisesti r 1 0 1 0 00385082  
+idyllisesti r 1 1 \ 1 0 00133965  
+idästä r 1 1 ! 1 0 00346272  
+ihaillen r 1 0 1 0 00060630  
+ihailtavan r 1 0 1 0 00234547  
+ihailtavasti r 1 0 1 0 00285205  
+ihan r 4 0 4 0 00171018 00038953 00020364 00020143  
+ihan_hyvin r 1 1 ; 1 0 00016679  
+ihanan r 1 0 1 0 00371476  
+ihanasti r 4 2 \ ; 4 0 00497952 00296076 00258724 00245083  
+ihanko_totta r 1 1 ; 1 0 00040940  
+ihanteellisesti r 2 1 \ 2 0 00438550 00210022  
+ihastuttavasti r 4 2 ! \ 4 0 00525001 00321792 00301327 00258724  
+ihmeellisen r 1 1 ; 1 0 00197419  
+ihmeellisesti r 1 0 1 0 00426946  
+ihmeessä r 1 0 1 0 00534360  
+ihmettelevästi r 1 1 \ 1 0 00381208  
+ihmisenä r 1 0 1 0 00142389  
+ihmisystävällisesti r 1 0 1 0 00446162  
+ihonalaisesti r 1 1 \ 1 0 00146690  
+ihonsisäisesti r 1 1 \ 1 0 00101592  
+ikimuistoisesti r 1 2 ! \ 1 0 00423847  
+ikinä r 3 1 ! 3 0 00158151 00022958 00022543  
+ikuisesti r 9 2 \ ; 9 0 00354954 00305261 00244545 00218363 00096536 00095408 00095027 00094846 00022098  
+ikuisiksi_ajoiksi r 1 0 1 0 00095408  
+ikuista_unta_nukkuva r 1 0 1 0 00296520  
+ikuisuuden r 1 1 ; 1 0 00096536  
+ikävystyttävästi r 2 1 \ 2 0 00403054 00230694  
+ikävä_kyllä r 1 1 ! 1 0 00046309  
+ikävästi r 2 2 ! \ 2 0 00344689 00259010  
+ikään_kuin r 1 0 1 0 00165134  
+ikään_kuin_tyhjästä r 1 0 1 0 00184682  
+ilahduttavan r 1 0 1 0 00197711  
+iljettävästi r 1 0 1 0 00332061  
+ilkeällä_tavalla r 1 0 1 0 00302947  
+ilkeämielisesti r 1 0 1 0 00451298  
+ilkeästi r 9 2 ! \ 9 0 00475476 00431326 00422277 00419435 00419199 00302947 00289302 00215601 00156165  
+ilkikurisesti r 3 0 3 0 00390554 00295345 00018020  
+ilmaiseksi r 1 0 1 0 00277138  
+ilman_ennakkotietoa r 1 0 1 0 00069839  
+ilman_kaunopuheisuutta r 1 1 ! 1 0 00350226  
+ilman_muuta r 6 1 ; 6 0 00432641 00283416 00156268 00058972 00057568 00040482  
+ilman_sanoja r 1 0 1 0 00138890  
+ilman_satulaa r 1 0 1 0 00300243  
+ilman_toivoa r 1 0 1 0 00284176  
+ilmassa r 2 0 2 0 00303471 00180178  
+ilmasta_käsin r 1 1 \ 1 0 00217185  
+ilmastoltaan r 1 1 \ 1 0 00308429  
+ilmatiiviisti r 1 0 1 0 00379953  
+ilmavasti r 1 0 1 0 00364083  
+ilmeettömästi r 3 2 ! \ 3 0 00357324 00301796 00232205  
+ilmeikkäästi r 2 1 ! 2 0 00357152 00288478  
+ilmeisen r 1 2 \ ; 1 0 00042861  
+ilmeisesti r 4 2 \ ; 4 0 00166919 00131172 00043482 00042861  
+ilmiselvästi r 3 1 ; 3 0 00473434 00320636 00042861  
+ilmiömäisen r 1 1 \ 1 0 00446035  
+iloisesti r 8 3 ! \ ; 8 0 00415543 00321680 00303327 00291313 00247284 00235017 00176093 00054464  
+ilottomasti r 3 2 ! \ 3 0 00371006 00247393 00116854  
+iltaisin r 1 0 1 0 00434560  
+imartelevasti r 1 0 1 0 00184896  
+imelästi r 1 1 \ 1 0 00420633  
+immunologisesti r 1 1 \ 1 0 00540015  
+improvisoiden r 1 0 1 0 00096115  
+impulsiivisesti r 1 1 \ 1 0 00390222  
+individualistisesti r 1 1 \ 1 0 00063509  
+informatiivisesti r 1 2 ! \ 1 0 00397960  
+inhimillisesti r 2 2 ! \ 2 0 00382844 00154110  
+inhoten r 1 0 1 0 00336115  
+inhottavan r 1 1 \ 1 0 00336253  
+inhottavasti r 4 0 4 0 00519103 00465625 00332061 00329455  
+innoissaan r 1 1 \ 1 0 00523826  
+innoittavasti r 1 1 \ 1 0 00403253  
+innoittuneesti r 1 1 \ 1 0 00347214  
+innokkaasti r 6 1 \ 6 0 00523826 00523650 00481430 00370621 00287101 00215299  
+innostuneesti r 3 2 ! \ 3 0 00215299 00203282 00166431  
+innottomasti r 5 1 \ 5 0 00416681 00414185 00413648 00409880 00375920  
+inspiroivasti r 1 1 \ 1 0 00403253  
+institutionaalisesti r 1 0 1 0 00154631  
+integroivasti r 1 0 1 0 00526963  
+intensiivisesti r 1 0 1 0 00150425  
+intohimoisesti r 3 1 \ 3 0 00523650 00225173 00038252  
+intoilevasti r 1 0 1 0 00375829  
+intransitiivisesti r 1 2 ! \ 1 0 00405352  
+ironisella_otteella r 1 0 1 0 00299938  
+ironisesti r 4 1 \ 4 0 00406777 00406664 00241004 00093045  
+irstaasti r 2 1 \ 2 0 00526595 00413321  
+irvokkaasti r 1 1 \ 1 0 00374349  
+isosti r 1 1 ! 1 0 00242032  
+isotrooppisesti r 1 1 \ 1 0 00012934  
+isottelevasti r 1 0 1 0 00346680  
+isällisesti r 1 1 \ 1 0 00442331  
+isänmaallisesti r 1 2 ! \ 1 0 00442789  
+itarasti r 1 0 1 0 00492533  
+itse r 1 0 1 0 00142482  
+itse_ansaitusti r 1 0 1 0 00239373  
+itse_asiassa r 8 0 8 0 00275298 00243518 00161716 00161053 00160793 00079209 00065338 00065051  
+itse_teossa r 1 0 1 0 00135362  
+itseensä_tyytyväisenä r 1 0 1 0 00310265  
+itsekkäästi r 1 2 ! \ 1 0 00349096  
+itsekseen r 1 0 1 0 00170700  
+itsenäisesti r 1 1 \ 1 0 00194825  
+itsepintaisesti r 3 1 \ 3 0 00445359 00301051 00154522  
+itsepäisesti r 1 1 \ 1 0 00213477  
+itserakkaasti r 1 0 1 0 00311684  
+itseriittoisesti r 1 0 1 0 00484488  
+itsessään r 1 0 1 0 00275298  
+itsestään r 1 0 1 0 00206489  
+itsestään_selvästi r 1 0 1 0 00131172  
+itsevaltaisesti r 3 1 \ 3 0 00380923 00333823 00217646  
+itsevarmasti r 1 2 ! \ 1 0 00286464  
+itää_kohti r 1 0 1 0 00345787  
+itään r 1 0 1 0 00345787  
+itään_päin r 2 0 2 0 00346179 00345787  
+ivallisesti r 3 1 \ 3 0 00485192 00323499 00304467  
+j.a.a. r 1 0 1 0 00002016  
+ja_muut r 2 0 2 0 00205773 00205658  
+ja_niin_edelleen r 1 0 1 0 00111834  
+ja_vielä_vähän_päälle r 1 0 1 0 00164744  
+ja_ylikin r 1 0 1 0 00164744  
+jaa r 1 0 1 0 00002016  
+jaetusti r 1 1 \ 1 0 00342005  
+jaksoittain r 1 0 1 0 00152824  
+jalan r 1 1 \ 1 0 00255638  
+jalat_edellä r 1 0 1 0 00262447  
+jalat_levällään r 1 0 1 0 00297637  
+jalat_molemmin_puolin r 1 0 1 0 00297520  
+jalat_ristissä r 1 0 1 0 00314352  
+jalkaisin r 1 1 \ 1 0 00255638  
+jalkoihin r 1 0 1 0 00262038  
+jalkojen_alla r 1 0 1 0 00262038  
+jalomielisesti r 2 1 \ 2 0 00434774 00418491  
+janoisesti r 1 1 \ 1 0 00503949  
+jatkuvasti r 8 1 \ 8 0 00514228 00305261 00251402 00226045 00206248 00152429 00096410 00022098  
+jhk_asti r 1 0 1 0 00164335  
+jhk_saakka r 1 0 1 0 00164335  
+jkr. r 1 0 1 0 00001837  
+jne. r 1 0 1 0 00111834  
+jnk_huipulla r 1 0 1 0 00297833  
+jnk_päälle r 1 0 1 0 00297833  
+jnk_päällä r 1 0 1 0 00297833  
+jnk_taakse r 1 0 1 0 00049709  
+jnk_takana r 1 0 1 0 00049709  
+jnk_tasalla r 1 0 1 0 00094747  
+jnk_ulkopuolella r 2 0 2 0 00049709 00049454  
+jnk_ulkopuolelle r 1 0 1 0 00049709  
+jnk_ulottumattomissa r 1 0 1 0 00049454  
+jnk_yli r 2 0 2 0 00049454 00049345  
+jnk_yläpuolella r 1 0 1 0 00049454  
+jo r 1 0 1 0 00034874  
+jo_kauan r 1 0 1 0 00173015  
+johdonmukaisesti r 2 2 ! \ 2 0 00308798 00129768  
+johdossa r 1 0 1 0 00073267  
+johonkin_tapaan r 1 0 1 0 00028489  
+johtaen r 1 0 1 0 00419518  
+joka_ilta r 1 0 1 0 00434560  
+joka_kerta r 1 0 1 0 00022264  
+joka_paikassa r 1 1 ; 1 0 00028045  
+joka_paikasta r 2 0 2 0 00212655 00028399  
+joka_puolella r 1 1 ; 1 0 00028045  
+joka_päivä r 1 0 1 0 00169631  
+joka_suuntaan r 1 0 1 0 00176434  
+joka_tapauksessa r 7 1 ; 7 0 00163419 00163234 00127696 00112943 00031594 00029679 00028965  
+joka_toinen_kuukausi r 1 1 \ 1 0 00273671  
+joka_toinen_viikko r 1 1 \ 1 0 00273309  
+joka_toinen_vuosi r 1 1 \ 1 0 00301541  
+joka_toisessa_kuussa r 1 1 \ 1 0 00273671  
+joka_tunti r 1 1 \ 1 0 00382530  
+joka_viikko r 1 0 1 0 00088942  
+joka_vuosi r 2 0 2 0 00268112 00089049  
+jokaiselle r 1 0 1 0 00256587  
+jokaiselta r 1 0 1 0 00256587  
+jokavuotisesti r 1 0 1 0 00268112  
+jokseenkin r 3 0 3 0 00038953 00024774 00019863  
+jollain_lailla r 1 0 1 0 00028489  
+jollakin_tavalla r 2 0 2 0 00163111 00028789  
+jolleenkin r 1 0 1 0 00028489  
+jonakin_päivänä r 1 0 1 0 00203892  
+jonkin_matkan_päässä_rannasta r 1 1 ! 1 0 00151138  
+jonkin_verran r 1 0 1 0 00039747  
+jonkun_kustannuksella r 1 0 1 0 00128606  
+jonkun_tiellä r 1 0 1 0 00045225  
+jonossa r 1 0 1 0 00178623  
+joo r 1 0 1 0 00523428  
+jopa r 2 0 2 0 00019725 00018947  
+joskus r 4 0 4 0 00203892 00023877 00023703 00023198  
+jospa r 1 0 1 0 00322579  
+jossain_määrin r 1 0 1 0 00039747  
+jossakin r 1 1 ; 1 0 00027872  
+jossakin_päin r 1 1 ; 1 0 00027872  
+jostain_syystä r 1 0 1 0 00250094  
+jotakuinkin r 2 0 2 0 00038953 00007569  
+joten r 2 0 2 0 00046974 00046573  
+jotenkin r 3 0 3 0 00029679 00028789 00028489  
+jotenkuten r 2 0 2 0 00163111 00028489  
+joteskin r 1 0 1 0 00028489  
+jotta r 1 0 1 0 00127496  
+journalistisesti r 1 1 \ 1 0 00408769  
+joustamattomasti r 1 0 1 0 00190729  
+joustavasti r 1 2 ! \ 1 0 00363532  
+joutavasti r 1 0 1 0 00507017  
+joutilaasti r 1 1 \ 1 0 00385297  
+joutuin r 1 0 1 0 00093150  
+joutuisasti r 1 0 1 0 00113645  
+joviaalisti r 1 1 \ 1 0 00408907  
+jstak_jäljessä r 1 0 1 0 00239098  
+jstak_myöhässä r 1 0 1 0 00239098  
+jtak_jäljessä r 1 0 1 0 00238897  
+juhlallisesti r 2 1 \ 2 0 00236963 00204523  
+julkeasti r 5 1 \ 5 0 00515113 00455392 00389972 00381414 00306648  
+julkisesti r 4 2 ! \ 4 0 00298494 00175586 00174752 00057812  
+julmasti r 7 2 ! \ 7 0 00377240 00302947 00300086 00289883 00248968 00177785 00156165  
+jumala_tietää_miten r 1 0 1 0 00204766  
+jumalattoman r 1 1 ; 1 0 00027331  
+jumalattomasti r 1 2 ! \ 1 0 00468632  
+junassa r 1 0 1 0 00267258  
+juohevasti r 2 0 2 0 00483543 00225715  
+juoksevasti r 1 0 1 0 00314662  
+juonikkaasti r 2 0 2 0 00505469 00316235  
+juopuneesti r 2 1 \ 2 0 00487392 00213762  
+juridisesti r 2 1 \ 2 0 00540495 00154727  
+juuri r 6 0 6 0 00219757 00171018 00121767 00036548 00011861 00003111  
+juuri_ja_juuri r 1 0 1 0 00002706  
+juuri_kun r 1 0 1 0 00019385  
+juuri_nyt r 1 0 1 0 00036548  
+juuri_oikeaan_aikaan r 1 0 1 0 00180638  
+juuri_silloin r 1 0 1 0 00113540  
+juuri_äsken r 2 0 2 0 00053777 00036548  
+jykevästi r 3 1 \ 3 0 00527102 00469024 00403416  
+jyrkästi r 4 1 \ 4 0 00529292 00491783 00491147 00454044  
+jytisten r 1 0 1 0 00482266  
+jäljempänä r 4 0 4 0 00511736 00493534 00379307 00277221  
+jäljessä r 2 0 2 0 00239098 00238604  
+jäljittelemättömästi r 1 1 \ 1 0 00399122  
+jälkeen r 2 0 2 0 00238237 00066223  
+jälkeen_ajanlaskun_alun r 1 0 1 0 00002016  
+jälkeen_kristuksen r 1 0 1 0 00001837  
+jälkeenpäin r 1 0 1 0 00066223  
+jälkeenpäin_ajatellen r 1 0 1 0 00467653  
+jälkeensä r 1 0 1 0 00238237  
+jälkikäteen r 1 0 1 0 00066223  
+jälkivaatimuksella r 1 0 1 0 00272416  
+jälleen r 1 0 1 0 00043953  
+jälleen_kerran r 1 0 1 0 00043953  
+jälleen_uudelleen r 1 0 1 0 00043953  
+jännittävän r 1 2 ! \ 1 0 00355066  
+jännittävästi r 1 0 1 0 00253807  
+järjenvastaisesti r 1 2 ! \ 1 0 00198943  
+järjestelmällisesti r 2 2 ! \ 2 0 00187124 00129768  
+järjettömän r 3 1 \ 3 0 00451156 00411468 00188111  
+järjettömästi r 4 2 ! \ 4 0 00425903 00231882 00216381 00188541  
+järkevästi r 6 1 ! 6 0 00409030 00392779 00231629 00216848 00216508 00216075  
+järkkymättä r 1 0 1 0 00055294  
+järkkymättömän r 1 0 1 0 00515568  
+järkkymättömästi r 1 1 \ 1 0 00190729  
+järkyttävän r 2 0 2 0 00477311 00477210  
+järkyttävästi r 1 0 1 0 00061251  
+järkähtämättömästi r 2 2 ! \ 2 0 00363674 00190729  
+jäykkänä r 2 0 2 0 00492356 00200536  
+jäykästi r 7 2 ! \ 7 0 00456157 00236963 00209106 00209106 00208933 00200536 00187028  
+jääräpäisesti r 3 1 \ 3 0 00445359 00213675 00213477  
+jäätelöllä r 1 0 1 0 00524099  
+jäätelön_kanssa r 1 0 1 0 00524099  
+jäätelön_kera r 1 0 1 0 00524099  
+jäätikön r 1 1 \ 1 0 00153328  
+jäätävästi r 2 0 2 0 00384362 00368535  
+kaakko- r 1 0 1 0 00487451  
+kaakkoon r 1 0 1 0 00487451  
+kaakkoon_päin r 1 1 \ 1 0 00538404  
+kaakossa r 1 0 1 0 00487451  
+kaamean r 1 0 1 0 00347873  
+kaameasti r 1 0 1 0 00375352  
+kaavamaisesti r 2 1 \ 2 0 00491900 00471270  
+kaavio- r 1 1 \ 1 0 00333213  
+kaaviomaisesti r 1 1 \ 1 0 00333213  
+kadehdittavan r 1 1 \ 1 0 00004076  
+kadehtien r 1 0 1 0 00325622  
+kahdella_tavalla r 1 0 1 0 00091271  
+kahden_kesken r 3 0 3 0 00174946 00048991 00048280  
+kahdenkeskisesti r 2 2 ! \ 2 0 00271255 00174946  
+kahdenvälisesti r 1 1 \ 1 0 00271255  
+kahdesti r 1 0 1 0 00070940  
+kahdesti_viikossa r 1 1 \ 1 0 00273427  
+kahdesti_vuodessa r 1 0 1 0 00274055  
+kahjusti r 1 0 1 0 00326339  
+kaihoisasti r 1 0 1 0 00444032  
+kaihtelematta r 1 0 1 0 00055866  
+kaiken_aikaa r 1 0 1 0 00073976  
+kaiken_kaikkiaan r 1 0 1 0 00163976  
+kaiken_lisäksi r 2 0 2 0 00050052 00031947  
+kaiken_todennäköisyyden_mukaan r 1 0 1 0 00149494  
+kaikesta_huolimatta r 1 0 1 0 00029871  
+kaiketi r 1 0 1 0 00149494  
+kaikin_mokomin r 1 2 ! ; 1 0 00061893  
+kaikin_tavoin r 1 0 1 0 00159387  
+kaikin_voimin r 2 0 2 0 00294212 00093605  
+kaikkein_vähiten r 1 0 1 0 00120969  
+kaikki_mukaan_lukien r 1 0 1 0 00069249  
+kaikki_yhdessä r 1 0 1 0 00487261  
+kaikki_yhteensä r 1 0 1 0 00069249  
+kaikki_yhtä_aikaa r 1 0 1 0 00487261  
+kaikkia_koskeva r 1 0 1 0 00163003  
+kaikkiaan r 1 1 ; 1 0 00008717  
+kaikkialla r 6 1 ; 6 0 00243150 00212655 00209925 00110273 00028045 00027544  
+kaikkialle r 2 1 ; 2 0 00028045 00027544  
+kaikkialta r 2 0 2 0 00212655 00028399  
+kaikkien_ajatuksissa r 1 0 1 0 00180178  
+kaikuvasti r 1 0 1 0 00469792  
+kaitselmuksen r 1 0 1 0 00458731  
+kaivaten r 1 0 1 0 00413754  
+kaivertamalla r 1 1 \ 1 0 00067103  
+kaksi_kertaa r 1 0 1 0 00070940  
+kaksi_kertaa_kuukaudessa r 1 1 \ 1 0 00273897  
+kaksi_kertaa_vuodessa r 1 0 1 0 00301661  
+kaksijakoisesti r 1 1 \ 1 0 00089933  
+kaksikanavaisesti r 1 2 ! \ 1 0 00222954  
+kaksikielisesti r 1 1 \ 1 0 00139625  
+kaksikylkisesti r 1 1 \ 1 0 00271047  
+kaksimielisesti r 1 1 \ 1 0 00300470  
+kaksin r 1 0 1 0 00343785  
+kaksinkerroin r 1 0 1 0 00343867  
+kaksinkertaisesti r 3 1 \ 3 0 00508112 00091271 00090696  
+kaksiselitteisesti r 1 1 \ 1 0 00236043  
+kaksisivuisesti r 1 1 \ 1 0 00271047  
+kallellaan r 4 0 4 0 00482150 00478882 00296257 00293185  
+kalliiksi r 1 0 1 0 00084302  
+kalliisti r 2 2 ! \ 2 0 00356342 00084302  
+kallistuneesti r 1 0 1 0 00482061  
+kaltoin r 2 0 2 0 00018369 00018020  
+kamalasti r 1 1 \ 1 0 00059745  
+kameroiden_edessä r 1 0 1 0 00540696  
+kammottavalla_tavalla r 1 0 1 0 00380208  
+kammottavasti r 5 1 \ 5 0 00510003 00375352 00374349 00368312 00334630  
+kankeasti r 1 1 \ 1 0 00209106  
+kannattamattomasti r 1 1 \ 1 0 00457777  
+kannattavasti r 2 2 ! \ 2 0 00369223 00014772  
+kannustavasti r 1 2 ! \ 1 0 00350879  
+kanonisesti r 1 1 \ 1 0 00539020  
+kansainvälisesti r 1 1 \ 1 0 00121401  
+kansallisesti r 2 1 \ 2 0 00431479 00146254  
+kansan_keskuudessa r 1 1 \ 1 0 00203133  
+kansien_välissä r 1 0 1 0 00524267  
+kanssa r 1 0 1 0 00051501  
+kaoottisen r 1 1 \ 1 0 00306018  
+kaoottisesti r 1 0 1 0 00176547  
+kapinoivasti r 1 1 \ 1 0 00213307  
+kappaleiksi r 1 0 1 0 00195188  
+kappaleittain r 1 0 1 0 00168981  
+karille r 1 0 1 0 00290455  
+karkea- r 1 2 ! \ 1 0 00205285  
+karkeasti r 7 2 ! \ 7 0 00511338 00484691 00360132 00295759 00213877 00174399 00006427  
+karmeasti r 1 1 \ 1 0 00375352  
+karsaasti r 1 0 1 0 00292663  
+karskisti r 1 1 ; 1 0 00377442  
+kartiomaisesti r 1 1 \ 1 0 00312740  
+karusti r 2 1 \ 2 0 00491046 00295759  
+kasvavassa_määrin r 1 0 1 0 00064854  
+kasvoihin_liittyen r 1 1 \ 1 0 00146789  
+kasvokkain r 2 0 2 0 00048461 00048069  
+kasvotusten r 3 0 3 0 00048580 00048461 00048069  
+katalasti r 2 1 \ 2 0 00422109 00379154  
+katalyyttisesti r 1 1 \ 1 0 00083992  
+katastrofaalisen r 1 1 \ 1 0 00143289  
+kateellisesti r 1 1 \ 1 0 00325622  
+katkerasti r 3 1 \ 3 0 00465986 00057160 00057020  
+katkonaisesti r 2 0 2 0 00362949 00228459  
+katsoa_karsaasti r 1 0 1 0 00292663  
+katsomatta r 1 0 1 0 00187241  
+katumattomasti r 1 2 ! \ 1 0 00388556  
+katuvaisesti r 2 2 ! \ 2 0 00388700 00233759  
+katuvasti r 1 1 \ 1 0 00233759  
+kauan r 1 0 1 0 00179004  
+kauan_sitten r 3 1 ; 3 0 00410339 00024449 00024449  
+kauas r 4 0 4 0 00179310 00109389 00109180 00108992  
+kaudaali- r 1 1 \ 1 0 00531581  
+kaudaalisesti r 1 1 \ 1 0 00531581  
+kauemmaksi r 1 0 1 0 00032225  
+kauemmas r 3 0 3 0 00049709 00032609 00032609  
+kauemmin r 1 0 1 0 00417117  
+kauempana r 3 0 3 0 00032609 00032609 00032225  
+kauhealla_tavalla r 1 0 1 0 00531852  
+kauheasti r 2 1 \ 2 0 00061251 00059745  
+kauhistavan r 1 1 \ 1 0 00280969  
+kauhistuttavan r 1 1 \ 1 0 00280969  
+kauhistuttavasti r 2 1 \ 2 0 00264707 00059745  
+kauimmas r 1 0 1 0 00033558  
+kauimmin r 1 0 1 0 00417225  
+kauimpana r 2 0 2 0 00033807 00033807  
+kaukaa r 2 0 2 0 00109180 00108992  
+kaukana r 5 0 5 0 00251971 00109389 00109180 00108992 00044891  
+kaukana_aiheesta r 1 0 1 0 00282545  
+kaukokatseisesti r 1 0 1 0 00454847  
+kauniisti r 1 1 \ 1 0 00258724  
+kaunistelematta r 1 0 1 0 00299299  
+kaunistelevasti r 2 0 2 0 00353023 00254981  
+kaunopuheisesti r 2 2 ! \ 2 0 00350065 00288478  
+kaupallisesti r 1 1 \ 1 0 00084146  
+kaupan r 1 1 \ 1 0 00084146  
+kaupanpäällisiksi r 2 0 2 0 00171982 00087611  
+kaupungin_poikki r 1 1 \ 1 0 00316126  
+kausaalisesti r 1 1 \ 1 0 00531707  
+kausiluontoisesti r 1 1 \ 1 0 00471892  
+kavalasti r 3 1 \ 3 0 00444550 00358093 00316235  
+kehityksen_kannalta r 1 1 \ 1 0 00324336  
+kehitys- r 1 1 \ 1 0 00324336  
+kehitysopillisesti r 1 1 \ 1 0 00353491  
+kehnosti r 4 1 ! 4 0 00229177 00018020 00015869 00013194  
+keilamaisesti r 1 1 \ 1 0 00312740  
+keimailevasti r 1 1 \ 1 0 00325476  
+keino- r 1 2 ! \ 1 0 00151814  
+keinoja_kaihtamatta r 1 0 1 0 00168286  
+keinolla_millä_hyvänsä r 1 0 1 0 00168286  
+keinotekoisesti r 3 2 ! \ 3 0 00514399 00151814 00042331  
+keinumatta r 1 0 1 0 00515425  
+keisarillisesti r 1 1 \ 1 0 00154202  
+kekseliäästi r 2 1 \ 2 0 00466694 00405888  
+kello r 1 0 1 0 00211701  
+kellon_ympäri r 1 0 1 0 00164904  
+kellonsuuntaisesti r 1 1 ! 1 0 00272937  
+kelvollisesti r 1 1 ! 1 0 00150527  
+kemiallisesti r 2 1 \ 2 0 00139431 00139245  
+kemian- r 1 1 \ 1 0 00139245  
+kenties r 1 0 1 0 00322579  
+kenttää_alas r 1 1 ; 1 0 00105095  
+kentälle r 1 0 1 0 00282679  
+kentällä r 1 0 1 0 00282679  
+kernaammin r 1 0 1 0 00124766  
+kerralla r 1 0 1 0 00165689  
+kerrallaan r 1 0 1 0 00165689  
+kerran r 2 0 2 0 00128164 00128076  
+kerran_vielä r 2 0 2 0 00203892 00043953  
+kerrassaan r 1 0 1 0 00020541  
+kerrosta_alempana r 1 1 ! 1 0 00102015  
+kerta_kaikkiaan r 5 1 ; 5 0 00263458 00100540 00040482 00020541 00009637  
+kertakaikkisen r 1 0 1 0 00009637  
+keskeisesti r 1 2 ! \ 1 0 00123898  
+keskellä r 1 0 1 0 00278415  
+kesken_lauseen r 1 0 1 0 00477671  
+keskilaivaan r 1 0 1 0 00294414  
+keskilaivalla r 1 0 1 0 00426183  
+keskilaivassa r 1 0 1 0 00294414  
+keskimäärin r 1 0 1 0 00182779  
+keskinäisesti r 1 0 1 0 00189487  
+keskitetysti r 1 0 1 0 00101352  
+keskittyneesti r 1 0 1 0 00480080  
+keskivaiheilla r 1 0 1 0 00426183  
+keskivaiheille r 1 0 1 0 00426183  
+keskustassa r 1 1 ! 1 0 00202303  
+kestävästi r 2 1 \ 2 0 00267844 00071794  
+kesysti r 1 0 1 0 00499374  
+kesyttömästi r 1 0 1 0 00463855  
+ketterästi r 2 1 \ 2 0 00415683 00204144  
+keulaan r 1 1 ! 1 0 00297242  
+keveästi r 1 1 \ 1 0 00415683  
+kevyesti r 7 2 ! \ 7 0 00535157 00415346 00364083 00194468 00194365 00190308 00031479  
+kevytkenkäisesti r 1 0 1 0 00413321  
+kevytmielisesti r 1 1 \ 1 0 00368913  
+kiduttavan r 1 1 \ 1 0 00280744  
+kiduttavasti r 1 1 \ 1 0 00280744  
+kiehtovasti r 1 1 \ 1 0 00301327  
+kielellisesti r 1 1 \ 1 0 00141190  
+kieliopillisesti_oikein r 1 2 ! \ 1 0 00513944  
+kieliopin_vastaisesti r 1 1 ! 1 0 00513795  
+kielitieteellisesti r 2 0 2 0 00141499 00141190  
+kielteisesti r 3 2 ! \ 3 0 00247148 00004434 00004328  
+kieltenvälisesti r 1 0 1 0 00141624  
+kiemuraisesti r 2 0 2 0 00505568 00421643  
+kiemurassa r 1 0 1 0 00293185  
+kieroon r 1 0 1 0 00293185  
+kierossa r 1 0 1 0 00293185  
+kierosti r 2 1 \ 2 0 00512908 00316235  
+kieroutuneesti r 1 0 1 0 00265183  
+kierteisesti r 1 0 1 0 00489727  
+kiertämällä r 1 0 1 0 00381634  
+kiihkeän r 1 0 1 0 00262699  
+kiihkeästi r 6 1 \ 6 0 00529558 00378683 00367825 00361866 00285744 00017523  
+kiihkottomasti r 1 0 1 0 00339473  
+kiilto- r 1 1 \ 1 0 00371815  
+kiiltäväpintaisesti r 1 1 \ 1 0 00371815  
+kiiltävästi r 3 1 \ 3 0 00482932 00371815 00083806  
+kiinnittämättä_huomiota r 1 0 1 0 00071879  
+kiinnostavasti r 1 2 ! \ 1 0 00230290  
+kiinteästi r 1 0 1 0 00363030  
+kiireellisesti r 1 1 \ 1 0 00455278  
+kiireen_vilkkaa r 1 0 1 0 00221790  
+kiireesti r 2 1 \ 2 0 00294305 00079044  
+kiireestä_kantapäähän r 1 0 1 0 00269744  
+kiireettömästi r 1 0 1 0 00113282  
+kiireisesti r 2 2 ! \ 2 0 00223409 00221357  
+kiistanalaisesti r 1 2 ! \ 1 0 00325040  
+kiistatta r 1 0 1 0 00058972  
+kiistattomasti r 4 1 \ 4 0 00462303 00397000 00330992 00040482  
+kiistämättömästi r 1 1 \ 1 0 00397000  
+kiitettävän r 1 1 \ 1 0 00234547  
+kiitettävästi r 2 1 \ 2 0 00466947 00234547  
+kiitollisena r 1 2 ! \ 1 0 00291976  
+kiitollisesti r 3 2 ! \ 3 0 00291976 00214539 00214432  
+kiittämättömästi r 1 2 ! \ 1 0 00292246  
+kiivaasti r 2 1 \ 2 0 00518444 00378683  
+kilpailevasti r 1 2 ! \ 1 0 00260238  
+kilpailuhenkisesti r 1 2 ! \ 1 0 00260238  
+kilpailunhaluisesti r 1 1 \ 1 0 00350729  
+kimakasti r 2 1 \ 2 0 00494808 00054186  
+kinesteettisesti r 1 1 \ 1 0 00212894  
+kipeästi r 1 0 1 0 00079044  
+kirjaimellisesti r 3 2 ! \ 3 0 00362383 00276802 00185141  
+kirjain_kirjaimelta r 1 0 1 0 00537983  
+kirjallisena r 1 0 1 0 00263858  
+kirkkaasti r 3 1 \ 3 0 00413927 00308077 00083806  
+kirkollisesti r 1 0 1 0 00346902  
+kirotun r 2 2 \ ; 2 0 00319944 00027331  
+kirskuvasti r 1 1 \ 1 0 00373253  
+kirurgisesti r 1 1 \ 1 0 00147801  
+kiskurimaisen r 1 1 \ 1 0 00355855  
+kitsaasti r 1 0 1 0 00492533  
+kiukkuisesti r 1 0 1 0 00484828  
+kiusallisen r 2 1 \ 2 0 00350427 00335580  
+kiusallisesti r 1 0 1 0 00540394  
+kiusoitellen r 1 0 1 0 00299938  
+kiusoittelevasti r 1 0 1 0 00500225  
+kivuliaasti r 1 1 ! 1 0 00535629  
+kivuttomasti r 1 2 ! \ 1 0 00535771  
+klassisen r 1 1 \ 1 0 00264125  
+kliinisesti r 1 1 \ 1 0 00070260  
+klikkihenkisesti r 1 1 \ 1 0 00307147  
+kodikkaasti r 2 1 \ 2 0 00208084 00201587  
+koeputkessa r 1 0 1 0 00540113  
+kognitiivisesti r 1 0 1 0 00539154  
+kohta r 1 0 1 0 00037208  
+kohtalaisen r 2 0 2 0 00038953 00020364  
+kohtalaisen_hitaasti r 1 2 \ ; 1 0 00284952  
+kohtalaisesti r 2 2 ! \ 2 0 00060094 00038953  
+kohtalokkaasti r 1 0 1 0 00335411  
+kohteliaasti r 2 2 ! \ 2 0 00495600 00234210  
+kohti r 1 0 1 0 00056283  
+kohti_etunäyttämöä r 1 2 ! ; 1 0 00283985  
+kohtisuoraan r 2 1 \ 2 0 00477005 00444810  
+kohtuudellisesti r 1 2 ! \ 1 0 00230922  
+kohtuullisen r 1 2 ! \ 1 0 00038953  
+kohtuullisesti r 4 2 ! \ 4 0 00501191 00284363 00230922 00038953  
+kohtuuttoman r 4 2 ! \ 4 0 00513565 00457917 00355855 00039441  
+kohtuuttomasti r 3 2 ! \ 3 0 00515903 00231151 00190087  
+koilliseen r 2 1 \ 2 0 00538189 00436144  
+kokeellisesti r 1 0 1 0 00092750  
+koko r 1 0 1 0 00251402  
+koko_ajan r 5 1 ! 5 0 00169631 00164335 00073976 00022098 00021003  
+koko_elämän_ajan r 1 0 1 0 00095537  
+koko_matkan r 1 0 1 0 00164335  
+koko_päivän r 1 0 1 0 00327093  
+koko_sielullaan_ja_sydämellään r 1 0 1 0 00177153  
+kokoaikaisesti r 1 1 ! 1 0 00270694  
+kokonaan r 7 1 ; 7 0 00530706 00308251 00170240 00163976 00162488 00011299 00008717  
+kokonaisuudessaan r 1 0 1 0 00163976  
+kokonaisuutena r 1 0 1 0 00169994  
+kokonaisvaltaisesti r 1 0 1 0 00177153  
+kokopäiväisesti r 1 1 ! 1 0 00270694  
+kolloidisesti r 1 1 \ 1 0 00309415  
+kolmanneksi r 1 0 1 0 00111128  
+kolmannelta_kädeltä r 1 1 \ 1 0 00063926  
+kolmasti r 1 0 1 0 00276694  
+kolme_kertaa r 1 0 1 0 00276694  
+kolmesti r 1 0 1 0 00276694  
+kolminkertaisesti r 1 0 1 0 00502413  
+komentelevasti r 1 0 1 0 00333823  
+kommensaalisesti r 1 1 \ 1 0 00260154  
+koneellisesti r 1 1 ! 1 0 00059238  
+koneessa r 1 0 1 0 00267258  
+konemaisesti r 1 0 1 0 00123077  
+konnamaisesti r 1 1 \ 1 0 00316235  
+kontallaan r 1 0 1 0 00182654  
+kontrolloimattomasti r 1 0 1 0 00511177  
+koomisen r 2 1 \ 2 0 00359382 00088696  
+koordinoidusti r 1 0 1 0 00526157  
+kopioimattomasti r 1 0 1 0 00399122  
+koppavasti r 4 1 \ 4 0 00485440 00485192 00303191 00187998  
+korahdellen r 1 1 \ 1 0 00492019  
+koreilevasti r 1 0 1 0 00363317  
+koristeellisen r 1 1 \ 1 0 00526665  
+koristeellisesti r 3 1 \ 3 0 00222543 00222442 00084942  
+koristeena r 1 0 1 0 00084942  
+koristen r 1 1 \ 1 0 00492019  
+korkea-arvoinen r 1 1 \ 1 0 00096745  
+korkealentoisesti r 1 1 \ 1 0 00418633  
+korkealla r 3 0 3 0 00525061 00524643 00380579  
+korkealle r 4 0 4 0 00525061 00524643 00380671 00380481  
+korkeammassa_asemassa_oleva r 1 0 1 0 00087224  
+korkeintaan r 1 1 ! 1 0 00112774  
+korkeuksiin r 1 0 1 0 00481253  
+korruptoituneesti r 1 1 \ 1 0 00526223  
+koruton r 1 0 1 0 00297980  
+koruttomasti r 1 0 1 0 00005390  
+korvaamattomasti r 1 1 \ 1 0 00540261  
+korvaukseksi r 1 0 1 0 00430040  
+koska_hyvänsä r 1 0 1 0 00037726  
+koskaan r 4 1 ! 4 0 00158151 00030716 00022958 00022543  
+koskettavasti r 1 1 \ 1 0 00072373  
+kosmeettisesti r 1 1 \ 1 0 00084797  
+kosteana r 1 1 \ 1 0 00320107  
+kosteasti r 1 1 \ 1 0 00320107  
+kostonhaluisesti r 1 1 \ 1 0 00467794  
+kostonhimoisesti r 1 1 \ 1 0 00467794  
+kotiin r 1 0 1 0 00105612  
+kotiin_päin r 1 0 1 0 00106492  
+kotiinpäin r 1 0 1 0 00106492  
+kotikentällä r 1 1 ; 1 0 00106057  
+kotio r 1 0 1 0 00105612  
+kotiottelussa r 1 1 ; 1 0 00106057  
+kotipelissä r 1 1 ; 1 0 00106057  
+kotoisesti r 2 1 \ 2 0 00343429 00343273  
+kotona r 2 0 2 0 00105957 00105612  
+koulutuksellisesti r 1 0 1 0 00347687  
+kouramaisesti r 1 0 1 0 00025271  
+kouristuksenomaisesti r 3 1 \ 3 0 00489158 00489037 00213169  
+kovaa r 7 2 ! \ 7 0 00377343 00366240 00099262 00098753 00093759 00093317 00075782  
+kovakouraisesti r 1 2 \ ; 1 0 00377442  
+kovaksi r 1 1 \ 1 0 00099988  
+kovapintaisesti r 1 0 1 0 00099546  
+kovasti r 7 1 \ 7 0 00487048 00377343 00241566 00099546 00098753 00057160 00017523  
+kovasti_paukahtaen r 1 0 1 0 00482266  
+kovasydämisesti r 1 1 ! 1 0 00361324  
+kovaäänisesti r 2 1 \ 2 0 00166542 00075782  
+kovemmalle r 1 1 ! 1 0 00104732  
+koverasti r 1 2 ! \ 1 0 00526029  
+kovin r 4 1 ; 4 0 00227987 00159242 00059602 00034970  
+kovin_hyvin r 1 0 1 0 00362842  
+kriittisesti r 1 2 ! \ 1 0 00199076  
+kristallinkirkkaasti r 1 1 \ 1 0 00413927  
+kritiikittömästi r 1 2 ! \ 1 0 00199209  
+kromaattisesti r 1 0 1 0 00070033  
+kromatografisesti r 1 1 \ 1 0 00148112  
+kronologisesti r 1 1 \ 1 0 00070119  
+kroonisesti r 1 2 ! \ 1 0 00152280  
+kryptisesti r 1 0 1 0 00319232  
+kudosopillisesti r 1 0 1 0 00097206  
+kuin r 1 0 1 0 00024166  
+kuin_ammuttuna r 1 0 1 0 00052774  
+kuin_enkeli r 1 0 1 0 00288141  
+kuin_hullu r 1 1 ; 1 0 00181676  
+kuin_ihmeen_kaupalla r 1 0 1 0 00426946  
+kuin_kone r 1 1 ; 1 0 00181545  
+kuin_kuninkaalliset r 1 0 1 0 00135748  
+kuin_kuninkaat r 1 0 1 0 00135748  
+kuin_mielenhäiriössä r 1 0 1 0 00330646  
+kuin_mies_miehelle r 1 0 1 0 00063684  
+kuin_salama_kirkkaalta_taivaalta r 1 0 1 0 00044347  
+kuin_seinään r 1 0 1 0 00066566  
+kuin_viimeistä_päivää r 1 0 1 0 00116989  
+kuinka r 1 0 1 0 00031118  
+kuinka_tahansa r 1 0 1 0 00030957  
+kuitenkaan r 1 0 1 0 00029871  
+kuitenkin r 6 0 6 0 00163419 00163234 00128337 00029871 00029679 00028965  
+kuivasti r 1 1 \ 1 0 00247942  
+kukin r 1 1 \ 1 0 00148757  
+kukkuroillaan r 1 0 1 0 00272029  
+kulisseissa r 1 1 ! 1 0 00278770  
+kulissien_takana r 3 1 \ 3 0 00298899 00298737 00278682  
+kullekin r 1 0 1 0 00256587  
+kulttuurin_kannalta r 1 1 \ 1 0 00146386  
+kuluttua r 1 0 1 0 00047071  
+kummallisesti r 2 1 \ 2 0 00462183 00439895  
+kumminkin r 1 0 1 0 00127696  
+kumulatiivisesti r 1 1 \ 1 0 00313345  
+kun_aika_on_oikea r 1 0 1 0 00178168  
+kuninkaallisesti r 2 1 \ 2 0 00464996 00135748  
+kunnallisesti r 1 1 \ 1 0 00140491  
+kunniakkaasti r 2 1 \ 2 0 00371652 00337550  
+kunniallisesti r 3 2 ! \ 3 0 00516916 00466778 00337550  
+kunnianhimoisesti r 1 2 ! \ 1 0 00281813  
+kunnianhimottomasti r 1 2 ! \ 1 0 00282022  
+kunniattomasti r 2 1 ! 2 0 00517059 00337428  
+kunnioitettavan r 1 0 1 0 00234547  
+kunnioitettavasti r 1 1 \ 1 0 00466947  
+kunnioittaen r 1 2 ! \ 1 0 00341248  
+kunnioittamattomasti r 1 0 1 0 00390430  
+kunnioittavasti r 3 2 ! \ 3 0 00468020 00330495 00330386  
+kunnolla r 4 2 ! ; 4 0 00210777 00035708 00013725 00011952  
+kunnollisesti r 1 0 1 0 00210777  
+kunnossa r 2 1 ; 2 0 00057324 00016679  
+kuoleman- r 2 0 2 0 00327195 00273124  
+kuoleman_jälkeen r 1 1 \ 1 0 00447994  
+kuoleman_kaltainen r 1 0 1 0 00327195  
+kuoleman_kielissä r 1 0 1 0 00278347  
+kuolettavasti r 1 0 1 0 00428237  
+kuollut r 1 0 1 0 00296520  
+kuori- r 1 1 \ 1 0 00101190  
+kuoron r 1 1 \ 1 0 00146578  
+kuorossa r 1 0 1 0 00257004  
+kuperan r 1 2 ! \ 1 0 00525864  
+kuperasti r 1 2 ! \ 1 0 00525864  
+kurjasti r 6 1 \ 6 0 00486929 00477432 00419590 00356510 00100859 00059745  
+kurvikkaasti r 1 1 \ 1 0 00253918  
+kustannuksista_huolimatta r 1 0 1 0 00165510  
+kuten_tarvitaan r 1 0 1 0 00195725  
+kuten_tavallista r 1 0 1 0 00115676  
+kutsumatta r 1 1 \ 1 0 00510810  
+kuudenneksi r 1 1 \ 1 0 00480606  
+kuukausi_kuukaudelta r 1 0 1 0 00191872  
+kuukausittain r 1 1 \ 1 0 00273532  
+kuukausittainen r 1 1 \ 1 0 00273532  
+kuulemma r 1 0 1 0 00465872  
+kuuliaisesti r 2 2 ! \ 2 0 00345516 00339115  
+kuulumattomasti r 1 2 ! \ 1 0 00289173  
+kuuluvasti r 2 2 ! \ 2 0 00469792 00289058  
+kuumeisesti r 1 1 \ 1 0 00152885  
+kuusi_kertaa r 1 0 1 0 00480435  
+kuusinkertainen r 1 0 1 0 00480435  
+kuvaannollisesti r 1 1 ! 1 0 00362252  
+kuvailevasti r 1 1 \ 1 0 00323678  
+kuvallisesti r 1 1 \ 1 0 00026071  
+kuvitellusti r 1 0 1 0 00110496  
+kvalitatiivisesti r 1 1 \ 1 0 00461290  
+kvantitatiivisesti r 1 1 \ 1 0 00263729  
+kykenemättömästi r 1 0 1 0 00223886  
+kyljessä r 1 0 1 0 00267472  
+kyljittäin r 4 0 4 0 00478412 00267981 00267472 00082384  
+kyllin r 1 0 1 0 00157399  
+kyllä r 1 0 1 0 00523428  
+kylmän_rauhallisesti r 1 1 \ 1 0 00317869  
+kylmästi r 3 1 \ 3 0 00368535 00255101 00177785  
+kylmäverisesti r 3 1 \ 3 0 00534489 00364821 00177785  
+kyltymättömän r 1 0 1 0 00400597  
+kyltymättömästi r 1 0 1 0 00400389  
+kylään r 1 0 1 0 00242967  
+kymmenentenä r 1 1 \ 1 0 00501702  
+kymmenkertaisesti r 1 0 1 0 00263627  
+kynsin_hampain r 1 0 1 0 00185556  
+kynsin_ja_hampain r 1 0 1 0 00185556  
+kypsästi r 2 2 ! \ 2 0 00466469 00408205  
+kyseenalaisesti r 1 1 \ 1 0 00462489  
+kyselevästi r 1 1 \ 1 0 00462662  
+kysyvästi r 3 1 \ 3 0 00404684 00400240 00381208  
+kytevästi r 1 1 \ 1 0 00529682  
+kyvykkäästi r 1 0 1 0 00199481  
+kyydissä r 2 0 2 0 00372125 00267258  
+kyyneleisesti r 1 0 1 0 00500474  
+kyynisesti r 1 1 \ 1 0 00312874  
+kädestä_suuhun r 1 0 1 0 00059480  
+kädet_lanteillaan r 1 0 1 0 00290554  
+käheä-äänisesti r 1 1 \ 1 0 00381729  
+käheästi r 1 1 \ 1 0 00381729  
+kähisevästi r 1 0 1 0 00153685  
+kärkevästi r 2 1 \ 2 0 00460242 00323499  
+kärsimättömästi r 1 2 ! \ 1 0 00186720  
+kärsivällisesti r 2 2 ! \ 2 0 00404932 00186874  
+kärttyisesti r 1 1 \ 1 0 00232428  
+kärttyisästi r 2 0 2 0 00501847 00368682  
+käsi- r 1 0 1 0 00059373  
+käsi_kädessä r 3 0 3 0 00262305 00176196 00159482  
+käsialalla r 1 1 \ 1 0 00539327  
+käsin r 2 1 ! 2 0 00134413 00059093  
+käsinkoskettelemalla r 1 0 1 0 00213047  
+käsipelillä r 1 1 ! 1 0 00059093  
+käsistä r 1 1 ! 1 0 00160323  
+käsitteellisesti r 2 2 ! \ 2 0 00311812 00212523  
+käsittämättömän r 1 0 1 0 00395424  
+käsittämättömästi r 4 2 ! \ 4 0 00514152 00310843 00217032 00154404  
+käsivarren_mitan_päässä r 1 0 1 0 00266896  
+käskevästi r 1 0 1 0 00258087  
+käteisellä r 2 0 2 0 00105499 00103472  
+käteisenä r 1 0 1 0 00103472  
+kätevästi r 3 2 ! \ 3 0 00332911 00211938 00060824  
+kävi_miten_kävi r 1 0 1 0 00169442  
+käyden r 1 2 \ ; 1 0 00287865  
+käymään r 1 0 1 0 00078148  
+käytettynä r 1 1 \ 1 0 00530577  
+käytännöllisesti r 2 1 \ 2 0 00453215 00057964  
+käytännöllisesti_katsoen r 4 0 4 0 00120506 00079209 00065338 00058240  
+käytännöllisesti_katsottuna r 1 0 1 0 00024895  
+käytännössä r 4 1 ! 4 0 00212382 00179511 00120506 00065051  
+käänteinen r 1 0 1 0 00082510  
+kääntäen r 1 0 1 0 00191304  
+kääntöpuolella r 1 0 1 0 00440264  
+kömpelösti r 9 2 ! \ 9 0 00451663 00349882 00295759 00209308 00208933 00204936 00193941 00061074 00006427  
+köyhästi r 1 1 ! 1 0 00356510  
+laadullisesti r 1 1 \ 1 0 00461290  
+laahaavasti r 1 1 \ 1 0 00539488  
+laaja-alaisesti r 1 0 1 0 00410823  
+laajalti r 3 1 \ 3 0 00521604 00110273 00040109  
+laajassa_merkityksessä r 1 0 1 0 00237526  
+laajasti r 4 2 ! \ 4 0 00310762 00242032 00237526 00040109  
+lahjakkaasti r 1 1 \ 1 0 00199481  
+laidan_yli r 2 0 2 0 00440586 00186346  
+laihasti r 1 0 1 0 00421192  
+laikukkaasti r 1 0 1 0 00442265  
+laillisesti r 6 2 ! \ 6 0 00518013 00399673 00386780 00386412 00269889 00134300  
+lain_mukaan r 1 1 \ 1 0 00491480  
+lainkaan r 4 0 4 0 00162615 00076290 00061699 00026623  
+lainsäädännöllisesti r 1 0 1 0 00139530  
+lainvastaisesti r 1 2 ! \ 1 0 00167032  
+laisinkaan r 1 0 1 0 00061699  
+laiskasti r 3 1 \ 3 0 00412976 00411885 00385297  
+laittomasti r 4 2 ! \ 4 0 00542753 00386578 00270060 00167032  
+laivassa r 1 0 1 0 00267258  
+lajinkehityksellisesti r 1 0 1 0 00124322  
+lakkaamatta r 2 1 \ 2 0 00305261 00022098  
+lakonisesti r 1 1 \ 1 0 00247942  
+lammasmaisesti r 1 0 1 0 00476823  
+lannistavan r 2 2 ! \ 2 0 00351030 00320327  
+lannistuneesti r 1 0 1 0 00339808  
+lapsellisesti r 2 1 \ 2 0 00408041 00210254  
+laskelmoivasti r 2 1 \ 2 0 00532087 00316235  
+laskennallisesti r 2 1 \ 2 0 00311222 00292426  
+laskuopillisesti r 1 1 \ 1 0 00292426  
+lateraalisesti r 1 2 \ ; 1 0 00411035  
+latteasti r 5 2 ! \ 5 0 00518151 00506932 00429041 00428929 00224222  
+lauseopillisesti r 1 0 1 0 00146896  
+lauseyhteydestä_riippuen r 1 0 1 0 00536952  
+lavalla r 1 1 ! 1 0 00279009  
+legato r 1 1 ! 1 0 00412355  
+leikillisesti r 1 0 1 0 00093045  
+leikkauksen_jälkeen r 1 1 \ 1 0 00148000  
+leikkimielisesti r 2 1 \ 2 0 00408440 00299938  
+leikkisästi r 2 1 \ 2 0 00450065 00408629  
+leimallisesti r 1 0 1 0 00527586  
+leksikaalisesti r 1 1 \ 1 0 00147310  
+lempeästi r 5 2 \ ; 5 0 00530091 00529062 00497952 00423162 00194468  
+lennokkaasti r 1 0 1 0 00288478  
+lennossa r 2 0 2 0 00531065 00183712  
+lento r 1 0 1 0 00412896  
+leppoisasti r 1 2 ! \ 1 0 00221620  
+leppymättömästi r 1 2 ! \ 1 0 00365406  
+leuhkasti r 1 0 1 0 00241796  
+leveyssuunnassa r 1 0 1 0 00302557  
+leveyssuuntaisesti r 1 0 1 0 00302557  
+leveä r 1 0 1 0 00294090  
+leveästi r 2 1 \ 2 0 00241796 00237785  
+levollisesti r 2 1 \ 2 0 00472653 00462799  
+levottomana r 1 1 \ 1 0 00200348  
+levottomasti r 3 2 ! \ 3 0 00254159 00246380 00221960  
+levälleen r 1 0 1 0 00521961  
+levällään r 1 0 1 0 00521686  
+lievästi r 1 0 1 0 00411652  
+lihaksensisäisesti r 1 1 \ 1 0 00101667  
+lihallisesti r 1 1 \ 1 0 00455015  
+liiallisesti r 1 0 1 0 00513565  
+liian r 2 0 2 0 00109523 00051402  
+liian_aikaisin r 1 0 1 0 00454554  
+liian_nopeasti r 1 0 1 0 00108035  
+liian_pitkälle r 1 0 1 0 00532831  
+liikaa r 2 0 2 0 00440370 00051402  
+liikehtien r 1 1 \ 1 0 00040013  
+liikkumatta r 1 1 \ 1 0 00492916  
+liikkumattomasti r 1 1 \ 1 0 00387835  
+liikuttavasti r 2 1 \ 2 0 00492679 00072373  
+liioittelematta r 1 1 ; 1 0 00120318  
+liioittelevasti r 1 0 1 0 00204041  
+likaisesti r 2 0 2 0 00486929 00334759  
+likempänä r 1 1 ; 1 0 00432065  
+liki r 2 0 2 0 00434028 00079209  
+likimain r 1 0 1 0 00007569  
+liko- r 1 0 1 0 00486792  
+limnologisesti r 1 1 \ 1 0 00415846  
+lineaarisesti r 1 2 ! \ 1 0 00139735  
+linnuntietä r 1 0 1 0 00165382  
+liossa r 1 0 1 0 00171570  
+lipevästi r 2 0 2 0 00511500 00254981  
+lippumaisesti r 1 0 1 0 00149770  
+lisäksi r 4 0 4 0 00051501 00050052 00033345 00031947  
+live- r 1 0 1 0 00278057  
+logaritmisesti r 1 1 \ 1 0 00416959  
+logografisesti r 1 1 \ 1 0 00540574  
+lohduttavasti r 1 1 \ 1 0 00309730  
+lohduttoman r 1 0 1 0 00338851  
+lohduttomasti r 2 0 2 0 00338614 00331208  
+loistavan r 2 1 ; 2 0 00371476 00197419  
+loistavasti r 6 1 \ 6 0 00529811 00387527 00371652 00196610 00083806 00035270  
+loisteliaasti r 1 0 1 0 00464996  
+loistokkaasti r 1 0 1 0 00363317  
+longitudinaalisesti r 1 1 \ 1 0 00139915  
+loogisesti r 2 2 ! \ 2 0 00387392 00387030  
+loppujen_lopuksi r 3 0 3 0 00180440 00163419 00051925  
+loppuun_asti r 1 0 1 0 00164462  
+loppuun_saakka r 1 0 1 0 00308251  
+lopuksi r 1 0 1 0 00071540  
+lopullisesti r 4 1 ! 4 0 00508555 00320768 00100540 00095212  
+lopulta r 5 1 \ 5 0 00180440 00163419 00163234 00052143 00051925  
+lopussa r 1 1 \ 1 0 00137286  
+loputtoman_pitkään r 1 1 ; 1 0 00096536  
+loputtomasti r 4 1 \ 4 0 00305604 00305261 00241413 00095027  
+loputtomiin r 1 1 \ 1 0 00305604  
+loukkaavan r 1 0 1 0 00340012  
+loukkaavasti r 5 1 \ 5 0 00471577 00403692 00366876 00135896 00060525  
+lounaaseen r 2 0 2 0 00487572 00487572  
+lounaassa r 2 1 \ 2 0 00538538 00487572  
+luettavasti r 1 2 ! \ 1 0 00385831  
+luihusti r 1 0 1 0 00512908  
+lujaa r 2 0 2 0 00099447 00093317  
+lujahermoisesti r 1 1 \ 1 0 00317869  
+lujana r 2 0 2 0 00055294 00055055  
+lujasti r 8 1 \ 8 0 00403416 00252429 00240889 00099447 00093759 00071794 00055510 00055055  
+lukukelvottomasti r 1 1 \ 1 0 00386009  
+lukumääräisesti r 1 1 \ 1 0 00435621  
+lumoavasti r 1 1 \ 1 0 00301327  
+luokse r 1 0 1 0 00078148  
+luoksepääsemättömästi r 1 1 \ 1 0 00218968  
+luonnollisesti r 2 2 ! \ 2 0 00151610 00040288  
+luonnonmukaisesti r 1 0 1 0 00122928  
+luonnosmaisesti r 1 1 \ 1 0 00480722  
+luonnostaan r 1 0 1 0 00531404  
+luonnottomasti r 1 0 1 0 00151814  
+luontaisesti r 2 0 2 0 00531404 00398945  
+luonteeltaan r 1 1 \ 1 0 00157087  
+luontevasti r 3 2 ! \ 3 0 00514579 00473210 00005824  
+luotaantyöntävän r 1 1 \ 1 0 00364520  
+luoteeseen r 2 1 \ 2 0 00538319 00436214  
+luoteis- r 1 0 1 0 00436214  
+luotettavasti r 3 2 ! \ 3 0 00491631 00239609 00220852  
+luotisuoraan r 1 0 1 0 00165382  
+luottamalla r 1 0 1 0 00182987  
+luottamuksellisesti r 3 0 3 0 00276385 00182546 00182428  
+luottavaisesti r 3 2 ! \ 3 0 00528282 00490043 00342511  
+luovasti r 2 1 \ 2 0 00405888 00189718  
+luovuttamattomasti r 1 1 \ 1 0 00151012  
+lupaavasti r 2 2 ! \ 2 0 00458168 00233175  
+luultavasti r 4 0 4 0 00149494 00058474 00043482 00005709  
+luvallisesti r 1 0 1 0 00094233  
+luvattomasti r 2 1 ! 2 0 00386578 00167032  
+lyhyesti r 4 1 \ 4 0 00319690 00312096 00172491 00100224  
+lyhytsanaisesti r 2 1 \ 2 0 00319690 00312096  
+lyyrisesti r 1 1 \ 1 0 00418359  
+läheisesti r 2 1 \ 2 0 00173557 00016180  
+lähelle r 1 0 1 0 00434028  
+lähellä r 4 1 \ 4 0 00434028 00173270 00077383 00077216  
+läheltä r 2 1 \ 2 0 00434387 00173270  
+lähemmäs r 1 0 1 0 00104634  
+lähempänä r 1 1 ; 1 0 00432065  
+lähes r 2 0 2 0 00079209 00007569  
+lähes_sama r 1 0 1 0 00203060  
+lähettyvillä r 1 0 1 0 00434028  
+lähi- r 2 0 2 0 00125639 00059373  
+lähietäisyydeltä r 1 0 1 0 00434387  
+lähimpänä r 1 1 ; 1 0 00432286  
+lähinnä r 3 0 3 0 00173890 00080205 00006547  
+lähistöllä r 1 0 1 0 00077216  
+lähtemättömästi r 1 1 \ 1 0 00395212  
+lähtien r 1 0 1 0 00112032  
+läiskähtäen r 1 0 1 0 00364308  
+lämmittäen r 1 0 1 0 00137967  
+lämpimästi r 2 1 \ 2 0 00456938 00235570  
+länsi- r 1 2 ! \ 1 0 00346377  
+länteen r 3 1 \ 3 0 00346524 00346061 00345943  
+länteen_päin r 1 0 1 0 00346061  
+läpeensä r 1 1 ; 1 0 00105278  
+läpi r 4 0 4 0 00504678 00504597 00504500 00504398  
+läpi- r 1 0 1 0 00486792  
+läpikotaisin r 3 0 3 0 00180068 00062631 00062251  
+läpikuultavasti r 1 1 \ 1 0 00506319  
+läpinäkyvästi r 1 1 \ 1 0 00506507  
+läpitunkevasti r 2 1 \ 2 0 00445721 00054186  
+läpsytellen r 1 0 1 0 00363969  
+läpättäen r 1 0 1 0 00449105  
+lääketieteellisesti r 1 1 \ 1 0 00134499  
+lääkinnällisesti r 1 1 \ 1 0 00134652  
+lörpötellen r 1 0 1 0 00306370  
+löyhästi r 2 0 2 0 00537694 00237526  
+löysästi r 1 0 1 0 00193092  
+maagisesti r 1 1 \ 1 0 00140033  
+maailmanlaajuisesti r 1 0 1 0 00139010  
+maakunnallisesti r 1 1 \ 1 0 00135094  
+maalaismaisesti r 1 1 \ 1 0 00154985  
+maaliin r 1 0 1 0 00106404  
+maan_alla r 1 0 1 0 00512691  
+maan_alle r 1 0 1 0 00512790  
+maan_kattavasti r 1 0 1 0 00431479  
+maankuulusti r 1 1 \ 1 0 00458577  
+maanlaajuisesti r 1 0 1 0 00431479  
+maantieteellisesti r 1 1 \ 1 0 00248603  
+maaseudun_halki r 1 0 1 0 00315750  
+maaston_mukaisesti r 1 1 \ 1 0 00137403  
+maastossa r 1 0 1 0 00315879  
+magna_cum_laude r 1 1 \ 1 0 00313634  
+magneettisesti r 2 1 \ 2 0 00532205 00097350  
+mahdollisesti r 5 2 \ ; 5 0 00453103 00444433 00323210 00322579 00208337  
+mahdollisimman_nopeasti r 1 0 1 0 00163709  
+mahdollisimman_paljon r 1 0 1 0 00128440  
+mahdollisimman_pian r 1 0 1 0 00037426  
+mahdollisimman_pitkälti r 1 0 1 0 00128440  
+mahdottoman r 1 1 ! 1 0 00414795  
+mahdottomasti r 1 2 ! \ 1 0 00322998  
+mahtailevan r 1 0 1 0 00357840  
+mahtailevasti r 7 2 ! \ 7 0 00485440 00455558 00439688 00346680 00290078 00249275 00241796  
+mahtavasti r 2 1 \ 2 0 00229000 00196610  
+mahtipontisesti r 5 1 \ 5 0 00518572 00492440 00418633 00290220 00290078  
+maihin r 1 0 1 0 00150153  
+mainiosti r 1 0 1 0 00225715  
+maissa r 1 0 1 0 00150153  
+majesteettisesti r 1 1 \ 1 0 00418872  
+maksamatta r 1 0 1 0 00238604  
+maksimaalisesti r 1 2 ! \ 1 0 00420799  
+maksimissaan r 1 1 ! 1 0 00112774  
+maltillisesti r 2 1 ! 2 0 00230922 00038953  
+manipulatiivisesti r 1 1 \ 1 0 00419786  
+manuaalisesti r 1 0 1 0 00134413  
+marisevasti r 1 0 1 0 00443628  
+maristen r 1 0 1 0 00443628  
+masentavasti r 1 1 \ 1 0 00089826  
+masentuneesti r 1 0 1 0 00321523  
+masokistisesti r 1 1 \ 1 0 00419903  
+matalalla r 1 0 1 0 00417526  
+matalasti r 1 1 \ 1 0 00476324  
+matelevasti r 1 0 1 0 00436893  
+matemaattisesti r 1 1 \ 1 0 00070480  
+materialistisesti r 1 1 \ 1 0 00420357  
+matkalla r 2 0 2 0 00255540 00184448  
+matkassa r 1 0 1 0 00255540  
+matrilineaarisesti r 1 1 \ 1 0 00416228  
+maukkaan r 1 0 1 0 00418067  
+maukkaasti r 1 1 \ 1 0 00500120  
+mauttomasti r 3 2 ! \ 3 0 00499898 00484691 00369594  
+mediaalisesti r 1 0 1 0 00422860  
+mekaanisesti r 1 1 \ 1 0 00123184  
+mekanistisesti r 1 0 1 0 00422672  
+melkein r 3 0 3 0 00079209 00058240 00024774  
+melko r 3 0 3 0 00038953 00020364 00019863  
+melko_nopeasti r 1 2 \ ; 1 0 00291146  
+melkoisen r 2 1 ; 2 0 00035393 00020364  
+melkoisesti r 1 0 1 0 00376296  
+melodisesti r 2 2 ! \ 2 0 00423278 00145150  
+melodramaattisesti r 2 1 \ 2 0 00423701 00423552  
+menestyksekkäästi r 1 0 1 0 00242429  
+menestyksellisesti r 1 1 ! 1 0 00129201  
+menneet r 1 1 ! 1 0 00080590  
+menneisyyteen r 1 1 ! 1 0 00080590  
+merelle r 1 0 1 0 00472106  
+merelle_päin r 1 0 1 0 00472106  
+merellä r 1 1 ! 1 0 00151138  
+meren_takana r 2 0 2 0 00440485 00196010  
+merkitsevästi r 2 0 2 0 00536048 00421756  
+merkittävässä_määrin r 1 0 1 0 00147673  
+merkittävästi r 7 2 ! \ 7 0 00479604 00453392 00422550 00391280 00391108 00015394 00006719  
+merkityksellisesti r 1 0 1 0 00427423  
+merkityksettömästi r 3 2 ! \ 3 0 00532559 00317103 00006937  
+merta_kohti r 1 0 1 0 00472106  
+mestarillisesti r 1 0 1 0 00420199  
+metafyysisesti r 1 1 \ 1 0 00144955  
+meteorologisesti r 1 1 \ 1 0 00144830  
+metodologisesti r 1 1 \ 1 0 00425533  
+metonyymisesti r 1 1 \ 1 0 00145068  
+miehekkäästi r 1 2 ! \ 1 0 00414972  
+miehisesti r 1 0 1 0 00414972  
+mielekkäästi r 1 1 ! 1 0 00231629  
+mielellään r 2 2 ! \ 2 0 00370621 00327578  
+mielenkiinnottomasti r 1 1 \ 1 0 00197975  
+mielenkiintoisesti r 1 2 ! \ 1 0 00230290  
+mielessään r 1 1 ! 1 0 00246758  
+mielettömän r 2 0 2 0 00495152 00411468  
+mielettömästi r 2 1 ; 2 0 00088180 00050645  
+mielikuvituksellisesti r 2 2 ! \ 2 0 00359226 00224056  
+mielin_määrin r 1 0 1 0 00165799  
+mielipuolisesti r 2 3 ! \ ; 2 0 00088180 00050645  
+mielistelevästi r 1 1 \ 1 0 00398797  
+mielivaltaisesti r 3 1 \ 3 0 00520310 00165799 00076736  
+miellyttävän r 2 2 ! \ 2 0 00450248 00234798  
+miellyttävästi r 4 2 ! \ 4 0 00441128 00245083 00235017 00208730  
+mieluiten r 1 0 1 0 00124766  
+mieluummin r 1 0 1 0 00124766  
+mies_miestä_vastaan r 1 0 1 0 00059373  
+mietiskelevästi r 1 0 1 0 00429687  
+mietiskellen r 1 1 \ 1 0 00422963  
+mietteliäästi r 1 1 \ 1 0 00464601  
+miettiväisesti r 1 2 ! \ 1 0 00232896  
+mihin_hintaan_tahansa r 1 0 1 0 00165510  
+mihin_tahansa r 1 1 ; 1 0 00027544  
+mikroskooppisesti r 2 1 \ 2 0 00085499 00085261  
+mikä_parasta r 1 0 1 0 00202407  
+mikä_tärkeintä r 1 0 1 0 00162740  
+mikäli r 1 0 1 0 00177584  
+miljoona_kertaa r 1 0 1 0 00367192  
+miljoonakertaisesti r 1 0 1 0 00367192  
+milloin_haluaa r 1 0 1 0 00165799  
+milloinkaan r 1 0 1 0 00158151  
+millä_hetkellä_hyvänsä r 1 0 1 0 00037726  
+millään_tavoin r 1 0 1 0 00029679  
+miltei r 1 0 1 0 00079209  
+minimaalisesti r 1 2 ! \ 1 0 00420999  
+ministeriön r 1 1 \ 1 0 00537038  
+missä_ikinä r 1 0 1 0 00521312  
+missä_tahansa r 2 1 ; 2 0 00521312 00027544  
+mistä r 1 0 1 0 00521244  
+miten_haluaa r 1 0 1 0 00165799  
+miten_sattuu r 1 0 1 0 00076736  
+miten_vain r 1 0 1 0 00029679  
+mitenkään r 1 1 ! 1 0 00322827  
+mittaamattomasti r 2 2 ! \ 2 0 00422357 00241413  
+mittojen_mukaan r 1 0 1 0 00185462  
+mitä r 1 1 ; 1 0 00121073  
+mitä_+_superlative r 1 1 ; 1 0 00121073  
+mitä_siihen_tulee r 1 0 1 0 00108879  
+mitättömästi r 1 0 1 0 00460414  
+mitäänsanomattomasti r 3 2 ! \ 3 0 00518151 00389607 00197975  
+moinen r 1 1 ; 1 0 00159242  
+moitittavan r 1 1 \ 1 0 00314111  
+moitittavasti r 1 1 \ 1 0 00326080  
+moitteettomasti r 3 1 \ 3 0 00524811 00387659 00197884  
+moittivasti r 1 1 \ 1 0 00175933  
+molemmille_korville r 1 0 1 0 00222954  
+molemmille_korville_tarkoitetusti r 1 2 ! \ 1 0 00222954  
+molemminpuolisesti r 2 1 \ 2 0 00429803 00271047  
+molempiin_korviin r 1 0 1 0 00222954  
+monasti r 1 1 ! 1 0 00038358  
+monauraalisesti r 1 2 ! \ 1 0 00223211  
+monella_tapaa r 1 2 ! \ 1 0 00090985  
+monenkeskisesti r 1 2 ! \ 1 0 00271699  
+monesti r 1 0 1 0 00038358  
+monikulmaisesti r 1 1 \ 1 0 00537202  
+monimutkaisesti r 1 1 \ 1 0 00539246  
+moninaisesti r 1 1 \ 1 0 00056488  
+moninkertaisesti r 1 1 \ 1 0 00091141  
+monipuolisesti r 1 0 1 0 00056488  
+monisanaisesti r 2 0 2 0 00518572 00230072  
+moniselitteisesti r 1 2 ! \ 1 0 00236043  
+monitarkoituksisesti r 1 2 ! \ 1 0 00236043  
+monitavuisesti r 1 1 \ 1 0 00155564  
+monta_kertaa r 1 0 1 0 00064538  
+moraalisesti r 1 0 1 0 00144734  
+moraalittomasti r 1 2 ! \ 1 0 00388257  
+morfologisesti r 1 1 \ 1 0 00428076  
+moukkamaisesti r 3 1 \ 3 0 00511338 00306928 00302323  
+muiden_asioiden_pysyessä_muuttumatta r 1 0 1 0 00274289  
+muina_miehinä r 1 0 1 0 00237107  
+muinoin r 2 1 \ 2 0 00128164 00005560  
+muistamattomasti r 1 0 1 0 00365120  
+muistellen r 1 0 1 0 00465209  
+muka r 1 0 1 0 00166919  
+mukaan r 2 0 2 0 00074536 00074350  
+mukaansatempaavasti r 1 0 1 0 00301327  
+mukaisesti r 1 0 1 0 00036462  
+mukana r 4 0 4 0 00267380 00126167 00074536 00074350  
+mukautuvasti r 1 1 \ 1 0 00025587  
+mukavan r 1 1 ! 1 0 00234798  
+mukavasti r 5 3 ! \ ; 5 0 00211938 00201491 00167525 00016679 00014624  
+muksahtaen r 1 1 ; 1 0 00450650  
+mullin_mallin r 1 0 1 0 00274648  
+muodikkaasti r 3 2 ! \ 3 0 00359475 00357979 00007414  
+muodollisesti r 3 2 ! \ 3 0 00459919 00236694 00200831  
+muodon_vuoksi r 1 0 1 0 00279706  
+muodottomasti r 2 1 \ 2 0 00476695 00365944  
+murhaavasti r 3 1 \ 3 0 00299523 00299420 00294502  
+murhanhimoisesti r 1 1 \ 1 0 00429146  
+murheellisesti r 2 1 \ 2 0 00417755 00253601  
+murheen_murtamana r 1 1 \ 1 0 00331208  
+murska- r 1 1 \ 1 0 00325937  
+murskaavasti r 3 1 \ 3 0 00522451 00470985 00325937  
+musiikkitieteellisesti r 1 1 \ 1 0 00144639  
+musikaalisesti r 1 2 ! \ 1 0 00429391  
+mustasukkaisesti r 1 1 \ 1 0 00407929  
+mutkittelevasti r 1 0 1 0 00541306  
+mutristaen r 1 0 1 0 00452643  
+mutta_silti r 1 0 1 0 00029871  
+muu r 1 0 1 0 00122292  
+muualla r 1 0 1 0 00092394  
+muualle r 1 0 1 0 00092394  
+muun_muassa r 1 0 1 0 00275178  
+muuten r 3 0 3 0 00168824 00068761 00049880  
+muutoin r 1 0 1 0 00049880  
+muuttamattomasti r 1 1 \ 1 0 00508555  
+mykkänä r 1 1 \ 1 0 00345197  
+myrkyllisesti r 1 0 1 0 00451298  
+myrskyisästi r 3 1 \ 3 0 00507829 00507691 00038252  
+myrskyn_lailla r 1 1 ; 1 0 00181676  
+mystisesti r 1 1 \ 1 0 00144035  
+myydä_vähittäin r 1 1 ! 1 0 00467224  
+myöhemmin r 4 1 \ 4 0 00379307 00178168 00168000 00066223  
+myöhempänä_ajankohtana r 1 0 1 0 00178168  
+myöhempään r 1 0 1 0 00534254  
+myöhäisessä_vaiheessa r 1 0 1 0 00328476  
+myöhässä r 2 2 ! \ 2 0 00238604 00108232  
+myöhään r 3 2 ! \ 3 0 00328476 00328363 00108232  
+myönteisesti r 3 2 ! \ 3 0 00538906 00537789 00247038  
+myös r 3 0 3 0 00275416 00075528 00051501  
+myöskään r 1 0 1 0 00027057  
+myötäpäivään r 1 1 ! 1 0 00272937  
+myötätuntoisesti r 1 1 \ 1 0 00254838  
+myötätuuleen r 3 1 ! 3 0 00410712 00102700 00102409  
+myötävirtaan r 1 1 ! 1 0 00104969  
+mätkähtäen r 1 1 ; 1 0 00450650  
+määrittelemättä r 1 0 1 0 00246485  
+määräilevästi r 3 1 \ 3 0 00440176 00389348 00258087  
+määrätietoisesti r 3 2 ! \ 3 0 00321111 00258238 00227648  
+määräys- r 1 0 1 0 00310946  
+määräävästi r 2 1 \ 2 0 00343628 00258087  
+naapuriasunnossa r 1 0 1 0 00256752  
+naapurissa r 1 0 1 0 00256752  
+naapuritalossa r 1 0 1 0 00256752  
+nahkoineen_karvoineen r 1 0 1 0 00177291  
+naiivisti r 1 0 1 0 00430367  
+naistensatulalla r 1 0 1 0 00478317  
+nasaalisesti r 1 0 1 0 00154838  
+natisten_vanhuuttaan r 1 1 \ 1 0 00325810  
+nauraen r 1 0 1 0 00235946  
+naurettavan r 3 1 ! 3 0 00411468 00323379 00039441  
+nautinnollisesti r 3 1 \ 3 0 00534646 00474010 00473862  
+nautinnonhaluisesti r 1 1 \ 1 0 00125335  
+nautittavan r 1 1 \ 1 0 00234798  
+nelijakoisesti r 1 0 1 0 00461764  
+nelinkertaisesti r 1 1 \ 1 0 00367038  
+nelinkontin r 1 0 1 0 00182654  
+neliömäisesti r 1 1 \ 1 0 00055682  
+neljänneksi r 1 1 \ 1 0 00367312  
+neljänneksittäin r 1 1 \ 1 0 00461500  
+neljännesvuosittain r 1 1 \ 1 0 00461500  
+nem_con r 1 0 1 0 00114687  
+nemine_contradicente r 1 0 1 0 00114687  
+nenäkkäästi r 1 1 \ 1 0 00364083  
+nerokkaasti r 1 0 1 0 00083668  
+neurobiologisesti r 1 1 \ 1 0 00144372  
+neuroottisesti r 1 1 \ 1 0 00433625  
+niillä_main r 2 0 2 0 00493440 00493328  
+niin r 8 1 ; 8 0 00159117 00158752 00158574 00158388 00130573 00127156 00046573 00041133  
+niin_että r 3 0 3 0 00158574 00130573 00127496  
+niin_ikään r 1 0 1 0 00148932  
+niin_ja_näin r 1 0 1 0 00060094  
+niin_kovasti r 1 1 ; 1 0 00158388  
+niin_muodoin r 3 0 3 0 00068356 00047458 00046573  
+niin_paljon r 1 0 1 0 00158962  
+niin_paljon_kuin_mahdollista r 1 0 1 0 00128440  
+niin_sanotusti r 2 0 2 0 00165257 00165134  
+niin_varmaan r 1 1 ; 1 0 00177511  
+niinpä r 1 0 1 0 00068356  
+nimellisesti r 2 1 \ 2 0 00178735 00134739  
+nimenomaan r 4 2 ! \ 4 0 00536843 00275770 00092874 00045424  
+nimettömänä r 1 1 \ 1 0 00282318  
+nimettömästi r 1 0 1 0 00393805  
+nimittäin r 1 0 1 0 00202987  
+nipin_napin r 2 0 2 0 00168553 00002706  
+nirsosti r 1 0 1 0 00490557  
+niskoittelevasti r 2 1 \ 2 0 00367451 00213307  
+niukasti r 4 2 ! \ 4 0 00444130 00421192 00080011 00002706  
+no_no r 1 0 1 0 00053993  
+noin r 3 0 3 0 00130573 00079209 00007569  
+nokatusten r 1 0 1 0 00233910  
+nokkavasti r 1 0 1 0 00389972  
+nokkelasti r 1 0 1 0 00398585  
+nopeammin r 2 1 \ 2 0 00278161 00093908  
+nopeasti r 7 2 \ ; 7 0 00291313 00179854 00113929 00093317 00093150 00066919 00057701  
+nopeimmin r 1 1 \ 1 0 00094025  
+nopeutuen r 1 2 \ ; 1 0 00284744  
+nopeutuvassa_tempossa r 1 2 \ ; 1 0 00284744  
+nopsasti r 1 1 \ 1 0 00204144  
+normaalisti r 1 0 1 0 00115419  
+nostalgisesti r 1 0 1 0 00435146  
+nouseva r 1 0 1 0 00516344  
+nuhjuisesti r 1 0 1 0 00526431  
+nuhruisesti r 2 1 \ 2 0 00526431 00475650  
+nuhteettomasti r 1 1 \ 1 0 00524811  
+nukkavierusti r 2 1 \ 2 0 00475650 00344234  
+nukuksissa r 1 1 \ 1 0 00296379  
+nukutuksessa r 1 0 1 0 00512321  
+nuokkuvasti r 1 0 1 0 00344978  
+nuorekkaasti r 1 1 \ 1 0 00523532  
+nurin_päin r 1 0 1 0 00179937  
+nurinkurisesti r 1 0 1 0 00082510  
+nurinperin r 2 0 2 0 00235336 00179937  
+nurinpäin r 1 0 1 0 00179937  
+nurkkakuntaisen r 1 1 \ 1 0 00442048  
+nurkkasilmällä r 1 0 1 0 00292663  
+nurkuen r 1 0 1 0 00443628  
+nykien r 1 0 1 0 00408335  
+nykivästi r 1 1 \ 1 0 00489158  
+nykyaikana r 1 0 1 0 00052478  
+nykyisin r 1 0 1 0 00052478  
+nykyään r 2 0 2 0 00053519 00052478  
+nyreästi r 1 1 \ 1 0 00259203  
+nyrpeänä r 1 0 1 0 00372233  
+nyrpeästi r 1 1 \ 1 0 00315982  
+nyt r 5 0 5 0 00161992 00117922 00053285 00053167 00052774  
+nyyhkyttäen r 1 0 1 0 00485672  
+näennäisesti r 2 1 \ 2 0 00489353 00043482  
+näet r 1 0 1 0 00202987  
+nähtävästi r 2 1 ; 2 0 00043482 00042861  
+näillä_main r 1 0 1 0 00117120  
+näillä_tienoin r 1 0 1 0 00117120  
+näin r 3 0 3 0 00165033 00158752 00130573  
+näin_kauas r 1 0 1 0 00109709  
+näin_ollen r 1 0 1 0 00316752  
+näkemättä r 1 0 1 0 00187241  
+näkymättömästi r 1 2 ! \ 1 0 00406253  
+näkyvästi r 1 1 \ 1 0 00208226  
+nälkäisesti r 1 1 \ 1 0 00383585  
+näppärästi r 4 2 ! \ 4 0 00431689 00332911 00321432 00060824  
+närkästyneesti r 2 1 \ 2 0 00396064 00382644  
+näsäviisaasti r 1 0 1 0 00364083  
+näytteeksi r 1 0 1 0 00182875  
+näyttämöllisesti r 1 1 \ 1 0 00135979  
+näyttämöllä r 1 1 ! 1 0 00279009  
+näyttämön_taakse r 1 0 1 0 00298737  
+näyttämön_takana r 1 0 1 0 00298737  
+näyttämön_ulkopuolella r 1 1 ! 1 0 00278770  
+näyttävästi r 4 1 ! 4 0 00439688 00363317 00223531 00149866  
+nöyristelevästi r 1 0 1 0 00436893  
+nöyryyttävästi r 1 1 \ 1 0 00226536  
+nöyrästi r 3 1 \ 3 0 00339115 00330495 00119295  
+objektiivisesti r 1 1 ! 1 0 00436461  
+odotetusti r 1 1 \ 1 0 00454330  
+odottamatta r 3 1 \ 3 0 00509476 00509256 00044347  
+odottavasti r 1 1 \ 1 0 00263231  
+odotuksenmukaisesti r 1 1 \ 1 0 00454330  
+oheen r 1 0 1 0 00379746  
+ohi r 2 0 2 0 00521809 00442174  
+ohimennen r 2 0 2 0 00227817 00179368  
+ohjauksenalaisesti r 1 1 \ 1 0 00507948  
+ohuelti r 1 0 1 0 00503398  
+ohuena r 1 2 ! \ 1 0 00503591  
+oikeaan_aikaan r 2 1 ! 2 0 00400032 00178168  
+oikeakielisesti r 1 2 ! \ 1 0 00513944  
+oikealle r 1 1 ! 1 0 00412197  
+oikeastaan r 5 1 ; 5 0 00431935 00161716 00161053 00160793 00041503  
+oikeasti r 4 0 4 0 00289455 00161459 00112297 00040740  
+oikein r 8 3 ! \ ; 8 0 00386780 00219941 00218496 00210777 00057324 00034970 00016679 00016045  
+oikein_hyvin r 1 0 1 0 00057324  
+oikeudenmukaisesti r 4 2 ! \ 4 0 00468485 00352060 00307343 00115250  
+oikeudettomasti r 1 0 1 0 00542753  
+oikeusopillisesti r 1 1 \ 1 0 00270175  
+oikeutetusti r 3 2 ! \ 3 0 00255249 00220123 00219941  
+oikopäätä r 1 0 1 0 00052774  
+oireenmukaisesti r 1 1 \ 1 0 00155649  
+oitis r 1 0 1 0 00052774  
+oivallisesti r 1 0 1 0 00196610  
+ok r 2 1 ; 2 0 00057324 00016679  
+okei r 1 1 ; 1 0 00016679  
+ole_hyvä r 1 0 1 0 00010739  
+olennaisesti r 3 1 \ 3 0 00122787 00040288 00003636  
+oletettavasti r 2 1 \ 2 0 00166919 00058474  
+oletetusti r 1 0 1 0 00043482  
+oli_miten_oli r 1 0 1 0 00028965  
+olkaa_hyvä r 1 0 1 0 00010739  
+olla_kyseessä r 1 0 1 0 00171760  
+ollenkaan r 2 0 2 0 00061699 00026623  
+olosuhteiden_mukaan r 1 0 1 0 00195725  
+olosuhteiden_osalta r 1 0 1 0 00525312  
+olosuhteisiin_nähden r 1 0 1 0 00185847  
+omahyväisesti r 2 1 \ 2 0 00484488 00311684  
+omakohtaisesti r 1 2 ! \ 1 0 00436598  
+omalaatuisesti r 1 0 1 0 00461157  
+omasta_ansiosta r 1 0 1 0 00239373  
+omin_avuin r 1 0 1 0 00479972  
+ominaisesti r 1 0 1 0 00330152  
+omintakeisesti r 1 0 1 0 00167232  
+omistavasti r 1 1 \ 1 0 00452174  
+omituisen r 1 0 1 0 00038765  
+omituisesti r 2 0 2 0 00439895 00394319  
+ongelmallisesti r 1 1 \ 1 0 00456788  
+onnekkaasti r 1 0 1 0 00045975  
+onneksi r 2 2 ! \ 2 0 00046161 00045975  
+onnellisesti r 2 2 ! \ 2 0 00296076 00054464  
+onnettomasti r 3 2 ! ; 3 0 00523316 00215152 00054777  
+onnistuneesti r 2 1 ! 2 0 00361569 00129201  
+opettajamaisesti r 1 1 \ 1 0 00134972  
+opetusopillisesti r 1 0 1 0 00334029  
+oppineesti r 1 1 \ 1 0 00352552  
+optimistisesti r 2 2 ! \ 2 0 00438630 00303327  
+optisesti r 1 1 \ 1 0 00143415  
+orgaanisesti r 1 2 ! \ 1 0 00122512  
+organisatorisesti r 1 1 \ 1 0 00439466  
+orjamaisesti r 1 1 \ 1 0 00482784  
+osa-aikainen r 1 1 ! 1 0 00270888  
+osaksi r 2 0 2 0 00008489 00008309  
+osapuilleen r 1 0 1 0 00007569  
+osastojen_kesken r 1 1 \ 1 0 00404141  
+osaston r 1 1 \ 1 0 00537038  
+osavaltion_pohjoisosassa r 1 0 1 0 00186462  
+osiin r 1 0 1 0 00195188  
+osin r 1 1 \ 1 0 00008309  
+osittain r 2 1 ! 2 0 00008489 00008309  
+osmoottisesti r 1 1 \ 1 0 00439609  
+osuvasti r 2 0 2 0 00500604 00391711  
+otaksuttavasti r 1 0 1 0 00166919  
+otollisesti r 1 2 ! \ 1 0 00233175  
+otsa- r 1 0 1 0 00153116  
+oudosti r 4 0 4 0 00510003 00462183 00207370 00038765  
+ovelasti r 3 1 \ 3 0 00316235 00295345 00293730  
+paatoksella r 1 1 \ 1 0 00418633  
+paavillisesti r 1 1 \ 1 0 00451977  
+pahaenteisesti r 3 2 ! \ 3 0 00360283 00254048 00233428  
+pahamaineisesti r 1 0 1 0 00435307  
+pahanilkisesti r 1 0 1 0 00018020  
+pahankurisesti r 1 0 1 0 00018020  
+pahanlaatuisesti r 1 1 \ 1 0 00419323  
+pahansuovasti r 2 1 \ 2 0 00331815 00215855  
+pahantuulisena r 1 1 \ 1 0 00372233  
+pahantuulisesti r 2 1 \ 2 0 00427680 00259203  
+pahasti r 5 2 ! \ 5 0 00373972 00241927 00017762 00017279 00015029  
+pahasuisesti r 1 1 \ 1 0 00527159  
+paheksuen r 1 1 ! 1 0 00281684  
+paheksuvasti r 2 1 \ 2 0 00256211 00089744  
+pahimmassa_tapauksessa r 1 0 1 0 00114274  
+pahimmillaan r 1 1 ! 1 0 00114274  
+pahimmin r 1 0 1 0 00018718  
+pahoinvointiin_asti r 1 0 1 0 00268726  
+pahoittelevasti r 1 1 \ 1 0 00448811  
+paholaismaisesti r 1 0 1 0 00331363  
+pahuksen r 3 1 ; 3 0 00331363 00324502 00027331  
+paikalla r 1 0 1 0 00183962  
+paikallaan r 1 0 1 0 00275012  
+paikallaan_pyörien r 1 0 1 0 00177404  
+paikallisesti r 2 1 \ 2 0 00146008 00145880  
+paikan_päällä r 2 0 2 0 00275012 00183962  
+paikasta_toiseen r 1 0 1 0 00535393  
+paikoilleen r 1 0 1 0 00251763  
+painavasti r 1 0 1 0 00379015  
+painostavan r 1 0 1 0 00438434  
+painovoima- r 1 1 \ 1 0 00153549  
+paitsi r 1 0 1 0 00030849  
+paitsiossa r 1 0 1 0 00437986  
+pakissa r 1 0 1 0 00082240  
+pakko- r 1 1 \ 1 0 00310946  
+pakkomielteisesti r 1 1 \ 1 0 00260593  
+pakolla r 1 0 1 0 00364948  
+pakollisesti r 2 2 ! \ 2 0 00439131 00310946  
+pakonomaisesti r 1 1 \ 1 0 00260593  
+pakostakin r 2 0 2 0 00279441 00121517  
+pakottavasti r 2 1 \ 2 0 00455278 00388810  
+paksuna r 1 0 1 0 00503812  
+paksusti r 1 2 ! \ 1 0 00503102  
+pala_palalta r 1 0 1 0 00446665  
+palautuvasti r 1 1 ; 1 0 00135543  
+palavasti r 1 0 1 0 00361866  
+paljain_jaloin r 1 0 1 0 00300355  
+paljain_silmin r 1 0 1 0 00120206  
+paljastavasti r 2 1 \ 2 0 00500987 00481039  
+paljolti r 1 0 1 0 00024895  
+paljon r 12 1 ; 12 0 00532459 00521472 00427348 00378465 00190087 00110007 00109523 00064394 00064394 00064149 00064062 00061460  
+paljon_parempi r 1 0 1 0 00051259  
+paljonpuhuvasti r 2 1 \ 2 0 00541810 00500987  
+palkattomassa_ylityössä r 1 0 1 0 00279216  
+pallomaisesti r 1 1 \ 1 0 00155064  
+palttiarallaa r 1 0 1 0 00007569  
+palvovasti r 1 1 \ 1 0 00060718  
+panettelevasti r 1 1 \ 1 0 00481747  
+panoksena r 1 0 1 0 00171570  
+paperilla r 1 0 1 0 00263858  
+papin_viran_mukaisesti r 1 0 1 0 00426578  
+paradoksaalisesti r 1 1 \ 1 0 00025351  
+parantumattoman r 1 1 \ 1 0 00395096  
+parantumattomasti r 1 1 \ 1 0 00394979  
+paras r 1 0 1 0 00202513  
+parasiittisesti r 1 1 \ 1 0 00025504  
+parastaikaa r 1 0 1 0 00052283  
+paremmin r 2 0 2 0 00535917 00064605  
+paremmin_perustein r 1 0 1 0 00069072  
+parenteraalisesti r 1 1 \ 1 0 00441764  
+parhaassakin_tapauksessa r 1 1 ! 1 0 00114100  
+parhaillaan r 3 0 3 0 00053285 00052283 00003111  
+parhaimmillaankin r 1 1 ! 1 0 00114100  
+parhaimmin r 1 0 1 0 00202610  
+parhain_terveisin r 1 0 1 0 00172916  
+parhaiten r 2 0 2 0 00535917 00202610  
+pasifistisesti r 1 1 \ 1 0 00440835  
+passiivisesti r 2 2 ! \ 2 0 00497094 00086313  
+passim r 1 0 1 0 00275956  
+pateettisesti r 1 1 \ 1 0 00418633  
+patogeenisesti r 1 1 \ 1 0 00025988  
+patologisesti r 1 1 \ 1 0 00143024  
+patrilineaalisesti r 1 1 \ 1 0 00416327  
+pedanttisesti r 1 1 \ 1 0 00443434  
+peevelin r 1 1 ; 1 0 00027331  
+pehmentäen r 1 0 1 0 00533672  
+pehmeästi r 1 2 ! \ 1 0 00076082  
+peittelemättömästi r 1 1 \ 1 0 00298494  
+pelissä r 1 0 1 0 00171570  
+pelkästään r 2 1 \ 2 0 00192773 00005048  
+pelokkaana r 1 1 \ 1 0 00200348  
+pelokkaasti r 3 2 ! \ 3 0 00504763 00479838 00214109  
+pelottavasti r 3 1 \ 3 0 00368312 00365782 00360671  
+pelottomasti r 1 2 ! \ 1 0 00214269  
+per_henkilö r 1 0 1 0 00256587  
+per_vuosi r 1 0 1 0 00268112  
+perheen_kesken r 1 0 1 0 00270483  
+periaatteessa r 1 0 1 0 00527269  
+perifeerisesti r 1 2 ! \ 1 0 00124100  
+periksiantamattomasti r 1 1 ! 1 0 00365406  
+perimmältään r 2 0 2 0 00112297 00003636  
+perin r 1 0 1 0 00050221  
+perin_pohjin r 3 0 3 0 00302088 00192007 00062251  
+perinteisesti r 1 1 \ 1 0 00502534  
+persoonattomasti r 1 0 1 0 00389466  
+perustavasti r 1 0 1 0 00348821  
+perusteellisesti r 4 2 \ ; 4 0 00192244 00062386 00062251 00016180  
+perustellusti r 1 0 1 0 00518013  
+perustuslain_mukaan r 1 2 ! \ 1 0 00131669  
+perustuslainvastaisesti r 1 2 ! \ 1 0 00131821  
+peruuttamattomasti r 4 1 \ 4 0 00407645 00407069 00137286 00134211  
+perverssin r 1 0 1 0 00265085  
+perä- r 1 1 ! 1 0 00296873  
+peräjälkeen r 1 0 1 0 00502689  
+peräkkäin r 4 1 \ 4 0 00531965 00276539 00194613 00021962  
+peräkkäisesti r 1 1 \ 1 0 00314662  
+perällä r 1 1 ; 1 0 00296616  
+peränpuolella r 1 0 1 0 00296873  
+peränpuolelle r 1 0 1 0 00296873  
+peräperää r 1 0 1 0 00502689  
+peräpuolella r 2 1 ; 2 0 00296873 00296616  
+peräpuolelle r 2 1 ; 2 0 00296873 00296616  
+perässä r 3 0 3 0 00296873 00238237 00237989  
+perästäpäin r 1 0 1 0 00066223  
+peräti r 1 0 1 0 00050221  
+perään r 3 0 3 0 00296873 00238237 00237989  
+pessimistisesti r 1 2 ! \ 1 0 00438814  
+pesällä r 1 1 ; 1 0 00267111  
+pesässä r 1 1 ; 1 0 00267111  
+petollisen r 1 0 1 0 00089414  
+petollisesti r 7 2 ! \ 7 0 00515701 00444550 00367674 00358093 00337696 00336723 00239825  
+petomaisesti r 1 0 1 0 00215986  
+pettyneenä r 1 0 1 0 00335117  
+pian r 2 1 ; 2 0 00037208 00037095  
+pianissimo r 1 2 ! \ 1 0 00366431  
+piano r 1 2 ! \ 1 0 00366065  
+pidemmälle r 2 0 2 0 00032609 00032609  
+pidemmällä r 2 0 2 0 00032609 00032609  
+pidättelevästi r 1 0 1 0 00437833  
+pidättyväisesti r 3 1 \ 3 0 00490825 00467512 00466198  
+pidättyvästi r 2 0 2 0 00501316 00314819  
+pieleen r 3 1 ! 3 0 00315414 00292976 00218697  
+pielessä r 1 0 1 0 00292976  
+pienemmälle r 1 1 ! 1 0 00103805  
+pienessä_mitassa r 1 1 ! 1 0 00242226  
+pihalla r 1 1 ! 1 0 00119691  
+piileskelemässä r 1 0 1 0 00270302  
+piilossa r 1 0 1 0 00270302  
+piinaavan r 1 0 1 0 00280744  
+piinaavasti r 1 0 1 0 00280744  
+piintynyt r 1 0 1 0 00152429  
+piittaamattomasti r 4 1 \ 4 0 00511001 00494580 00260006 00176971  
+pikaisesti r 8 1 \ 8 0 00496607 00313206 00221357 00113929 00113645 00100224 00093317 00093150  
+pikalähetyksenä r 1 0 1 0 00357062  
+pikavauhtia r 1 0 1 0 00343961  
+pikemmin r 2 0 2 0 00278161 00124766  
+pikimmiten r 2 0 2 0 00279536 00052774  
+pikku_hiljaa r 3 0 3 0 00446665 00168553 00116618  
+pikkuhiljaa r 3 0 3 0 00446665 00168553 00116618  
+pikkuisen r 1 0 1 0 00036939  
+pikkumaisesti r 1 1 \ 1 0 00445804  
+pikkutarkasti r 3 1 \ 3 0 00443434 00193197 00192244  
+pilkallisesti r 2 1 \ 2 0 00370407 00323499  
+pilkkaavasti r 2 0 2 0 00301950 00087828  
+pilkkahintaan r 1 0 1 0 00171316  
+piloillaan r 1 1 \ 1 0 00408440  
+pilviin r 1 0 1 0 00481253  
+pilvin_pimein r 1 0 1 0 00159581  
+pilviä_hipovasti r 1 0 1 0 00481430  
+pimeydessä r 1 0 1 0 00220964  
+pingottuneesti r 1 0 1 0 00187028  
+pinnallisesti r 2 1 \ 2 0 00476324 00155185  
+pinnalta_katsoen r 1 0 1 0 00043482  
+pintapuolisesti r 4 1 \ 4 0 00480722 00313206 00279706 00155185  
+pinteessä r 1 0 1 0 00184138  
+piraattina r 1 1 \ 1 0 00448978  
+piristävästi r 2 1 \ 2 0 00464847 00464716  
+pirteästi r 2 0 2 0 00519500 00368803  
+pirullisen r 3 2 \ ; 3 0 00331363 00324502 00142867  
+pirun r 1 1 \ 1 0 00331363  
+pirunmoisen r 1 0 1 0 00449798  
+pirunmoisesti r 1 1 ; 1 0 00050645  
+pisimmälle r 1 0 1 0 00033807  
+pisimmällä r 1 0 1 0 00033807  
+pisimpään r 1 0 1 0 00417225  
+pisteliäästi r 3 1 \ 3 0 00499604 00323499 00107162  
+pistävästi r 2 1 \ 2 0 00460105 00393714  
+pitempään r 1 1 \ 1 0 00417117  
+pitkin r 1 0 1 0 00074976  
+pitkittyneesti r 1 1 \ 1 0 00416424  
+pitkittäin r 4 2 ! \ 4 0 00412626 00351301 00139735 00083386  
+pitkittäisesti r 1 0 1 0 00412780  
+pitkä r 1 0 1 0 00294090  
+pitkälle r 1 0 1 0 00109904  
+pitkällisesti r 1 1 \ 1 0 00071260  
+pitkällä r 1 0 1 0 00074779  
+pitkällä_aikavälillä r 1 0 1 0 00180440  
+pitkälti r 4 0 4 0 00167846 00080205 00051071 00024895  
+pitkälti_sama r 1 0 1 0 00203060  
+pitkästyttävästi r 2 2 ! \ 2 0 00230694 00230548  
+pitkäveteisesti r 2 1 \ 2 0 00518572 00230694  
+pitkään r 1 0 1 0 00179004  
+pituussuuntaan r 1 0 1 0 00412626  
+pitävästi r 2 0 2 0 00467451 00099447  
+piukasti r 1 0 1 0 00481039  
+pizzicato r 1 1 ; 1 0 00447778  
+pneumaattisesti r 1 1 \ 1 0 00450983  
+pohdiskelevasti r 1 1 \ 1 0 00258567  
+pohjaan_asti r 1 0 1 0 00106256  
+pohjimmiltaan r 3 0 3 0 00527269 00112297 00003636  
+pohjoiseen r 1 1 \ 1 0 00261052  
+pohjoiseen_päin r 1 0 1 0 00261052  
+pohjoiskoilliseen r 1 0 1 0 00436295  
+pohjoisluoteeseen r 1 0 1 0 00436378  
+poikamaisesti r 1 1 \ 1 0 00290348  
+poikittain r 3 1 \ 3 0 00293985 00148577 00082384  
+poikittaisesti r 1 1 \ 1 0 00148577  
+poikittaissuunnassa r 1 0 1 0 00082384  
+poikkeavan r 1 2 ! \ 1 0 00138223  
+poikkeavasti r 1 2 ! \ 1 0 00138223  
+poikkeuksellisen r 2 1 \ 2 0 00192401 00092141  
+poikkeuksellisesti r 2 1 \ 2 0 00192401 00151814  
+poikkeuksetta r 2 0 2 0 00185047 00022264  
+poikki r 1 0 1 0 00477911  
+pois r 10 1 ; 10 0 00252296 00252164 00251763 00251619 00251207 00250649 00249932 00249820 00249463 00207775  
+pois_käytöstä r 1 0 1 0 00103631  
+pois_tieltä r 2 0 2 0 00044794 00044553  
+pois_toiminnasta r 1 0 1 0 00103631  
+poispäin r 2 1 ; 2 0 00251619 00249463  
+poissa_hallinnasta r 1 0 1 0 00160323  
+poissa_näkyvistä r 2 0 2 0 00536182 00270302  
+poissa_näköpiiristä r 1 0 1 0 00536182  
+poissaolevana r 1 0 1 0 00162900  
+poissaolevasti r 1 0 1 0 00330286  
+pokerinaamalla r 1 0 1 0 00169877  
+poksahtaen r 1 0 1 0 00451891  
+poleemisesti r 1 0 1 0 00325040  
+poliittisesti r 2 1 \ 2 0 00125102 00124986  
+polttavan r 2 1 \ 2 0 00471377 00447224  
+polveen_asti_ulottuva r 1 0 1 0 00277783  
+polvesta_toiseen r 1 0 1 0 00103972  
+polvia_myöten r 1 0 1 0 00277783  
+polyfonisesti r 1 1 \ 1 0 00141965  
+pontevasti r 1 0 1 0 00506806  
+pornografisesti r 1 1 \ 1 0 00125249  
+porrastetusti r 1 0 1 0 00232046  
+positiivisesti r 2 1 \ 2 0 00538906 00537789  
+postimaksu_maksettu r 1 0 1 0 00452317  
+postimerkeillä r 1 0 1 0 00446257  
+postuumisti r 1 0 1 0 00447994  
+potentiaalisesti r 1 1 \ 1 0 00323210  
+pragmaattisesti r 1 1 \ 1 0 00453215  
+predikatiivisesti r 1 1 \ 1 0 00134838  
+prepositiossa r 1 1 \ 1 0 00540848  
+presidentillisesti r 1 1 \ 1 0 00540938  
+presto r 1 1 ; 1 0 00067007  
+pro_re_nata r 1 0 1 0 00195725  
+probabilistisesti r 1 0 1 0 00456642  
+problemaattisesti r 1 0 1 0 00456788  
+profaanisti r 1 0 1 0 00457366  
+profeetallisesti r 1 1 \ 1 0 00265458  
+proosallisesti r 1 0 1 0 00458470  
+provinsiaalisesti r 1 0 1 0 00135094  
+provosoivasti r 1 1 \ 1 0 00458988  
+psykologisesti r 2 1 \ 2 0 00459734 00459514  
+psyykkisesti r 1 1 \ 1 0 00222188  
+puhekielessä r 1 0 1 0 00309079  
+puheliaasti r 1 1 \ 1 0 00417315  
+puhtaasti r 3 1 \ 3 0 00307949 00307833 00192773  
+puhumattakaan r 1 0 1 0 00068963  
+puistattaen r 1 0 1 0 00478174  
+pulassa r 1 1 ; 1 0 00041371  
+pulmallisesti r 1 1 \ 1 0 00456788  
+punaisesti r 1 1 \ 1 0 00532327  
+puoleen_hintaan r 1 0 1 0 00526779  
+puolen_tunnin_välein r 1 1 \ 1 0 00376078  
+puolenpäivän_jälkeen r 1 1 ; 1 0 00269101  
+puolesta r 1 1 ! 1 0 00311458  
+puolestaan r 1 0 1 0 00172332  
+puolihuolimattomasti r 1 0 1 0 00260006  
+puoliksi r 2 1 \ 2 0 00228556 00008489  
+puolikuukausittainen r 1 1 \ 1 0 00273897  
+puolinaisesti r 1 0 1 0 00463712  
+puolitiessä r 1 0 1 0 00274149  
+puolittain r 1 1 \ 1 0 00008489  
+puolivuosittain r 2 1 \ 2 0 00376201 00274055  
+puolivuosittainen r 1 1 \ 1 0 00301661  
+puolivälissä r 1 0 1 0 00274149  
+puolueellisesti r 1 1 ! 1 0 00354671  
+puolueettomasti r 2 1 \ 2 0 00387980 00115250  
+puolustelevasti r 1 1 \ 1 0 00329057  
+puolustus- r 1 2 ! \ 1 0 00328806  
+puolustuskyvyttömänä r 1 1 \ 1 0 00328633  
+purevan r 1 1 \ 1 0 00446902  
+putkeen r 1 0 1 0 00434986  
+puukoin_ja_puntarein r 1 0 1 0 00168286  
+puuromaisesti r 1 0 1 0 00502949  
+puuskassa r 1 0 1 0 00290554  
+puuskittaisesti r 1 0 1 0 00168722  
+puutarhanhoidollisesti r 1 1 \ 1 0 00154017  
+puutteellisesti r 3 2 ! \ 3 0 00421192 00393425 00080011  
+pyramidimaisesti r 1 1 \ 1 0 00058607  
+pystyssä r 1 1 \ 1 0 00352405  
+pystysuoraan r 2 0 2 0 00477005 00451579  
+pystysuorassa r 1 1 \ 1 0 00516816  
+pystysuorasti r 1 0 1 0 00382060  
+pystysuuntaisesti r 1 1 \ 1 0 00090407  
+pystyvästi r 1 1 \ 1 0 00199481  
+pysyvästi r 1 2 ! \ 1 0 00095212  
+pysähtymättä r 1 0 1 0 00434986  
+pyydettäessä r 1 0 1 0 00172571  
+pyynnöstä r 1 0 1 0 00172571  
+pyytäen r 1 0 1 0 00301051  
+pyytävästi r 1 0 1 0 00301051  
+pyöreästi r 1 1 \ 1 0 00245338  
+pyörivästi r 1 1 \ 1 0 00469580  
+pyörryksissä r 1 0 1 0 00090166  
+pyöräyttäen r 1 0 1 0 00469981  
+pähkinänkuoressa r 1 0 1 0 00312358  
+päin r 1 0 1 0 00056283  
+päinvastaiseen_suuntaan r 1 0 1 0 00315589  
+päinvastaisesti r 3 0 3 0 00468194 00265183 00189487  
+päinvastoin r 4 0 4 0 00191304 00183545 00106607 00084676  
+päistikkaa r 6 1 ; 6 0 00482687 00482266 00377940 00299721 00181437 00176547  
+päittäin r 3 0 3 0 00351424 00351301 00351195  
+päivittäin r 3 1 \ 3 0 00191567 00191443 00088830  
+päivä_päivältä r 1 0 1 0 00191443  
+päivä_toisensa_jälkeen r 1 0 1 0 00191567  
+päivänselvästi r 2 1 \ 2 0 00479474 00227468  
+päivässä r 1 0 1 0 00268368  
+päivät_päästään r 1 0 1 0 00169631  
+päivää_kohti r 1 0 1 0 00268368  
+pätevästi r 2 2 ! \ 2 0 00457630 00199481  
+pää_edellä r 1 0 1 0 00377940  
+pääasiallisesti r 2 0 2 0 00080205 00045632  
+pääasiassa r 3 1 \ 3 0 00080205 00071023 00006547  
+päälle r 2 0 2 0 00297833 00075304  
+päälle_päätteeksi r 1 0 1 0 00050052  
+päällimmäisenä r 3 0 3 0 00516687 00516566 00297833  
+päällä r 1 0 1 0 00297833  
+päämäärättömästi r 1 1 \ 1 0 00220587  
+pään_päällä r 1 0 1 0 00266786  
+pääosin r 1 0 1 0 00080205  
+päässä r 1 0 1 0 00251971  
+päästä r 1 0 1 0 00047071  
+päästä_pälkähästä r 1 0 1 0 00280205  
+päästään_pyörällä r 1 0 1 0 00090166  
+päättymättömästi r 1 0 1 0 00305261  
+päättämättömästi r 1 2 ! \ 1 0 00321273  
+päättäväisesti r 5 2 ! \ 5 0 00495279 00321111 00281813 00157721 00055055  
+päätä_pahkaa r 7 0 7 0 00482428 00378333 00378062 00181437 00176547 00176434 00116989  
+pökerryttävän r 1 0 1 0 00237879  
+pöllämystyneesti r 1 0 1 0 00320453  
+pöllömäisesti r 1 1 \ 1 0 00440694  
+pöyristyttävästi r 1 1 \ 1 0 00470832  
+raa'asti r 5 2 ! \ 5 0 00302947 00300086 00289883 00248968 00215701  
+raakalaismaisesti r 1 0 1 0 00300086  
+raastavasti r 1 0 1 0 00373253  
+radikaalisesti r 1 1 \ 1 0 00192007  
+radioaktiivisesti r 1 1 \ 1 0 00541027  
+rahanahneesti r 1 1 \ 1 0 00298220  
+rahvaanomaisesti r 1 1 \ 1 0 00484691  
+raikuvasti r 1 1 \ 1 0 00466560  
+raivoavasti r 1 0 1 0 00464044  
+raivoisan r 1 1 ; 1 0 00003989  
+raivoisasti r 3 1 \ 3 0 00419658 00240606 00240303  
+raivoissaan r 1 1 \ 1 0 00240466  
+raivokkaasti r 3 1 \ 3 0 00523180 00262548 00114434  
+raivostuneesti r 2 1 \ 2 0 00416798 00406552  
+raivostuttavan r 1 0 1 0 00092676  
+rajallisesti r 1 0 1 0 00141130  
+rajattomasti r 4 1 \ 4 0 00404374 00241413 00241107 00218363  
+rajoitetusti r 1 1 \ 1 0 00467096  
+rajusti r 2 1 \ 2 0 00240303 00205561  
+rakastettavasti r 2 1 \ 2 0 00285205 00235787  
+rakastuneesti r 1 1 \ 1 0 00288031  
+rakennustaiteellisesti r 1 1 \ 1 0 00288286  
+rakentavasti r 1 1 \ 1 0 00317334  
+rakenteellisesti r 1 1 \ 1 0 00260840  
+rallentando r 1 1 ; 1 0 00448310  
+rankaisevasti r 2 1 \ 2 0 00460576 00460495  
+rankasti r 1 0 1 0 00505750  
+rannalla r 2 1 ! 2 0 00151339 00150153  
+rannasta r 1 1 ! 1 0 00151138  
+rannikon_suuntaan r 1 0 1 0 00472031  
+rannikon_suuntaisesti r 1 0 1 0 00308569  
+rantaan r 2 0 2 0 00277460 00150153  
+raskaasti r 6 1 \ 6 0 00533538 00528720 00520486 00379015 00190210 00099688  
+raskastekoinen r 1 1 \ 1 0 00528720  
+raskauttavasti r 1 1 \ 1 0 00394892  
+rasvaisesti r 1 1 \ 1 0 00373585  
+rationaalisesti r 1 1 ! 1 0 00198835  
+ratkaisemattomasti r 1 2 ! \ 1 0 00320899  
+ratkaisevan r 2 1 \ 2 0 00315229 00097998  
+ratkaisevasti r 2 2 ! \ 2 0 00315229 00100540  
+ratkiriemukkaasti r 1 1 \ 1 0 00196909  
+ratsailla r 1 0 1 0 00002513  
+ratsain r 1 0 1 0 00002513  
+rauhallisesti r 13 2 ! \ 13 0 00533421 00474930 00472653 00462799 00443117 00410461 00246095 00245911 00221620 00201382 00201245 00198174 00118803  
+rauhanomaisesti r 2 2 ! \ 2 0 00443117 00240150  
+rauhoittavasti r 2 1 \ 2 0 00486666 00449688  
+raukeasti r 2 0 2 0 00410607 00345071  
+ravitsemuksellisesti r 1 1 \ 1 0 00435488  
+realistisesti r 2 2 ! \ 2 0 00231333 00135241  
+refleksinomaisesti r 1 1 \ 1 0 00206366  
+rehellisesti r 3 2 ! \ 3 0 00336507 00307343 00055866  
+rehevästi r 2 0 2 0 00414517 00253918  
+reilusti r 1 0 1 0 00015394  
+reippaasti r 2 1 \ 2 0 00302800 00038187  
+rekisteröimättömästi r 1 0 1 0 00370029  
+relativistisesti r 1 1 \ 1 0 00140278  
+relevantisti r 1 0 1 0 00445512  
+rellestävästi r 1 0 1 0 00470099  
+rempseästi r 1 0 1 0 00237107  
+rennosti r 3 1 ; 3 0 00237107 00193092 00160058  
+reppuselässä r 1 0 1 0 00372000  
+resignoituneesti r 1 0 1 0 00284176  
+retkottaen r 1 0 1 0 00483859  
+retorisesti r 1 0 1 0 00468279  
+riehakkaan r 1 0 1 0 00357840  
+riehakkaasti r 2 1 \ 2 0 00470099 00237250  
+riemuisasti r 1 1 \ 1 0 00370778  
+riemuiten r 2 2 ! \ 2 0 00370778 00054464  
+riemukkaan r 1 1 \ 1 0 00243991  
+riemukkaasti r 2 1 \ 2 0 00370778 00054464  
+riemunkirjavasti r 1 0 1 0 00369594  
+rienaavasti r 3 1 \ 3 0 00457538 00457366 00301950  
+riettaasti r 2 1 \ 2 0 00413130 00410914  
+riidanhaluisesti r 4 1 \ 4 0 00459852 00309568 00303957 00259368  
+riippumatta r 2 1 ; 2 0 00194970 00127922  
+riippumatta_muista r 1 0 1 0 00239373  
+riitasointuisesti r 1 0 1 0 00252819  
+riittämättömästi r 1 2 ! \ 1 0 00157559  
+riittävän r 1 2 ! \ 1 0 00157200  
+riittävästi r 3 2 ! \ 3 0 00393253 00157399 00157200  
+rikkaasti r 2 1 \ 2 0 00520437 00380788  
+rikki r 1 0 1 0 00195188  
+rikollisella_tavalla r 1 1 \ 1 0 00313892  
+rikollisesti r 2 1 \ 2 0 00433168 00313892  
+rinnakkain r 1 0 1 0 00267981  
+rinnakkaisesti r 1 0 1 0 00129500  
+rinnankorkeudella r 1 0 1 0 00277908  
+rinnansyvyydessä r 1 0 1 0 00277908  
+rinnatusten r 1 0 1 0 00267981  
+rinta_rinnan r 2 0 2 0 00432956 00037858  
+ripeimmin r 1 0 1 0 00094025  
+ripeästi r 4 2 ! \ 4 0 00157721 00113929 00113798 00113645  
+risti-istunnassa r 1 0 1 0 00314352  
+ristiin r 1 0 1 0 00293985  
+ristikkäin r 1 0 1 0 00315506  
+ristiriitaisesti r 1 1 \ 1 0 00152540  
+ritarillisesti r 1 2 ! \ 1 0 00306778  
+rituaalisesti r 1 0 1 0 00236694  
+riutuneesti r 1 0 1 0 00529179  
+rivosti r 2 1 \ 2 0 00410914 00300470  
+rodullisesti r 2 0 2 0 00146501 00140407  
+rohkeasti r 5 1 \ 5 0 00451416 00286925 00218245 00199357 00186197  
+roistomaisesti r 1 0 1 0 00469245  
+romanttisesti r 2 2 ! \ 2 0 00496161 00469353  
+ropisten r 1 0 1 0 00449105  
+ruhtinaallisesti r 1 0 1 0 00439265  
+ruikuttavasti r 1 1 \ 1 0 00443628  
+rukoilevasti r 1 1 \ 1 0 00301051  
+rukoillen r 1 0 1 0 00301051  
+runollisesti r 1 1 \ 1 0 00142074  
+runomitallisesti r 1 1 \ 1 0 00425652  
+runsaasti r 6 2 ! \ 6 0 00515330 00421467 00376296 00230072 00190087 00064149  
+runsaskätisesti r 2 1 \ 2 0 00302432 00211213  
+rupatellen r 1 0 1 0 00306370  
+rutiininomaisesti r 2 0 2 0 00458308 00226229  
+ruumiillisesti r 1 1 \ 1 0 00242770  
+ryhmän r 1 1 \ 1 0 00175761  
+ryhmänä r 1 0 1 0 00169994  
+rykmentillisesti r 1 1 \ 1 0 00537285  
+rymistellen r 1 0 1 0 00482564  
+rysän_päältä r 1 0 1 0 00135362  
+rytmikkäästi r 1 1 \ 1 0 00425774  
+ryysyisesti r 1 0 1 0 00463453  
+rähjäisesti r 1 1 \ 1 0 00475650  
+räikeästi r 4 0 4 0 00424965 00369594 00363216 00271911  
+räjähdysmäisen r 1 1 \ 1 0 00356788  
+räjähdysmäisesti r 1 0 1 0 00356660  
+rämisten r 1 1 \ 1 0 00407799  
+rästissä r 1 0 1 0 00238604  
+räsähtäen r 1 0 1 0 00484055  
+räsähtävästi r 1 0 1 0 00484055  
+räyhäävästi r 1 0 1 0 00437128  
+rönsyilevästi r 1 0 1 0 00526516  
+röyhkeästi r 5 1 \ 5 0 00509854 00455392 00389972 00306648 00083552  
+saamarin r 1 1 ; 1 0 00027331  
+saamattomasti r 2 1 \ 2 0 00497094 00396877  
+saastaisesti r 1 0 1 0 00484691  
+saatanan r 1 0 1 0 00035825  
+saati r 1 0 1 0 00068963  
+saatujen_tietojen_mukaan r 1 0 1 0 00215457  
+saavuttamattoman r 1 1 \ 1 0 00509093  
+saidasti r 1 1 \ 1 0 00492533  
+sairaalloisesti r 1 1 \ 1 0 00427842  
+saivartelevasti r 1 1 \ 1 0 00304346  
+sakeana r 1 2 ! \ 1 0 00503812  
+salaa r 6 2 ! \ 6 0 00497399 00484989 00298899 00276385 00114564 00085056  
+salaisesti r 5 2 \ ; 5 0 00484989 00299151 00298899 00179611 00175289  
+salakavalasti r 2 1 \ 2 0 00402085 00358093  
+salakirjoituksella r 1 0 1 0 00319410  
+salakähmäisesti r 2 1 \ 2 0 00512908 00207571  
+salamyhkäisesti r 2 1 \ 2 0 00472429 00303823  
+salaperäisesti r 3 1 \ 3 0 00382757 00319232 00067189  
+sallitusti r 1 2 ! \ 1 0 00094233  
+sallivasti r 1 1 \ 1 0 00094154  
+sama_lähde r 1 0 1 0 00274791  
+samaan_aikaan r 3 0 3 0 00129500 00129378 00070826  
+samaan_hengenvetoon r 1 0 1 0 00180769  
+samalla r 1 0 1 0 00019385  
+samalla_mitalla r 1 0 1 0 00178510  
+samalla_tavoin r 4 1 \ 4 0 00148932 00075528 00075441 00051501  
+saman_tien r 1 0 1 0 00183811  
+samanaikaisesti r 4 1 \ 4 0 00536745 00317502 00129500 00129378  
+samanaikaisesti_tapahtuva r 1 0 1 0 00536745  
+samanhenkisesti r 1 0 1 0 00324734  
+sammaltaen r 1 0 1 0 00416608  
+samoin r 5 0 5 0 00178510 00159117 00075528 00075441 00051501  
+samperin r 1 1 ; 1 0 00027331  
+sanallisesti r 1 0 1 0 00138570  
+sananmukaisesti r 2 2 ! \ 2 0 00362383 00276802  
+sanasta_sanaan r 1 0 1 0 00276802  
+sanatarkasti r 1 0 1 0 00276802  
+sanattomana r 1 1 \ 1 0 00121223  
+sanattomasti r 2 1 \ 2 0 00489559 00138890  
+sangen r 2 0 2 0 00020835 00020364  
+sankarillisesti r 1 0 1 0 00380086  
+sanoinkuvaamattoman r 1 1 \ 1 0 00395424  
+sanomattoman r 1 1 \ 1 0 00395424  
+sanonnan_mukaan r 1 0 1 0 00165257  
+sapekkaasti r 1 1 \ 1 0 00304467  
+sarjallisesti r 1 1 \ 1 0 00136216  
+sarkastisesti r 1 1 \ 1 0 00470530  
+satakertaisesti r 1 0 1 0 00383477  
+satavuotisesti r 1 1 \ 1 0 00305843  
+satiirisesti r 1 1 \ 1 0 00225610  
+sattumalta r 4 1 ! 4 0 00376946 00227817 00045975 00044227  
+sattumanvaraisesti r 1 1 \ 1 0 00076736  
+sattumoisin r 1 0 1 0 00044227  
+sattuvasti r 1 1 ! 1 0 00400032  
+satulatta r 1 0 1 0 00300243  
+satunnaisesti r 2 1 \ 2 0 00228334 00076736  
+seesteisesti r 1 0 1 0 00474930  
+seestyneesti r 1 1 ; 1 0 00423162  
+seikkaperäisesti r 2 1 \ 2 0 00426743 00417925  
+seitsemänneksi r 1 1 \ 1 0 00475225  
+seitsenkertaisesti r 1 0 1 0 00475091  
+sekaannusta_aiheuttavasti r 1 1 \ 1 0 00224417  
+sekaisin r 2 0 2 0 00293185 00274648  
+sekasortoisesti r 2 1 \ 2 0 00476415 00176547  
+sekavasti r 7 2 ! \ 7 0 00458038 00438142 00338058 00316583 00308951 00306153 00176547  
+sekopäisesti r 1 0 1 0 00326339  
+sekä_..._että r 1 0 1 0 00075528  
+selkeästi r 7 2 ! \ 7 0 00506507 00500604 00413927 00288478 00236424 00227061 00216848  
+selkä- r 1 1 \ 1 0 00090294  
+sellainen r 1 1 ; 1 0 00159242  
+sellaisenaan r 1 0 1 0 00040288  
+selvä r 4 1 ; 4 0 00162409 00057324 00044683 00016679  
+selväkielisesti r 1 0 1 0 00270418  
+selvästi r 11 2 \ ; 11 0 00390841 00330011 00308077 00247512 00196231 00174280 00174171 00043482 00042861 00040482 00004200  
+selällään_maaten r 1 1 \ 1 0 00497271  
+selän_takana r 1 0 1 0 00509717  
+semanttisesti r 1 1 \ 1 0 00141017  
+sen r 1 0 1 0 00026623  
+sen_jälkeen r 1 0 1 0 00158057  
+sen_lisäksi r 2 0 2 0 00494185 00031947  
+sen_mukaisesti r 2 0 2 0 00493939 00068643  
+sen_seurauksena r 2 0 2 0 00316752 00068356  
+sen_sijaan r 2 0 2 0 00106607 00068761  
+sen_takia r 3 0 3 0 00316752 00068356 00046573  
+sen_verran r 1 0 1 0 00025175  
+sen_vuoksi r 2 0 2 0 00316752 00046573  
+sensaatiomaisen r 1 1 \ 1 0 00473500  
+sensaatiomaisesti r 1 1 \ 1 0 00473500  
+sentään r 1 1 ; 1 0 00112943  
+seuraavaksi r 1 0 1 0 00058738  
+seuraavasti r 1 0 1 0 00165033  
+seurallisesti r 2 2 ! \ 2 0 00485775 00373717  
+seurauksiltaan r 1 1 ! 1 0 00317024  
+seurauksista_huolimatta r 1 0 1 0 00169442  
+sidearm-syötön_tyylisesti r 1 0 1 0 00541200  
+siedettävästi r 1 0 1 0 00060094  
+siekailematta r 1 1 \ 1 0 00515113  
+siellä r 2 1 ! 2 0 00118051 00089555  
+siellä_täällä r 2 0 2 0 00078806 00077900  
+sieltä r 1 0 1 0 00047283  
+sieltä_täältä r 1 0 1 0 00078806  
+sielukkaasti r 1 1 \ 1 0 00225502  
+sieluttomasti r 1 1 \ 1 0 00488013  
+sietämättömän r 2 2 ! \ 2 0 00509605 00060299  
+sietämättömästi r 2 1 \ 2 0 00535001 00332061  
+sievistelevästi r 2 0 2 0 00459123 00456285  
+sievästi r 1 1 \ 1 0 00319482  
+siihen r 3 1 ! 3 0 00493851 00493754 00118303  
+siinä r 2 0 2 0 00493754 00118453  
+siinä_määrin r 1 0 1 0 00106862  
+siinä_määrin_että r 2 0 2 0 00403172 00106862  
+siinä_määrin_kuin r 1 0 1 0 00106862  
+siinä_oleva r 1 0 1 0 00493754  
+siinä_sivussa r 1 0 1 0 00261197  
+siinä_suhteessa r 1 0 1 0 00118453  
+siinä_tapauksessa_että r 1 0 1 0 00177584  
+siirtyvästi r 1 1 \ 1 0 00506133  
+siis r 2 0 2 0 00068356 00046974  
+siististi r 2 1 \ 2 0 00490310 00425368  
+siitä r 2 0 2 0 00047458 00046573  
+siitä_huolimatta r 2 0 2 0 00127696 00029871  
+siitä_juontuva r 1 0 1 0 00493643  
+siitä_syystä r 2 0 2 0 00316752 00047458  
+siitäkin_huolimatta r 1 0 1 0 00029871  
+siivillä r 1 0 1 0 00531065  
+siivottomasti r 3 0 3 0 00425208 00334874 00334759  
+sikeästi r 1 0 1 0 00062881  
+sikin_sokin r 1 0 1 0 00274648  
+sikinsokin r 1 1 ! 1 0 00130019  
+sikiövaiheessa r 1 0 1 0 00041874  
+siksakkia r 1 0 1 0 00523982  
+siksi r 3 0 3 0 00528393 00068356 00046573  
+sikäli_että r 1 0 1 0 00106862  
+sikäli_kuin r 1 0 1 0 00106862  
+silloin r 1 0 1 0 00127024  
+silloin_tällöin r 4 0 4 0 00228334 00182196 00170116 00023198  
+sillä_aikaa r 2 0 2 0 00095994 00070598  
+sillä_välin r 1 0 1 0 00070598  
+silmiinpistävän r 1 0 1 0 00115788  
+silmiinpistävästi r 2 0 2 0 00223531 00153454  
+silmin_nähden r 2 1 ! 2 0 00448426 00406430  
+silminnähden r 1 1 ; 1 0 00042861  
+silminnähtävän r 1 1 ! 1 0 00389166  
+silminnähtävästi r 1 1 ; 1 0 00042861  
+silmänräpäyksessä r 1 0 1 0 00036723  
+silti r 1 0 1 0 00029871  
+siltä_varalta r 1 0 1 0 00177584  
+siltä_varalta_että r 1 0 1 0 00177584  
+sinne r 1 1 ! 1 0 00118303  
+sinne_tänne r 2 0 2 0 00535393 00078806  
+sinnikkäästi r 3 1 \ 3 0 00445105 00293671 00293593  
+sinusoidaalisesti r 1 1 \ 1 0 00541369  
+sinänsä r 1 0 1 0 00040288  
+sinäpä_sen_sanoit r 1 0 1 0 00164629  
+sipsutellen r 1 0 1 0 00426477  
+sirosti r 2 2 ! \ 2 0 00326623 00193414  
+sisimmältään r 2 0 2 0 00112297 00003636  
+sisukkaasti r 1 1 \ 1 0 00369402  
+sisäisesti r 2 2 ! \ 2 0 00266484 00143600  
+sisälle r 1 0 1 0 00528160  
+sisällä r 2 1 ! 2 0 00246758 00119538  
+sisältä r 1 0 1 0 00119863  
+sisämaahan r 1 0 1 0 00277347  
+sisämaahan_päin r 1 0 1 0 00410175  
+sisämaan_suuntaan r 1 0 1 0 00410175  
+sisäpuolella r 2 1 ! 2 0 00119863 00119538  
+sisään r 1 0 1 0 00528160  
+sisäänpäin r 2 1 ! 2 0 00528160 00277541  
+siten r 4 0 4 0 00158276 00130573 00130442 00046573  
+sitkeästi r 1 0 1 0 00252429  
+sitoen r 1 1 ! 1 0 00412355  
+sitovasti r 1 1 \ 1 0 00388810  
+sittemmin r 1 0 1 0 00066223  
+sitten r 5 0 5 0 00127156 00126764 00080481 00053859 00046573  
+sittenkin r 1 0 1 0 00029871  
+sitä_myöten r 1 0 1 0 00494040  
+sitä_paitsi r 2 0 2 0 00051501 00031594  
+siunatusti r 1 1 \ 1 0 00003913  
+siveellisesti r 1 1 ! 1 0 00388102  
+siveettömästi r 2 0 2 0 00424965 00413321  
+siveästi r 1 0 1 0 00306263  
+sivistyneesti r 1 1 ! 1 0 00360018  
+sivuhuomautuksena r 1 0 1 0 00441903  
+sivulle r 1 0 1 0 00478971  
+sivultapäin r 1 0 1 0 00479209  
+sivumennen_sanoen r 1 0 1 0 00179368  
+sivumennen_sanottuna r 1 0 1 0 00168824  
+sivusta r 1 1 \ 1 0 00411218  
+sivuttain r 4 0 4 0 00479326 00479050 00478748 00478598  
+sivuun r 6 0 6 0 00251619 00250811 00250649 00250476 00250217 00194970  
+skeptisesti r 1 0 1 0 00471144  
+slangi-ilmaisuja_käyttäen r 1 1 \ 1 0 00481894  
+slangilla r 1 1 \ 1 0 00481894  
+snobbailevasti r 1 0 1 0 00485440  
+soinnittomasti r 1 1 \ 1 0 00505139  
+sointuvasti r 1 1 \ 1 0 00423278  
+sokerina_pohjalla r 1 0 1 0 00071645  
+sokkona r 2 1 \ 2 0 00187241 00069839  
+solakasti r 1 1 \ 1 0 00483306  
+soluliman_avulla r 1 1 \ 1 0 00313104  
+somasti r 1 1 \ 1 0 00319482  
+sopii r 1 0 1 0 00057324  
+sopimattomasti r 7 2 ! \ 7 0 00399795 00396636 00327442 00264532 00244965 00210626 00045045  
+sopimuksen_mukaisesti r 1 1 \ 1 0 00088050  
+sopivasti r 7 3 ! \ ; 7 0 00400032 00300615 00294966 00211938 00150527 00057324 00016679  
+sopuisasti r 1 1 ! 1 0 00325229  
+sopusointuisesti r 1 2 ! \ 1 0 00310060  
+sormijakoisesti r 1 1 \ 1 0 00090018  
+sormilla r 1 1 \ 1 0 00132676  
+sormin r 1 1 \ 1 0 00132676  
+sosiaalisesti r 2 1 \ 2 0 00136419 00136321  
+sosiobiologisesti r 1 1 \ 1 0 00144238  
+sosioekonomisesti r 1 1 \ 1 0 00218104  
+sosiolingvistisesti r 1 1 \ 1 0 00141366  
+sosiologisesti r 1 1 \ 1 0 00486095  
+sotaisasti r 2 1 \ 2 0 00527026 00309568  
+sotilaallisesti r 1 1 \ 1 0 00120079  
+sottaisesti r 1 1 \ 1 0 00483695  
+sotto_voce r 1 0 1 0 00276289  
+soveliaasti r 1 1 \ 1 0 00150527  
+soveltumattomasti r 1 1 ! 1 0 00356202  
+sovinnaisesti r 3 2 ! \ 3 0 00491900 00327296 00025669  
+sovinnollisesti r 1 0 1 0 00282177  
+spektrografisesti r 1 1 \ 1 0 00489416  
+spekulatiivisesti r 1 0 1 0 00258567  
+spinaalisesti r 1 0 1 0 00147025  
+spontaanisti r 2 1 \ 2 0 00206489 00096115  
+staccato r 1 1 ! 1 0 00412493  
+stoalaisesti r 1 1 \ 1 0 00494419  
+stokastisesti r 1 1 \ 1 0 00492795  
+strategisesti r 1 1 \ 1 0 00494688  
+sub_rosa r 1 0 1 0 00276385  
+subjektiivisesti r 1 2 ! \ 1 0 00436598  
+suhteellisen r 1 1 \ 1 0 00173725  
+suhteellisesti r 2 2 ! \ 2 0 00340322 00279881  
+suhteessa r 1 0 1 0 00275896  
+suhteettoman r 2 1 ! 2 0 00340521 00340180  
+suhteettomasti r 1 0 1 0 00189272  
+suin_päin r 4 0 4 0 00482428 00294691 00294502 00176810  
+sujuvasti r 5 2 ! \ 5 0 00483543 00364404 00350065 00225715 00167410  
+sukkelasti r 1 1 ! 1 0 00093150  
+suku- r 1 1 \ 1 0 00369892  
+sukupuolisesti r 2 1 \ 2 0 00147202 00147104  
+sukurutsaisesti r 1 1 \ 1 0 00154307  
+sulavaliikkeisesti r 1 2 ! \ 1 0 00193414  
+sulavalinjaisesti r 1 2 ! \ 1 0 00193414  
+sulavasti r 3 2 ! \ 3 0 00495600 00364404 00193414  
+suljettujen_ovien_takana r 1 0 1 0 00174946  
+sulkamaisesti r 1 0 1 0 00447131  
+suloisesti r 2 2 \ ; 2 0 00539404 00497952  
+sulottomasti r 1 1 ! 1 0 00208933  
+sumeilematta r 1 0 1 0 00302088  
+summa_cum_laude r 1 1 \ 1 0 00313780  
+suojaavasti r 1 1 \ 1 0 00226706  
+suojaisasti r 1 0 1 0 00208084  
+suojanpuoleisesti r 1 1 ! 1 0 00102863  
+suojanpuolella r 1 0 1 0 00290700  
+suojapuolelle r 1 0 1 0 00290700  
+suojatta r 1 1 \ 1 0 00430681  
+suojelevasti r 1 1 \ 1 0 00226706  
+suonensisäisesti r 1 1 \ 1 0 00405532  
+suopeasti r 2 1 ! 2 0 00397351 00208730  
+suoraa_päätä r 2 1 ; 2 0 00493135 00299721  
+suoraan r 21 3 ! \ ; 21 0 00535529 00530385 00530279 00477005 00476929 00450802 00447871 00363451 00299721 00299299 00219830 00105377 00094663 00063096 00063006 00056405 00056126 00055866 00055510 00052774 00010230  
+suoraan_alenevassa_polvessa r 1 1 \ 1 0 00416059  
+suoraan_eteenpäin r 1 0 1 0 00169773  
+suoraan_sanoen r 1 2 \ ; 1 0 00336955  
+suoralta_kädeltä r 4 0 4 0 00283416 00283160 00278566 00010600  
+suorana r 1 0 1 0 00278057  
+suorapuheisesti r 1 1 \ 1 0 00302088  
+suoraselkäisesti r 1 0 1 0 00516916  
+suorassa r 1 0 1 0 00352405  
+suorassa_kulmassa r 1 0 1 0 00247733  
+suorasta_lähteestä r 1 0 1 0 00362727  
+suorastaan r 2 1 ; 2 0 00468386 00196499  
+suorasukaisesti r 1 1 \ 1 0 00302088  
+suositeltavan r 1 0 1 0 00234547  
+suostuttelevasti r 1 0 1 0 00308680  
+suotta r 1 0 1 0 00180995  
+suotuisasti r 3 2 ! \ 3 0 00458868 00300757 00233175  
+superlatiivisesti r 1 0 1 0 00496879  
+suppeasti r 1 0 1 0 00312535  
+surkean r 1 0 1 0 00449542  
+surkeasti r 5 2 ! \ 5 0 00486929 00442632 00427140 00361703 00059745  
+surkuteltavasti r 1 0 1 0 00100859  
+surullisesti r 6 1 \ 6 0 00487181 00428800 00428654 00343083 00338614 00100859  
+surumielisesti r 1 1 \ 1 0 00449933  
+susimaisesti r 1 1 \ 1 0 00522667  
+suulaasti r 1 0 1 0 00417315  
+suullisesti r 3 1 \ 3 0 00277068 00169096 00138570  
+suun_kautta r 1 2 \ ; 1 0 00169258  
+suunnattoman r 3 1 ; 3 0 00256329 00050221 00035393  
+suunnattomasti r 4 1 \ 4 0 00457260 00211083 00182102 00006162  
+suunnilleen r 3 0 3 0 00275546 00079209 00007569  
+suunniltaan r 1 0 1 0 00330747  
+suunnitellusti r 1 0 1 0 00067453  
+suunnitelmallisesti r 1 0 1 0 00067453  
+suunnittelematta r 1 0 1 0 00096115  
+suurellisesti r 3 1 \ 3 0 00530807 00373020 00346680  
+suuremmalla_syyllä r 1 0 1 0 00069072  
+suurenmoisesti r 2 1 \ 2 0 00372822 00035270  
+suuresti r 7 2 ! \ 7 0 00242032 00084557 00084438 00064149 00061460 00017523 00015394  
+suuria_määriä r 1 0 1 0 00280076  
+suurieleisesti r 1 1 \ 1 0 00373020  
+suurimmaksi_osaksi r 1 0 1 0 00080205  
+suurimmalta_osin r 1 0 1 0 00079209  
+suurin_piirtein r 3 1 ! 3 0 00237526 00079209 00007569  
+suurinpiirtein r 1 0 1 0 00007569  
+suurissa_määrin r 1 0 1 0 00189965  
+suusanallisesti r 1 0 1 0 00169096  
+suuta_kohti r 1 2 ! \ 1 0 00185979  
+suvaitsemattomasti r 2 2 ! \ 2 0 00405082 00404764  
+suvullisesti r 1 0 1 0 00369892  
+suvuttomasti r 1 0 1 0 00079789  
+sydämeenkäyvästi r 1 0 1 0 00072373  
+sydämellisesti r 3 1 \ 3 0 00235570 00224611 00084557  
+sydämessään r 1 1 ! 1 0 00246758  
+sydämettömästi r 1 1 \ 1 0 00378544  
+symbioottisesti r 1 2 \ ; 1 0 00125427  
+symbolisesti r 2 1 \ 2 0 00136519 00125529  
+symmetrisesti r 1 1 ! 1 0 00189063  
+sympaattisesti r 2 2 ! \ 2 0 00206765 00206620  
+symptomaattisesti r 1 0 1 0 00155649  
+synergistisesti r 2 1 \ 2 0 00542041 00541919  
+synkeästi r 1 0 1 0 00486532  
+synkronisesti r 1 0 1 0 00498329  
+synkronissa r 1 0 1 0 00498329  
+synkän r 1 0 1 0 00338851  
+synkästi r 5 1 \ 5 0 00486532 00248749 00221090 00188664 00116854  
+synnynnäisesti r 1 0 1 0 00399429  
+synonyymisesti r 1 1 \ 1 0 00542152  
+syntaktisesti r 1 1 \ 1 0 00146896  
+synteettisesti r 1 1 \ 1 0 00498498  
+syrjittäin r 1 0 1 0 00347408  
+syrjä- r 1 0 1 0 00478598  
+syrjällään r 1 0 1 0 00347408  
+syrjässä r 2 0 2 0 00250811 00132375  
+syrjään r 6 0 6 0 00251619 00250811 00250649 00250476 00250217 00194970  
+sytofotometrisesti r 1 1 \ 1 0 00313015  
+syvälle r 2 1 \ 2 0 00328203 00328094  
+syvällisesti r 1 1 \ 1 0 00443880  
+syvästi r 1 1 \ 1 0 00186586  
+syyllisen_näköisesti r 1 1 \ 1 0 00375670  
+syystä r 1 0 1 0 00219941  
+syystä_seuraukseen_systemaattisesti_edeten r 1 1 ! 1 0 00269452  
+syysuhteisesti r 1 1 \ 1 0 00531707  
+syyttäen r 1 1 \ 1 0 00072078  
+syyttävästi r 2 1 \ 2 0 00175933 00072078  
+sähköisesti r 1 1 \ 1 0 00139144  
+sähköstaattisesti r 1 1 \ 1 0 00152657  
+sängyssä r 1 0 1 0 00245687  
+säntillisesti r 1 1 \ 1 0 00208609  
+säteilevästi r 1 0 1 0 00463361  
+säteittäisesti r 1 0 1 0 00463212  
+sättivästi r 1 0 1 0 00464429  
+sävellajitta r 1 0 1 0 00253313  
+sävyisästi r 1 1 \ 1 0 00372739  
+säyseästi r 2 1 \ 2 0 00119432 00119295  
+säädyllisesti r 2 2 ! \ 2 0 00300615 00264375  
+säädyttömästi r 3 2 ! \ 3 0 00413130 00300470 00264532  
+säälimättömästi r 2 1 \ 2 0 00470351 00424752  
+säälittävän r 2 1 \ 2 0 00449542 00442477  
+säälittävästi r 2 1 \ 2 0 00449324 00442632  
+säälivästi r 1 0 1 0 00254838  
+säännöllisesti r 2 2 ! \ 2 0 00354070 00209619  
+säännöttömästi r 2 1 \ 2 0 00291822 00116315  
+sääntöjen_mukaisesti r 1 0 1 0 00307343  
+säästeliäästi r 1 0 1 0 00488761  
+säästäväisesti r 3 1 ! 3 0 00392616 00367964 00133186  
+säästöhintaan r 1 0 1 0 00171316  
+säästöön r 1 0 1 0 00250217  
+taakse r 5 1 ! 5 0 00534157 00296873 00238237 00237989 00080590  
+taakseen r 1 0 1 0 00238237  
+taaksepäin r 4 2 ! ; 4 0 00297413 00296616 00080863 00080590  
+taannoin r 1 0 1 0 00116021  
+taas r 1 0 1 0 00043953  
+taatusti r 2 1 ; 2 0 00162262 00156268  
+taemmaksi r 1 0 1 0 00080863  
+tahallaan r 2 1 ! 2 0 00522084 00067453  
+tahallisesti r 2 2 ! ; 2 0 00254638 00067453  
+tahattomasti r 2 2 ! \ 2 0 00254420 00067976  
+tahdikkaasti r 1 2 ! \ 1 0 00498840  
+tahdissa r 1 0 1 0 00498329  
+tahdittomasti r 2 2 ! \ 2 0 00499011 00197181  
+tahmeasti r 1 0 1 0 00492207  
+tahrattoman r 1 1 \ 1 0 00490188  
+tahtoen r 1 1 \ 1 0 00327578  
+taianomaisesti r 1 0 1 0 00140033  
+taidokkaasti r 2 1 \ 2 0 00265587 00263072  
+taikauskoisesti r 1 1 \ 1 0 00496948  
+taipumattomasti r 2 1 \ 2 0 00510578 00233646  
+taistelu_aikaa_vastaan r 1 0 1 0 00163709  
+taisteluvalmiina r 1 0 1 0 00411809  
+taitamattomasti r 3 0 3 0 00295759 00244810 00199732  
+taitavasti r 7 2 ! \ 7 0 00480899 00457630 00332911 00293730 00263072 00199481 00060824  
+taiteellisesti r 1 1 \ 1 0 00265587  
+taivaalla r 1 0 1 0 00267000  
+taivaan_tuuliin r 1 0 1 0 00481560  
+taivaisiin r 2 0 2 0 00378908 00280304  
+taivasta_kohti r 2 0 2 0 00378908 00280304  
+tajuttomaksi r 1 0 1 0 00512321  
+taka- r 1 1 \ 1 0 00090294  
+takaa r 1 0 1 0 00237989  
+takaapäin r 1 0 1 0 00237989  
+takaisin r 4 0 4 0 00081782 00081680 00081568 00081357  
+takaisinpäin r 1 0 1 0 00080863  
+takamailla r 1 0 1 0 00516238  
+takana r 3 0 3 0 00534157 00238237 00237989  
+takanäyttämölle_päin r 1 2 ! ; 1 0 00283776  
+takanäyttämöllä r 1 2 ! ; 1 0 00283776  
+takaperin r 1 0 1 0 00082510  
+takautuvasti r 1 1 \ 1 0 00228227  
+takellellen r 1 0 1 0 00228459  
+taksonomisesti r 1 1 \ 1 0 00542274  
+taktisesti r 1 1 \ 1 0 00499224  
+takuulla r 1 1 ; 1 0 00156268  
+takuuvarmasti r 1 1 ; 1 0 00156268  
+taloudelliselta_kannalta r 2 1 \ 2 0 00133003 00132819  
+taloudellisesti r 6 1 \ 6 0 00367964 00222059 00141743 00133186 00133003 00132819  
+talouden_kannalta r 1 0 1 0 00141743  
+talteen r 3 0 3 0 00251763 00250811 00250217  
+tandemina r 1 0 1 0 00276539  
+tangentiaalisesti r 1 1 \ 1 0 00155743  
+tappiolla r 2 0 2 0 00282471 00238897  
+tappiolle r 1 0 1 0 00477575  
+tarkalleen r 2 1 \ 2 0 00392103 00171018  
+tarkasti r 9 2 ! \ 9 0 00531278 00440958 00392103 00391711 00359829 00227061 00219460 00219115 00110664  
+tarkkaamattomasti r 1 1 \ 1 0 00071879  
+tarkkaan r 2 0 2 0 00531278 00494917  
+tarkkaan_ottaen r 1 0 1 0 00243518  
+tarkkaavaisesti r 6 1 \ 6 0 00519008 00437049 00210956 00166186 00166039 00098335  
+tarkkanäköisesti r 1 1 \ 1 0 00444214  
+tarkoin r 1 1 \ 1 0 00166039  
+tarkoituksella r 1 0 1 0 00067453  
+tarkoituksellisesti r 2 2 ! \ 2 0 00460693 00067453  
+tarkoituksenmukaisesti r 2 1 ! 2 0 00356032 00150527  
+tarkoituksettomasti r 2 1 \ 2 0 00460894 00220587  
+tarmokkaasti r 3 2 \ ; 3 0 00351523 00196090 00098459  
+tarpeeksi r 1 0 1 0 00157399  
+tarpeeksi_aikaisin r 1 0 1 0 00180884  
+tarpeellisesti r 1 0 1 0 00121517  
+tarpeellisin_muutoksin r 1 0 1 0 00275669  
+tarpeen_mukaan r 1 0 1 0 00195725  
+tarpeen_tullen r 1 0 1 0 00023198  
+tarpeettoman r 1 2 ! \ 1 0 00432764  
+tarpeettomasti r 6 2 ! \ 6 0 00517433 00496749 00432764 00373406 00210363 00193283  
+tarttuvan r 1 1 \ 1 0 00324857  
+tarttuvasti r 1 1 \ 1 0 00324857  
+tarvittaessa r 1 0 1 0 00195725  
+tasaisen r 3 1 \ 3 0 00515568 00351943 00267636  
+tasaisesti r 5 2 ! \ 5 0 00513692 00353704 00353372 00198174 00054322  
+tasan r 3 2 ! \ 3 0 00354333 00342005 00019801  
+tasapuolisesti r 1 0 1 0 00115250  
+tasasuhtaisesti r 1 2 ! \ 1 0 00189063  
+tasaväkisesti r 1 1 \ 1 0 00432956  
+tasoissa r 1 1 \ 1 0 00432956  
+tauotta r 2 0 2 0 00434986 00305261  
+tavallaan r 2 0 2 0 00165134 00160443  
+tavalliseen_tapaan r 1 0 1 0 00115419  
+tavallisesti r 2 2 ! \ 2 0 00168143 00115419  
+tavan_mukaan r 1 1 ! 1 0 00138062  
+tavan_takaa r 1 0 1 0 00170116  
+tavanmukaisesti r 1 0 1 0 00115676  
+tavanomaisesti r 4 2 ! \ 4 0 00226363 00226045 00224222 00167296  
+tavattoman r 3 0 3 0 00480148 00395424 00050221  
+tavuittain r 1 1 \ 1 0 00155375  
+teatraalisesti r 2 1 \ 2 0 00490666 00202739  
+teennäisesti r 2 1 \ 2 0 00337696 00072220  
+teeskennellysti r 2 1 \ 2 0 00203765 00072220  
+teeskentelemättömästi r 2 1 \ 2 0 00402223 00295568  
+tehokkaasti r 3 2 ! \ 3 0 00348406 00348013 00252551  
+tehottomasti r 3 2 ! \ 3 0 00348630 00348247 00252694  
+tekaistusti r 1 0 1 0 00110587  
+teknillisesti r 1 0 1 0 00136932  
+teknisesti r 3 1 \ 3 0 00136932 00136757 00136623  
+teknologisesti r 1 1 \ 1 0 00156974  
+teko- r 1 2 ! \ 1 0 00151814  
+tekopyhästi r 2 1 \ 2 0 00470680 00337271  
+tekosiveästi r 1 0 1 0 00459123  
+teleskooppisesti r 1 1 \ 1 0 00500774  
+temaattisesti r 1 1 \ 1 0 00137622  
+teollisesti r 1 1 \ 1 0 00134043  
+teologisesti r 2 1 \ 2 0 00502135 00501981  
+teoreettisesti r 2 2 ! \ 2 0 00183299 00183155  
+teoriassa r 1 0 1 0 00527269  
+tepsuttaen r 2 0 2 0 00449227 00449105  
+terapeuttisesti r 1 1 \ 1 0 00137737  
+terhakkaasti r 1 0 1 0 00444701  
+termodynaamisesti r 1 1 \ 1 0 00085939  
+termostaattisesti r 1 1 \ 1 0 00502260  
+terveellisesti r 2 1 \ 2 0 00300757 00196784  
+tervehenkisesti r 1 1 \ 1 0 00521060  
+tervejärkisesti r 1 2 ! \ 1 0 00088487  
+terävä-älyisesti r 1 1 \ 1 0 00293730  
+terävästi r 6 1 \ 6 0 00529292 00460242 00443880 00393623 00196090 00054049  
+tiedonhaluisesti r 1 1 \ 1 0 00400240  
+tiedottomaksi r 1 0 1 0 00512321  
+tiellä r 1 0 1 0 00045225  
+tieteellisesti r 1 1 \ 1 0 00118956  
+tieten_tahtoen r 1 0 1 0 00067453  
+tietenkin r 3 0 3 0 00162262 00162138 00042187  
+tietoisesti r 2 2 ! \ 2 0 00254251 00067453  
+tiettyyn_pisteeseen r 1 0 1 0 00109709  
+tiettyyn_päivämäärään r 1 0 1 0 00185303  
+tietysti r 1 1 ! 1 0 00042187  
+tietäisitpä_vain r 1 0 1 0 00164629  
+tietämättä r 2 1 ! 2 0 00509717 00254420  
+tietämättömästi r 1 1 \ 1 0 00385680  
+tiheästi r 1 2 ! \ 1 0 00322091  
+tiiviisti r 5 1 \ 5 0 00531278 00449389 00322485 00322350 00312096  
+tilapäisesti r 2 2 ! \ 2 0 00095659 00058860  
+tilastollisesti r 1 1 \ 1 0 00085815  
+tilavasti r 1 1 \ 1 0 00469466  
+tirkistellen r 1 1 \ 1 0 00519823  
+tismalleen r 1 0 1 0 00185141  
+tiukasti r 6 1 \ 6 0 00500370 00257741 00207898 00173557 00100110 00093759  
+tiukkaan r 1 0 1 0 00093759  
+todella r 10 1 ; 10 0 00531507 00402223 00336955 00239255 00121073 00041503 00041133 00035708 00035393 00034970  
+todellakin r 1 1 ; 1 0 00156268  
+todellisesti r 1 1 \ 1 0 00499494  
+todellisuudessa r 2 1 \ 2 0 00161459 00029476  
+toden_totta r 2 1 ; 2 0 00162262 00156268  
+todennäköisesti r 3 1 \ 3 0 00318545 00149494 00005709  
+todentuntuisesti r 1 1 ! 1 0 00261668  
+todistettavasti r 1 1 \ 1 0 00330992  
+toiminnallisesti r 3 1 \ 3 0 00438242 00368176 00147923  
+toimituksellisesti r 1 1 \ 1 0 00243379  
+toisaalla r 1 0 1 0 00092394  
+toisaalle r 1 0 1 0 00092394  
+toisaalta r 3 1 ! 3 0 00129047 00128841 00031350  
+toisarvoisesti r 1 2 ! \ 1 0 00124100  
+toisekseen r 1 0 1 0 00031594  
+toiseksi r 1 0 1 0 00111032  
+toiseksi_paras r 1 0 1 0 00472228  
+toisella_puolella r 1 0 1 0 00242967  
+toiselta_nimeltään r 1 0 1 0 00290970  
+toisen_kerran r 1 0 1 0 00038593  
+toisessa_luokassa r 1 0 1 0 00472313  
+toisiinsa_rajoittuvasti r 1 0 1 0 00022450  
+toisin r 1 1 \ 1 0 00122292  
+toisin_päin r 1 0 1 0 00191304  
+toisin_sanoen r 3 0 3 0 00206161 00202987 00193002  
+toisinaan r 2 0 2 0 00023877 00023198  
+toisinpäin r 1 0 1 0 00191304  
+toisistaan r 1 0 1 0 00195535  
+toissijaisesti r 1 2 ! \ 1 0 00149173  
+toistaiseksi r 5 1 ! 5 0 00095659 00058860 00051640 00030470 00030329  
+toistamiseen r 2 0 2 0 00190515 00043953  
+toistettavasti r 1 1 \ 1 0 00065534  
+toistuvasti r 4 1 \ 4 0 00541139 00465725 00190515 00190421  
+toiveikkaasti r 2 2 ! \ 2 0 00522174 00214772  
+toivottavasti r 1 0 1 0 00214671  
+toivottomasti r 4 1 \ 4 0 00365646 00339808 00324169 00188664  
+tollosti r 1 0 1 0 00188818  
+topografisesti r 1 1 \ 1 0 00505247  
+topologisesti r 1 1 \ 1 0 00542391  
+toraisasti r 1 1 \ 1 0 00527159  
+tosi r 1 1 ; 1 0 00121073  
+tosiaan r 1 0 1 0 00198641  
+tosiaan_näin r 1 0 1 0 00158276  
+tosiasiallisesti r 1 0 1 0 00136932  
+tosiasiassa r 5 1 \ 5 0 00161053 00160793 00160531 00065221 00029476  
+tosin r 1 0 1 0 00057568  
+tosissaan r 2 0 2 0 00177929 00172119  
+toteuttamiskelpoisesti r 1 0 1 0 00453103  
+totisesti r 2 1 ; 2 0 00518726 00041749  
+totta_kai r 2 1 ; 2 0 00156268 00042187  
+totta_puhuen r 1 0 1 0 00243518  
+totta_tosiaan r 2 1 ; 2 0 00162262 00156268  
+tottelemattomasti r 2 2 ! \ 2 0 00339284 00018020  
+totuudenmukaisesti r 1 1 ! 1 0 00424473  
+traagisesti r 1 1 \ 1 0 00253601  
+transitiivisesti r 1 2 ! \ 1 0 00405188  
+trendikkäästi r 1 1 \ 1 0 00357979  
+trooppisen r 1 1 \ 1 0 00507270  
+tuhannesti r 1 0 1 0 00151479  
+tuhatkertaisesti r 1 0 1 0 00151479  
+tuhlaavaisesti r 5 2 ! \ 5 0 00504274 00504086 00392415 00357633 00202049  
+tuhlailevasti r 3 1 \ 3 0 00515330 00457069 00439265  
+tuhmasti r 1 1 \ 1 0 00018020  
+tuhoisan r 1 1 \ 1 0 00331943  
+tuhoisasti r 3 1 \ 3 0 00470228 00373972 00299523  
+tuhruisesti r 2 1 \ 2 0 00526431 00483695  
+tuimasti r 1 0 1 0 00116854  
+tukevasti r 1 0 1 0 00403416  
+tukkoisesti r 1 0 1 0 00495056  
+tukuittain r 1 0 1 0 00280076  
+tukuttain r 1 1 ! 1 0 00467341  
+tulevaisuudessa r 1 0 1 0 00036308  
+tuli- r 1 0 1 0 00447224  
+tulisesti r 1 0 1 0 00474164  
+tulisieluisesti r 1 0 1 0 00361866  
+tuloksettomasti r 1 1 ! 1 0 00100727  
+tulossa r 1 0 1 0 00184448  
+tummana r 1 0 1 0 00220964  
+tunne-elämältään r 1 1 \ 1 0 00199893  
+tunnetaan_myös_nimellä r 1 0 1 0 00290970  
+tunnetusti r 2 0 2 0 00435307 00358961  
+tunnistamaton r 1 0 1 0 00448601  
+tunnistamattomasti r 1 2 ! \ 1 0 00448601  
+tunnistettavasti r 2 2 ! \ 2 0 00448426 00384727  
+tunnollisesti r 2 0 2 0 00440958 00192244  
+tunnottomana r 1 1 \ 1 0 00435884  
+tunnottomasti r 1 0 1 0 00473728  
+tunnusmerkillisesti r 1 0 1 0 00527586  
+tunnustetusti r 1 0 1 0 00539020  
+tunnustuksellisesti r 1 1 \ 1 0 00101058  
+tunteellisesti r 2 2 ! \ 2 0 00474319 00361129  
+tunteensa_näyttäen r 1 0 1 0 00348988  
+tunteettomasti r 6 2 ! \ 6 0 00474494 00401901 00361324 00255101 00200202 00067388  
+tunteikkaasti r 1 1 ! 1 0 00361129  
+tunteisiin_vetoavasti r 1 2 ! \ 1 0 00200037  
+tuntemattomasti r 1 0 1 0 00393805  
+tuntuvasti r 1 0 1 0 00015394  
+tuohtuneesti r 1 1 \ 1 0 00396064  
+tuolla r 2 1 ! 2 0 00118051 00089555  
+tuomittavasti r 1 0 1 0 00326080  
+tuonnempana r 3 0 3 0 00511736 00379307 00277221  
+tuonpuoleisessa r 1 0 1 0 00036308  
+tuossa r 1 1 ! 1 0 00118051  
+tuota_pikaa r 2 0 2 0 00178863 00037208  
+tuottamattomasti r 2 2 ! \ 2 0 00457777 00229611  
+tuottavasti r 2 1 \ 2 0 00369223 00017193  
+tuotteliaasti r 1 2 ! \ 1 0 00229357  
+tuottoisasti r 1 1 ! 1 0 00229357  
+tuplanopeudella r 1 0 1 0 00343961  
+turhaan r 4 2 ! \ 4 0 00373406 00284304 00181168 00180995  
+turhanpäiväisesti r 1 1 ! 1 0 00398099  
+turmiollisesti r 2 1 \ 2 0 00332272 00299523  
+turtuneena r 1 0 1 0 00435884  
+turvallisesti r 3 1 \ 3 0 00400741 00207973 00166674  
+turvattomasti r 1 1 ! 1 0 00401197  
+tuskaisen r 1 1 \ 1 0 00280744  
+tuskallisen r 1 1 \ 1 0 00123764  
+tuskallisesti r 1 0 1 0 00535629  
+tuskin r 3 0 3 0 00347566 00003270 00002706  
+tuskin_havaittavasti r 1 0 1 0 00388919  
+tutisevasti r 1 0 1 0 00475957  
+tutkimattomasti r 1 0 1 0 00067189  
+tutkivasti r 1 0 1 0 00471751  
+tuttavallisesti r 1 0 1 0 00358752  
+tuulahtavasti r 1 0 1 0 00302698  
+tuulenpuoleisesti r 1 1 ! 1 0 00102700  
+tuuliajolla r 2 1 \ 2 0 00287734 00287565  
+tuulta_vastaan r 1 1 ! 1 0 00102863  
+tyhjiössä r 1 0 1 0 00041982  
+tyhjänpäiväisesti r 1 0 1 0 00507017  
+tyhjästi r 2 1 \ 2 0 00517799 00301796  
+tyhjästä r 2 0 2 0 00172690 00044347  
+tyhmästi r 3 2 ! \ 3 0 00345322 00216664 00216229  
+tykkänään r 1 1 ; 1 0 00008717  
+tylsästi r 4 2 ! \ 4 0 00259010 00252952 00230694 00224222  
+tylysti r 2 2 ! \ 2 0 00375539 00004799  
+tympeästi r 1 0 1 0 00525566  
+typerästi r 4 1 \ 4 0 00385082 00345322 00216381 00188818  
+typografisesti r 1 1 \ 1 0 00508217  
+tyrmistyttävän r 2 0 2 0 00477311 00477210  
+tyrmäävän r 1 1 ; 1 0 00050432  
+tyttömäisen r 1 1 \ 1 0 00116480  
+tyttömäisesti r 1 1 \ 1 0 00116480  
+tyydyttämättömän r 1 1 \ 1 0 00400597  
+tyydyttämättömästi r 1 1 \ 1 0 00400389  
+tyydyttävän r 1 0 1 0 00197711  
+tyydyttävästi r 3 3 ! \ ; 3 0 00060094 00016679 00016557  
+tyydytystä_tuottavan r 1 0 1 0 00197711  
+tyylikkäästi r 4 2 ! \ 4 0 00495367 00349654 00349424 00007414  
+tyylillisesti r 1 1 \ 1 0 00495481  
+tyylittömästi r 2 2 ! \ 2 0 00499898 00349882  
+tyynesti r 9 1 \ 9 0 00494419 00474930 00472653 00447643 00447498 00339473 00309269 00254729 00253195  
+tyypillisesti r 1 1 ! 1 0 00264819  
+tyystin r 2 1 ; 2 0 00170344 00008717  
+tyyten r 1 1 ; 1 0 00008717  
+tyytymättömästi r 1 1 \ 1 0 00335737  
+työajan_päätyttyä r 1 0 1 0 00163588  
+työläästi r 3 1 \ 3 0 00450531 00438081 00295452  
+työteliäästi r 1 1 \ 1 0 00397523  
+tähtitieteellisen r 1 1 \ 1 0 00131034  
+tähän r 1 0 1 0 00117516  
+tähän_asti r 1 0 1 0 00030470  
+tähän_mennessä r 2 0 2 0 00185303 00030470  
+tähän_päivään r 1 0 1 0 00185303  
+tähän_saakka r 1 0 1 0 00030716  
+tällä_hetkellä r 3 0 3 0 00161992 00053285 00052283  
+tällä_tavalla r 1 1 ; 1 0 00274401  
+tämän_kanssa r 1 0 1 0 00044152  
+tämän_tästä r 1 0 1 0 00023198  
+tänne r 1 1 ! 1 0 00117516  
+tänä_iltana r 1 0 1 0 00086084  
+tänä_päivänä r 2 0 2 0 00222303 00052478  
+tänä_yönä r 1 0 1 0 00086084  
+tänään r 1 0 1 0 00222303  
+täpötäynnä r 1 0 1 0 00272029  
+tärkeästi r 1 1 \ 1 0 00391280  
+täsmentämättä r 1 1 \ 1 0 00246485  
+täsmälleen r 4 2 \ ; 4 0 00392103 00185141 00171018 00010230  
+täsmällisesti r 6 2 ! \ 6 0 00494917 00392103 00391711 00219460 00219115 00113645  
+tässä r 2 1 ! 2 0 00117663 00117243  
+tässä_järjestyksessä r 1 0 1 0 00148757  
+tässä_kohdin r 1 0 1 0 00117806  
+tästedes r 2 0 2 0 00036165 00036020  
+tästä r 1 0 1 0 00379644  
+tästä_eteenpäin r 1 0 1 0 00047071  
+tästä_lähin r 1 0 1 0 00036020  
+täten r 4 1 ; 4 0 00274401 00257395 00047751 00046573  
+tätä_tarkoitusta_varten r 1 0 1 0 00268592  
+täydellisesti r 5 3 ! \ ; 5 0 00185141 00011299 00010600 00010349 00009637  
+täydessä_toimessa r 1 0 1 0 00178350  
+täydessä_vauhdissa r 1 0 1 0 00178350  
+täydestä_sydämestään r 2 0 2 0 00402722 00224611  
+täynnä r 1 0 1 0 00212655  
+täysillä r 1 0 1 0 00185770  
+täysin r 18 3 ! \ ; 18 0 00530706 00495774 00491259 00490959 00468962 00450368 00420799 00315108 00192565 00170344 00170240 00062386 00020143 00016321 00011299 00010067 00009637 00008717  
+täysin_varmasti r 1 0 1 0 00397000  
+täysipäiväisesti r 1 1 ! 1 0 00270694  
+täysjärkisesti r 1 0 1 0 00231629  
+täyteen r 1 0 1 0 00212655  
+täyteläisesti r 1 0 1 0 00469792  
+täyttä_vauhtia r 1 0 1 0 00093605  
+täällä r 2 1 ! 2 0 00280392 00117243  
+täältä r 1 1 ; 1 0 00047192  
+töin_tuskin r 1 0 1 0 00002706  
+tökerösti r 1 2 ! \ 1 0 00193941  
+törkeän r 1 0 1 0 00126542  
+törkeästi r 2 1 \ 2 0 00366767 00006427  
+törkyisesti r 1 0 1 0 00484691  
+törmäten r 1 1 ; 1 0 00299721  
+töykeästi r 4 1 \ 4 0 00375539 00319690 00283160 00234384  
+uhkaavan r 1 0 1 0 00097687  
+uhkaavasti r 6 1 \ 6 0 00534888 00526885 00452070 00424129 00299523 00299420  
+uhkarohkeasti r 1 0 1 0 00378271  
+uhkean r 1 0 1 0 00519607  
+uhmakkaasti r 1 0 1 0 00213307  
+ujosti r 1 1 \ 1 0 00245437  
+uljaasti r 1 0 1 0 00204396  
+ulkoa r 1 0 1 0 00168450  
+ulkoapäin r 1 0 1 0 00246924  
+ulkoilmassa r 1 1 ! 1 0 00119691  
+ulkoisesti r 2 2 ! \ 2 0 00266639 00246924  
+ulkomailla r 3 0 3 0 00282904 00196010 00112184  
+ulkomaille r 1 0 1 0 00112184  
+ulkomuistista r 1 0 1 0 00168450  
+ulkona r 2 1 ! 2 0 00249379 00119691  
+ulkonaisesti r 1 2 ! \ 1 0 00246606  
+ulkonäöstä_huolimatta r 1 0 1 0 00112297  
+ulkopuolelta r 1 1 ! 1 0 00119977  
+ulkopuolinen r 1 0 1 0 00536338  
+ulkosalla r 1 0 1 0 00119691  
+ulos r 2 1 ! 2 0 00277666 00249379  
+ulospäin r 1 0 1 0 00277666  
+ultra_vires r 1 0 1 0 00508298  
+ultraäänellä r 1 0 1 0 00007302  
+umpimähkäisesti r 2 1 \ 2 0 00458038 00076736  
+umpimähkään r 1 0 1 0 00076736  
+uneksivasti r 1 0 1 0 00344803  
+uneliaasti r 1 1 \ 1 0 00345071  
+unelmoivasti r 1 0 1 0 00344803  
+unessa r 1 1 \ 1 0 00296379  
+unettomasti r 1 1 \ 1 0 00483177  
+unisesti r 1 1 \ 1 0 00483034  
+unohtamattomasti r 1 1 \ 1 0 00423847  
+upean r 2 2 \ ; 2 0 00371476 00197419  
+upeasti r 2 0 2 0 00372822 00225277  
+uppiniskaisesti r 2 0 2 0 00213477 00213307  
+urheasti r 4 1 \ 4 0 00517856 00306778 00214269 00186197  
+urheilullisesti r 1 2 ! \ 1 0 00489807  
+urhoollisesti r 1 1 \ 1 0 00517856  
+urkkivasti r 1 1 \ 1 0 00459355  
+useammin r 1 0 1 0 00038527  
+useasti r 1 0 1 0 00190421  
+useimmiten r 1 1 ! 1 0 00115419  
+usein r 4 0 4 0 00168143 00115419 00064394 00038358  
+uskaliaan r 1 0 1 0 00097687  
+uskaliaasti r 1 0 1 0 00286925  
+uskalletusti r 1 1 \ 1 0 00326870  
+uskollisesti r 4 2 ! \ 4 0 00491631 00338222 00332692 00239609  
+uskomattoman r 3 2 ! ; 3 0 00261907 00197419 00035270  
+uskomattomasti r 1 2 ! \ 1 0 00318162  
+uskonnollisesti r 1 0 1 0 00192145  
+uskottavasti r 2 2 ! \ 2 0 00318545 00261668  
+usvaisen r 1 0 1 0 00427236  
+uteliaasti r 1 1 \ 1 0 00089210  
+utuinen r 1 1 \ 1 0 00377837  
+uudelleen r 2 0 2 0 00122036 00043953  
+uudelleen_ja_uudelleen r 1 0 1 0 00190515  
+uudelleen_ja_vielä_uudelleen r 1 0 1 0 00190515  
+uudestaan r 1 0 1 0 00122036  
+uupumattomasti r 1 1 \ 1 0 00056732  
+uutterasti r 4 1 \ 4 0 00397523 00334405 00293419 00244145  
+vaahdoten r 1 1 \ 1 0 00369099  
+vaahtoavasti r 1 0 1 0 00464044  
+vaakalaudalla r 1 0 1 0 00171570  
+vaakasuorasti r 1 1 \ 1 0 00381885  
+vaarallisen r 1 1 \ 1 0 00097687  
+vaarallisen_uhkarohkeasti r 1 0 1 0 00468822  
+vaarallisesti r 2 1 \ 2 0 00453599 00097687  
+vaarattomasti r 1 0 1 0 00300918  
+vaatimattoman r 1 1 \ 1 0 00297980  
+vaatimattomasti r 9 2 ! \ 9 0 00508977 00476498 00455695 00422008 00421879 00297980 00255855 00242226 00080011  
+vaativasti r 1 1 \ 1 0 00528593  
+vahingollisesti r 2 0 2 0 00332272 00134145  
+vahingoniloisesti r 1 0 1 0 00371340  
+vahingossa r 1 1 ! 1 0 00067976  
+vahvasti r 5 1 \ 5 0 00528720 00452740 00452430 00447348 00403416  
+vahvistaen r 1 1 \ 1 0 00538906  
+vaihdellen r 2 1 \ 2 0 00518297 00148213  
+vaiheittain r 1 0 1 0 00446665  
+vaihtelevasti r 1 0 1 0 00304049  
+vaihtoehtoisesti r 1 1 \ 1 0 00068761  
+vaihtovuoroisesti r 1 1 \ 1 0 00404006  
+vaikealukuisesti r 1 2 ! \ 1 0 00386009  
+vaikeasti r 9 2 ! \ 9 0 00373972 00295452 00099262 00099175 00057160 00017762 00017279 00015029 00012797  
+vaikeatajuisesti r 1 1 \ 1 0 00284537  
+vaikka r 2 0 2 0 00128337 00019549  
+vaikka_mikä_olisi r 1 0 1 0 00169442  
+vaikka_mitä_tapahtuisi r 1 0 1 0 00169442  
+vaikuttavan r 1 1 ; 1 0 00197419  
+vaikuttavasti r 2 2 ! \ 2 0 00229000 00225277  
+vaikutusvaltaisesti r 1 1 \ 1 0 00397876  
+vaille r 1 0 1 0 00477782  
+vaimeasti r 1 1 \ 1 0 00076290  
+vain r 5 0 5 0 00531166 00011764 00011609 00009235 00005048  
+vain_jos r 1 0 1 0 00531166  
+vain_kun r 1 0 1 0 00531166  
+vain_nimellisesti r 1 0 1 0 00178735  
+vaistomaisesti r 3 2 ! \ 3 0 00537600 00266288 00259726  
+vaistonvaraisesti r 2 1 \ 2 0 00405663 00266288  
+vaisusti r 5 0 5 0 00520213 00441508 00441381 00414185 00410058  
+vaiteliaana r 1 1 \ 1 0 00121223  
+vaivaantuneesti r 1 1 ! 1 0 00473036  
+vaivalloisesti r 1 1 \ 1 0 00409651  
+vaivatta r 2 1 ; 2 0 00174058 00159807  
+vaivattomasti r 2 1 \ 2 0 00211517 00159686  
+vaivihkaa r 5 1 ! 5 0 00497399 00276385 00246095 00179611 00114564  
+vaivoin r 1 0 1 0 00002706  
+vakaasti r 8 2 ! \ 8 0 00541664 00541531 00533421 00227648 00198174 00187805 00055055 00054322  
+vakavamielisesti r 1 0 1 0 00177929  
+vakavasti r 6 2 ! \ 6 0 00520570 00373972 00177929 00017762 00017279 00015029  
+vakituisesti r 1 0 1 0 00209619  
+vakuuttavasti r 4 2 ! \ 4 0 00464268 00445237 00364671 00207110  
+valaisevasti r 1 1 ! 1 0 00397960  
+valheellisesti r 4 1 \ 4 0 00515701 00490407 00424267 00089414  
+valikoimatta r 1 0 1 0 00076736  
+valikoivasti r 1 1 \ 1 0 00472899  
+valinnaisesti r 1 2 ! \ 1 0 00438997  
+valitettavasti r 4 1 ! 4 0 00448811 00443628 00100859 00046443  
+valittaen r 1 2 ! \ 1 0 00310623  
+valittamatta r 1 2 ! \ 1 0 00310410  
+valittelevasti r 1 0 1 0 00443628  
+valjusti r 1 0 1 0 00441508  
+vallanhimoisesti r 1 1 \ 1 0 00343628  
+vallattomasti r 1 1 \ 1 0 00390554  
+vallitsevasti r 1 0 1 0 00173890  
+valloittavasti r 1 0 1 0 00253489  
+valmistautumatta r 2 1 \ 2 0 00357467 00096115  
+valmistelematta r 3 1 \ 3 0 00357467 00283416 00182308  
+valokuvin r 1 1 \ 1 0 00131447  
+valosähköllä r 1 1 \ 1 0 00131325  
+valppaasti r 3 1 \ 3 0 00519008 00437049 00290800  
+valtakunnallisesti r 1 0 1 0 00431479  
+valtavasti r 4 1 \ 4 0 00420046 00211083 00050537 00006162  
+valtio- r 1 1 \ 1 0 00140588  
+valtiollisesti r 1 0 1 0 00133528  
+valtoimenaan r 1 0 1 0 00463855  
+vanavedessä r 1 0 1 0 00128606  
+vangitsevasti r 1 0 1 0 00301327  
+vanhempien_sijasta r 1 0 1 0 00274894  
+vanhempien_tapaan r 1 1 \ 1 0 00441648  
+vankasti r 2 0 2 0 00494339 00247644  
+vankkumatta r 2 0 2 0 00406150 00055055  
+vankkumattomasti r 1 0 1 0 00055055  
+vapaaehtoisesti r 2 2 ! \ 2 0 00327578 00248197  
+vapaamielisesti r 1 1 \ 1 0 00211386  
+vapaana r 1 0 1 0 00381519  
+vapaasti r 2 1 \ 2 0 00381519 00225926  
+vapautuneesti r 1 1 \ 1 0 00515010  
+vapisevasti r 2 1 \ 2 0 00535269 00475957  
+varakkaasti r 1 0 1 0 00380788  
+varalta r 1 0 1 0 00177584  
+varastoon r 1 0 1 0 00250217  
+varauksellisesti r 1 1 ! 1 0 00314984  
+varauksettomasti r 1 0 1 0 00514897  
+varhain r 3 0 3 0 00456542 00108764 00108645  
+varhaiskypsästi r 1 1 \ 1 0 00454211  
+varhemmin r 1 0 1 0 00278161  
+varkain r 2 1 \ 2 0 00207684 00207571  
+varmaan r 1 0 1 0 00085703  
+varmaankin r 1 1 ; 1 0 00156268  
+varmasti r 11 3 ! \ ; 11 0 00401421 00400960 00286786 00228109 00227468 00164629 00162138 00156268 00123028 00057568 00040482  
+varomattomasti r 3 2 ! \ 3 0 00393063 00304921 00242668  
+varovaisesti r 3 1 ! 3 0 00314819 00304845 00304600  
+varovasti r 4 2 ! \ 4 0 00370500 00314819 00304600 00303823  
+varpaisillaan r 1 0 1 0 00504948  
+varsin r 2 0 2 0 00050221 00020835  
+varsinaisesti r 4 0 4 0 00531507 00161459 00080205 00040288  
+varsinkin r 1 0 1 0 00150276  
+varta_vasten r 3 0 3 0 00528903 00092874 00067453  
+vasemmalla_kädellä r 1 0 1 0 00159686  
+vasemmalle r 1 1 ! 1 0 00412029  
+vasta r 3 0 3 0 00121767 00036548 00011861  
+vasta- r 1 0 1 0 00272207  
+vasta_äsken r 1 0 1 0 00121767  
+vastaan r 2 1 ! 2 0 00311553 00081357  
+vastaanottajan_maksettava r 1 0 1 0 00272207  
+vastaanottavaisesti r 1 1 \ 1 0 00464514  
+vastaansanomattomasti r 2 1 \ 2 0 00511560 00508711  
+vastaavasti r 4 1 ! 4 0 00394170 00201691 00068643 00068356  
+vastahakoisesti r 3 2 ! \ 3 0 00374982 00265183 00098694  
+vastakkain r 4 1 \ 4 0 00333471 00183545 00048828 00048580  
+vastakkaiseen_suuntaan r 1 0 1 0 00078319  
+vastakkaisesti r 1 1 \ 1 0 00294845  
+vastakohtaisesti r 1 0 1 0 00317690  
+vastakohtana r 1 0 1 0 00317690  
+vastamäkeen r 1 0 1 0 00516463  
+vastapalveluksena r 1 1 \ 1 0 00430040  
+vastapäivään r 1 2 ! \ 1 0 00272525  
+vastapäätä r 2 1 \ 2 0 00183444 00048580  
+vastatusten r 1 0 1 0 00048069  
+vastatuuleen r 2 2 ! ; 2 0 00173097 00102543  
+vastavuoroisesti r 2 1 \ 2 0 00429803 00189487  
+vastedes r 1 0 1 0 00036020  
+vasten_tahtoaan r 1 2 ! \ 1 0 00327828  
+vastenmielisen r 5 2 ! \ 5 0 00510667 00341725 00340012 00336253 00329856  
+vastenmielisesti r 5 0 5 0 00465625 00436798 00332061 00329455 00059745  
+vastentahtoisesti r 1 1 ! 1 0 00248352  
+vastikään r 2 0 2 0 00121767 00036548  
+vastineeksi r 1 0 1 0 00430040  
+vastoin_intuitiota r 1 1 \ 1 0 00272761  
+vastoin_tervettä_järkeä r 1 1 \ 1 0 00272761  
+vastustamattoman r 1 1 \ 1 0 00256329  
+vastustamattomasti r 1 1 \ 1 0 00256329  
+vastuullisesti r 1 2 ! \ 1 0 00114877  
+vastuuntunnottomasti r 1 2 ! \ 1 0 00115024  
+vastuuttomasti r 2 2 ! \ 2 0 00176714 00115024  
+vatsanpuoleisesti r 1 1 \ 1 0 00090563  
+vauhdikkaasti r 1 2 \ ; 1 0 00021716  
+vauhkosti r 1 1 \ 1 0 00481138  
+vauraasti r 1 0 1 0 00017193  
+vauvamaisesti r 1 0 1 0 00536503  
+vauvan_tavoin r 1 0 1 0 00536503  
+veijarimaisesti r 1 0 1 0 00469142  
+veikeästi r 1 0 1 0 00408907  
+veistoksellisesti r 1 0 1 0 00241699  
+veitikkamaisesti r 1 1 \ 1 0 00520017  
+veljellisesti r 2 2 \ ; 2 0 00367593 00311338  
+veltosti r 3 1 \ 3 0 00415945 00410461 00363114  
+ventraalisesti r 1 1 \ 1 0 00090563  
+verbaalisesti r 1 1 \ 1 0 00138668  
+verettömästi r 1 2 ! \ 1 0 00289655  
+verisesti r 1 2 ! \ 1 0 00289883  
+verkkaisesti r 2 1 \ 2 0 00220744 00113282  
+verrannollisesti r 3 2 ! \ 3 0 00340643 00340322 00279881  
+verrattain r 1 0 1 0 00173725  
+verrattomasti r 1 0 1 0 00393989  
+vertauskuvallisesti r 1 1 \ 1 0 00145634  
+vetoavasti r 1 2 ! \ 1 0 00281171  
+vettä_valuvana r 1 0 1 0 00486792  
+viattomasti r 4 2 ! \ 4 0 00473210 00399555 00332408 00295568  
+viehkeästi r 1 2 ! \ 1 0 00193414  
+viehättävästi r 6 2 ! \ 6 0 00461027 00456042 00446503 00376464 00281171 00258724  
+viekkaasti r 1 1 \ 1 0 00316235  
+vielä r 6 1 ! 6 0 00051640 00050052 00034298 00030470 00030329 00019148  
+vielä_kerran r 1 0 1 0 00043953  
+vienosti r 1 0 1 0 00194468  
+vieraanvaraisesti r 1 2 ! \ 1 0 00382215  
+vierekkäin r 2 0 2 0 00267981 00267472  
+vieressä r 1 0 1 0 00267472  
+vieri_vieressä r 1 0 1 0 00176322  
+viettelevästi r 1 1 \ 1 0 00472739  
+vihaisesti r 1 1 \ 1 0 00243888  
+vihamielisesti r 3 1 \ 3 0 00519237 00377665 00259368  
+vihdoin r 2 0 2 0 00052143 00051925  
+vihjailevasti r 4 0 4 0 00541810 00485192 00402817 00389972  
+vihreänä r 1 1 \ 1 0 00259860  
+viidenneksi r 1 1 \ 1 0 00362108  
+viihdyttävästi r 1 0 1 0 00351645  
+viikko_toisensa_perään r 1 0 1 0 00191679  
+viikoittain r 2 0 2 0 00191776 00088942  
+viikon_puolivälissä r 1 0 1 0 00426386  
+viime_aikoina r 1 0 1 0 00116021  
+viime_hetkellä r 1 0 1 0 00180638  
+viimein r 1 0 1 0 00051925  
+viimeinkin r 2 0 2 0 00052143 00051925  
+viimeiseksi r 2 0 2 0 00137286 00071540  
+viimeisen_päälle r 3 0 3 0 00504852 00185141 00181334  
+viimeisin_muttei_vähäisin r 1 0 1 0 00071645  
+viimeksi r 1 0 1 0 00071462  
+viipyen r 1 0 1 0 00416424  
+viipymättä r 2 0 2 0 00052774 00036723  
+viisaasti r 2 2 ! \ 2 0 00293730 00216075  
+viistoon r 2 0 2 0 00297717 00295960  
+viistosti r 2 0 2 0 00295960 00257623  
+viitaten r 1 0 1 0 00185671  
+viivästynyt_maksuissa r 1 0 1 0 00238604  
+vikkelästi r 1 0 1 0 00204144  
+vilkkaasti r 2 1 \ 2 0 00519395 00283056  
+villiintyneesti r 1 0 1 0 00463575  
+villisti r 5 1 \ 5 0 00294691 00294502 00188541 00188363 00188242  
+vilpillisesti r 5 2 ! \ 5 0 00402526 00367674 00358093 00337696 00336723  
+vilpittömästi r 6 3 ! \ ; 6 0 00520896 00402223 00336955 00295568 00172916 00040740  
+vimmaisesti r 1 0 1 0 00367825  
+vimmatusti r 1 1 ; 1 0 00181676  
+vinkuen r 1 1 \ 1 0 00520776  
+vinkuvasti r 1 1 \ 1 0 00520776  
+vinoon r 3 0 3 0 00296257 00293185 00292976  
+vinossa r 4 0 4 0 00296257 00296257 00293185 00293185  
+vinosti r 4 1 \ 4 0 00482150 00478598 00295960 00257623  
+vinosti_poikittain r 1 0 1 0 00297717  
+vinosti_yli r 1 0 1 0 00297717  
+vinottain r 2 0 2 0 00478598 00333105  
+vinoutuneesti r 1 1 \ 1 0 00482061  
+virallisesti r 3 2 ! \ 3 0 00200979 00123477 00091976  
+viran_puolesta r 2 0 2 0 00270581 00091976  
+virheellisesti r 5 2 ! \ 5 0 00526306 00360411 00358307 00218697 00210144  
+virheettömästi r 3 2 ! \ 3 0 00360546 00247512 00010349  
+virkaintoisesti r 1 0 1 0 00437682  
+virkeästi r 1 0 1 0 00290800  
+virkistävästi r 1 0 1 0 00464847  
+visuaalisesti r 1 0 1 0 00143514  
+visusti r 1 0 1 0 00531278  
+vitsaillen r 1 0 1 0 00299938  
+vitsinä r 1 0 1 0 00093045  
+vitun r 1 0 1 0 00035825  
+vivace r 1 0 1 0 00519395  
+voi_olla r 1 0 1 0 00322579  
+voimakkaasti r 14 2 ! \ 14 0 00534769 00528484 00452740 00452430 00447348 00366240 00190919 00189965 00099262 00098984 00098570 00098170 00075782 00061621  
+voimattomasti r 2 1 \ 2 0 00452990 00223886  
+voipuneesti r 1 0 1 0 00529179  
+voitokkaasti r 1 1 \ 1 0 00213981  
+voitolla r 1 0 1 0 00163875  
+voitonriemuisen r 1 0 1 0 00243991  
+voitonriemuisesti r 2 1 \ 2 0 00243991 00209505  
+voitottomasti r 1 0 1 0 00457777  
+voittopuolisesti r 1 0 1 0 00173890  
+volymetrisesti r 1 1 \ 1 0 00127386  
+vrt. r 1 0 1 0 00206037  
+vulkaanisesti r 1 1 \ 1 0 00155847  
+vuodenaikaan_nähden r 1 1 ! 1 0 00295217  
+vuodenaikaan_nähden_normaalisti r 1 2 ! \ 1 0 00295065  
+vuodessa r 1 0 1 0 00268112  
+vuodesta_toiseen r 1 0 1 0 00244408  
+vuokratta r 1 0 1 0 00279974  
+vuorokauden_ympäri r 1 0 1 0 00164904  
+vuoronperään r 1 1 \ 1 0 00148213  
+vuorotellen r 2 1 \ 2 0 00194613 00148213  
+vuosineljänneksittäin r 1 0 1 0 00461500  
+vuosittain r 2 1 \ 2 0 00268112 00089049  
+vuoteenomana r 1 0 1 0 00245687  
+vuoteessa r 1 0 1 0 00245687  
+vuotta_kohti r 1 0 1 0 00268112  
+vyön_alle r 1 0 1 0 00307555  
+vyötäröä_myöten r 1 0 1 0 00520099  
+vyötäröön_asti r 1 0 1 0 00520099  
+väheksyvästi r 1 0 1 0 00339637  
+vähemmän r 2 1 ! 2 0 00107782 00107427  
+vähemmän_sulavasti r 1 1 ! 1 0 00208933  
+vähemmässä_määrin r 1 0 1 0 00107427  
+vähintään r 1 1 ! 1 0 00112584  
+vähitellen r 3 1 \ 3 0 00446665 00195923 00116618  
+vähiten r 1 1 ! 1 0 00120809  
+vähittäin r 1 0 1 0 00232046  
+vähä_vähältä r 2 0 2 0 00446665 00168553  
+vähäisesti r 2 1 \ 2 0 00465321 00080011  
+vähäisimmissä_määrin r 1 0 1 0 00120809  
+vähän r 2 0 2 0 00107922 00036939  
+vähän_aikaa r 1 0 1 0 00155961  
+vähän_ennen r 2 0 2 0 00037625 00037500  
+vähän_kerrallaan r 1 0 1 0 00446665  
+vähän_kerrassaan r 1 0 1 0 00168553  
+vähän_tilaa_vieden r 1 0 1 0 00309919  
+vähäpätöisesti r 5 2 ! \ 5 0 00460414 00424669 00421879 00317103 00097451  
+vähääkään r 1 0 1 0 00162615  
+väistämättömästi r 2 1 \ 2 0 00223687 00121517  
+väitetysti r 1 1 \ 1 0 00166775  
+väittelynhaluisesti r 1 1 \ 1 0 00340815  
+väkevästi r 1 0 1 0 00460105  
+väkinäisesti r 2 1 \ 2 0 00525780 00451755  
+väkisin r 1 0 1 0 00261587  
+väkivalloin r 1 1 \ 1 0 00364948  
+väkivaltaisesti r 3 2 ! \ 3 0 00240023 00215701 00126666  
+väliaikaisesti r 3 2 ! \ 3 0 00276041 00096272 00095659  
+väliin r 2 0 2 0 00524366 00268476  
+välikäden_kautta r 1 0 1 0 00063766  
+välillisesti r 1 0 1 0 00404285  
+välillä r 3 0 3 0 00524366 00268476 00023198  
+väliltä r 2 0 2 0 00524366 00268476  
+välinpitämättömästi r 12 2 ! \ 12 0 00511001 00433388 00433313 00395920 00388439 00375920 00317869 00283160 00233039 00206922 00203450 00198475  
+välissä r 2 0 2 0 00524366 00268476  
+välistä r 1 0 1 0 00023198  
+välittämättä r 1 0 1 0 00127696  
+välittömästi r 3 1 \ 3 0 00496607 00052774 00036723  
+väljästi r 1 0 1 0 00165959  
+välttelevästi r 2 1 \ 2 0 00477106 00353161  
+välttämättä r 4 2 ! \ 4 0 00432455 00279441 00127696 00121517  
+välttämättömästi r 2 0 2 0 00432455 00223687  
+värisevästi r 1 0 1 0 00475957  
+väristen r 1 0 1 0 00506701  
+värittömän r 1 0 1 0 00441508  
+värittömästi r 1 1 \ 1 0 00197975  
+väsymättä r 1 0 1 0 00293419  
+väsymättömästi r 1 1 \ 1 0 00056732  
+väsyneesti r 1 1 \ 1 0 00097895  
+vääjäämättä r 1 1 \ 1 0 00121517  
+vääjäämättömästi r 2 1 \ 2 0 00234105 00223687  
+väärentämättömästi r 1 1 \ 1 0 00289455  
+väärin r 4 2 ! \ 4 0 00292976 00219584 00218697 00011095  
+väärin_päin r 1 0 1 0 00082510  
+väärinpäin r 1 0 1 0 00082510  
+yhdeksänkertaisesti r 1 0 1 0 00434666  
+yhdelle_korvalle r 1 0 1 0 00223211  
+yhden_kerran r 1 0 1 0 00128076  
+yhdenmukaisesti r 1 1 ! 1 0 00129768  
+yhdentekevästi r 1 2 ! \ 1 0 00424025  
+yhdessä r 6 0 6 0 00534014 00212280 00126349 00126050 00125850 00069414  
+yhdessä_korvassa r 1 0 1 0 00223211  
+yhdessä_kuorossa r 1 0 1 0 00257004  
+yhdessä_yössä r 1 0 1 0 00261451  
+yht'äkkiä r 1 0 1 0 00066566  
+yhtaikaa r 1 0 1 0 00165689  
+yhteen r 2 0 2 0 00126263 00126050  
+yhteen_menoon r 1 0 1 0 00434986  
+yhteen_ääneen r 1 0 1 0 00257004  
+yhteensopimattomasti r 1 2 ! \ 1 0 00310159  
+yhteensä r 1 0 1 0 00069249  
+yhteisesti r 1 1 \ 1 0 00175761  
+yhteishenkisesti r 1 0 1 0 00307147  
+yhteistuumin r 1 0 1 0 00125956  
+yhteistyössä r 2 1 \ 2 0 00176196 00125956  
+yhteistä r 1 0 1 0 00529923  
+yhteisymmärryksessä r 1 1 ! 1 0 00325229  
+yhteneväisesti r 1 0 1 0 00022450  
+yhtenä_joukkona r 1 0 1 0 00169994  
+yhtenäisesti r 1 0 1 0 00530947  
+yhtenään r 1 0 1 0 00022264  
+yhtä r 1 0 1 0 00024166  
+yhtä_aikaa r 3 0 3 0 00487261 00129378 00125769  
+yhtä_kaikki r 1 0 1 0 00029871  
+yhtä_kuin r 1 0 1 0 00024166  
+yhtä_soittoa r 1 0 1 0 00434986  
+yhtäkkiä r 6 0 6 0 00509476 00509256 00493239 00164203 00066760 00066566  
+yhtäläisesti r 1 1 ! 1 0 00354333  
+yhtämittaisesti r 1 0 1 0 00305261  
+yhtäältä r 1 1 ! 1 0 00129047  
+yhtään r 2 0 2 0 00061699 00026623  
+yhä r 2 1 ! 2 0 00034298 00019148  
+yhä_enemmän r 1 0 1 0 00064854  
+yhä_useammin r 1 0 1 0 00064854  
+yhä_uudelleen r 1 0 1 0 00190515  
+yksi_kerrallaan r 3 0 3 0 00531965 00222641 00168981  
+yksikielisesti r 1 1 \ 1 0 00225052  
+yksikseen r 1 1 \ 1 0 00486395  
+yksilöllisesti r 1 0 1 0 00222641  
+yksimielisesti r 2 1 \ 2 0 00247832 00114687  
+yksin r 2 1 \ 2 0 00170700 00009235  
+yksinkertaisesti r 4 1 ; 4 0 00042861 00005390 00005292 00005048  
+yksinomaan r 1 1 \ 1 0 00009235  
+yksinään r 3 1 \ 3 0 00486395 00479972 00009235  
+yksipuolisesti r 2 2 ! \ 2 0 00501438 00271522  
+yksiselitteisesti r 1 1 ! 1 0 00236424  
+yksitavuisesti r 1 1 \ 1 0 00155479  
+yksitellen r 2 0 2 0 00531965 00222641  
+yksitoikkoisesti r 3 2 ! \ 3 0 00427488 00355268 00344689  
+yksitotisesti r 1 0 1 0 00383311  
+yksittäin r 4 2 ! \ 4 0 00475371 00252360 00222641 00090838  
+yksityisesti r 1 1 ! 1 0 00175463  
+yksityiskohtaisesti r 3 1 \ 3 0 00426743 00211808 00092251  
+yksiäänisesti r 1 0 1 0 00256920  
+yleensä r 3 0 3 0 00115419 00112452 00045632  
+yleensä_ottaen r 1 0 1 0 00112452  
+yleisesti r 6 2 ! \ 6 0 00237526 00209925 00203133 00163003 00115419 00045632  
+yleisesti_ottaen r 2 0 2 0 00168143 00112452  
+yleistävästi r 1 1 \ 1 0 00497770  
+ylellisen r 1 0 1 0 00414342  
+ylellisesti r 1 1 \ 1 0 00380788  
+ylemmäs r 1 0 1 0 00087224  
+ylemmässä_kerroksessa r 1 0 1 0 00102175  
+ylempänä r 1 0 1 0 00087224  
+ylen r 3 1 ; 3 0 00440370 00159242 00050221  
+ylenkatseellisesti r 2 0 2 0 00305130 00087828  
+ylenpalttisesti r 7 1 \ 7 0 00457069 00439265 00357633 00348885 00230072 00202049 00050537  
+ylettömän r 1 0 1 0 00355855  
+ylevämielisesti r 1 0 1 0 00381051  
+ylevästi r 1 0 1 0 00416876  
+ylhäisesti r 1 0 1 0 00370165  
+ylhäällä r 2 1 ! 2 0 00087224 00086676  
+ylhäällä_mastossa r 1 0 1 0 00525157  
+yli r 1 0 1 0 00242883  
+yliluonnollisen r 1 1 \ 1 0 00455875  
+yliluonnollisesti r 2 1 \ 2 0 00505847 00455875  
+ylimakeasti r 1 0 1 0 00272142  
+ylimielisesti r 5 1 \ 5 0 00485440 00485192 00305130 00285963 00241796  
+ylimpänä r 1 0 1 0 00516566  
+ylinnä r 1 0 1 0 00297833  
+ylipäänsä r 1 0 1 0 00163976  
+ylipääsemättömän r 1 1 \ 1 0 00403835  
+ylipäätään r 1 0 1 0 00163976  
+ylistävästi r 1 1 \ 1 0 00372393  
+ylitöissä r 1 0 1 0 00279344  
+ylivoimaisen r 1 0 1 0 00256329  
+ylivoimaisesti r 2 0 2 0 00256329 00051071  
+yllin_kyllin r 2 1 ! 2 0 00230072 00192565  
+yllyttävästi r 1 0 1 0 00458988  
+yllä r 1 0 1 0 00086676  
+yllättäen r 5 0 5 0 00184245 00164203 00066760 00066566 00044347  
+yllättävän r 1 1 \ 1 0 00156818  
+yllättävästi r 1 1 \ 1 0 00156818  
+yllätyksellisesti r 1 0 1 0 00508395  
+ylpeästi r 1 1 \ 1 0 00204396  
+yltäkylläisesti r 1 0 1 0 00230072  
+yläilmakehässä r 1 0 1 0 00524504  
+yläkerrassa r 2 1 ! 2 0 00102299 00102175  
+ylämäkeen r 1 0 1 0 00516344  
+yläpuolella r 3 1 ! 3 0 00267000 00243237 00087224  
+yläpuolelle r 1 1 ! 1 0 00087224  
+ylävirtaan r 1 1 ! 1 0 00104837  
+ylös r 2 1 ! 2 0 00380481 00104470  
+ylös_alas r 1 0 1 0 00240792  
+ylös_ilmaan r 1 0 1 0 00524643  
+ylös_mastoon r 1 0 1 0 00525157  
+ylösalaisin r 1 0 1 0 00235336  
+ylöspäin r 3 1 ! 3 0 00378908 00104344 00104099  
+ym. r 1 0 1 0 00111834  
+ymmällään r 1 1 \ 1 0 00444950  
+ymmärrettävästi r 3 2 ! \ 3 0 00385831 00288478 00216848  
+ymmärtäväisesti r 2 2 ! \ 2 0 00401747 00225389  
+ymmärtävästi r 1 0 1 0 00293730  
+ympäri r 5 0 5 0 00307091 00078319 00077800 00077659 00077521  
+ympäriinsä r 2 0 2 0 00078465 00077900  
+ympäriinsä/ympäri r 1 0 1 0 00078465  
+ympärille r 1 0 1 0 00077900  
+ympärillä r 1 0 1 0 00077900  
+ympäristön_kannalta r 1 1 \ 1 0 00351804  
+ympärysmitaltaan r 1 0 1 0 00077074  
+ynnä_muut r 2 0 2 0 00205773 00205658  
+yrityksen_ja_erehdyksen_kautta r 1 0 1 0 00091378  
+yrmeästi r 1 0 1 0 00259203  
+ystävällisesti r 7 2 ! \ 7 0 00282177 00248083 00235787 00235570 00220490 00201491 00004542  
+ytimekkäästi r 3 1 \ 3 0 00449389 00312535 00312096  
+yököttävän r 1 1 \ 1 0 00336253  
+yön_yli r 1 0 1 0 00261345  
+äidillisesti r 1 1 \ 1 0 00420496  
+äitelästi r 1 1 \ 1 0 00420633  
+äkillisesti r 2 0 2 0 00454044 00066566  
+äkisti r 3 0 3 0 00505946 00164203 00066760  
+äkkiarvaamatta r 2 0 2 0 00164203 00066760  
+äkkijyrkästi r 1 1 \ 1 0 00453881  
+äkkinäisesti r 2 0 2 0 00184245 00066566  
+äkkiä r 3 1 \ 3 0 00113929 00066760 00066566  
+äkäisesti r 2 1 \ 2 0 00315982 00232428  
+ällistynyt r 1 0 1 0 00082106  
+ällistyttävän r 1 0 1 0 00495152  
+ällistyttävästi r 1 0 1 0 00228639  
+ällöttävän r 1 1 \ 1 0 00336253  
+älykkäästi r 4 1 \ 4 0 00522560 00293730 00203617 00201917  
+älyllisesti r 1 0 1 0 00143935  
+älyttömän r 1 0 1 0 00131034  
+äreästi r 5 1 \ 5 0 00427989 00372233 00319690 00315982 00306928  
+ärhäkkäästi r 1 1 \ 1 0 00484828  
+ärsyttävän r 1 0 1 0 00201123  
+ärsyttävästi r 4 1 \ 4 0 00540394 00535001 00201123 00003546  
+ärsyyntyneesti r 1 0 1 0 00232428  
+ärtyisästi r 3 2 ! \ 3 0 00505631 00501847 00334963  
+äsken r 1 0 1 0 00036548  
+äskettäin r 3 0 3 0 00121767 00116021 00036548  
+ääneen r 1 0 1 0 00075660  
+äänekkäästi r 6 2 ! \ 6 0 00437128 00437128 00245759 00166542 00138797 00075782  
+ääneti r 1 0 1 0 00488155  
+äänettömästi r 2 1 \ 2 0 00533329 00488155  
+äänetönnä r 1 0 1 0 00121223  
+äärellisen r 1 2 ! \ 1 0 00241258  
+äärettömän r 1 0 1 0 00471487  
+äärettömästi r 3 2 ! \ 3 0 00241107 00095027 00006162  
+äärimmilleen r 1 0 1 0 00098984  
+äärimmäisen r 4 2 \ ; 4 0 00232310 00121073 00050645 00050221  
+öisin r 1 0 1 0 00154915  

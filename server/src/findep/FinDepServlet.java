@@ -209,7 +209,7 @@ public class FinDepServlet extends SuperServlet {
 		}
 
 		if (SYSOUTLOGGER.LOG_LEVEL != 0) {
-			// do not add logtext unless log level is 0
+			// do not add logtext to stats unless log level is 0
 			logText = null;
 		}
 		// add latest parsed time and excerpt to stats
