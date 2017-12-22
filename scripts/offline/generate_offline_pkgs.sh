@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-#generate offline package for Finnish dependency parser Docker image
-
-set -o errexit
-set -o pipefail
-set -o nounset
+#generate offline packages for Finnish dependency parser Docker image and haproxy image
 
 #require parser version when executing this script
 if [[ "$1" == "" ]] ; then
@@ -19,6 +15,11 @@ if [[ "$2" == "" ]] ; then
 else
   __workdir=$2
 fi  
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
 
 __version=$1
 
