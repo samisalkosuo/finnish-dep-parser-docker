@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.activemq.util.LFUCache;
 import org.apache.commons.io.output.StringBuilderWriter;
 
+import findep.utils.cache.MyCache;
+
 public class SimpleStats {
 
 	private static SimpleStats instance = new SimpleStats();
@@ -123,22 +125,27 @@ public class SimpleStats {
 				+ String.format("%.03f / %.03f MB", Runtime.getRuntime().freeMemory() / MB, maxmemory / MB));
 
 		// cache stats
-		if (cacheInstance != null) {
-			int cacheSize = cacheInstance.size();
-			Set<String> keys = cacheInstance.keySet();
-			long totalCachedBytes = 0;
-			for (String key : keys) {
-				totalCachedBytes = totalCachedBytes + cacheInstance.get(key).length();
-			}
+		if (MyCache.getInstance().isEnabled()) {
+			pw.println("  Cache is used.");
 
-			pw.println("  Cache hits             : " + cacheHits);
-			pw.println("  Cached documents       : " + cacheSize + "/" + maxCacheSize);
-			pw.println("  Cached documents size  : " + String.format("%.02f KB", (totalCachedBytes) / KB));
 		} else {
 			pw.println("  Cache not used.");
 
 		}
-
+		/*
+		 * if (cacheInstance != null) { int cacheSize = cacheInstance.size();
+		 * Set<String> keys = cacheInstance.keySet(); long totalCachedBytes = 0;
+		 * for (String key : keys) { totalCachedBytes = totalCachedBytes +
+		 * cacheInstance.get(key).length(); }
+		 * 
+		 * pw.println("  Cache hits             : " + cacheHits);
+		 * pw.println("  Cached documents       : " + cacheSize + "/" +
+		 * maxCacheSize); pw.println("  Cached documents size  : " +
+		 * String.format("%.02f KB", (totalCachedBytes) / KB)); } else {
+		 * pw.println("  Cache not used.");
+		 * 
+		 * }
+		 */
 		// memory
 		// check this
 		// https://stackoverflow.com/questions/17374743/how-can-i-get-the-memory-that-my-java-program-uses-via-javas-runtime-api

@@ -4,6 +4,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 
 import findep.utils.SystemOutLogger;
+import finwordnet.FinWordNetServlet;
 
 public class FinDepServletServer {
 
@@ -25,7 +26,7 @@ public class FinDepServletServer {
 		// 0=no log after start
 		// 1=not so much log, text excerpt
 		// 2=more log, all text
-		//default is 1
+		// default is 1
 		int LOG_LEVEL = 1;
 		SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
 
@@ -75,24 +76,29 @@ public class FinDepServletServer {
 				serverFeature = "ALL";
 			}
 
-			// IMPORTANT:
-			// This is a raw Servlet, not a Servlet that has been configured
+			// These is a raw Servlet, not a Servlet that has been configured
 			// through a web.xml @WebServlet annotation, or anything similar.
 
-			if (serverFeature.equals("ALL") || serverFeature.equals("LEMMA")) {
-				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(2);
+			if (serverFeature.contains("ALL") || serverFeature.contains("FWN")) {
+				handler.addServletWithMapping(FinWordNetServlet.class, "/finwordnet").setInitOrder(0);
 
 			}
 
-			if (serverFeature.equals("ALL") || serverFeature.equals("DEP")) {
-				handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(0);
-				handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(0);
-				handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(0);
-				handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(1);
+			if (serverFeature.contains("ALL") || serverFeature.contains("DEP")){
+				handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(1);
+				handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(1);
+				handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(1);
+				handler.addServletWithMapping(FinDepServlet.class, "/").setInitOrder(2);
+			}
+
+			if (serverFeature.contains("ALL") || serverFeature.contains("LEMMA")) {
+				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(3);
+
 			}
 
 			// Start things up!
 			server.start();
+			SYSOUTLOGGER.sysout(-1, "Server started.");
 
 			// The use of server.join() the will make the current thread join
 			// and

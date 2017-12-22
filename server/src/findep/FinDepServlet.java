@@ -23,12 +23,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.activemq.util.LFUCache;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.StringBuilderWriter;
 
 import findep.utils.SimpleStats;
+import findep.utils.cache.MyCache;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.tokenize.TokenizerME;
@@ -64,8 +64,7 @@ public class FinDepServlet extends SuperServlet {
 
 	private SimpleStats SIMPLE_STATS = SimpleStats.getInstance();
 
-	private boolean useConlluCache = false;
-	private LFUCache<String, String> lfuCache = null;
+	private MyCache CACHE = MyCache.getInstance();
 
 	// for testing
 	private boolean doNotDeleteTempDir = false;
@@ -77,8 +76,8 @@ public class FinDepServlet extends SuperServlet {
 		super.init();
 
 		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
-
-		String cacheSize = System.getenv("conllu_cache_size");
+		
+	/*	
 		if (cacheSize != null) {
 			SYSOUTLOGGER.sysout(-1, "conllu_cache_size: " + cacheSize);
 			try {
@@ -95,7 +94,7 @@ public class FinDepServlet extends SuperServlet {
 		} else {
 			SYSOUTLOGGER.sysout(-1, "conllu LFU cache is not used");
 		}
-
+*/
 		doNotDeleteTempDir = Boolean.parseBoolean(System.getenv("do_not_delete_tmp_dir"));
 
 		workDir = FileSystems.getDefault().getPath(workDirName);
@@ -119,7 +118,7 @@ public class FinDepServlet extends SuperServlet {
 		pw.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
 		pw.println("");
 
-		pw.println(SIMPLE_STATS.getStatistics(lfuCache));
+		pw.println(SIMPLE_STATS.getStatistics());
 	}
 
 	@Override
@@ -132,22 +131,19 @@ public class FinDepServlet extends SuperServlet {
 
 		// read input to string
 		/*
-		BufferedInputStream bis = new BufferedInputStream(req.getInputStream());
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		int inputSize = 0;
-		byte[] inputBytes = new byte[1024];
-		int bytesRead = 0;
-		while ((bytesRead = bis.read(inputBytes)) != -1) {
-			inputSize = inputSize + bytesRead;
-			baos.write(inputBytes, 0, bytesRead);
-		}
-		baos.close();
-
-		String inputText = new String(baos.toByteArray(), Charset.forName(StandardCharsets.UTF_8.name()));
-		*/
+		 * BufferedInputStream bis = new
+		 * BufferedInputStream(req.getInputStream()); ByteArrayOutputStream baos
+		 * = new ByteArrayOutputStream(); int inputSize = 0; byte[] inputBytes =
+		 * new byte[1024]; int bytesRead = 0; while ((bytesRead =
+		 * bis.read(inputBytes)) != -1) { inputSize = inputSize + bytesRead;
+		 * baos.write(inputBytes, 0, bytesRead); } baos.close();
+		 * 
+		 * String inputText = new String(baos.toByteArray(),
+		 * Charset.forName(StandardCharsets.UTF_8.name()));
+		 */
 		String inputText = readInputStreamToString(req.getInputStream());
 		int inputSize = inputText.length();
-		
+
 		SYSOUTLOGGER.sysout(2, inputText);
 
 		resp.setContentType("text/plain");
@@ -167,7 +163,8 @@ public class FinDepServlet extends SuperServlet {
 			// input is not empty, parse it
 
 			ParseReturnObject pro = new ParseReturnObject();
-			if (useConlluCache == true) {
+			//if (useConlluCache == true) {
+			if (CACHE.isEnabled()) {
 				// check from cache
 				pro = getFromCache(inputText);
 			} else {
@@ -225,16 +222,20 @@ public class FinDepServlet extends SuperServlet {
 		ParseReturnObject pro = new ParseReturnObject();
 
 		String md5Hex = DigestUtils.md5Hex(inputText);
-		String conlluText = lfuCache.get(md5Hex);
+		String conlluText =CACHE.get(md5Hex);
+		//String conlluText = lfuCache.get(md5Hex);
 		if (conlluText != null) {
 			// found from cache
+			/*
 			SYSOUTLOGGER.sysout(2, "found from LFU cache");
 			SIMPLE_STATS.increaseCacheHits();
 			int freq = lfuCache.frequencyOf(md5Hex);
 			SYSOUTLOGGER.sysout(2, String.format("Doc %s accessed >= %d times", md5Hex, freq));
+			*/
 		} else {
 			// not in cache
-			SYSOUTLOGGER.sysout(2, "not found from LFU cache");
+			//SYSOUTLOGGER.sysout(2, "not found from LFU cache");
+			SYSOUTLOGGER.sysout(2, "not found from cache");
 			pro = parse(inputText);
 			BufferedReader br = pro.reader;// new BufferedReader(new
 											// FileReader(f));
@@ -246,9 +247,11 @@ public class FinDepServlet extends SuperServlet {
 			pw.close();
 			br.close();
 			conlluText = sb.toString();
-			lfuCache.put(md5Hex, conlluText);
+			//lfuCache.put(md5Hex, conlluText);
+			CACHE.put(md5Hex, conlluText);
 			pro.deleteTmpDir();
-			SYSOUTLOGGER.sysout(2, String.format("Doc %s added to LFU cache", md5Hex));
+			//SYSOUTLOGGER.sysout(2, String.format("Doc %s added to LFU cache", md5Hex));
+			SYSOUTLOGGER.sysout(2, String.format("Key %s added to cache", md5Hex));
 		}
 		// set reader
 		pro.reader = new BufferedReader(new StringReader(conlluText));

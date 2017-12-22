@@ -53,8 +53,8 @@ Get simple statistics of the parser:
 
 Some environment variables can be used. 
 
-- *conllu_cache_size*, set cache size for parsed conllu documents. 
-  - Default is no cache.
+- *enable_cache*, enable cache for parsed conllu documents, 'true' or 'false'
+  - Default is 'true'.
 - *server_feature*, set features to start: DEP, LEMMA or ALL. 
   - Default is ALL to start all features.
   - DEP-feature starts dependency parser.
@@ -70,7 +70,7 @@ Some environment variables can be used.
 
 Directory *parserfarm* includes scripts to start finnish-dep-parser farm, 1 or more parser containers within single host accessible via proxy. Farm is implemented using scripts and plain containers without docker-compose or other similar stuff in order to have nothing but Docker runtime as a prereq.
 
-Parsing of text is CPU intensive. If you use many parsers, they may consume all CPU resources. If you use few parsers, they may not take advantage of all resources. Good starting point is to have about half as many parser containers as there are CPU cores in the server.
+Parsing of text is CPU intensive. If you use many parsers, they may consume all CPU resources. If you use few parsers, they may not take advantage of all resources. Good starting point is to have about as many parser containers as there are CPU cores in the server.
 
 Files in parserfarm-directory:
 
