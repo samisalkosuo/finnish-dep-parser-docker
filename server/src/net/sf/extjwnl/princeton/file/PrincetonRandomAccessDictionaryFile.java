@@ -267,12 +267,15 @@ public class PrincetonRandomAccessDictionaryFile extends AbstractPrincetonRandom
         this.firstLineOffset = -1;
         this.offsetLength = -1;
         this.file = new File(path, getFilename());
-        if (null != encoding) {
+        /*if (null != encoding) {
             this.charset = Charset.forName(encoding);
         } else {
             this.charset = StandardCharsets.UTF_8;
             //this.charset = StandardCharsets.US_ASCII;
         }
+        */
+        //force UTF-8
+        this.charset = StandardCharsets.UTF_8;
         this.decoder = charset.newDecoder();
         this.encoder = charset.newEncoder();
 
