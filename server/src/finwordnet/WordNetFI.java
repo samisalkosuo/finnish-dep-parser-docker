@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.commons.text.StringEscapeUtils;
 
-import findep.utils.SystemOutLogger;
 import net.sf.extjwnl.JWNLException;
 import net.sf.extjwnl.data.IndexWord;
 import net.sf.extjwnl.data.POS;
@@ -20,7 +19,7 @@ import net.sf.extjwnl.dictionary.Dictionary;
 
 public class WordNetFI implements IWordNet {
 
-	private SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
+	// private SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
 
 	private static IWordNet wordnetFI = null;
 
@@ -39,7 +38,7 @@ public class WordNetFI implements IWordNet {
 
 	public static void main(String[] args) {
 		IWordNet wordnet = WordNetFI.getInstance();
-		System.out.println(wordnet.getHypernymJSONs("saalimäärä", "NOUN"));
+		System.out.println(wordnet.getHypernymJSONs("pääministeri", "NOUN"));
 	}
 
 	@Override
@@ -58,7 +57,6 @@ public class WordNetFI implements IWordNet {
 			try {
 				dict.close();
 			} catch (JWNLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -73,7 +71,9 @@ public class WordNetFI implements IWordNet {
 		if (pos != null) {
 
 			try {
+
 				IndexWord word = dict.getIndexWord(pos, _word);
+
 				if (word != null) {
 					List<Synset> senses = word.getSenses();
 					allHypernyms = new ArrayList<List<List<String>>>();
