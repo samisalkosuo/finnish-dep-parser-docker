@@ -84,7 +84,7 @@ public class FinDepServletServer {
 
 			}
 
-			if (serverFeature.contains("ALL") || serverFeature.contains("DEP")){
+			if (serverFeature.contains("ALL") || serverFeature.contains("DEP")) {
 				handler.addServletWithMapping(IS2ParserServlet.class, "/annaparser").setInitOrder(1);
 				handler.addServletWithMapping(OmorfiServlet.class, "/omorfi").setInitOrder(1);
 				handler.addServletWithMapping(MarmotServlet.class, "/marmot").setInitOrder(1);
@@ -93,7 +93,6 @@ public class FinDepServletServer {
 
 			if (serverFeature.contains("ALL") || serverFeature.contains("LEMMA")) {
 				handler.addServletWithMapping(PortedServlet.class, "/lemma").setInitOrder(3);
-
 			}
 
 			// Start things up!
