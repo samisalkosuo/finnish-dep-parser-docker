@@ -207,7 +207,9 @@ public class FileManagerImpl implements FileManager {
                 break;
             }
             word = file.readWord(offset);
-            compare = word.compareTo(index);
+            
+            //compare = word.compareTo(index);
+            compare = word.toString().compareTo(index.toString());
             if (compare == 0) {
                 result = file.readLine(offset);
                 break;
