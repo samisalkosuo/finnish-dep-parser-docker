@@ -4,7 +4,7 @@ Docker container and HTTP server for [Finnish dependency parser](https://github.
 
 Parser takes Finnish text as input and outputs [CoNLL-U format](http://universaldependencies.org/format.html).
 
-# Implementation
+## Implementation
 
 Finnish dependency parser is originally used as a command line tool, but in this Docker container the parser is wrapped in HTTP server. The server code replaces some of the scripts/code with Java servlets and the result is that it is much faster to parse text.
 
@@ -15,7 +15,9 @@ One such code is [HFST optimized-lookup standalone library and command line tool
 Unfortunately, the code used in Finnish dependency parser appears not to handle concurrent requests well, so
 the server is currently forced to process one request at a time. Please see the code for details.
 
-# Usage
+This Docker container includes also [Finnish WordNet](http://www.ling.helsinki.fi/en/lt/research/finnwordnet/) lexical database and some code to use it.
+
+## Usage
 
 Get container from Dockerhub:
 
@@ -45,7 +47,7 @@ Get simple statistics of the parser:
 
 - http://127.0.0.1:9876, a normal HTTP GET
 
-# Environment variables
+## Environment variables
 
 Some environment variables can be used. 
 
@@ -59,7 +61,7 @@ Some environment variables can be used.
   - FWN-feature enables FinWordNet servlet. Context root is /finwordnet.
     - Requests are like */finwordnet?word=sana*.
     - Response is un-compliant custom JSON.
-  - LEMMA-feature starts a servlet that returns only lemmas. Context root is /lemma.
+  - LEMMA-feature starts a servlet that returns CoNLL-U format that includes only lemmas. Context root is /lemma.
 - *log_level*, set level of logging. 
   - 0=no logging after starting the container.
   - 1=log elapsed time and excerpt of parsed text.
@@ -67,7 +69,7 @@ Some environment variables can be used.
   - Default is 1.
   - If log_level=0, you can see latest parsed text by using GET-request to parser.
 
-# Farming
+## Farming
 
 Directory *parserfarm* includes scripts to start finnish-dep-parser farm, 1 or more parser containers within single host accessible via proxy. Farm is implemented using scripts and plain containers without docker-compose or other similar stuff in order to have nothing but Docker runtime as a prereq.
 
@@ -91,13 +93,15 @@ Example:
 
 This kind of farming/scalability is not intended for production use. Use for example [IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) for production. [Community Edition is available](https://hub.docker.com/r/ibmcom/icp-inception/) to be used to check out IBM Cloud Private.
 
-# Disclaimer
+## Disclaimer
 
 Everything in this repo, including all code is "AS IS". No support, no warranty, no fitness for any purpose, nothing is expressed or implied, not by me (nor my employer).
 
-# License
+## License
 
 The Finnish dependency parsing pipeline is licensed under GPL-2.0. Other licenses may apply to other code in this repo. See files in this repo for any info. I guess this repo is also GPL-2.0 but I can not tell for sure, so I don't claim any licensing.
 
-If you want to know more and be sure, please seek legal advice.
+FinnWordNet is from [University of Helsinki](http://www.ling.helsinki.fi/en/lt/research/finnwordnet/)
+and it is licensed under the [Creative Commons Attribution (CC-BY) 3.0](http://creativecommons.org/licenses/by/3.0/) license. As a derivative of the Princeton WordNet, FinnWordNet is also subject to the [Princeton WordNet license](http://wordnet.princeton.edu/wordnet/license/).
 
+If you want to know more and be sure, please seek legal advice.
