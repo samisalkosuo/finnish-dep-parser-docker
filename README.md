@@ -15,7 +15,7 @@ One such code is [HFST optimized-lookup standalone library and command line tool
 Unfortunately, the code used in Finnish dependency parser appears not to handle concurrent requests well, so
 the server is currently forced to process one request at a time. Please see the code for details.
 
-This Docker container includes also [Finnish WordNet](http://www.ling.helsinki.fi/en/lt/research/finnwordnet/) lexical database and some code to use it.
+This Docker container includes also [Finnish WordNet](http://www.ling.helsinki.fi/en/lt/research/finnwordnet/) lexical database and some code to use it. WordNet code is [extJWNL (Extended Java WordNet Library)](https://github.com/extjwnl/extjwnl) and slightly modified so it works with Finnish WordNet.
 
 ## Usage
 
@@ -51,9 +51,9 @@ Get simple statistics of the parser:
 
 Some environment variables can be used. 
 
-- *enable_cache*, enable cache for parsed conllu documents, 'true' or 'false'
+- *enable_cache*, enable in-memory cache, 'true' or 'false'
   - Default is 'true'.
-  - Cache is 100MB in-memory cache.
+  - Cache size is 100MB.
 - *server_feature*, set features to start: DEP, LEMMA, FWN or ALL. 
   - Separate features using comma to set features. For example: -e "server_feature=DEP,FWN"
   - Default is ALL to start all features.
@@ -67,13 +67,15 @@ Some environment variables can be used.
   - 1=log elapsed time and excerpt of parsed text.
   - 2=log elapsed time, full text and some other info. 
   - Default is 1.
-  - If log_level=0, you can see latest parsed text by using GET-request to parser.
+  - If log_level=0, you can see the latest parsed text by using GET-request to parser.
 
 ## Farming
 
 Directory *parserfarm* includes scripts to start finnish-dep-parser farm, 1 or more parser containers within single host accessible via proxy. Farm is implemented using scripts and plain containers without docker-compose or other similar stuff in order to have nothing but Docker runtime as a prereq.
 
 Parsing of text is CPU intensive. If you use many parsers, they may consume all CPU resources. If you use few parsers, they may not take advantage of all resources. Good starting point is to have about as many parser containers as there are CPU cores in the server.
+
+Note that each parser container requires over 2GB of memory. Java heap size is 2GB and in-memory cache size is 100MB. Good starting point is to assume that each parser needs about 2.5GB of memory (and remember that Docker host requires also memory).
 
 Files in parserfarm-directory:
 
@@ -99,7 +101,9 @@ Everything in this repo, including all code is "AS IS". No support, no warranty,
 
 ## License
 
-The Finnish dependency parsing pipeline is licensed under GPL-2.0. Other licenses may apply to other code in this repo. See files in this repo for any info. I guess this repo is also GPL-2.0 but I can not tell for sure, so I don't claim any licensing.
+The Finnish dependency parsing pipeline is licensed under GPL-2.0. I guess this repo is also GPL-2.0 but I can not tell for sure, so I don't claim any licensing.
+
+Other licenses apply to other code in this repo. See files in this repo for info about licenses. 
 
 FinnWordNet is from [University of Helsinki](http://www.ling.helsinki.fi/en/lt/research/finnwordnet/)
 and it is licensed under the [Creative Commons Attribution (CC-BY) 3.0](http://creativecommons.org/licenses/by/3.0/) license. As a derivative of the Princeton WordNet, FinnWordNet is also subject to the [Princeton WordNet license](http://wordnet.princeton.edu/wordnet/license/).
