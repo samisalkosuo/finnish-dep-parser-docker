@@ -39,6 +39,7 @@ public class FinWordNetServlet extends SuperServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		String word = req.getParameter("word");
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
