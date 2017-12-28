@@ -38,13 +38,14 @@ public class WordNetFI implements IWordNet {
 
 	public static void main(String[] args) {
 		IWordNet wordnet = WordNetFI.getInstance();
-		System.out.println(wordnet.getHypernymJSONs("pääministeri", "NOUN"));
+		System.out.println(wordnet.getHypernymJSONs("työntekijä", "NOUN"));
 	}
 
 	@Override
 	public void init() {
 		try {
 			dict = Dictionary.getDefaultResourceInstance();
+			//dict = Dictionary.getFileBackedInstance("c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0");
 		} catch (JWNLException e) {
 			e.printStackTrace();
 		}
