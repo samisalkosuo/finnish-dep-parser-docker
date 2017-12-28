@@ -188,8 +188,11 @@ public class FileManagerImpl implements FileManager {
         PointedCharSequence word; // current word
         out:
         while (start < stop) {
+            //System.out.println("---");
+            //System.out.println("start: "+start+", stop: "+stop);
             offset = start + (stop - start) / 2;
             offset = file.getNextLineOffset(offset);
+            //System.out.println("offsset: "+offset);
             if (stop == offset || -1 == offset) {
                 // we hit somewhere in the line ending at stop or eol,
                 // e.g. can't advance midpoint enough to catch a line
@@ -197,7 +200,9 @@ public class FileManagerImpl implements FileManager {
                 offset = start;
                 while (stop != offset && -1 != offset) {
                     word = file.readWord(offset);
-                    if (0 == word.compareTo(index)) {
+                    //int cmp = word.compareTo(index);
+                    int cmp = word.toString().compareTo(index.toString());
+                    if (0 == cmp) {
                         result = file.readLine(offset);
                         break out;
                     } else {
@@ -207,9 +212,11 @@ public class FileManagerImpl implements FileManager {
                 break;
             }
             word = file.readWord(offset);
-            
+            //System.out.println("index: "+index);
+            //System.out.println("word: "+word);
             //compare = word.compareTo(index);
             compare = word.toString().compareTo(index.toString());
+            //System.out.println("compare: "+compare);
             if (compare == 0) {
                 result = file.readLine(offset);
                 break;
@@ -219,6 +226,7 @@ public class FileManagerImpl implements FileManager {
                 start = offset;
             }
         }
+        //System.out.println("result: "+result);
         return result;
     }
 
