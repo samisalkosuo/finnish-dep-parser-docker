@@ -81,11 +81,15 @@ Files in parserfarm-directory:
 
 - *start_parser_farm.sh*, this script starts parser farm. Usage: 
   - ./start_parser_farm.sh <NUMBER_OF_FINNISH_DEPENDENCY_PARSERS> <DOCKER_IMAGE_VERSION>
-  - Default version is 'latest'
-  - If necessary, modify this script to your needs.
-- *stop_parser_farm.sh*, this script stops all containers started with previous script.
+  - Default version is 'latest'.
+- *start_parser_farm_noproxy.sh*, this scripts starts a number of parsers without proxy. Usage:
+  - ./start_parser_farm_noproxy.sh <NUMBER_OF_FINNISH_DEPENDENCY_PARSERS> <DOCKER_IMAGE_VERSION>
+  - Default version is 'latest'.
+- *stop_parser_farm.sh*, this script stops all containers started with either of previous scripts.
 - *haproxy_template.cfg*, Config file template for haproxy. Modify to your needs. Copied to *haproxy.cfg" when starting the farm.
 - *Dockerfile*, Dockerfile to build local haproxy image.
+
+If needed, modify the scripts to your requirements.
 
 Example:
 
