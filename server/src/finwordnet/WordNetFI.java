@@ -25,6 +25,17 @@ public class WordNetFI implements IWordNet {
 
 	private Dictionary dict;
 
+	// senses to return
+	// L= last
+	// F= first
+	// A= all
+	// default is L
+	enum SENSES_TO_RETURN {
+		L, A, F
+	};
+
+	private SENSES_TO_RETURN sensesToReturn = SENSES_TO_RETURN.L;
+
 	private WordNetFI() {
 	}
 
@@ -38,14 +49,32 @@ public class WordNetFI implements IWordNet {
 
 	public static void main(String[] args) {
 		IWordNet wordnet = WordNetFI.getInstance();
-		System.out.println(wordnet.getHypernymJSONs("työntekijä", "NOUN"));
+		String word = "hevonen";
+		System.out.println(wordnet.getHypernymJSONs(word, "NOUN"));
 	}
 
 	@Override
 	public void init() {
 		try {
-			dict = Dictionary.getDefaultResourceInstance();
-			//dict = Dictionary.getFileBackedInstance("c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0");
+			// env variable to get senses
+			SENSES_TO_RETURN defaultValue = SENSES_TO_RETURN.L;
+			String _sensesToReturn = System.getenv("fwn_senses_to_return");
+			if (_sensesToReturn == null) {
+				sensesToReturn = defaultValue;
+			} else {
+				try {
+					sensesToReturn = SENSES_TO_RETURN.valueOf(_sensesToReturn);
+				} catch (IllegalArgumentException iae) {
+					// if unrecognized value, set default
+					sensesToReturn = defaultValue;
+				}
+			}
+			// wordnet path in docker image
+			String dictPath = "/Finnish-dep-parser/finwordnet/net/sf/extjwnl/data/finwordnet/2.0";
+			// wordnet path in dev environment
+			// dictPath="c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0";
+			// dict = Dictionary.getDefaultResourceInstance();
+			dict = Dictionary.getFileBackedInstance(dictPath);
 		} catch (JWNLException e) {
 			e.printStackTrace();
 		}
@@ -78,10 +107,30 @@ public class WordNetFI implements IWordNet {
 				if (word != null) {
 					List<Synset> senses = word.getSenses();
 					allHypernyms = new ArrayList<List<List<String>>>();
+					int sensesSize = senses.size();
+					switch (sensesToReturn) {
+					case L:
+						// Get only last sense
+						if (sensesSize > 1) {
+							senses = senses.subList(sensesSize - 1, sensesSize);
+						}
+						break;
+					case F:
+						// Get only first sense
+						if (sensesSize > 1) {
+							senses = senses.subList(0, 1);
+						}
+					default:
+						// Get all senses
+						break;
+
+					}
 
 					for (Synset sense : senses) {
+						// System.out.println(sense);
 						PointerTargetTree senseHypernyms = PointerUtils.getHypernymTree(sense);
 						List<PointerTargetNodeList> n1 = senseHypernyms.toList();
+
 						List<List<String>> hypernymLevels = new ArrayList<List<String>>();
 
 						for (PointerTargetNodeList ptnl : n1) {
