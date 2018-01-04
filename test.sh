@@ -19,7 +19,7 @@ function test
 {
   file=$1
   md5=$2
-  md5sum=$(curl -H "Content-Type: text/plain" -s --data-binary "@${file}" ${PARSER_URL} | md5sum -b | awk '{print  $1}')
+  md5sum=$(curl -k -H "Content-Type: text/plain" -s --data-binary "@${file}" ${PARSER_URL} | md5sum -b | awk '{print  $1}')
   if [ "$md5sum" = "$md5" ]; then
     echo "OK " $file
   else
