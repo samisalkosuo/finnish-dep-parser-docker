@@ -45,11 +45,7 @@ Use any programming language to HTTP POST Finnish text to this server and get Co
 
 Use HTTP GET with text-param:
 
-<<<<<<< HEAD
 - [http://127.0.0.1:9876?text=Terve%20maailma!](http://127.0.0.1:9876?text=Terve%20maailma!)
-=======
-- [http://127.0.0.1:9876?text=Terve maailma!](http://127.0.0.1:9876?text=Terve maailma!)
->>>>>>> f18583172a52e67e349bb67f9e433daefb9961dc
 
 Use HTTP GET to get simple statistics of the parser:
 
