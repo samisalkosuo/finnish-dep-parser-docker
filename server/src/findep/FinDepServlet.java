@@ -28,6 +28,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.StringBuilderWriter;
 
 import findep.utils.SimpleStats;
+import findep.utils.ApplicationProperties;
 import findep.utils.cache.MyCache;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
@@ -76,25 +77,7 @@ public class FinDepServlet extends SuperServlet {
 		super.init();
 
 		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
-		
-	/*	
-		if (cacheSize != null) {
-			SYSOUTLOGGER.sysout(-1, "conllu_cache_size: " + cacheSize);
-			try {
-				int _cacheSize = Integer.parseInt(cacheSize);
-				// set up cache
-				useConlluCache = true;
-				SIMPLE_STATS.maxCacheSize = _cacheSize;
-				lfuCache = new LFUCache<String, String>(_cacheSize, 0.2f);
 
-			} catch (NumberFormatException nfe) {
-				SYSOUTLOGGER.sysout(-1, nfe.toString());
-				SYSOUTLOGGER.sysout(-1, "conllu LFU cache is not used");
-			}
-		} else {
-			SYSOUTLOGGER.sysout(-1, "conllu LFU cache is not used");
-		}
-*/
 		doNotDeleteTempDir = Boolean.parseBoolean(System.getenv("do_not_delete_tmp_dir"));
 
 		workDir = FileSystems.getDefault().getPath(workDirName);
@@ -112,13 +95,29 @@ public class FinDepServlet extends SuperServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/plain");
-		resp.setStatus(HttpServletResponse.SC_OK);
-		PrintWriter pw = resp.getWriter();
-		pw.println("Hello from finnish-dep-parser server. Post Finnish text to this URL and get CoNLL-U back.");
-		pw.println("");
+		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
+		String inputText = req.getParameter("text");
+		if (inputText != null) {
+			long startTimeNano = System.nanoTime();
+			long startTimeMsec = System.currentTimeMillis();
+			SYSOUTLOGGER.sysout(2, "START");
+			handleParsingRequest(inputText, req, resp, startTimeNano, startTimeMsec);
 
-		pw.println(SIMPLE_STATS.getStatistics());
+		} else {
+
+			resp.setContentType("text/plain");
+			resp.setStatus(HttpServletResponse.SC_OK);
+			PrintWriter pw = resp.getWriter();
+			pw.println("Hello from finnish-dep-parser server.");
+			pw.println("HTTP POST Finnish text to this URL and get CoNLL-U back.");
+			pw.println("HTTP GET (with param 'text') Finnish text to this URL and get CoNLL-U back.");
+			pw.println("");
+			pw.println(
+					"Version " + ApplicationProperties.version() + " (" + ApplicationProperties.buildtimestamp() + ")");
+			pw.println("");
+
+			pw.println(SIMPLE_STATS.getStatistics());
+		}
 	}
 
 	@Override
@@ -142,6 +141,12 @@ public class FinDepServlet extends SuperServlet {
 		 * Charset.forName(StandardCharsets.UTF_8.name()));
 		 */
 		String inputText = readInputStreamToString(req.getInputStream());
+		handleParsingRequest(inputText, req, resp, startTimeNano, startTimeMsec);
+	}
+
+	private void handleParsingRequest(String inputText, HttpServletRequest req, HttpServletResponse resp,
+			long startTimeNano, long startTimeMsec) throws ServletException, IOException {
+
 		int inputSize = inputText.length();
 
 		SYSOUTLOGGER.sysout(2, inputText);
@@ -163,7 +168,7 @@ public class FinDepServlet extends SuperServlet {
 			// input is not empty, parse it
 
 			ParseReturnObject pro = new ParseReturnObject();
-			//if (useConlluCache == true) {
+			// if (useConlluCache == true) {
 			if (CACHE.isEnabled()) {
 				// check from cache
 				pro = getFromCache(inputText);
@@ -222,19 +227,20 @@ public class FinDepServlet extends SuperServlet {
 		ParseReturnObject pro = new ParseReturnObject();
 
 		String md5Hex = DigestUtils.md5Hex(inputText);
-		String conlluText =CACHE.get(md5Hex);
-		//String conlluText = lfuCache.get(md5Hex);
+		String conlluText = CACHE.get(md5Hex);
+		// String conlluText = lfuCache.get(md5Hex);
 		if (conlluText != null) {
 			// found from cache
-			/*
-			SYSOUTLOGGER.sysout(2, "found from LFU cache");
 			SIMPLE_STATS.increaseCacheHits();
-			int freq = lfuCache.frequencyOf(md5Hex);
-			SYSOUTLOGGER.sysout(2, String.format("Doc %s accessed >= %d times", md5Hex, freq));
-			*/
+			/*
+			 * SYSOUTLOGGER.sysout(2, "found from LFU cache");
+			 * SIMPLE_STATS.increaseCacheHits(); int freq =
+			 * lfuCache.frequencyOf(md5Hex); SYSOUTLOGGER.sysout(2,
+			 * String.format("Doc %s accessed >= %d times", md5Hex, freq));
+			 */
 		} else {
 			// not in cache
-			//SYSOUTLOGGER.sysout(2, "not found from LFU cache");
+			// SYSOUTLOGGER.sysout(2, "not found from LFU cache");
 			SYSOUTLOGGER.sysout(2, "not found from cache");
 			pro = parse(inputText);
 			BufferedReader br = pro.reader;// new BufferedReader(new
@@ -247,10 +253,11 @@ public class FinDepServlet extends SuperServlet {
 			pw.close();
 			br.close();
 			conlluText = sb.toString();
-			//lfuCache.put(md5Hex, conlluText);
+			// lfuCache.put(md5Hex, conlluText);
 			CACHE.put(md5Hex, conlluText);
 			pro.deleteTmpDir();
-			//SYSOUTLOGGER.sysout(2, String.format("Doc %s added to LFU cache", md5Hex));
+			// SYSOUTLOGGER.sysout(2, String.format("Doc %s added to LFU cache",
+			// md5Hex));
 			SYSOUTLOGGER.sysout(2, String.format("Key %s added to cache", md5Hex));
 		}
 		// set reader
