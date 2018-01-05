@@ -24,4 +24,6 @@ public interface IWordNet {
 	 */
 	//public List<List<List<String>>> getHypernyms(String _word, String partofspeech);
 	public List<String> getHypernymJSONs(String _word, String partofspeech);
+	
+	public String getSynonyms(String _word, String partofspeech);
 }

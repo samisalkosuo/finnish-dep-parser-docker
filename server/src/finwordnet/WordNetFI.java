@@ -1,6 +1,7 @@
 package finwordnet;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,7 +50,8 @@ public class WordNetFI implements IWordNet {
 
 	public static void main(String[] args) {
 		IWordNet wordnet = WordNetFI.getInstance();
-		String word = "hevonen";
+		String word = "kaupunki";
+		System.out.println(wordnet.getSynonyms(word, "NOUN"));
 		System.out.println(wordnet.getHypernymJSONs(word, "NOUN"));
 	}
 
@@ -72,7 +74,7 @@ public class WordNetFI implements IWordNet {
 			// wordnet path in docker image
 			String dictPath = "/Finnish-dep-parser/finwordnet/net/sf/extjwnl/data/finwordnet/2.0";
 			// wordnet path in dev environment
-			// dictPath="c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0";
+			//dictPath = "c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0";
 			// dict = Dictionary.getDefaultResourceInstance();
 			dict = Dictionary.getFileBackedInstance(dictPath);
 		} catch (JWNLException e) {
@@ -181,6 +183,60 @@ public class WordNetFI implements IWordNet {
 			}
 		}
 		return hypernymJSONs;
+	}
+
+	@Override
+	public String getSynonyms(String _word, String partofspeech) {
+		List<String> synonyms = new ArrayList<String>();
+		String synonymString = null;
+		POS pos = getPOS(partofspeech);
+		if (pos != null) {
+
+			try {
+
+				IndexWord word = dict.getIndexWord(pos, _word);
+
+				if (word != null) {
+					List<Synset> senses = word.getSenses();
+					/*
+					 * int sensesSize = senses.size(); switch (sensesToReturn) {
+					 * case L: // Get only last sense if (sensesSize > 1) {
+					 * senses = senses.subList(sensesSize - 1, sensesSize); }
+					 * break; case F: // Get only first sense if (sensesSize >
+					 * 1) { senses = senses.subList(0, 1); } default: // Get all
+					 * senses break;
+					 * 
+					 * }
+					 */
+					for (Synset sense : senses) {
+						// System.out.println(sense);
+						PointerTargetTree senseHypernyms = PointerUtils.getHypernymTree(sense);
+
+						List<PointerTargetNodeList> n1 = senseHypernyms.toList();
+
+						PointerTargetNode ptn = n1.get(0).getFirst();
+
+						List<Word> words = ptn.getSynset().getWords();
+						int size = words.size();
+
+						for (int i = 0; i < size; i++) {
+							String lemma = words.get(i).getLemma();
+							if (!synonyms.contains(lemma)) {
+								synonyms.add(lemma);
+							}
+
+						}
+					}
+				}
+				Collections.reverse(synonyms);
+				synonymString = String.join(",", synonyms);
+
+			} catch (JWNLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return synonymString;
 	}
 
 	private POS getPOS(String posString) {

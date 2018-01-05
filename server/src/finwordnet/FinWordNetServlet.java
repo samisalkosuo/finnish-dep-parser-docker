@@ -37,8 +37,16 @@ public class FinWordNetServlet extends SuperServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		//TODO: 
+		//add some help if using without or wrong parameters
+		//add senses-parameter and for each function some default
+		
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
+		String function = req.getParameter("function");
+		if (function == null) {
+			function = "hypernymjson";
+		}
 		String word = req.getParameter("word");
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -47,24 +55,34 @@ public class FinWordNetServlet extends SuperServlet {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			pw.println("Parameter 'word' missing.");
 		} else {
+			String outputString = null;
+			if (function.equals("synonyms")) {
+				SYSOUTLOGGER.sysout(2, "Get synonyms for word: " + word);
+				String partofspeech = "NOUN";// req.getParameter("pos");
+				outputString = wordnet.getSynonyms(word, partofspeech);
 
-			SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
-			String partofspeech = "NOUN";// req.getParameter("pos");
-			String hypernymJSON = CACHE.get(word);
-
-			if (hypernymJSON == null) {
-				List<String> hypernyms = wordnet.getHypernymJSONs(word, partofspeech);
-				if (hypernyms != null) {
-					hypernymJSON = String.join("\n", hypernyms);
-					CACHE.put(word, hypernymJSON);
-				}
 			}
-			if (hypernymJSON == null) {
+			if (function.equals("hypernymjson")) {
+
+				SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
+				String partofspeech = "NOUN";// req.getParameter("pos");
+				String hypernymJSON = CACHE.get(word);
+
+				if (hypernymJSON == null) {
+					List<String> hypernyms = wordnet.getHypernymJSONs(word, partofspeech);
+					if (hypernyms != null) {
+						hypernymJSON = String.join("\n", hypernyms);
+						CACHE.put(word, hypernymJSON);
+					}
+				}
+				outputString = hypernymJSON;
+			}
+			if (outputString == null) {
 				resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				pw.println("null");
 			} else {
 				resp.setStatus(HttpServletResponse.SC_OK);
-				pw.print(hypernymJSON);
+				pw.print(outputString);
 				pw.flush();
 
 			}
