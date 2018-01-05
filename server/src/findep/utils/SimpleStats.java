@@ -127,6 +127,7 @@ public class SimpleStats {
 		// cache stats
 		if (MyCache.getInstance().isEnabled()) {
 			pw.println("  Cache is used.");
+			pw.println("  Cache hits             : " + cacheHits);
 
 		} else {
 			pw.println("  Cache not used.");

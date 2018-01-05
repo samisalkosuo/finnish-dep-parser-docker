@@ -11,12 +11,26 @@
 		<!-- Adapt this to a version found on http://central.maven.org/maven2/org/eclipse/jetty/jetty-maven-plugin/ 
 			or https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet -->
 		<jettyVersion>9.4.7.v20170914</jettyVersion>
+
+		<!-- Version info -->
+		<finnish-dep-parser-version>${project.version}</finnish-dep-parser-version>
+		<!-- Build time stamp. -->
+		<finnish-dep-parser-build-timestamp>${maven.build.timestamp}</finnish-dep-parser-build-timestamp>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
 			<resource>
 				<directory>resources</directory>
+			</resource>
+			<resource>
+				<directory>resources</directory>
+				<includes>
+					<include>application.properties</include>
+				</includes>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 		<plugins>
