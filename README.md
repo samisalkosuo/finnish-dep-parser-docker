@@ -43,9 +43,13 @@ Post file to parser using curl:
 
 Use any programming language to HTTP POST Finnish text to this server and get CoNLL-U format back.
 
-Get simple statistics of the parser:
+Use HTTP GET with text-param:
 
-- http://127.0.0.1:9876, a normal HTTP GET
+- [http://127.0.0.1:9876?text=Terve%20maailma!](http://127.0.0.1:9876?text=Terve%20maailma!)
+
+Use HTTP GET to get simple statistics of the parser:
+
+- [http://127.0.0.1:9876](http://127.0.0.1:9876)
 
 ## Environment variables
 
