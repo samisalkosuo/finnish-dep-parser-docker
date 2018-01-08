@@ -53,7 +53,7 @@ function startParser
 {
   __parser_name=$1
   docker run --net ${__network_name} --restart always -d ${__findep_env_var_opts} --name=${__parser_name} ${__findep_parser_image}
-  echo "  server ${__parser_name} ${__parser_name}:9876 maxconn 32" >> ${__proxy_cfg_file}
+  echo "  server ${__parser_name} ${__parser_name}:9876 maxconn 128" >> ${__proxy_cfg_file}
 }
 
 echo "Creating parser network..."
