@@ -26,9 +26,6 @@ public class WordNetFI implements IWordNet {
 
 	private Dictionary dict;
 
-
-
-
 	private WordNetFI() {
 	}
 
@@ -42,9 +39,9 @@ public class WordNetFI implements IWordNet {
 
 	public static void main(String[] args) {
 		IWordNet wordnet = WordNetFI.getInstance();
-		String word = "kaupunki";
+		String word = "kaupunki";// "sitoumus";
 		System.out.println(wordnet.getSynonyms(word, "NOUN"));
-		System.out.println(wordnet.getHypernymStrings(word, "NOUN",HYPERNYM_FORMAT.CSV,SENSES_TO_RETURN.L));
+		System.out.println(wordnet.getHypernymStrings(word, "NOUN", HYPERNYM_FORMAT.CSV, SENSES_TO_RETURN.A));
 	}
 
 	@Override
@@ -75,8 +72,10 @@ public class WordNetFI implements IWordNet {
 	}
 
 	@Override
-	public List<String> getHypernymStrings(String _word, String partofspeech,HYPERNYM_FORMAT format, SENSES_TO_RETURN sensesToReturn){
-//	public List<String> getHypernymJSONs(String _word, String partofspeech) {
+	public List<String> getHypernymStrings(String _word, String partofspeech, HYPERNYM_FORMAT format,
+			SENSES_TO_RETURN sensesToReturn) {
+		// public List<String> getHypernymJSONs(String _word, String
+		// partofspeech) {
 		List<List<List<String>>> allHypernyms = null;
 		List<String> hypernymJSONs = null;
 
@@ -114,9 +113,16 @@ public class WordNetFI implements IWordNet {
 						PointerTargetTree senseHypernyms = PointerUtils.getHypernymTree(sense);
 						List<PointerTargetNodeList> n1 = senseHypernyms.toList();
 
-						List<List<String>> hypernymLevels = new ArrayList<List<String>>();
+						// List<List<String>> hypernymLevels = new
+						// ArrayList<List<String>>();
+						// System.out.println("");
+						// System.out.println("sense...");
+						// System.out.println("");
 
 						for (PointerTargetNodeList ptnl : n1) {
+							// can include more than 1 sense
+							List<List<String>> hypernymLevels = new ArrayList<List<String>>();
+
 							// System.out.println(ptnl);
 							// System.out.println();
 							Iterator<PointerTargetNode> ptni = ptnl.iterator();
@@ -125,13 +131,14 @@ public class WordNetFI implements IWordNet {
 
 								List<Word> words = ptn.getSynset().getWords();
 								int size = words.size();
+								// System.out.println(words.size());
 								List<String> synonymsForHypernymLevel = new ArrayList<String>();
-
+								// System.out.println("hypernymlevel...");
 								for (int i = 0; i < size; i++) {
 									String lemma = words.get(i).getLemma();
+									// System.out.println(lemma);
 									/*
-									 * System.out.println(lemma); try {
-									 * System.out.println(new
+									 * ; try { System.out.println(new
 									 * String(lemma.getBytes("UTF-8"))); } catch
 									 * (UnsupportedEncodingException e) { //
 									 * TODO Auto-generated catch block
@@ -149,13 +156,13 @@ public class WordNetFI implements IWordNet {
 
 							}
 
+							allHypernyms.add(hypernymLevels);
 						}
-						allHypernyms.add(hypernymLevels);
 
 					}
 				}
 				if (allHypernyms != null) {
-					hypernymJSONs = generateHypernymList(allHypernyms,format);
+					hypernymJSONs = generateHypernymList(allHypernyms, format);
 				}
 
 			} catch (JWNLException e) {
@@ -246,6 +253,7 @@ public class WordNetFI implements IWordNet {
 				String parent = "$Root";
 				int hypernymLevel = 0;
 				for (int i = senses.size() - 1; i >= 0; i--) {
+					// System.out.println("hypernymLevel: "+hypernymLevel);
 					// loop all hypernyms of each sense
 					// start from end because ConceptDiscovery UI show level 0
 					// as highest level concept
@@ -285,15 +293,14 @@ public class WordNetFI implements IWordNet {
 							if (format == HYPERNYM_FORMAT.CSV) {
 								sb.append(hypernymLevel);
 								sb.append(",");
-								//String _p = new String(p.getBytes("UTF-8"));
-								//sb.append(_p);
-								//sb.append(",");
-								//String _c = new String(,);
-								
+								// String _p = new String(p.getBytes("UTF-8"));
+								// sb.append(_p);
+								// sb.append(",");
+								// String _c = new String(,);
+
 								sb.append(c);
 								sb.append(",");
 								sb.append(leaf);
-
 							}
 							String conceptString = sb.toString();
 							// "{\"parent\":\"" + parent + "\",\"pos\":\"n\"" +
@@ -304,6 +311,7 @@ public class WordNetFI implements IWordNet {
 							// "\"leaf\":" + leaf + "}";
 
 							if (!allConceptJSONs.contains(conceptString)) {
+								// System.out.println(" "+conceptString);
 								allConceptJSONs.add(conceptString);
 							}
 						}
