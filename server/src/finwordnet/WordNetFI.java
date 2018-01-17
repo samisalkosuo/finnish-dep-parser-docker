@@ -26,16 +26,8 @@ public class WordNetFI implements IWordNet {
 
 	private Dictionary dict;
 
-	// senses to return
-	// L= last
-	// F= first
-	// A= all
-	// default is L
-	enum SENSES_TO_RETURN {
-		L, A, F
-	};
 
-	private SENSES_TO_RETURN sensesToReturn = SENSES_TO_RETURN.L;
+
 
 	private WordNetFI() {
 	}
@@ -52,29 +44,17 @@ public class WordNetFI implements IWordNet {
 		IWordNet wordnet = WordNetFI.getInstance();
 		String word = "kaupunki";
 		System.out.println(wordnet.getSynonyms(word, "NOUN"));
-		System.out.println(wordnet.getHypernymJSONs(word, "NOUN"));
+		System.out.println(wordnet.getHypernymStrings(word, "NOUN",HYPERNYM_FORMAT.CSV,SENSES_TO_RETURN.L));
 	}
 
 	@Override
 	public void init() {
 		try {
-			// env variable to get senses
-			SENSES_TO_RETURN defaultValue = SENSES_TO_RETURN.L;
-			String _sensesToReturn = System.getenv("fwn_senses_to_return");
-			if (_sensesToReturn == null) {
-				sensesToReturn = defaultValue;
-			} else {
-				try {
-					sensesToReturn = SENSES_TO_RETURN.valueOf(_sensesToReturn);
-				} catch (IllegalArgumentException iae) {
-					// if unrecognized value, set default
-					sensesToReturn = defaultValue;
-				}
-			}
 			// wordnet path in docker image
 			String dictPath = "/Finnish-dep-parser/finwordnet/net/sf/extjwnl/data/finwordnet/2.0";
 			// wordnet path in dev environment
-			//dictPath = "c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0";
+			// dictPath =
+			// "c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0";
 			// dict = Dictionary.getDefaultResourceInstance();
 			dict = Dictionary.getFileBackedInstance(dictPath);
 		} catch (JWNLException e) {
@@ -95,7 +75,8 @@ public class WordNetFI implements IWordNet {
 	}
 
 	@Override
-	public List<String> getHypernymJSONs(String _word, String partofspeech) {
+	public List<String> getHypernymStrings(String _word, String partofspeech,HYPERNYM_FORMAT format, SENSES_TO_RETURN sensesToReturn){
+//	public List<String> getHypernymJSONs(String _word, String partofspeech) {
 		List<List<List<String>>> allHypernyms = null;
 		List<String> hypernymJSONs = null;
 
@@ -174,7 +155,7 @@ public class WordNetFI implements IWordNet {
 					}
 				}
 				if (allHypernyms != null) {
-					hypernymJSONs = generateHypernymAnnotations(allHypernyms);
+					hypernymJSONs = generateHypernymList(allHypernyms,format);
 				}
 
 			} catch (JWNLException e) {
@@ -257,7 +238,7 @@ public class WordNetFI implements IWordNet {
 		return pos;
 	}
 
-	private List<String> generateHypernymAnnotations(List<List<List<String>>> hypernyms) {
+	private List<String> generateHypernymList(List<List<List<String>>> hypernyms, HYPERNYM_FORMAT format) {
 		List<String> allConceptJSONs = null;
 		try {
 			allConceptJSONs = new ArrayList<String>();
@@ -283,23 +264,38 @@ public class WordNetFI implements IWordNet {
 							// note: pos: "n" in JSON means NOUN ==> UI supports
 							// only
 							// NOUN by default
+
 							StringBuilder sb = new StringBuilder();
-							sb.append(hypernymLevel);
-							sb.append("#");
+							if (format == HYPERNYM_FORMAT.JSON) {
+								sb.append(hypernymLevel);
+								sb.append("#");
 
-							sb.append("{\"parent\":\"");
-							String _p = new String(p.getBytes("UTF-8"));
-							_p = StringEscapeUtils.escapeJson(_p);
-							sb.append(_p);
-							sb.append("\",\"pos\":\"n\",\"child\":\"");
-							String _c = new String(c.getBytes("UTF-8"));
-							_c = StringEscapeUtils.escapeJson(_c);
-							sb.append(_c);
-							sb.append("\",\"leaf\":");
-							sb.append(leaf);
-							sb.append("}");
+								sb.append("{\"parent\":\"");
+								String _p = new String(p.getBytes("UTF-8"));
+								_p = StringEscapeUtils.escapeJson(_p);
+								sb.append(_p);
+								sb.append("\",\"pos\":\"n\",\"child\":\"");
+								String _c = new String(c.getBytes("UTF-8"));
+								_c = StringEscapeUtils.escapeJson(_c);
+								sb.append(_c);
+								sb.append("\",\"leaf\":");
+								sb.append(leaf);
+								sb.append("}");
+							}
+							if (format == HYPERNYM_FORMAT.CSV) {
+								sb.append(hypernymLevel);
+								sb.append(",");
+								//String _p = new String(p.getBytes("UTF-8"));
+								//sb.append(_p);
+								//sb.append(",");
+								//String _c = new String(,);
+								
+								sb.append(c);
+								sb.append(",");
+								sb.append(leaf);
 
-							String conceptJSON = sb.toString();
+							}
+							String conceptString = sb.toString();
 							// "{\"parent\":\"" + parent + "\",\"pos\":\"n\"" +
 							// //
 							// Parent
@@ -307,8 +303,8 @@ public class WordNetFI implements IWordNet {
 							// // Hypernym
 							// "\"leaf\":" + leaf + "}";
 
-							if (!allConceptJSONs.contains(conceptJSON)) {
-								allConceptJSONs.add(conceptJSON);
+							if (!allConceptJSONs.contains(conceptString)) {
+								allConceptJSONs.add(conceptString);
 							}
 						}
 					}

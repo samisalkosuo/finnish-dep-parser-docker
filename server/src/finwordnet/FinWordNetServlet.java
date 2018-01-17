@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import findep.SuperServlet;
 import findep.utils.cache.MyCache;
+import finwordnet.IWordNet.HYPERNYM_FORMAT;
+import finwordnet.IWordNet.SENSES_TO_RETURN;
 
 public class FinWordNetServlet extends SuperServlet {
 
@@ -19,11 +21,24 @@ public class FinWordNetServlet extends SuperServlet {
 	private IWordNet wordnet = null;
 	private MyCache CACHE = MyCache.getInstance();
 
+	private SENSES_TO_RETURN sensesToReturnDefaultValue = SENSES_TO_RETURN.L;
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
 
 		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
+
+		// env variable to get senses
+		String _sensesToReturn = System.getenv("fwn_senses_to_return");
+		if (_sensesToReturn != null) {
+			try {
+				sensesToReturnDefaultValue = SENSES_TO_RETURN.valueOf(_sensesToReturn);
+			} catch (IllegalArgumentException iae) {
+				// if unrecognized value, set default
+				sensesToReturnDefaultValue = SENSES_TO_RETURN.L;
+			}
+		}
 
 		wordnet = WordNetFI.getInstance();
 
@@ -37,16 +52,32 @@ public class FinWordNetServlet extends SuperServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		//TODO: 
-		//add some help if using without or wrong parameters
-		//add senses-parameter and for each function some default
-		
+
+		// TODO:
+		// add some help if using without or wrong parameters
+		// add senses-parameter and for each function some default
+
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		String function = req.getParameter("function");
 		if (function == null) {
 			function = "hypernymjson";
 		}
+		// get senses to return from request
+		// A=all, F=first, L=last
+		SENSES_TO_RETURN sensesToReturn = sensesToReturnDefaultValue;
+		String sensestoreturn = req.getParameter("senses");
+		if (sensestoreturn != null) {
+			if (sensestoreturn.equalsIgnoreCase("L")) {
+				sensesToReturn = SENSES_TO_RETURN.L;
+			}
+			if (sensestoreturn.equalsIgnoreCase("A")) {
+				sensesToReturn = SENSES_TO_RETURN.A;
+			}
+			if (sensestoreturn.equalsIgnoreCase("F")) {
+				sensesToReturn = SENSES_TO_RETURN.F;
+			}
+		}
+
 		String word = req.getParameter("word");
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -62,14 +93,17 @@ public class FinWordNetServlet extends SuperServlet {
 				outputString = wordnet.getSynonyms(word, partofspeech);
 
 			}
-			if (function.equals("hypernymjson")) {
-
+			if (function.startsWith("hypernym")) {
+				HYPERNYM_FORMAT format = HYPERNYM_FORMAT.JSON;
+				if (function.equals("hypernymcsv")) {
+					format = HYPERNYM_FORMAT.CSV;
+				}
 				SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
 				String partofspeech = "NOUN";// req.getParameter("pos");
 				String hypernymJSON = CACHE.get(word);
 
 				if (hypernymJSON == null) {
-					List<String> hypernyms = wordnet.getHypernymJSONs(word, partofspeech);
+					List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
 					if (hypernyms != null) {
 						hypernymJSON = String.join("\n", hypernyms);
 						CACHE.put(word, hypernymJSON);
