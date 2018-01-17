@@ -58,8 +58,21 @@ public class FinWordNetServlet extends SuperServlet {
 		// add senses-parameter and for each function some default
 
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
+		resp.setContentType("text/plain");
+		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
+		PrintWriter pw = resp.getWriter();
+
+		String queryString=req.getQueryString();
+		if (queryString == null) {
+			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			pw.println("No parameters.");
+			pw.flush();
+			return;
+		}
+		
 		String function = req.getParameter("function");
-		if (function == null) {
+			
+			if (function == null) {
 			function = "hypernymjson";
 		}
 		// get senses to return from request
@@ -79,9 +92,6 @@ public class FinWordNetServlet extends SuperServlet {
 		}
 
 		String word = req.getParameter("word");
-		resp.setContentType("text/plain");
-		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		PrintWriter pw = resp.getWriter();
 		if (word == null) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			pw.println("Parameter 'word' missing.");
@@ -100,13 +110,13 @@ public class FinWordNetServlet extends SuperServlet {
 				}
 				SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
 				String partofspeech = "NOUN";// req.getParameter("pos");
-				String hypernymJSON = CACHE.get(word);
+				String hypernymJSON = CACHE.get(queryString);//cache key is full query string
 
 				if (hypernymJSON == null) {
 					List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
 					if (hypernyms != null) {
 						hypernymJSON = String.join("\n", hypernyms);
-						CACHE.put(word, hypernymJSON);
+						CACHE.put(queryString, hypernymJSON);
 					}
 				}
 				outputString = hypernymJSON;
