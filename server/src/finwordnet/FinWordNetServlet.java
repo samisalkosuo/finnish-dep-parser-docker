@@ -97,10 +97,15 @@ public class FinWordNetServlet extends SuperServlet {
 			pw.println("Parameter 'word' missing.");
 		} else {
 			String outputString = null;
+			String upostag = req.getParameter("upostag");
+			if (upostag==null)
+			{
+				upostag="NOUN";
+			}
 			if (function.equals("synonyms")) {
 				SYSOUTLOGGER.sysout(2, "Get synonyms for word: " + word);
-				String partofspeech = "NOUN";// req.getParameter("pos");
-				outputString = wordnet.getSynonyms(word, partofspeech);
+				//String partofspeech = "NOUN";// req.getParameter("pos");
+				outputString = wordnet.getSynonyms(word, upostag);
 
 			}
 			if (function.startsWith("hypernym")) {

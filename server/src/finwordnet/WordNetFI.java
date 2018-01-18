@@ -216,8 +216,10 @@ public class WordNetFI implements IWordNet {
 						}
 					}
 				}
-				Collections.reverse(synonyms);
-				synonymString = String.join(",", synonyms);
+				if (synonyms.size() > 0) {
+					Collections.reverse(synonyms);
+					synonymString = String.join(",", synonyms);
+				}
 
 			} catch (JWNLException e) {
 				// TODO Auto-generated catch block
@@ -235,10 +237,14 @@ public class WordNetFI implements IWordNet {
 		if (posString.equals("NOUN")) {
 			pos = POS.NOUN;
 		}
+
+		if (posString.equals("ADJ")) {
+			pos = POS.ADJECTIVE;
+		}
 		/*
 		 * if (posString.equals("VERB")) { pos = POS.VERB; }
 		 * 
-		 * if (posString.equals("ADJ")) { pos = POS.ADJECTIVE; }
+		 * 
 		 * 
 		 * if (posString.equals("ADV")) { pos = POS.ADVERB; }
 		 */
