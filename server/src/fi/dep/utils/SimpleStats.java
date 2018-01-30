@@ -5,7 +5,6 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.activemq.util.LFUCache;
@@ -44,7 +43,7 @@ public class SimpleStats {
 	// fixed length FIFO queue:
 	// http://fabian-kostadinov.github.io/2014/11/25/implementing-a-fixed-length-fifo-queue-in-java/
 	// latest parsed texts
-	private String[] initString = { "", "", "", "", "" };
+	private String[] initString = { "", "", "", "", "", "", "", "", "", "" };
 	private StringFixedLengthFifoQueue strQueue = new StringFixedLengthFifoQueue(initString);
 
 	private SimpleStats() {
