@@ -57,7 +57,7 @@ public class FinWordNetServlet extends SuperServlet {
 		// add some help if using without or wrong parameters
 		// add senses-parameter and for each function some default
 		// refactor this code
-		
+
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -76,6 +76,8 @@ public class FinWordNetServlet extends SuperServlet {
 		if (function == null) {
 			function = "hypernymjson";
 		}
+		function = function.toLowerCase();
+
 		// get senses to return from request
 		// A=all, F=first, L=last
 		SENSES_TO_RETURN sensesToReturn = sensesToReturnDefaultValue;
@@ -99,60 +101,68 @@ public class FinWordNetServlet extends SuperServlet {
 		} else {
 			String outputString = null;
 			String upostag = req.getParameter("upostag");
-			if (upostag == null) {
-				upostag = "NOUN";
-			}
-			if (function.equals("synonyms")) {
-				SYSOUTLOGGER.sysout(2, "Get synonyms for word: " + word);
-				// String partofspeech = "NOUN";// req.getParameter("pos");
-				outputString = wordnet.getSynonyms(word, upostag);
 
-			}
-			if (function.startsWith("hypernym")) {
-				HYPERNYM_FORMAT format = HYPERNYM_FORMAT.JSON;
-				if (function.equals("hypernymcsv")) {
-					format = HYPERNYM_FORMAT.CSV;
+			// cache key is full query string
+			outputString = CACHE.get(queryString);
+			if (outputString == null) {
+
+				if (upostag == null) {
+					upostag = "NOUN";
 				}
-				SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
-				String partofspeech = "NOUN";// req.getParameter("pos");
-				String hypernymJSON = CACHE.get(queryString);// cache key is
-																// full query
-																// string
+				if (function.equals("synonyms")) {
+					SYSOUTLOGGER.sysout(2, "Get synonyms for word: " + word);
+					// String partofspeech = "NOUN";// req.getParameter("pos");
+					outputString = wordnet.getSynonyms(word, upostag);
 
-				if (hypernymJSON == null) {
+				}
+				if (function.equals("hypernym")) {
+					HYPERNYM_FORMAT format = HYPERNYM_FORMAT.JSON;
+					if (function.equals("hypernymcsv")) {
+						format = HYPERNYM_FORMAT.CSV;
+					}
+					SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
+					String partofspeech = "NOUN";// req.getParameter("pos");
 					List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
-					if (hypernyms != null) {
-						hypernymJSON = String.join("\n", hypernyms);
-						CACHE.put(queryString, hypernymJSON);
-					}
-				}
-				outputString = hypernymJSON;
-			}
 
-			if (function.startsWith("hypernymsenses")) {
-				SYSOUTLOGGER.sysout(2, "Get hypernyms with senses for word: " + word);
-				String partofspeech = "NOUN";// req.getParameter("pos");
-				String hypernymsWithSenses = CACHE.get(queryString);// cache key
-																	// is full
-																	// query
-																	// string
-				if (hypernymsWithSenses == null) {
-					List<String> hypernyms;
-					try {
-						hypernyms = wordnet.getHypernymStringsWithSenses(word, partofspeech);
-						if (hypernyms != null) {
-							hypernymsWithSenses = String.join("\n", hypernyms);
-							CACHE.put(queryString, hypernymsWithSenses);
+					outputString = String.join("\n", hypernyms);
+				}
+
+				if (function.equals("hypernymsenses")) {
+					SYSOUTLOGGER.sysout(2, "Get hypernyms with senses for word: " + word);
+					String partofspeech = "NOUN";// req.getParameter("pos");
+					String hypernymsWithSenses = CACHE.get(queryString);// cache
+																		// key
+																		// is
+																		// full
+																		// query
+																		// string
+					if (hypernymsWithSenses == null) {
+						List<String> hypernyms;
+						try {
+							hypernyms = wordnet.getHypernymStringsWithSenses(word, partofspeech);
+							if (hypernyms != null) {
+								hypernymsWithSenses = String.join("\n", hypernyms);
+								CACHE.put(queryString, hypernymsWithSenses);
+							}
+						} catch (Exception e) {
+							SYSOUTLOGGER.sysout(-1, "ERROR: Get hypernyms with senses for word: " + word);
+							e.printStackTrace();
+
 						}
-					} catch (Exception e) {
-						SYSOUTLOGGER.sysout(-1, "ERROR: Get hypernyms with senses for word: " + word);
-						e.printStackTrace();
-
 					}
-				}
-				outputString = hypernymsWithSenses;
+					outputString = hypernymsWithSenses;
 
+				}
+
+				// add to cache
+				if (outputString != null && outputString.equals("null")) {
+					CACHE.put(queryString, outputString);
+				}
+			} else {
+				outputString = CACHE.get(queryString);
 			}
+
+			
 			if (outputString == null) {
 				resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				pw.println("null");
