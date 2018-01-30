@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.StringBuilderWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import fi.dep.utils.ApplicationProperties;
 import fi.dep.utils.SimpleStats;
@@ -41,6 +43,8 @@ import opennlp.tools.util.ParagraphStream;
 import opennlp.tools.util.PlainTextByLineStream;
 
 public class FinDepServlet extends SuperServlet {
+
+	private Logger logger = LoggerFactory.getLogger(FinDepServlet.class);
 
 	private final static String SENTENCE_MODEL_FILE = "model/fi-sent.bin";
 	private final static String TOKEN_MODEL_FILE = "model/fi-token.bin";
@@ -76,8 +80,7 @@ public class FinDepServlet extends SuperServlet {
 	public void init() throws ServletException {
 		super.init();
 
-		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
-
+		logger.info("Initializing...");
 		doNotDeleteTempDir = Boolean.parseBoolean(System.getenv("do_not_delete_tmp_dir"));
 
 		workDir = FileSystems.getDefault().getPath(workDirName);
@@ -87,9 +90,10 @@ public class FinDepServlet extends SuperServlet {
 			sentenceModel = new SentenceModel(new File(SENTENCE_MODEL_FILE));
 			tokenModel = new TokenizerModel(new File(TOKEN_MODEL_FILE));
 		} catch (IOException e) {
-			log("Sentence model load failed.", e);
+			logger.error("Sentence model load failed.", e);
 			throw new ServletException(e);
 		}
+		logger.info("Initializing... Done.");
 
 	}
 
@@ -100,7 +104,7 @@ public class FinDepServlet extends SuperServlet {
 		if (inputText != null) {
 			long startTimeNano = System.nanoTime();
 			long startTimeMsec = System.currentTimeMillis();
-			SYSOUTLOGGER.sysout(2, "START");
+			logger.debug("START");
 			handleParsingRequest(inputText, req, resp, startTimeNano, startTimeMsec);
 
 		} else {
@@ -125,7 +129,7 @@ public class FinDepServlet extends SuperServlet {
 
 		long startTimeNano = System.nanoTime();
 		long startTimeMsec = System.currentTimeMillis();
-		SYSOUTLOGGER.sysout(2, "START");
+		logger.debug("START");
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
 		// read input to string
@@ -149,7 +153,7 @@ public class FinDepServlet extends SuperServlet {
 
 		int inputSize = inputText.length();
 
-		SYSOUTLOGGER.sysout(2, inputText);
+		logger.debug(inputText);
 
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -204,18 +208,17 @@ public class FinDepServlet extends SuperServlet {
 		long endTimeMsec = System.currentTimeMillis();
 
 		double elapsedTime = (endTimeMsec - startTimeMsec) / 1000.0;
-		SYSOUTLOGGER.sysout(2, "END " + elapsedTime + " secs");
-		SYSOUTLOGGER.sysout(2, "");
+		logger.debug("END {} secs", elapsedTime);
 
-		String logText = elapsedTime + " secs, " + inputText;
 		if (SYSOUTLOGGER.LOG_LEVEL == 1) {
 			// log only if log level is 1
-			SYSOUTLOGGER.sysout(1, logText);
+			SYSOUTLOGGER.sysout(elapsedTime + " secs, " + inputText);
 		}
 
-		if (SYSOUTLOGGER.LOG_LEVEL != 0) {
+		String logText = null;
+		if (SYSOUTLOGGER.LOG_LEVEL == 0) {
 			// do not add logtext to stats unless log level is 0
-			logText = null;
+			logText = elapsedTime + " secs, " + inputText;
 		}
 		// add latest parsed time and excerpt to stats
 		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize, errorHappened,
@@ -231,17 +234,11 @@ public class FinDepServlet extends SuperServlet {
 		// String conlluText = lfuCache.get(md5Hex);
 		if (conlluText != null) {
 			// found from cache
+			logger.debug("Found from cache.");
 			SIMPLE_STATS.increaseCacheHits();
-			/*
-			 * SYSOUTLOGGER.sysout(2, "found from LFU cache");
-			 * SIMPLE_STATS.increaseCacheHits(); int freq =
-			 * lfuCache.frequencyOf(md5Hex); SYSOUTLOGGER.sysout(2,
-			 * String.format("Doc %s accessed >= %d times", md5Hex, freq));
-			 */
 		} else {
 			// not in cache
-			// SYSOUTLOGGER.sysout(2, "not found from LFU cache");
-			SYSOUTLOGGER.sysout(2, "not found from cache");
+			logger.debug("Not found from cache");
 			pro = parse(inputText);
 			BufferedReader br = pro.reader;// new BufferedReader(new
 											// FileReader(f));
@@ -253,12 +250,9 @@ public class FinDepServlet extends SuperServlet {
 			pw.close();
 			br.close();
 			conlluText = sb.toString();
-			// lfuCache.put(md5Hex, conlluText);
 			CACHE.put(md5Hex, conlluText);
 			pro.deleteTmpDir();
-			// SYSOUTLOGGER.sysout(2, String.format("Doc %s added to LFU cache",
-			// md5Hex));
-			SYSOUTLOGGER.sysout(2, String.format("Key %s added to cache", md5Hex));
+			logger.debug("Key {} added to cache.", md5Hex);
 		}
 		// set reader
 		pro.reader = new BufferedReader(new StringReader(conlluText));
@@ -365,7 +359,7 @@ public class FinDepServlet extends SuperServlet {
 
 	private int callParserProcess(String inputText, Path tmpDir) throws IOException {
 		// calls my_parser_wrapper.sh script
-
+		logger.debug("Calling parser process...");
 		File f = new File(tmpDir.toFile(), inputFileName);
 		FileWriter fw = new FileWriter(f);
 		fw.write(inputText);
@@ -400,7 +394,7 @@ public class FinDepServlet extends SuperServlet {
 		} catch (InterruptedException e) {
 			log(e.toString(), e);
 		}
-		SYSOUTLOGGER.sysout(2, "parser completed. return value: " + rv);
+		logger.debug("Parser process completed. return value: {}", rv);
 
 		return rv;
 	}
@@ -426,7 +420,7 @@ public class FinDepServlet extends SuperServlet {
 
 				} catch (IOException ioe) {
 					// tmpdir delete failed
-					log("Temp dir delete failed: " + ioe.toString());
+					logger.error("Temp dir delete failed.", ioe);
 				}
 			}
 

@@ -6,12 +6,12 @@ import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.ehcache.config.units.MemoryUnit;
-
-import fi.dep.utils.SystemOutLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MyCache {
 
-	private SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
+	private Logger logger = LoggerFactory.getLogger(MyCache.class);
 
 	private static MyCache CACHE = new MyCache();
 
@@ -27,7 +27,7 @@ public class MyCache {
 		enableCache = Boolean.parseBoolean(_enableCache);
 
 		if (!enableCache) {
-			SYSOUTLOGGER.sysout(-1, "Cache is not used.");
+			logger.info("Cache is not used.");
 		}
 
 		init();
@@ -43,7 +43,7 @@ public class MyCache {
 
 		// TODO: this as env variable
 		int cacheSize = 100;
-		SYSOUTLOGGER.sysout(-1, "Cache is used. Cache size: "+cacheSize+"MB.");
+		logger.info("Cache is used. Cache size: {} MB.", cacheSize);
 
 		CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
 				.withCache("stringCache",
@@ -65,14 +65,17 @@ public class MyCache {
 	public String get(String key) {
 		if (!enableCache)
 			return null;
-
-		return stringCache.get(key);
+		
+		String value = stringCache.get(key);
+		logger.trace("Get from cache. Key {}. Value: {}", key, value);
+		return value;
 	}
 
 	public void put(String key, String value) {
 		if (!enableCache)
 			return;
 
+		logger.trace("Put to cache. Key {}. Value: {}", key, value);
 		stringCache.put(key, value);
 	}
 

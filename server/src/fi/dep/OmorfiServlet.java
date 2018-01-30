@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.hfst.HfstOptimizedLookupObj;
 
 /*
@@ -15,9 +18,8 @@ import net.sf.hfst.HfstOptimizedLookupObj;
  */
 public class OmorfiServlet extends SuperServlet {
 
-	/**
-	 * 
-	 */
+	private Logger logger = LoggerFactory.getLogger(OmorfiServlet.class);
+
 	private static final long serialVersionUID = 1L;
 
 	private final static String MODEL_MORPHOLOGY = "model/morphology.finntreebank.hfstol";
@@ -29,16 +31,18 @@ public class OmorfiServlet extends SuperServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		SYSOUTLOGGER.sysout(-1,"Initializing "+getClass().getName());
+		logger.info("Initializing...");
 
 		// load models
 		try {
-			SYSOUTLOGGER.sysout(-1,String.format("Loading %s...", MODEL_MORPHOLOGY));
+			logger.info("Loading {}...", MODEL_MORPHOLOGY);
 			hfst_morphology = new HfstOptimizedLookupObj(MODEL_MORPHOLOGY);
-			SYSOUTLOGGER.sysout(-1,String.format("Loading %s...", MODEL_GENERATION));
+			logger.info("Loading {}...", MODEL_GENERATION);
 			hfst_generation = new HfstOptimizedLookupObj(MODEL_GENERATION);
+
+			logger.info("Initializing... Done.");
 		} catch (Exception e) {
-			log("Init failed: " + e.toString(),e);
+			log("Init failed: " + e.toString(), e);
 			throw new ServletException(e);
 
 		}

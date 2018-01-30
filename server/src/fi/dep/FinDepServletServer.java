@@ -2,12 +2,16 @@ package fi.dep;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import fi.dep.utils.SystemOutLogger;
 import fi.wordnet.FinWordNetServlet;
 
 public class FinDepServletServer {
-		
+
+	private static Logger logger = LoggerFactory.getLogger(FinDepServletServer.class);
+
 	public static void main(String[] args) {
 		// Create a basic jetty server object that will listen on port 8080.
 		// Note that if you set this to port 0 then a randomly available port
@@ -24,8 +28,7 @@ public class FinDepServletServer {
 		// set log level at the end of the init method
 		// log level
 		// 0=no log after start
-		// 1=not so much log, text excerpt
-		// 2=more log, all text
+		// 1=log elapsed time and parsed text excerpt
 		// default is 1
 		int LOG_LEVEL = 1;
 		SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
@@ -41,12 +44,6 @@ public class FinDepServletServer {
 			case 0:
 				LOG_LEVEL = 0;
 				break;
-			case 1:
-				LOG_LEVEL = 1;
-				break;
-			case 2:
-				LOG_LEVEL = 2;
-				break;
 
 			default:
 				LOG_LEVEL = 1;
@@ -58,10 +55,10 @@ public class FinDepServletServer {
 		}
 
 		SYSOUTLOGGER.LOG_LEVEL = LOG_LEVEL;
-		SYSOUTLOGGER.sysout(-1, "using log level: " + LOG_LEVEL);
-
+		logger.info("System.out log level: " + LOG_LEVEL);
 		if (LOG_LEVEL == 0) {
-			SYSOUTLOGGER.sysout(-1, "After start, nothing but errors logged.");
+			logger.info("Parsed texts are not logged to System.out.");
+			logger.info("Use browser and statistics page to see latest parsed texts.");
 		}
 
 		try {
@@ -69,7 +66,7 @@ public class FinDepServletServer {
 			// an
 			// instance of that Servlet and mount it on a given context path.
 
-			// server.feature is one of: DEP,LEMMA,ALL
+			// server.feature is one of: DEP,LEMMA,FWN,ALL
 			// default is ALL
 			String serverFeature = System.getenv("server_feature");
 			if (serverFeature == null) {
@@ -97,7 +94,6 @@ public class FinDepServletServer {
 
 			// Start things up!
 			server.start();
-			SYSOUTLOGGER.sysout(-1, "Server started.");
 
 			// The use of server.join() the will make the current thread join
 			// and
@@ -106,7 +102,6 @@ public class FinDepServletServer {
 			// http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#join()
 			server.join();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -66,10 +66,12 @@ Some environment variables can be used.
     - Requests are like */finwordnet?word=sana*.
     - Response is un-compliant custom JSON.
   - LEMMA-feature starts a servlet that returns CoNLL-U format that includes only lemmas. Context root is /lemma.
-- *log_level*, set level of logging. 
-  - 0=no logging after starting the container.
+- *slf4j_log_level*, SLF4J logging level.
+  - One of: 'trace', 'debug', 'info', 'warn', 'error' or 'off'.
+  - Default is 'info'.
+- *log_level*, system out logging level. 
+  - 0=no logging of parsed text.
   - 1=log elapsed time and excerpt of parsed text.
-  - 2=log elapsed time, full text and some other info. 
   - Default is 1.
   - If log_level=0, you can see the latest parsed text by using GET-request to parser.
 

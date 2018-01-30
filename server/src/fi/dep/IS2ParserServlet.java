@@ -11,14 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.output.StringBuilderWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import fi.dep.is2.Parser;
 
 public class IS2ParserServlet extends SuperServlet {
 
-	/**
-	 * 
-	 */
+	private Logger logger = LoggerFactory.getLogger(IS2ParserServlet.class);
+
 	private static final long serialVersionUID = 1L;
 
 	private final static String MODEL_PARSER = "model/parser.model";
@@ -28,13 +29,13 @@ public class IS2ParserServlet extends SuperServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
+		logger.info("Initializing...");
 
 		// init parser
 		parser = new Parser(MODEL_PARSER);
 		try {
 			// load model
-			SYSOUTLOGGER.sysout(-1, String.format("Loading %s...", MODEL_PARSER));
+			logger.info(String.format("Loading {}...", MODEL_PARSER));
 			parser.loadModel();
 
 			// do initial parse to do final init of parser
@@ -42,6 +43,7 @@ public class IS2ParserServlet extends SuperServlet {
 			BufferedWriter sbw = new BufferedWriter(new StringBuilderWriter());
 			parser.parse(br, sbw);
 
+			logger.info("Initializing... Done.");
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
@@ -115,7 +117,7 @@ public class IS2ParserServlet extends SuperServlet {
 			bw.flush();
 
 		} catch (Exception e) {
-			log("Parsing failed.", e);
+			logger.error("Parsing failed.", e);
 			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 
 		} finally {

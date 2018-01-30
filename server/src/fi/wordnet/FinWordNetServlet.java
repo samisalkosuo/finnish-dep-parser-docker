@@ -9,12 +9,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fi.dep.SuperServlet;
 import fi.dep.utils.cache.MyCache;
 import fi.wordnet.IWordNet.HYPERNYM_FORMAT;
 import fi.wordnet.IWordNet.SENSES_TO_RETURN;
 
 public class FinWordNetServlet extends SuperServlet {
+
+	private Logger logger = LoggerFactory.getLogger(FinWordNetServlet.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +32,7 @@ public class FinWordNetServlet extends SuperServlet {
 	public void init() throws ServletException {
 		super.init();
 
-		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
+		logger.info("Initializing...");
 
 		// env variable to get senses
 		String _sensesToReturn = System.getenv("fwn_senses_to_return");
@@ -41,6 +46,8 @@ public class FinWordNetServlet extends SuperServlet {
 		}
 
 		wordnet = WordNetFI.getInstance();
+
+		logger.info("Initializing... Done.");
 
 	}
 
@@ -110,17 +117,18 @@ public class FinWordNetServlet extends SuperServlet {
 					upostag = "NOUN";
 				}
 				if (function.equals("synonyms")) {
-					SYSOUTLOGGER.sysout(2, "Get synonyms for word: " + word);
+					logger.debug("Get synonyms for word: {}", word);
 					// String partofspeech = "NOUN";// req.getParameter("pos");
 					outputString = wordnet.getSynonyms(word, upostag);
 
 				}
-				if (function.equals("hypernym")) {
+
+				if (function.equals("hypernym") || function.equals("hypernymcsv")) {
 					HYPERNYM_FORMAT format = HYPERNYM_FORMAT.JSON;
 					if (function.equals("hypernymcsv")) {
 						format = HYPERNYM_FORMAT.CSV;
 					}
-					SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
+					logger.debug("Get hypernyms for word: {}", word);
 					String partofspeech = "NOUN";// req.getParameter("pos");
 					List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
 
@@ -128,7 +136,7 @@ public class FinWordNetServlet extends SuperServlet {
 				}
 
 				if (function.equals("hypernymsenses")) {
-					SYSOUTLOGGER.sysout(2, "Get hypernyms with senses for word: " + word);
+					logger.debug("Get hypernyms with senses for word: {}", word);
 					String partofspeech = "NOUN";// req.getParameter("pos");
 					String hypernymsWithSenses = CACHE.get(queryString);// cache
 																		// key
@@ -145,8 +153,7 @@ public class FinWordNetServlet extends SuperServlet {
 								CACHE.put(queryString, hypernymsWithSenses);
 							}
 						} catch (Exception e) {
-							SYSOUTLOGGER.sysout(-1, "ERROR: Get hypernyms with senses for word: " + word);
-							e.printStackTrace();
+							logger.error("Get hypernyms with senses for word: " + word, e);
 
 						}
 					}
@@ -162,7 +169,6 @@ public class FinWordNetServlet extends SuperServlet {
 				outputString = CACHE.get(queryString);
 			}
 
-			
 			if (outputString == null) {
 				resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				pw.println("null");

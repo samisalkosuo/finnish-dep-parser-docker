@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.util.Map.Entry;
 import java.util.zip.ZipInputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fi.dep.is2.io.CONLLReader09;
 import fi.dep.is2.io.CONLLWriter09;
-import fi.dep.utils.SystemOutLogger;
 import is2.data.Cluster;
 import is2.data.DataFES;
 import is2.data.F2SF;
@@ -35,6 +37,8 @@ import is2.util.OptionsSuper;
 
 public class Parser implements Tool {
 
+	private Logger logger = LoggerFactory.getLogger(Parser.class);
+
 	// output evaluation info
 	private static final boolean MAX_INFO = true;
 
@@ -51,8 +55,6 @@ public class Parser implements Tool {
 	public Parse d = null;
 
 	private String[] types;
-	
-	private SystemOutLogger SYSOUTLOGGER=SystemOutLogger.getInstance();
 
 	/**
 	 * Initialize the parser
@@ -195,8 +197,8 @@ public class Parser implements Tool {
 		// these are for printing
 		// int del = 0;
 		// long last = System.currentTimeMillis();
-		
-		SYSOUTLOGGER.sysout(2,"Processing sentences...");
+
+		logger.debug("Processing sentences...");
 
 		while (true) {
 
@@ -218,7 +220,7 @@ public class Parser implements Tool {
 			// del = PipeGen.outValue(cnt, del, last);
 
 		}
-		SYSOUTLOGGER.sysout(2,String.format("Processed sentences: %d", cnt));
+		logger.debug("Processed sentences: {}", cnt);
 
 		// pipe.close();
 		depWriter.finishWriting();

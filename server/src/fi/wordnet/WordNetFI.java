@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Vector;
 
 import org.apache.commons.text.StringEscapeUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.sf.extjwnl.JWNLException;
 import net.sf.extjwnl.data.IndexWord;
@@ -21,7 +23,7 @@ import net.sf.extjwnl.dictionary.Dictionary;
 
 public class WordNetFI implements IWordNet {
 
-	// private SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
+	private Logger logger = LoggerFactory.getLogger(WordNetFI.class);
 
 	private static IWordNet wordnetFI = null;
 
@@ -49,14 +51,16 @@ public class WordNetFI implements IWordNet {
 	public void init() {
 		try {
 			// wordnet path in docker image
+			logger.trace("Initializing...");
 			String dictPath = "/Finnish-dep-parser/finwordnet/net/sf/extjwnl/data/finwordnet/2.0";
 			// wordnet path in dev environment
 			// dictPath =
 			// "c:/Dropbox/git/finnish-dep-parser-docker/server/resources/net/sf/extjwnl/data/finwordnet/2.0";
 			// dict = Dictionary.getDefaultResourceInstance();
 			dict = Dictionary.getFileBackedInstance(dictPath);
+			logger.trace("Initializing... Done.");
 		} catch (JWNLException e) {
-			e.printStackTrace();
+			logger.error(e.toString(), e);
 		}
 	}
 
@@ -67,14 +71,13 @@ public class WordNetFI implements IWordNet {
 			try {
 				dict.close();
 			} catch (JWNLException e) {
-				e.printStackTrace();
+				logger.error(e.toString(), e);
 			}
 		}
 	}
-	
+
 	@Override
-	public List<String> getHypernymStringsWithSenses(String _word, String partofspeech)
-			throws Exception {
+	public List<String> getHypernymStringsWithSenses(String _word, String partofspeech) throws Exception {
 
 		POS pos = getPOS(partofspeech);
 		List<String> hypernymStringsWithSenses = new Vector<String>();
@@ -87,8 +90,7 @@ public class WordNetFI implements IWordNet {
 
 				int senseIndex = 0;
 				for (Synset sense : senses) {
-					PointerTargetTree senseHypernyms = PointerUtils
-							.getHypernymTree(sense);
+					PointerTargetTree senseHypernyms = PointerUtils.getHypernymTree(sense);
 					List<PointerTargetNodeList> n1 = senseHypernyms.toList();
 
 					int hypernymLevelIndex = 0;
@@ -102,8 +104,7 @@ public class WordNetFI implements IWordNet {
 							int size = words.size();
 							for (int i = 0; i < size; i++) {
 								String lemma = words.get(i).getLemma();
-								hypernymStringsWithSenses.add(senseIndex + ","
-										+ hypernymLevelIndex + "," + lemma);
+								hypernymStringsWithSenses.add(senseIndex + "," + hypernymLevelIndex + "," + lemma);
 							}
 							hypernymLevelIndex = hypernymLevelIndex + 1;
 
@@ -118,7 +119,7 @@ public class WordNetFI implements IWordNet {
 
 		return hypernymStringsWithSenses;
 	}
-	
+
 	@Override
 	public List<String> getHypernymStrings(String _word, String partofspeech, HYPERNYM_FORMAT format,
 			SENSES_TO_RETURN sensesToReturn) {
@@ -214,8 +215,7 @@ public class WordNetFI implements IWordNet {
 				}
 
 			} catch (JWNLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error(e.toString(), e);
 			}
 		}
 		return hypernymJSONs;
@@ -270,8 +270,7 @@ public class WordNetFI implements IWordNet {
 				}
 
 			} catch (JWNLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error(e.toString(), e);
 			}
 		}
 		return synonymString;
@@ -378,8 +377,7 @@ public class WordNetFI implements IWordNet {
 			}
 
 		} catch (Exception e) {
-			// catch all errors
-			e.printStackTrace();
+			logger.error(e.toString(), e);
 		}
 		return allConceptJSONs;
 	}

@@ -17,6 +17,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fi.dep.marmot.Annotator;
 
 /*
@@ -24,6 +27,8 @@ import fi.dep.marmot.Annotator;
  * Replaces call to marmot.morph.cmd.Annotator class
  */
 public class MarmotServlet extends SuperServlet {
+	
+	private Logger logger = LoggerFactory.getLogger(MarmotServlet.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,13 +41,13 @@ public class MarmotServlet extends SuperServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		SYSOUTLOGGER.sysout(-1, "Initializing " + getClass().getName());
-		SYSOUTLOGGER.sysout(-1, String.format("Loading model %s...", MODEL_MARMOT));
+		logger.info("Initializing...");
+		logger.info("Loading model {}...", MODEL_MARMOT);
 
 		// load models
 		annotator = new Annotator(MODEL_MARMOT);
 
-		SYSOUTLOGGER.sysout(-1, "Reading word counts from vocab-fi...");
+		logger.info("Reading word counts from vocab-fi...");
 		String file = "word_counts.csv.zip";
 		long wordCount = 0;
 		long totalCount = 0;
@@ -75,12 +80,14 @@ public class MarmotServlet extends SuperServlet {
 				totalCount = totalCount + count;
 				wordCounts.put(items[0], count);
 				if (wordCount % 500000 == 0) {
-					SYSOUTLOGGER.sysout(-1, String.format("Words: %d, Counts: %d", wordCount, totalCount));
+					logger.info("Words: {}, Counts: {}", wordCount, totalCount);
 				}
 				line = br.readLine();
 			}
-			SYSOUTLOGGER.sysout(-1, String.format("Words: %d, Counts: %d", wordCount, totalCount));
+			logger.info("Words: {}, Counts: {}", wordCount, totalCount);
 			br.close();
+
+			logger.info("Initializing... Done.");
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
