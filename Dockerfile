@@ -49,7 +49,10 @@ ADD server/init.sh .
 ADD server/my_parser_wrapper.sh .
 ADD server/tag.sh .
 
-RUN chmod 755 my_parser_wrapper.sh tag.sh
+#add java server start script
+ADD scripts/start_parser_server.sh .
+
+RUN chmod 755 *sh
 
 #add testfiles
 #RUN mkdir testfiles
@@ -58,7 +61,7 @@ RUN chmod 755 my_parser_wrapper.sh tag.sh
 #Port 9876 is hardcoded servlet server port
 EXPOSE 9876
 
-CMD ["java","-Xmx2g","-jar","fin-dep-parser-server-jar-with-dependencies.jar"] 
+CMD ["/bin/bash", "start_parser_server.sh"] 
 
 #execute server within image: 
 #java -Xmx2g -jar fin-dep-parser-server-jar-with-dependencies.jar
