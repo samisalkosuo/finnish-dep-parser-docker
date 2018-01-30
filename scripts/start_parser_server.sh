@@ -18,7 +18,7 @@ MAX_HEAP_SIZE=2g
 java -Xmx${MAX_HEAP_SIZE} \
 -Dorg.slf4j.simpleLogger.defaultLogLevel=${LOG_LEVEL} \
 -Dorg.slf4j.simpleLogger.showDateTime=true \
--Dorg.slf4j.simpleLogger.dateTimeFormat="yyyy-MM-dd hh.mm.ss.SSS" \
+-Dorg.slf4j.simpleLogger.dateTimeFormat="yyyy-MM-dd HH.mm.ss.SSS" \
 -Dorg.slf4j.simpleLogger.levelInBrackets=true \
 -Dorg.slf4j.simpleLogger.log.org.eclipse.jetty=info \
 -jar fin-dep-parser-server-jar-with-dependencies.jar
