@@ -1,4 +1,4 @@
-package findep.utils;
+package fi.dep.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

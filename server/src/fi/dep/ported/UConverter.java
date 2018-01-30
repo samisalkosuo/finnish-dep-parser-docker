@@ -1,4 +1,4 @@
-package findep.ported;
+package fi.dep.ported;
 
 public interface UConverter {
 

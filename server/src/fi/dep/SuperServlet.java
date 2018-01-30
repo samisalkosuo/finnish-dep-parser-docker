@@ -1,4 +1,4 @@
-package findep;
+package fi.dep;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServlet;
 
-import findep.utils.SystemOutLogger;
+import fi.dep.utils.SystemOutLogger;
 
 public class SuperServlet extends HttpServlet {
 

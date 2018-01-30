@@ -1,4 +1,4 @@
-package findep;
+package fi.dep;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

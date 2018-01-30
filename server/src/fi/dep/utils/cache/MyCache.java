@@ -1,4 +1,4 @@
-package findep.utils.cache;
+package fi.dep.utils.cache;
 
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
@@ -7,7 +7,7 @@ import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.ehcache.config.units.MemoryUnit;
 
-import findep.utils.SystemOutLogger;
+import fi.dep.utils.SystemOutLogger;
 
 public class MyCache {
 

@@ -1,4 +1,4 @@
-package findep.is2.io;
+package fi.dep.is2.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

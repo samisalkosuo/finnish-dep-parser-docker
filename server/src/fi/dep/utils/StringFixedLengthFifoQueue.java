@@ -1,4 +1,4 @@
-package findep.utils;
+package fi.dep.utils;
 
 //http://fabian-kostadinov.github.io/2014/11/25/implementing-a-fixed-length-fifo-queue-in-java/
 

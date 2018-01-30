@@ -1,4 +1,4 @@
-package finwordnet;
+package fi.wordnet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,10 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import findep.SuperServlet;
-import findep.utils.cache.MyCache;
-import finwordnet.IWordNet.HYPERNYM_FORMAT;
-import finwordnet.IWordNet.SENSES_TO_RETURN;
+import fi.dep.SuperServlet;
+import fi.dep.utils.cache.MyCache;
+import fi.wordnet.IWordNet.HYPERNYM_FORMAT;
+import fi.wordnet.IWordNet.SENSES_TO_RETURN;
 
 public class FinWordNetServlet extends SuperServlet {
 

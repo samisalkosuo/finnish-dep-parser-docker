@@ -1,4 +1,4 @@
-package findep.utils;
+package fi.dep.utils;
 
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.activemq.util.LFUCache;
 import org.apache.commons.io.output.StringBuilderWriter;
 
-import findep.utils.cache.MyCache;
+import fi.dep.utils.cache.MyCache;
 
 public class SimpleStats {
 

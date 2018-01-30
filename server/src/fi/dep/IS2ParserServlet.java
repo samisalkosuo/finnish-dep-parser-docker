@@ -1,4 +1,4 @@
-package findep;
+package fi.dep;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.output.StringBuilderWriter;
 
-import findep.is2.Parser;
+import fi.dep.is2.Parser;
 
 public class IS2ParserServlet extends SuperServlet {
 

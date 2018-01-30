@@ -1,4 +1,4 @@
-package findep;
+package fi.dep;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,14 +24,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 
-import findep.marmot.Annotator;
-import findep.ported.ParserLog;
-import findep.ported.ParserLogImpl;
-import findep.ported.Tag;
-import findep.ported.TagImpl;
-import findep.ported.UConverter;
-import findep.ported.UConverterImpl;
-import findep.utils.SimpleStats;
+import fi.dep.marmot.Annotator;
+import fi.dep.ported.ParserLog;
+import fi.dep.ported.ParserLogImpl;
+import fi.dep.ported.Tag;
+import fi.dep.ported.TagImpl;
+import fi.dep.ported.UConverter;
+import fi.dep.ported.UConverterImpl;
+import fi.dep.utils.SimpleStats;
 import marmot.morph.MorphTagger;
 import net.sf.hfst.HfstOptimizedLookupObj;
 import opennlp.tools.sentdetect.SentenceDetectorME;

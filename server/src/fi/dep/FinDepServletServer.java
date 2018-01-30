@@ -1,13 +1,13 @@
-package findep;
+package fi.dep;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 
-import findep.utils.SystemOutLogger;
-import finwordnet.FinWordNetServlet;
+import fi.dep.utils.SystemOutLogger;
+import fi.wordnet.FinWordNetServlet;
 
 public class FinDepServletServer {
-
+		
 	public static void main(String[] args) {
 		// Create a basic jetty server object that will listen on port 8080.
 		// Note that if you set this to port 0 then a randomly available port

@@ -1,4 +1,4 @@
-package findep.is2;
+package fi.dep.is2;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.Map.Entry;
 import java.util.zip.ZipInputStream;
 
-import findep.is2.io.CONLLReader09;
-import findep.is2.io.CONLLWriter09;
-import findep.utils.SystemOutLogger;
+import fi.dep.is2.io.CONLLReader09;
+import fi.dep.is2.io.CONLLWriter09;
+import fi.dep.utils.SystemOutLogger;
 import is2.data.Cluster;
 import is2.data.DataFES;
 import is2.data.F2SF;

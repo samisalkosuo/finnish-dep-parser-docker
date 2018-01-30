@@ -16,7 +16,7 @@
 		<finnish-dep-parser-version>${project.version}</finnish-dep-parser-version>
 		<!-- Build time stamp. -->
 		<finnish-dep-parser-build-timestamp>${maven.build.timestamp}</finnish-dep-parser-build-timestamp>
-		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
 
 	</properties>
 	<build>
@@ -54,7 +54,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>findep.FinDepServletServer</mainClass>
+							<mainClass>fi.dep.FinDepServletServer</mainClass>
 						</manifest>
 					</archive>
 

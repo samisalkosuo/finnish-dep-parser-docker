@@ -1,4 +1,4 @@
-package findep.marmot;
+package fi.dep.marmot;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

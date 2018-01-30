@@ -1,4 +1,4 @@
-package findep.utils;
+package fi.dep.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

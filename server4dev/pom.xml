@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>findep.parser</groupId>
 	<artifactId>fin-dep-parser-server</artifactId>
-	<version>0.11</version>
+	<version>0.19</version>
 	<name>FINDEPParserServer</name>
 	<description>Finnish Dependency Parser server based on http://turkunlp.github.io/Finnish-dep-parser/.</description>
 	<properties>
@@ -36,7 +36,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>findep.FinDepServletServer</mainClass>
+							<mainClass>fi.dep.FinDepServletServer</mainClass>
 						</manifest>
 					</archive>
 

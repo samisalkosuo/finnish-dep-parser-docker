@@ -1,4 +1,4 @@
-package findep.utils;
+package fi.dep.utils;
 
 public class SystemOutLogger {
 

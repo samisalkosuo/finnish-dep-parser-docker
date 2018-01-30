@@ -1,4 +1,4 @@
-package finwordnet;
+package fi.wordnet;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package findep.ported;
+package fi.dep.ported;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

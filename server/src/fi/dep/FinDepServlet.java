@@ -1,4 +1,4 @@
-package findep;
+package fi.dep;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -27,9 +27,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.StringBuilderWriter;
 
-import findep.utils.SimpleStats;
-import findep.utils.ApplicationProperties;
-import findep.utils.cache.MyCache;
+import fi.dep.utils.ApplicationProperties;
+import fi.dep.utils.SimpleStats;
+import fi.dep.utils.cache.MyCache;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.tokenize.TokenizerME;
