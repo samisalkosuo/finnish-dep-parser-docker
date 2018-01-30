@@ -56,23 +56,24 @@ public class FinWordNetServlet extends SuperServlet {
 		// TODO:
 		// add some help if using without or wrong parameters
 		// add senses-parameter and for each function some default
-
+		// refactor this code
+		
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		resp.setContentType("text/plain");
 		resp.setCharacterEncoding(StandardCharsets.UTF_8.name());
 		PrintWriter pw = resp.getWriter();
 
-		String queryString=req.getQueryString();
+		String queryString = req.getQueryString();
 		if (queryString == null) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			pw.println("No parameters.");
 			pw.flush();
 			return;
 		}
-		
+
 		String function = req.getParameter("function");
-			
-			if (function == null) {
+
+		if (function == null) {
 			function = "hypernymjson";
 		}
 		// get senses to return from request
@@ -98,13 +99,12 @@ public class FinWordNetServlet extends SuperServlet {
 		} else {
 			String outputString = null;
 			String upostag = req.getParameter("upostag");
-			if (upostag==null)
-			{
-				upostag="NOUN";
+			if (upostag == null) {
+				upostag = "NOUN";
 			}
 			if (function.equals("synonyms")) {
 				SYSOUTLOGGER.sysout(2, "Get synonyms for word: " + word);
-				//String partofspeech = "NOUN";// req.getParameter("pos");
+				// String partofspeech = "NOUN";// req.getParameter("pos");
 				outputString = wordnet.getSynonyms(word, upostag);
 
 			}
@@ -115,7 +115,9 @@ public class FinWordNetServlet extends SuperServlet {
 				}
 				SYSOUTLOGGER.sysout(2, "Get hypernyms for word: " + word);
 				String partofspeech = "NOUN";// req.getParameter("pos");
-				String hypernymJSON = CACHE.get(queryString);//cache key is full query string
+				String hypernymJSON = CACHE.get(queryString);// cache key is
+																// full query
+																// string
 
 				if (hypernymJSON == null) {
 					List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
@@ -125,6 +127,31 @@ public class FinWordNetServlet extends SuperServlet {
 					}
 				}
 				outputString = hypernymJSON;
+			}
+
+			if (function.startsWith("hypernymsenses")) {
+				SYSOUTLOGGER.sysout(2, "Get hypernyms with senses for word: " + word);
+				String partofspeech = "NOUN";// req.getParameter("pos");
+				String hypernymsWithSenses = CACHE.get(queryString);// cache key
+																	// is full
+																	// query
+																	// string
+				if (hypernymsWithSenses == null) {
+					List<String> hypernyms;
+					try {
+						hypernyms = wordnet.getHypernymStringsWithSenses(word, partofspeech);
+						if (hypernyms != null) {
+							hypernymsWithSenses = String.join("\n", hypernyms);
+							CACHE.put(queryString, hypernymsWithSenses);
+						}
+					} catch (Exception e) {
+						SYSOUTLOGGER.sysout(-1, "ERROR: Get hypernyms with senses for word: " + word);
+						e.printStackTrace();
+
+					}
+				}
+				outputString = hypernymsWithSenses;
+
 			}
 			if (outputString == null) {
 				resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

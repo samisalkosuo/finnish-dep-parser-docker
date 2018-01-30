@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 import org.apache.commons.text.StringEscapeUtils;
 
@@ -70,7 +71,54 @@ public class WordNetFI implements IWordNet {
 			}
 		}
 	}
+	
+	@Override
+	public List<String> getHypernymStringsWithSenses(String _word, String partofspeech)
+			throws Exception {
 
+		POS pos = getPOS(partofspeech);
+		List<String> hypernymStringsWithSenses = new Vector<String>();
+		if (pos != null) {
+
+			IndexWord word = dict.getIndexWord(pos, _word);
+
+			if (word != null) {
+				List<Synset> senses = word.getSenses();
+
+				int senseIndex = 0;
+				for (Synset sense : senses) {
+					PointerTargetTree senseHypernyms = PointerUtils
+							.getHypernymTree(sense);
+					List<PointerTargetNodeList> n1 = senseHypernyms.toList();
+
+					int hypernymLevelIndex = 0;
+					for (PointerTargetNodeList ptnl : n1) {
+						// can include more than 1 sense
+						Iterator<PointerTargetNode> ptni = ptnl.iterator();
+						while (ptni.hasNext()) {
+							PointerTargetNode ptn = ptni.next();
+
+							List<Word> words = ptn.getSynset().getWords();
+							int size = words.size();
+							for (int i = 0; i < size; i++) {
+								String lemma = words.get(i).getLemma();
+								hypernymStringsWithSenses.add(senseIndex + ","
+										+ hypernymLevelIndex + "," + lemma);
+							}
+							hypernymLevelIndex = hypernymLevelIndex + 1;
+
+						}
+
+					}
+					senseIndex = senseIndex + 1;
+				}
+			}
+
+		}
+
+		return hypernymStringsWithSenses;
+	}
+	
 	@Override
 	public List<String> getHypernymStrings(String _word, String partofspeech, HYPERNYM_FORMAT format,
 			SENSES_TO_RETURN sensesToReturn) {

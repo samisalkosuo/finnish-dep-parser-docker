@@ -30,14 +30,9 @@ public interface IWordNet {
 	public void destroy();
 
 
-	/**
-	 * 
-	 * @param _word
-	 * @param partofspeech
-	 * @return JSON concepts for the word
-	 */
-	//public List<List<List<String>>> getHypernyms(String _word, String partofspeech);
 	public List<String> getHypernymStrings(String _word, String partofspeech,HYPERNYM_FORMAT format, SENSES_TO_RETURN sensesToReturn);
+	
+	public List<String> getHypernymStringsWithSenses(String _word, String partofspeech) throws Exception; 
 	
 	public String getSynonyms(String _word, String partofspeech);
 }
