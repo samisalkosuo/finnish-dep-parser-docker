@@ -11,7 +11,7 @@
 
 FROM python:2.7-alpine
 
-RUN apk add --update --no-cache bash openjdk8 git wget
+RUN apk add --no-cache bash openjdk8 git wget
 RUN apk update && apk add ca-certificates && update-ca-certificates   
 
 WORKDIR /
@@ -23,7 +23,7 @@ RUN ./install.sh
 
 ADD test/ test/
 
-ADD scripts/generate_md5.sh .
+ADD scripts/image/generate_md5.sh .
 RUN chmod 755 generate_md5.sh
 
 RUN ls -1 test/ | awk '{print "echo generateMD5 test/" $1 " >> generate_md5.sh"}' | sh

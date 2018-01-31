@@ -19,6 +19,6 @@ WORKDIR Finnish-dep-parser
 
 RUN ./install.sh
 
-ADD webserver.py .
+ADD scripts/image/webserver.py .
 
 CMD ["python","webserver.py"]

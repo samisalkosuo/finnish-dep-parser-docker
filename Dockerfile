@@ -9,7 +9,7 @@ RUN apk update && apk add ca-certificates && update-ca-certificates
 WORKDIR /
 
 #Install Maven
-ADD scripts/install_maven.sh .
+ADD scripts/image/install_maven.sh .
 RUN ["/bin/bash" ,"install_maven.sh","3.5.2"]
 
 #server4dev is for development use
@@ -23,8 +23,8 @@ RUN mkdir server4dev
 ADD server4dev ./server4dev/
 RUN PATH=/maven/bin:$PATH && cd server4dev && mvn package
 
-ADD scripts/convert_vocab_fi.py .
-ADD scripts/install_findepparser.sh .
+ADD scripts/image/convert_vocab_fi.py .
+ADD scripts/image/install_findepparser.sh .
 #Install Finnish-dep-parser
 #Uses fork: https://github.com/samisalkosuo/Finnish-dep-parser
 #uses specific commit ID as parameter
@@ -37,7 +37,7 @@ RUN mkdir server
 ADD server ./server/
 #ADD server/resources ./server/resources
 ADD server/resources ./finwordnet
-ADD scripts/package_parserserver.sh .
+ADD scripts/image/package_parserserver.sh .
 RUN ["/bin/bash" ,"package_parserserver.sh"]
 
 #add modified Finnish dependency parser files
@@ -51,7 +51,7 @@ ADD server/tag.sh .
 ADD server/cut_and_sort.py .
 
 #add java server start script
-ADD scripts/start_parser_server.sh .
+ADD scripts/image/start_parser_server.sh .
 
 RUN chmod 755 *sh
 
