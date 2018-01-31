@@ -19,7 +19,7 @@ public class SystemOutLogger {
 			msg = StringUtils.shorten(msg);
 
 			System.out.print(StringUtils.now());
-			System.out.print(": ");
+			System.out.print(" - ");
 			System.out.println(msg);
 		}
 	}
