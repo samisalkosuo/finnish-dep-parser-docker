@@ -48,6 +48,7 @@ ADD server/marmot-tag.py .
 ADD server/init.sh .
 ADD server/my_parser_wrapper.sh .
 ADD server/tag.sh .
+ADD server/cut_and_sort.py .
 
 #add java server start script
 ADD scripts/start_parser_server.sh .

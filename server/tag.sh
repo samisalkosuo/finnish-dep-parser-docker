@@ -7,7 +7,9 @@ source init.sh
 
 cat > $TMPDIR/tagger_input.conll09
 #replaced: sort | uniq ==> sort -u
-cat $TMPDIR/tagger_input.conll09 | cut -f 2 | sort -u | $PYTHON omorfi_pos.py > $TMPDIR/all_readings.sd
+#cat $TMPDIR/tagger_input.conll09 | cut -f 2 | sort -u | $PYTHON omorfi_pos.py > $TMPDIR/all_readings.sd
+#replaced: cut -f 2 | sort -u ==> python cut_and_sort.py
+cat $TMPDIR/tagger_input.conll09 | python cut_and_sort.py | $PYTHON omorfi_pos.py > $TMPDIR/all_readings.sd
 
 #unnecessary
 #rm -rf $TMPDIR/morpho_conv_tmp
