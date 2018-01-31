@@ -165,8 +165,6 @@ public class FinWordNetServlet extends SuperServlet {
 				if (outputString != null && outputString.equals("null")) {
 					CACHE.put(queryString, outputString);
 				}
-			} else {
-				outputString = CACHE.get(queryString);
 			}
 
 			if (outputString == null) {
