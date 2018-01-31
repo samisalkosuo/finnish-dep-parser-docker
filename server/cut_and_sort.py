@@ -3,7 +3,7 @@ import sys
 
 #Replaces "cut -f 2 | sort -u" in tag.sh
 #by replacing one pipe, there one process less to execute when parsing text
-#--> parsing speed increases
+#--> parsing speed slightly increases
 
 allTokens=[]
 
@@ -19,8 +19,6 @@ for line in sys.stdin:
         allTokens.append(token)
 
 allTokens.sort()
-
-size=len(allTokens)
 
 for token in allTokens:
     print token.encode(u"utf-8")
