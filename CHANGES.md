@@ -1,5 +1,10 @@
-### v0.19
+### v0.20
 
+- Combined my_parser_wrapper.sh and tag.sh scripts.
+- Moved scripts from server-directory to scripts-directory.
+- Added parse_file.sh and parse_text.sh scripts.
+- Changed scripts-directory structure.
+- Added scripts to build and run local findep-parser image.
 - Changed system out log format. Added "-" after timestamp.
 
 ### v0.19
