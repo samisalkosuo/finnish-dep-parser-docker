@@ -81,7 +81,7 @@ public class FinWordNetServlet extends SuperServlet {
 		String function = req.getParameter("function");
 
 		if (function == null) {
-			function = "hypernymjson";
+			function = "hypernym";
 		}
 		function = function.toLowerCase();
 
@@ -102,6 +102,7 @@ public class FinWordNetServlet extends SuperServlet {
 		}
 
 		String word = req.getParameter("word");
+		logger.debug("Request parameter word: {}", word);
 		if (word == null) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			pw.println("Parameter 'word' missing.");
@@ -128,7 +129,7 @@ public class FinWordNetServlet extends SuperServlet {
 					if (function.equals("hypernymcsv")) {
 						format = HYPERNYM_FORMAT.CSV;
 					}
-					logger.debug("Get hypernyms for word: {}", word);
+					logger.debug("Get hypernyms for word: {}. Format: {}", word,format);
 					String partofspeech = "NOUN";// req.getParameter("pos");
 					List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
 

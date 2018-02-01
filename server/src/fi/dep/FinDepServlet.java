@@ -29,6 +29,8 @@ import org.apache.commons.io.output.StringBuilderWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fi.dep.ported.UConverter;
+import fi.dep.ported.UConverterImpl;
 import fi.dep.utils.ApplicationProperties;
 import fi.dep.utils.SimpleStats;
 import fi.dep.utils.cache.MyCache;
@@ -172,12 +174,16 @@ public class FinDepServlet extends SuperServlet {
 			// input is not empty, parse it
 
 			ParseReturnObject pro = new ParseReturnObject();
-			// if (useConlluCache == true) {
-			if (CACHE.isEnabled()) {
-				// check from cache
-				pro = getFromCache(inputText);
-			} else {
-				pro = parse(inputText);
+			try {
+				if (CACHE.isEnabled()) {
+					// check from cache
+					pro = getFromCache(inputText);
+				} else {
+					pro = parse(inputText);
+				}
+			} catch (Exception e) {
+				logger.error(e.toString(), e);
+				throw new ServletException(e);
 			}
 
 			errorHappened = pro.errorHappened;
@@ -226,7 +232,7 @@ public class FinDepServlet extends SuperServlet {
 
 	}
 
-	private ParseReturnObject getFromCache(String inputText) throws IOException {
+	private ParseReturnObject getFromCache(String inputText) throws Exception {
 		ParseReturnObject pro = new ParseReturnObject();
 
 		String md5Hex = DigestUtils.md5Hex(inputText);
@@ -260,7 +266,7 @@ public class FinDepServlet extends SuperServlet {
 		return pro;
 	}
 
-	private ParseReturnObject parse(String inputText) throws IOException {
+	private ParseReturnObject parse(String inputText) throws Exception {
 
 		ParseReturnObject pro = new ParseReturnObject();
 		Path tmpDir = null;
@@ -357,8 +363,18 @@ public class FinDepServlet extends SuperServlet {
 		sb.append("\n");
 	}
 
-	private int callParserProcess(String inputText, Path tmpDir) throws IOException {
+	private int callParserProcess(String inputText, Path tmpDir) throws Exception {
 		// calls my_parser_wrapper.sh script
+
+		// start replace: conv_u_09.py --output=09
+		/*UConverter uconv = new UConverterImpl();
+		logger.trace("replace: conv_u_09.py --output=09");
+		logger.trace("inputText:\n{}",inputText);
+		inputText=uconv.convertUto09(inputText);
+		logger.trace("inputText:\n{}",inputText);
+		*/
+		// end replace: conv_u_09.py --output=09
+
 		logger.debug("Calling parser process...");
 		File f = new File(tmpDir.toFile(), inputFileName);
 		FileWriter fw = new FileWriter(f);
@@ -392,8 +408,19 @@ public class FinDepServlet extends SuperServlet {
 		try {
 			rv = p.waitFor();
 		} catch (InterruptedException e) {
-			log(e.toString(), e);
+			logger.error(e.toString(), e);
 		}
+		
+		// start replace: conv_u_09.py --output=u
+		/*logger.trace("replace: conv_u_09.py --output=u");
+		File outFile=new File(outputFileName);
+		logger.trace("outputFileName: {}",outputFileName);
+		String outputText=FileUtils.readFileToString(outFile, StandardCharsets.UTF_8);
+		outputText=uconv.convert09toU(outputText);
+		FileUtils.write(outFile, outputText, StandardCharsets.UTF_8);
+		*/// end replace: conv_u_09.py --output=u
+
+		
 		logger.debug("Parser process completed. return value: {}", rv);
 
 		return rv;
