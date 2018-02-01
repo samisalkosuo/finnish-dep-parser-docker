@@ -5,6 +5,8 @@
 
 #check if docker network exist
 #if yes ask to stop farm
+__prefix=findepparser
+__network_name=${__prefix}network
 docker network inspect ${__network_name} > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
 	echo "Farm may be running. Please stop it using stop_parser_farm.sh"
@@ -26,8 +28,6 @@ else
 fi  
 
 #modify variables if you want
-__prefix=findepparser
-__network_name=${__prefix}network
 __proxy_port=9876
 __findep_parser_image=kazhar/finnish-dep-parser:$__findep_image_version
 #colon separated environment variables for findep parser container
