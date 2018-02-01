@@ -1,32 +1,32 @@
 package fi.dep.ported;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
-import java.util.*;
 
-import org.apache.commons.math.util.MultidimensionalCounter.Iterator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import net.sf.hfst.HfstOptimizedLookupObj;
-
-import marmot.core.Tagger;
 import marmot.morph.MorphTagger;
 import marmot.morph.Sentence;
 import marmot.morph.Word;
+import net.sf.hfst.HfstOptimizedLookupObj;
 
 
 
 public class TagImpl implements Tag {
 
-	ParserLog logger = null;
+	private Logger logger = LoggerFactory.getLogger(TagImpl.class);
+
 	MorphTagger tagger = null;
 	
 	HfstOptimizedLookupObj hfst_morphology = null;
 	
-	public TagImpl(ParserLog logIn, HfstOptimizedLookupObj morphoIn,MorphTagger taggerIn) {
-		logger = logIn;
+	public TagImpl(HfstOptimizedLookupObj morphoIn,MorphTagger taggerIn) {
 		hfst_morphology = morphoIn;
 		tagger = taggerIn;
 	}

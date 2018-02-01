@@ -2,12 +2,14 @@ package fi.dep.ported;
 
 import java.util.StringTokenizer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class UConverterImpl implements UConverter {
 
-	public ParserLog log;
+	private Logger logger = LoggerFactory.getLogger(UConverterImpl.class);
 	
-	public UConverterImpl(ParserLog logIn) {
-		this.log = logIn;
+	public UConverterImpl() {
 	}
 	
 	@Override
@@ -22,7 +24,7 @@ public class UConverterImpl implements UConverter {
 		while(st.hasMoreTokens()) {
 			lineNumber++;
 			String lause = st.nextToken();
-			log.debug(lineNumber+":"+lause);
+			logger.debug("{}: {}:",lineNumber,lause);
 
 			// lets just add comments and empty lines
 			if(lause != null && ("".equals(lause.trim()) || "#".equals(lause.substring(0, 1)))) {
@@ -102,7 +104,7 @@ if __name__=="__main__":
 		while(st.hasMoreTokens()) {
 			lineNumber++;
 			String lause = st.nextToken();
-			log.debug(lineNumber+":"+lause);
+			logger.debug("{}: {}",lineNumber,lause);
 
 			// lets just add comments and empty lines
 			if(lause != null && ("".equals(lause.trim()) || "#".equals(lause.substring(0, 1)))) {

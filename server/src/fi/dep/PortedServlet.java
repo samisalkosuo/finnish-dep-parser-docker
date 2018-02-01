@@ -2,35 +2,22 @@ package fi.dep;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import fi.dep.marmot.Annotator;
-import fi.dep.ported.ParserLog;
-import fi.dep.ported.ParserLogImpl;
 import fi.dep.ported.Tag;
 import fi.dep.ported.TagImpl;
-import fi.dep.ported.UConverter;
-import fi.dep.ported.UConverterImpl;
 import fi.dep.utils.SimpleStats;
 import marmot.morph.MorphTagger;
 import net.sf.hfst.HfstOptimizedLookupObj;
@@ -42,6 +29,8 @@ import opennlp.tools.tokenize.TokenizerModel;
 
 
 public class PortedServlet extends HttpServlet {
+
+	private Logger logger = LoggerFactory.getLogger(PortedServlet.class);
 
 	private final static String SENTENCE_MODEL_FILE = "model/fi-sent.bin";
 	private final static String TOKEN_MODEL_FILE = "model/fi-token.bin";
@@ -76,7 +65,7 @@ public class PortedServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		log("Initializing "+getClass().getName());
+		logger.info("Initializing...");
 
 		try {
 			// Not 100% sure do we have to use this - anyhow....
@@ -93,8 +82,10 @@ public class PortedServlet extends HttpServlet {
 			// so comparing the pos from here to the 'treebank' hits - we select the correct lemma
 			tagger= marmot.util.FileUtils.loadFromFile(MODEL_MARMOT);
 
+			logger.info("Initializing... Done.");
+
 		} catch (Exception e) {
-			System.err.println("Sentence model load failed.");
+			logger.error("Sentence model load failed.",e);
 			throw new ServletException(e);
 		}
 
@@ -116,7 +107,7 @@ public class PortedServlet extends HttpServlet {
 
 		long startTimeNano = System.nanoTime();
 		long startTimeMsec = System.currentTimeMillis();
-		log("START");
+		logger.debug("START");
 		req.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
 		// read input to string
@@ -180,7 +171,7 @@ public class PortedServlet extends HttpServlet {
 		long endTimeMsec = System.currentTimeMillis();
 
 		double elapsedTime = (endTimeMsec - startTimeMsec) / 1000.0;
-		log("END " + elapsedTime + " secs");
+		logger.debug("END " + elapsedTime + " secs");
 
 		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize,errorHappened);
 
@@ -215,9 +206,8 @@ public class PortedServlet extends HttpServlet {
 		
 		// This is similar to the FinDepServlet, but carrying out operations
 		// without calling the python scripts
-		ParserLog log = new ParserLogImpl();
 		//UConverter uconverter = new UConverterImpl(log);
-		Tag tag = new TagImpl(log,hfst_morphology,tagger);
+		Tag tag = new TagImpl(hfst_morphology,tagger);
 
 		String outputText = "";
 
@@ -225,9 +215,9 @@ public class PortedServlet extends HttpServlet {
 			// log.debug("in:\n"+inputText);
 			outputText = tag.quickParse(inputText);
 		} catch (Exception e) {
-			log.error("Failed to parse", e);
+			logger.error("Failed to parse", e);
 		}
-		log("parser completed. "); 
+		logger.debug("parser completed. "); 
 
 		return outputText;
 	}
