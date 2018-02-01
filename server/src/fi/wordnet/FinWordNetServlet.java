@@ -114,57 +114,71 @@ public class FinWordNetServlet extends SuperServlet {
 			outputString = CACHE.get(queryString);
 			if (outputString == null) {
 
-				if (upostag == null) {
-					upostag = "NOUN";
-				}
-				if (function.equals("synonyms")) {
-					logger.debug("Get synonyms for word: {}", word);
-					// String partofspeech = "NOUN";// req.getParameter("pos");
-					outputString = wordnet.getSynonyms(word, upostag);
+				try {
+					// catch all exceptions from wordnet call
 
-				}
-
-				if (function.equals("hypernym") || function.equals("hypernymcsv")) {
-					HYPERNYM_FORMAT format = HYPERNYM_FORMAT.JSON;
-					if (function.equals("hypernymcsv")) {
-						format = HYPERNYM_FORMAT.CSV;
+					if (upostag == null) {
+						upostag = "NOUN";
 					}
-					logger.debug("Get hypernyms for word: {}. Format: {}", word,format);
-					String partofspeech = "NOUN";// req.getParameter("pos");
-					List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
+					if (function.equals("synonyms")) {
+						logger.debug("Get synonyms for word: {}", word);
+						// String partofspeech = "NOUN";//
+						// req.getParameter("pos");
+						outputString = wordnet.getSynonyms(word, upostag);
 
-					outputString = String.join("\n", hypernyms);
-				}
+					}
 
-				if (function.equals("hypernymsenses")) {
-					logger.debug("Get hypernyms with senses for word: {}", word);
-					String partofspeech = "NOUN";// req.getParameter("pos");
-					String hypernymsWithSenses = CACHE.get(queryString);// cache
-																		// key
-																		// is
-																		// full
-																		// query
-																		// string
-					if (hypernymsWithSenses == null) {
-						List<String> hypernyms;
-						try {
-							hypernyms = wordnet.getHypernymStringsWithSenses(word, partofspeech);
-							if (hypernyms != null) {
-								hypernymsWithSenses = String.join("\n", hypernyms);
-								CACHE.put(queryString, hypernymsWithSenses);
-							}
-						} catch (Exception e) {
-							logger.error("Get hypernyms with senses for word: " + word, e);
-
+					if (function.equals("hypernym") || function.equals("hypernymcsv")) {
+						HYPERNYM_FORMAT format = HYPERNYM_FORMAT.JSON;
+						if (function.equals("hypernymcsv")) {
+							format = HYPERNYM_FORMAT.CSV;
 						}
-					}
-					outputString = hypernymsWithSenses;
+						logger.debug("Get hypernyms for word: {}. Format: {}", word, format);
+						String partofspeech = "NOUN";// req.getParameter("pos");
+						List<String> hypernyms = wordnet.getHypernymStrings(word, partofspeech, format, sensesToReturn);
 
+						outputString = String.join("\n", hypernyms);
+					}
+
+					if (function.equals("hypernymsenses")) {
+						logger.debug("Get hypernyms with senses for word: {}", word);
+						String partofspeech = "NOUN";// req.getParameter("pos");
+						String hypernymsWithSenses = CACHE.get(queryString);// cache
+																			// key
+																			// is
+																			// full
+																			// query
+																			// string
+						if (hypernymsWithSenses == null) {
+							List<String> hypernyms;
+							try {
+								hypernyms = wordnet.getHypernymStringsWithSenses(word, partofspeech);
+								if (hypernyms != null) {
+									hypernymsWithSenses = String.join("\n", hypernyms);
+									CACHE.put(queryString, hypernymsWithSenses);
+								}
+							} catch (Exception e) {
+								logger.error("Get hypernyms with senses for word: " + word, e);
+
+							}
+						}
+						outputString = hypernymsWithSenses;
+
+					}
+
+					// add to cache
+					if (outputString != null && outputString.equals("null")) {
+						CACHE.put(queryString, outputString);
+					}
 				}
 
-				// add to cache
-				if (outputString != null && outputString.equals("null")) {
-					CACHE.put(queryString, outputString);
+				catch (Throwable t) {
+					if (t instanceof NullPointerException) {
+						logger.warn("Word '{}', upostag '{}' is probably unrecognized.", word,
+								upostag);
+					} else {
+						logger.error("Word '{}' caused error.", t);
+					}
 				}
 			}
 
