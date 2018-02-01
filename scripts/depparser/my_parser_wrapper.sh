@@ -10,9 +10,11 @@
 #cat $TMPDIR/$INPUT_TEXT_FILE |  $PYTHON conv_u_09.py --output=09 | $PYTHON limit_sentence_len.py -N $MAX_SEN_LEN -C $SEN_CHUNK | ./tag.sh  > $__tmpfile 2> error.txt
 #cat $__tmpfile | curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876/annaparser | $PYTHON conllUtil.py --swap HEAD:=PHEAD,DEPREL:=PDEPREL | $PYTHON limit_sentence_len.py --reverse | $PYTHON conv_u_09.py --output=u > $TMPDIR/$OUTPUT_CONLLU_FILE 2> $TMPDIR/$ERROR_FILE
 
-#combined my_parser_wrapper.sh and tag.sh
-cat $TMPDIR/$INPUT_TEXT_FILE | $PYTHON conv_u_09.py --output=09 | $PYTHON limit_sentence_len.py -N $MAX_SEN_LEN -C $SEN_CHUNK > $TMPDIR/tagger_input.conll09
-#cat $TMPDIR/$INPUT_TEXT_FILE | $PYTHON limit_sentence_len.py -N $MAX_SEN_LEN -C $SEN_CHUNK > $TMPDIR/tagger_input.conll09
+#combined my_parser_wrapper.sh and tag.sh is below
+
+#cat $TMPDIR/$INPUT_TEXT_FILE | $PYTHON conv_u_09.py --output=09 | $PYTHON limit_sentence_len.py -N $MAX_SEN_LEN -C $SEN_CHUNK > $TMPDIR/tagger_input.conll09
+#removed conv_u_09.py --output=09 because input is already 09.
+cat $TMPDIR/$INPUT_TEXT_FILE | $PYTHON limit_sentence_len.py -N $MAX_SEN_LEN -C $SEN_CHUNK > $TMPDIR/tagger_input.conll09
 
 #| ./tag.sh  | curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876/annaparser | $PYTHON limit_sentence_len.py --reverse | $PYTHON conv_u_09.py --output=u > $TMPDIR/$OUTPUT_CONLLU_FILE 2> $TMPDIR/$ERROR_FILE
 
@@ -35,8 +37,8 @@ cd morpho-sd2ud
 cd ..
 
 #uses IS parser servlet
-cat $TMPDIR/tagger_input.conll09 | $PYTHON marmot-tag.py --marmot $THIS/LIBS/marmot.jar --tempdir $TMPDIR --ud --hardpos --mreadings $TMPDIR/all_readings.ud --word-counts model/vocab-fi.pickle.gz -m model/fin_model.marmot |  curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876/annaparser | $PYTHON limit_sentence_len.py --reverse | $PYTHON conv_u_09.py --output=u > $TMPDIR/$OUTPUT_CONLLU_FILE 2> $TMPDIR/$ERROR_FILE
-#cat $TMPDIR/tagger_input.conll09 | $PYTHON marmot-tag.py --marmot $THIS/LIBS/marmot.jar --tempdir $TMPDIR --ud --hardpos --mreadings $TMPDIR/all_readings.ud --word-counts model/vocab-fi.pickle.gz -m model/fin_model.marmot |  curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876/annaparser | $PYTHON limit_sentence_len.py --reverse  > $TMPDIR/$OUTPUT_CONLLU_FILE 2> $TMPDIR/$ERROR_FILE
+#cat $TMPDIR/tagger_input.conll09 | $PYTHON marmot-tag.py --marmot $THIS/LIBS/marmot.jar --tempdir $TMPDIR --ud --hardpos --mreadings $TMPDIR/all_readings.ud --word-counts model/vocab-fi.pickle.gz -m model/fin_model.marmot |  curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876/annaparser | $PYTHON limit_sentence_len.py --reverse | $PYTHON conv_u_09.py --output=u > $TMPDIR/$OUTPUT_CONLLU_FILE 2> $TMPDIR/$ERROR_FILE
+cat $TMPDIR/tagger_input.conll09 | $PYTHON marmot-tag.py --marmot $THIS/LIBS/marmot.jar --tempdir $TMPDIR --ud --hardpos --mreadings $TMPDIR/all_readings.ud --word-counts model/vocab-fi.pickle.gz -m model/fin_model.marmot |  curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876/annaparser | $PYTHON limit_sentence_len.py --reverse  > $TMPDIR/$OUTPUT_CONLLU_FILE 2> $TMPDIR/$ERROR_FILE
 
 #cat $TMPDIR/tagger_input.conll09 | $PYTHON marmot-tag.py --marmot $THIS/LIBS/marmot.jar --tempdir $TMPDIR --ud --hardpos --mreadings $TMPDIR/all_readings.ud --word-counts model/vocab-fi.pickle.gz -m model/fin_model.marmot > $TMPDIR/tag_sh_output.conll09
 #end lines from tag.sh
