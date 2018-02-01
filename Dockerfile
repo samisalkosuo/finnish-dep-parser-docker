@@ -41,14 +41,14 @@ ADD scripts/image/package_parserserver.sh .
 RUN ["/bin/bash" ,"package_parserserver.sh"]
 
 #add modified Finnish dependency parser files
-ADD server/resolve_readings.py .
-ADD server/omorfi_pos.py .
-ADD server/omorfi_wrapper.py .
-ADD server/marmot-tag.py .
-ADD server/init.sh .
-ADD server/my_parser_wrapper.sh .
-ADD server/tag.sh .
-ADD server/cut_and_sort.py .
+ADD scripts/depparser/resolve_readings.py .
+ADD scripts/depparser/omorfi_pos.py .
+ADD scripts/depparser/omorfi_wrapper.py .
+ADD scripts/depparser/marmot-tag.py .
+ADD scripts/depparser/init.sh .
+ADD scripts/depparser/my_parser_wrapper.sh .
+ADD scripts/depparser/tag.sh .
+ADD scripts/depparser/cut_and_sort.py .
 
 #add java server start script
 ADD scripts/image/start_parser_server.sh .

@@ -1,0 +1,1 @@
+Modifed Finnish dependency parser scripts are in this directory.
