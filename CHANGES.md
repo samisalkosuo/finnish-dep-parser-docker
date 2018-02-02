@@ -1,5 +1,6 @@
 ### v0.20
 
+- Refactoring.
 - Replaced conv_u_09.py --output=u with Java code.
 - Removed conv_u_09.py --output=09 since input is already 09.
 - Removed custom logger from ported code and added SLF4J.
