@@ -269,7 +269,17 @@ public class FinDepServlet extends SuperServlet {
 		return pro;
 	}
 
-	private ParseReturnObject parse(String inputText) throws Exception {
+	/**
+	 * Parse given inputText to CoNLL-U format.
+	 * 
+	 * To change how inputText is parsed create subclass of this servlet and
+	 * override this method.
+	 * 
+	 * @param inputText
+	 * @return
+	 * @throws Exception
+	 */
+	protected ParseReturnObject parse(String inputText) throws Exception {
 
 		ParseReturnObject pro = new ParseReturnObject();
 		Path tmpDir = null;
@@ -467,11 +477,36 @@ public class FinDepServlet extends SuperServlet {
 		return rv;
 	}
 
-	private class ParseReturnObject {
+	/**
+	 * Return object to return from parse-method.
+	 * 
+	 * @author SamiSalkosuo
+	 *
+	 */
+	protected class ParseReturnObject {
+		/**
+		 * Indicates that error happened during parsing.
+		 */
 		boolean errorHappened = false;
+
+		/**
+		 * Error string
+		 */
 		String errorString = null;
+
+		/**
+		 * Reader object holds parsed text in CoNLL-U format.
+		 */
 		BufferedReader reader = null;
+
+		/**
+		 * Temp directory if using call to external parser process.
+		 */
 		Path tmpDir = null;
+
+		/**
+		 * Return value from external parser process.
+		 */
 		int rv = 0;
 
 		public ParseReturnObject() {
