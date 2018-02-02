@@ -29,8 +29,6 @@ import org.apache.commons.io.output.StringBuilderWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import fi.dep.ported.UConverter;
-import fi.dep.ported.UConverterImpl;
 import fi.dep.utils.ApplicationProperties;
 import fi.dep.utils.SimpleStats;
 import fi.dep.utils.cache.MyCache;
@@ -256,6 +254,11 @@ public class FinDepServlet extends SuperServlet {
 			pw.close();
 			br.close();
 			conlluText = sb.toString();
+			// start replace: conv_u_09.py --output=u
+			logger.trace("replace: conv_u_09.py --output=u");
+			conlluText = conv_09_u(conlluText);
+			// end replace: conv_u_09.py --output=u
+
 			CACHE.put(md5Hex, conlluText);
 			pro.deleteTmpDir();
 			logger.debug("Key {} added to cache.", md5Hex);
@@ -354,8 +357,52 @@ public class FinDepServlet extends SuperServlet {
 
 	}
 
+	// replaces conv_u_09.py --output=u
+	private String conv_09_u(String conllu09) {
+		// field indices
+
+		int _09_ID = 0;
+		int _09_FORM = 1;
+		int _09_PLEMMA = 3;
+		int _09_PPOS = 5;
+		int _09_PFEAT = 7;
+		int _09_PHEAD = 9;
+		int _09_PDEPREL = 11;
+		String converted = null;
+		String[] lines = conllu09.split("\n");
+		StringBuilder sb = new StringBuilder();
+		int len = lines.length;
+		logger.trace("Input:\n{}", conllu09);
+		for (int i = 0; i < len; i++) {
+			// for (String line : lines) {
+			String line = lines[i];
+			if (line.equals("") || line.startsWith("#")) {
+				sb.append(line);
+
+			} else {
+
+				String[] tokens = line.split("\t");
+				String[] conll_u = { tokens[_09_ID], tokens[_09_FORM], tokens[_09_PLEMMA], tokens[_09_PPOS], "_",
+						tokens[_09_PFEAT], tokens[_09_PHEAD], tokens[_09_PDEPREL], "_", "_"
+
+				};
+				String outLine = String.join("\t", conll_u);
+				sb.append(outLine);
+			}
+
+			sb.append("\n");
+		}
+		// add final new line
+		sb.append("\n");
+		converted = sb.toString();
+		logger.trace("Output:\n{}", converted);
+
+		return converted;
+	}
+
 	private void addTokens(StringBuilder sb, String[] tokens) {
 		// replaces txt_to_09.py
+		// and also conv_u_09.py --output=09 as it is no longer needed
 		for (int i = 0; i < tokens.length; i++) {
 			String token = tokens[i];
 			sb.append(String.format("%d\t%s\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\t_\n", i + 1, token));
@@ -364,16 +411,8 @@ public class FinDepServlet extends SuperServlet {
 	}
 
 	private int callParserProcess(String inputText, Path tmpDir) throws Exception {
-		// calls my_parser_wrapper.sh script
 
-		// start replace: conv_u_09.py --output=09
-		/*UConverter uconv = new UConverterImpl();
-		logger.trace("replace: conv_u_09.py --output=09");
-		logger.trace("inputText:\n{}",inputText);
-		inputText=uconv.convertUto09(inputText);
-		logger.trace("inputText:\n{}",inputText);
-		*/
-		// end replace: conv_u_09.py --output=09
+		// calls my_parser_wrapper.sh script
 
 		logger.debug("Calling parser process...");
 		File f = new File(tmpDir.toFile(), inputFileName);
@@ -410,17 +449,19 @@ public class FinDepServlet extends SuperServlet {
 		} catch (InterruptedException e) {
 			logger.error(e.toString(), e);
 		}
-		
-		// start replace: conv_u_09.py --output=u
-		/*logger.trace("replace: conv_u_09.py --output=u");
-		File outFile=new File(outputFileName);
-		logger.trace("outputFileName: {}",outputFileName);
-		String outputText=FileUtils.readFileToString(outFile, StandardCharsets.UTF_8);
-		outputText=uconv.convert09toU(outputText);
-		FileUtils.write(outFile, outputText, StandardCharsets.UTF_8);
-		*/// end replace: conv_u_09.py --output=u
 
-		
+		// start replace: conv_u_09.py --output=u
+		/*
+		 * logger.trace("replace: conv_u_09.py --output=u"); File outFile = new
+		 * File(outputFileName); logger.trace("outputFileName: {}",
+		 * outputFileName); String outputText =
+		 * FileUtils.readFileToString(outFile, StandardCharsets.UTF_8);
+		 * UConverter uconv = new UConverterImpl(); outputText =
+		 * uconv.convert09toU(outputText); FileUtils.write(outFile, outputText,
+		 * StandardCharsets.UTF_8);
+		 */
+		// end replace: conv_u_09.py --output=u
+
 		logger.debug("Parser process completed. return value: {}", rv);
 
 		return rv;
