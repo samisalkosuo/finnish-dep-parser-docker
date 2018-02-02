@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -31,6 +30,7 @@ import org.slf4j.LoggerFactory;
 
 import fi.dep.utils.ApplicationProperties;
 import fi.dep.utils.SimpleStats;
+import fi.dep.utils.StringUtils;
 import fi.dep.utils.cache.MyCache;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
@@ -63,7 +63,9 @@ public class FinDepServlet extends SuperServlet {
 	private int waitTimeForLockInSeconds = 3600 * 4;// four hours in case there
 													// are huge amount of
 													// requests incoming
-	// Hfst may run into problems is accessing many times
+
+	// Hfst may run into problems if accessing many times (as in multi-threaded
+	// environment)
 	// workaround to make it singlethreaded
 	private final static Semaphore lock = new Semaphore(1, true);
 
@@ -189,7 +191,6 @@ public class FinDepServlet extends SuperServlet {
 			if (pro.rv == -234566) {
 				// error when executing this servlet
 				resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				pw.println("Waiting for lock interrupted.");
 				pw.println(pro.errorString);
 			} else {
 				if (pro.rv == 0) {
@@ -198,13 +199,7 @@ public class FinDepServlet extends SuperServlet {
 				} else {
 					resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 				}
-
-				BufferedReader br = pro.reader;
-				for (String line = br.readLine(); line != null; line = br.readLine()) {
-					pw.println(line);
-				}
-				br.close();
-				pro.deleteTmpDir();
+				pw.print(pro.conlluText);
 			}
 		}
 
@@ -239,32 +234,19 @@ public class FinDepServlet extends SuperServlet {
 		if (conlluText != null) {
 			// found from cache
 			logger.debug("Found from cache.");
+			pro.conlluText=conlluText;
 			SIMPLE_STATS.increaseCacheHits();
 		} else {
 			// not in cache
 			logger.debug("Not found from cache");
 			pro = parse(inputText);
-			BufferedReader br = pro.reader;// new BufferedReader(new
-											// FileReader(f));
-			StringBuilder sb = new StringBuilder();
-			PrintWriter pw = new PrintWriter(new StringBuilderWriter(sb));
-			for (String line = br.readLine(); line != null; line = br.readLine()) {
-				pw.println(line);
+			if (logger.isTraceEnabled()) {
+				logger.trace("Parsed CoNLLu: {}", StringUtils.shorten(pro.conlluText));
 			}
-			pw.close();
-			br.close();
-			conlluText = sb.toString();
-			// start replace: conv_u_09.py --output=u
-			logger.trace("replace: conv_u_09.py --output=u");
-			conlluText = conv_09_u(conlluText);
-			// end replace: conv_u_09.py --output=u
-
-			CACHE.put(md5Hex, conlluText);
-			pro.deleteTmpDir();
+			CACHE.put(md5Hex, pro.conlluText);
 			logger.debug("Key {} added to cache.", md5Hex);
+
 		}
-		// set reader
-		pro.reader = new BufferedReader(new StringReader(conlluText));
 
 		return pro;
 	}
@@ -276,7 +258,7 @@ public class FinDepServlet extends SuperServlet {
 	 * override this method.
 	 * 
 	 * @param inputText
-	 * @return
+	 * @return ParseReturnObject holds parsed CoNLL-U.
 	 * @throws Exception
 	 */
 	protected ParseReturnObject parse(String inputText) throws Exception {
@@ -344,24 +326,54 @@ public class FinDepServlet extends SuperServlet {
 					String fileName = outputFileName;
 					if (rv != 0) {
 						// if error, read stderr file
+						logger.error("Error happened in parse process. Return value: {}", rv);
 						fileName = errorFileName;
 						pro.errorHappened = true;
+					} else {
+
+						f = new File(tmpDir.toFile(), fileName);
+						pro.reader = new BufferedReader(new FileReader(f));
+						pro.errorHappened = false;
+
+						// CoNLL-09 formatted parsed text is now in file in
+						// pro.reader
+						//
+						// read it and do conversion to CoNLL-U
+						BufferedReader br = pro.reader;
+						sb = new StringBuilder();
+						PrintWriter pw = new PrintWriter(new StringBuilderWriter(sb));
+						// read file to string
+						for (String line = br.readLine(); line != null; line = br.readLine()) {
+							pw.println(line);
+						}
+						pw.close();
+						br.close();
+						String conlluText = sb.toString();
+						// start replace: conv_u_09.py --output=u
+						logger.trace("replace: conv_u_09.py --output=u");
+						conlluText = conv_09_u(conlluText);
+						// end replace: conv_u_09.py --output=u
+						// conlluText include parsed CoNLL-U
+						pro.conlluText = conlluText;
+
 					}
-					f = new File(tmpDir.toFile(), fileName);
-					pro.reader = new BufferedReader(new FileReader(f));
-					pro.errorHappened = false;
+
 				} finally {
 					lock.release();
 				}
 			}
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			errorString = e.toString();
-			e.printStackTrace();
+			logger.error(e.toString(), e);
 			rv = -234566;
 			pro.errorString = errorString;
 			pro.rv = rv;
 			pro.errorHappened = true;
 		}
+
+		// always delete temp dir after parsing text
+		// does nothing if temp dir does not exist
+		pro.deleteTmpDir();
 
 		return pro;
 
@@ -460,18 +472,6 @@ public class FinDepServlet extends SuperServlet {
 			logger.error(e.toString(), e);
 		}
 
-		// start replace: conv_u_09.py --output=u
-		/*
-		 * logger.trace("replace: conv_u_09.py --output=u"); File outFile = new
-		 * File(outputFileName); logger.trace("outputFileName: {}",
-		 * outputFileName); String outputText =
-		 * FileUtils.readFileToString(outFile, StandardCharsets.UTF_8);
-		 * UConverter uconv = new UConverterImpl(); outputText =
-		 * uconv.convert09toU(outputText); FileUtils.write(outFile, outputText,
-		 * StandardCharsets.UTF_8);
-		 */
-		// end replace: conv_u_09.py --output=u
-
 		logger.debug("Parser process completed. return value: {}", rv);
 
 		return rv;
@@ -480,8 +480,6 @@ public class FinDepServlet extends SuperServlet {
 	/**
 	 * Return object to return from parse-method.
 	 * 
-	 * @author SamiSalkosuo
-	 *
 	 */
 	protected class ParseReturnObject {
 		/**
@@ -493,6 +491,11 @@ public class FinDepServlet extends SuperServlet {
 		 * Error string
 		 */
 		String errorString = null;
+
+		/**
+		 * Parsed text in CoNLL-U.
+		 */
+		String conlluText = null;
 
 		/**
 		 * Reader object holds parsed text in CoNLL-U format.
@@ -514,13 +517,12 @@ public class FinDepServlet extends SuperServlet {
 		}
 
 		public void deleteTmpDir() {
-			if (doNotDeleteTempDir != true) {
-				try {
-					if (tmpDir != null) {
-						FileUtils.deleteDirectory(tmpDir.toFile());
-						tmpDir = null;
-					}
 
+			// if tmpDir is not null and it exists, delete if allowed
+			if (tmpDir != null && tmpDir.toFile().exists() && doNotDeleteTempDir != true) {
+				try {
+					FileUtils.deleteDirectory(tmpDir.toFile());
+					tmpDir = null;
 				} catch (IOException ioe) {
 					// tmpdir delete failed
 					logger.error("Temp dir delete failed.", ioe);
