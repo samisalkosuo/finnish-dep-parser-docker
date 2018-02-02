@@ -30,33 +30,15 @@ public class FinDepServletServer {
 		// 0=no log after start
 		// 1=log elapsed time and parsed text excerpt
 		// default is 1
-		int LOG_LEVEL = 1;
 		SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
-
 		String _logLevel = System.getenv("log_level");
-		if (_logLevel == null) {
-			_logLevel = "1";
+		if ("0".equals(_logLevel)) {
+			SYSOUTLOGGER.LOG_LEVEL = 0;
+		} else {
+			SYSOUTLOGGER.LOG_LEVEL = 1;
 		}
-		try {
-			int logLevel = Integer.parseInt(_logLevel);
-
-			switch (logLevel) {
-			case 0:
-				LOG_LEVEL = 0;
-				break;
-
-			default:
-				LOG_LEVEL = 1;
-				break;
-			}
-
-		} catch (NumberFormatException nfe) {
-			SYSOUTLOGGER.LOG_LEVEL = LOG_LEVEL;
-		}
-
-		SYSOUTLOGGER.LOG_LEVEL = LOG_LEVEL;
-		logger.info("System.out log level: " + LOG_LEVEL);
-		if (LOG_LEVEL == 0) {
+		logger.info("System.out log level:  {}", SYSOUTLOGGER.LOG_LEVEL);
+		if (SYSOUTLOGGER.LOG_LEVEL == 0) {
 			logger.info("Parsed texts are not logged to System.out.");
 			logger.info("Use browser and statistics page to see latest parsed texts.");
 		}

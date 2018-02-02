@@ -209,16 +209,15 @@ public class FinDepServlet extends SuperServlet {
 		double elapsedTime = (endTimeMsec - startTimeMsec) / 1000.0;
 		logger.debug("END {} secs", elapsedTime);
 
+		String logText = String.format("%.03f secs, %s", elapsedTime, inputText);
 		if (SYSOUTLOGGER.LOG_LEVEL == 1) {
-			// log only if log level is 1
-			SYSOUTLOGGER.sysout(elapsedTime + " secs, " + inputText);
+			// log to system out only if log level is 1
+			SYSOUTLOGGER.sysout(logText);
+			// do not add logtext to stats
+			// if log level is 0, logText is added to stats
+			logText = null;
 		}
 
-		String logText = null;
-		if (SYSOUTLOGGER.LOG_LEVEL == 0) {
-			// do not add logtext to stats unless log level is 0
-			logText = elapsedTime + " secs, " + inputText;
-		}
 		// add latest parsed time and excerpt to stats
 		SIMPLE_STATS.addRequest(startTimeNano, endTimeNano, startTimeMsec, endTimeMsec, inputSize, errorHappened,
 				logText);
@@ -234,7 +233,7 @@ public class FinDepServlet extends SuperServlet {
 		if (conlluText != null) {
 			// found from cache
 			logger.debug("Found from cache.");
-			pro.conlluText=conlluText;
+			pro.conlluText = conlluText;
 			SIMPLE_STATS.increaseCacheHits();
 		} else {
 			// not in cache
