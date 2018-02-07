@@ -1,3 +1,9 @@
+### v0.21
+
+- Script omorfi_pos_modified.py combines cut_and_sort.py and omorfi_pos.py.
+- Updated Dockerfile. Changed ADD to COPY and other changes.
+- Warn unrecognized words only once in finwordnet-servlet.
+
 ### v0.20
 
 - Refactoring.
