@@ -8,8 +8,11 @@ RUN apk update && apk add ca-certificates && update-ca-certificates
 
 WORKDIR /
 
+#copy scripts to be used in the docker image
+COPY scripts/image/*.py ./ 
+COPY scripts/image/*.sh ./ 
+
 #Install Maven
-ADD scripts/image/install_maven.sh .
 RUN ["/bin/bash" ,"install_maven.sh","3.5.2"]
 
 #server4dev is for development use
@@ -23,8 +26,6 @@ RUN mkdir server4dev
 ADD server4dev ./server4dev/
 RUN PATH=/maven/bin:$PATH && cd server4dev && mvn package
 
-ADD scripts/image/convert_vocab_fi.py .
-ADD scripts/image/install_findepparser.sh .
 #Install Finnish-dep-parser
 #Uses fork: https://github.com/samisalkosuo/Finnish-dep-parser
 #uses specific commit ID as parameter
@@ -32,26 +33,17 @@ RUN ["/bin/bash" ,"install_findepparser.sh","fc8511cd16541e3b07072352d5801b54a5c
 
 WORKDIR /Finnish-dep-parser
 
+#copy scripts to current dir
+RUN mv ../*.py . && mv ../*.sh .
+
 #add server code
-RUN mkdir server
-ADD server ./server/
-#ADD server/resources ./server/resources
-ADD server/resources ./finwordnet
-ADD scripts/image/package_parserserver.sh .
+COPY server ./server/
+COPY server/resources ./finwordnet/
 RUN ["/bin/bash" ,"package_parserserver.sh"]
 
 #add modified Finnish dependency parser files
-ADD scripts/depparser/resolve_readings.py .
-ADD scripts/depparser/omorfi_pos.py .
-ADD scripts/depparser/omorfi_wrapper.py .
-ADD scripts/depparser/marmot-tag.py .
-ADD scripts/depparser/init.sh .
-ADD scripts/depparser/my_parser_wrapper.sh .
-ADD scripts/depparser/tag.sh .
-ADD scripts/depparser/cut_and_sort.py .
-
-#add java server start script
-ADD scripts/image/start_parser_server.sh .
+COPY scripts/depparser/*.py ./
+COPY scripts/depparser/*.sh ./
 
 RUN chmod 755 *sh
 
