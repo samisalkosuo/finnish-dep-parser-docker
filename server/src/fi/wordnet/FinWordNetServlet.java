@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,9 @@ public class FinWordNetServlet extends SuperServlet {
 	private MyCache CACHE = MyCache.getInstance();
 
 	private SENSES_TO_RETURN sensesToReturnDefaultValue = SENSES_TO_RETURN.L;
+
+	// list of already warned words, warn only once per word to limit logging
+	private List<String> alreadyWarned = new Vector<String>();
 
 	@Override
 	public void init() throws ServletException {
@@ -174,8 +178,18 @@ public class FinWordNetServlet extends SuperServlet {
 
 				catch (Throwable t) {
 					if (t instanceof NullPointerException) {
-						logger.warn("Word '{}', upostag '{}' is probably unrecognized.", word,
-								upostag);
+
+						String warned = word + upostag;
+						if (alreadyWarned.isEmpty() && !logger.isTraceEnabled()) {
+							// print notification that warnings are printed only
+							// once
+							logger.warn("Unrecognized word warnings are printed only once.");
+						}
+						if (!alreadyWarned.contains(warned) || logger.isTraceEnabled()) {
+							logger.warn("Word '{}', upostag '{}' is probably unrecognized.", word, upostag);
+							alreadyWarned.add(warned);
+						}
+
 					} else {
 						logger.error("Word '{}' caused error.", t);
 					}
