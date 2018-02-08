@@ -5,6 +5,7 @@ import org.eclipse.jetty.servlet.ServletHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fi.dep.utils.ApplicationProperties;
 import fi.dep.utils.SystemOutLogger;
 import fi.wordnet.FinWordNetServlet;
 
@@ -13,6 +14,9 @@ public class FinDepServletServer {
 	private static Logger logger = LoggerFactory.getLogger(FinDepServletServer.class);
 
 	public static void main(String[] args) {
+
+		logger.info("Version {} starting...", ApplicationProperties.getVersionAndBuild());
+		
 		// Create a basic jetty server object that will listen on port 8080.
 		// Note that if you set this to port 0 then a randomly available port
 		// will be assigned that you can either look in the logs for the port,

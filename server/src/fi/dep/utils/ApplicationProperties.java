@@ -28,6 +28,10 @@ public class ApplicationProperties {
 		}
 	}
 
+	public static String getVersionAndBuild() {
+		return String.format("%s (%s)", version(), buildtimestamp());
+	}
+
 	public static String version() {
 		return instance.props.getProperty("version");
 	}

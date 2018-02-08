@@ -118,8 +118,7 @@ public class FinDepServlet extends SuperServlet {
 			pw.println("HTTP POST Finnish text to this URL and get CoNLL-U back.");
 			pw.println("HTTP GET (with param 'text') Finnish text to this URL and get CoNLL-U back.");
 			pw.println("");
-			pw.println(
-					"Version " + ApplicationProperties.version() + " (" + ApplicationProperties.buildtimestamp() + ")");
+			pw.println("Version "+ApplicationProperties.getVersionAndBuild());
 			pw.println("");
 
 			pw.println(SIMPLE_STATS.getStatistics());
