@@ -3,14 +3,15 @@
 
 FROM python:2.7-alpine
 
-RUN apk add --update --no-cache bash openjdk8 curl-dev curl wget zip
-RUN apk update && apk add ca-certificates && update-ca-certificates   
+RUN apk add --update --no-cache bash openjdk8 curl-dev curl wget zip \
+    && apk update \
+    && apk add ca-certificates \
+    && update-ca-certificates   
 
 WORKDIR /
 
 #copy scripts to be used in the docker image
-COPY scripts/image/*.py ./ 
-COPY scripts/image/*.sh ./ 
+COPY scripts/image/*.* ./ 
 
 #Install Maven
 RUN ["/bin/bash" ,"install_maven.sh","3.5.2"]
@@ -22,8 +23,7 @@ RUN ["/bin/bash" ,"install_maven.sh","3.5.2"]
 #using this server4dev dir and packaging it, mvn downloads dependencies once and image with dependencies is stored to docker cache
 #and if you change Dockerfile after the following three lines, Docker uses cached image where dependencies are already downloaded.
 #if adding new dependencies to pom.xml, copy pom.xml from server directory to server4dev directory before building docker image
-RUN mkdir server4dev
-ADD server4dev ./server4dev/
+COPY server4dev ./server4dev/
 RUN PATH=/maven/bin:$PATH && cd server4dev && mvn package
 
 #Install Finnish-dep-parser
@@ -42,8 +42,7 @@ COPY server/resources ./finwordnet/
 RUN ["/bin/bash" ,"package_parserserver.sh"]
 
 #add modified Finnish dependency parser files
-COPY scripts/depparser/*.py ./
-COPY scripts/depparser/*.sh ./
+COPY scripts/depparser/*.* ./
 
 RUN chmod 755 *sh
 
