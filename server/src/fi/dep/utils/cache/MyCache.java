@@ -63,9 +63,9 @@ public class MyCache {
 	}
 
 	public String get(String key) {
-		if (!enableCache)
+		if (!enableCache || key == null)
 			return null;
-		
+
 		String value = stringCache.get(key);
 		logger.trace("Get from cache. Key {}. Value: {}", key, value);
 		return value;
@@ -74,6 +74,11 @@ public class MyCache {
 	public void put(String key, String value) {
 		if (!enableCache)
 			return;
+
+		if (key == null || value == null) {
+			logger.debug("Trying to put null to cache. Key {}. Value: {}", key, value);
+			return;
+		}
 
 		logger.trace("Put to cache. Key {}. Value: {}", key, value);
 		stringCache.put(key, value);
