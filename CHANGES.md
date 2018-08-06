@@ -2,6 +2,7 @@
 
 - Does not put any nulls to cache.
 - Updated Maven version.
+- Changed default sysout log level to 0.
 
 ### v0.21
 
