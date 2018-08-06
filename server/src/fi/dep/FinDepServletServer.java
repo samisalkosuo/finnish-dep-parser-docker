@@ -16,7 +16,7 @@ public class FinDepServletServer {
 	public static void main(String[] args) {
 
 		logger.info("Version {} starting...", ApplicationProperties.getVersionAndBuild());
-		
+
 		// Create a basic jetty server object that will listen on port 8080.
 		// Note that if you set this to port 0 then a randomly available port
 		// will be assigned that you can either look in the logs for the port,
@@ -33,12 +33,11 @@ public class FinDepServletServer {
 		// log level
 		// 0=no log after start
 		// 1=log elapsed time and parsed text excerpt
-		// default is 1
+		// default is 0
 		SystemOutLogger SYSOUTLOGGER = SystemOutLogger.getInstance();
 		String _logLevel = System.getenv("log_level");
-		if ("0".equals(_logLevel)) {
-			SYSOUTLOGGER.LOG_LEVEL = 0;
-		} else {
+		SYSOUTLOGGER.LOG_LEVEL = 0;
+		if ("1".equals(_logLevel)) {
 			SYSOUTLOGGER.LOG_LEVEL = 1;
 		}
 		logger.info("System.out log level:  {}", SYSOUTLOGGER.LOG_LEVEL);

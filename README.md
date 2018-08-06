@@ -72,7 +72,7 @@ Some environment variables can be used.
 - *log_level*, system out logging level. 
   - 0=no logging of parsed text.
   - 1=log elapsed time and excerpt of parsed text.
-  - Default is 1.
+  - Default is 0.
   - If log_level=0, you can see the latest parsed text by using GET-request to parser.
 
 ## Farming
