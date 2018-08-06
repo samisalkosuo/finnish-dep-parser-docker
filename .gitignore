@@ -2,3 +2,4 @@ server/target/
 tmp/
 scripts/perf-test.log
 parserfarm/haproxy.cfg
+.vscode/settings.json
