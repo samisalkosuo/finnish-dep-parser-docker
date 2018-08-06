@@ -1,3 +1,8 @@
+### v0.22
+
+- Does not put any nulls to cache.
+- Updated Maven version.
+
 ### v0.21
 
 - Script omorfi_pos_modified.py combines cut_and_sort.py and omorfi_pos.py.

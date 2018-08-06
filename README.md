@@ -21,25 +21,25 @@ This Docker container includes also [Finnish WordNet](http://www.ling.helsinki.f
 
 Get container from Dockerhub:
 
-- docker pull kazhar/finnish-dep-parser
+- ```docker pull kazhar/finnish-dep-parser```
 
 Or build docker image using:
 
-- docker build -t finnish-dep-parser .
+- ```docker build -t finnish-dep-parser .```
 
 Run docker container, expose port 9876 and exit using CTRL-C:
 
-- docker run -it --rm -p 0.0.0.0:9876:9876 kazhar/finnish-dep-parser
+- ```docker run -it --rm -p 0.0.0.0:9876:9876 kazhar/finnish-dep-parser```
 
 Start docker container in detached mode and restart if container goes down:
 
-- docker run --restart always -d -p 0.0.0.0:9876:9876 kazhar/finnish-dep-parser
+- ```docker run --restart always -d -p 0.0.0.0:9876:9876 kazhar/finnish-dep-parser```
 
 Post file to parser using curl:
 
-- curl -H "Content-Type: text/plain" --data-binary "@test/text_1k.txt" http://127.0.0.1:9876
+- ```curl -H "Content-Type: text/plain" --data-binary "@test/text_1k.txt" http://127.0.0.1:9876```
 - or
-- cat test/text_1k.txt | curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876
+- ```cat test/text_1k.txt | curl -H "Content-Type: text/plain" --data-binary @- http://127.0.0.1:9876```
 
 Use any programming language to HTTP POST Finnish text to this server and get CoNLL-U format back.
 
@@ -86,10 +86,10 @@ Note that each parser container requires over 2GB of memory. Java heap size is 2
 Files in parserfarm-directory:
 
 - *start_parser_farm.sh*, this script starts parser farm. Usage: 
-  - ./start_parser_farm.sh <NUMBER_OF_FINNISH_DEPENDENCY_PARSERS> <DOCKER_IMAGE_VERSION>
+  - ```./start_parser_farm.sh <NUMBER_OF_FINNISH_DEPENDENCY_PARSERS> <DOCKER_IMAGE_VERSION>```
   - Default version is 'latest'.
 - *start_parser_farm_noproxy.sh*, this scripts starts a number of parsers without proxy. Usage:
-  - ./start_parser_farm_noproxy.sh <NUMBER_OF_FINNISH_DEPENDENCY_PARSERS> <DOCKER_IMAGE_VERSION>
+  - ```./start_parser_farm_noproxy.sh <NUMBER_OF_FINNISH_DEPENDENCY_PARSERS> <DOCKER_IMAGE_VERSION>```
   - Default version is 'latest'.
 - *stop_parser_farm.sh*, this script stops all containers started with either of previous scripts.
 - *haproxy_template.cfg*, Config file template for haproxy. Modify to your needs. Copied to *haproxy.cfg" when starting the farm.
