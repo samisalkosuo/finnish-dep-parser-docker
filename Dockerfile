@@ -14,7 +14,7 @@ WORKDIR /
 COPY scripts/image/*.* ./ 
 
 #Install Maven
-RUN ["/bin/bash" ,"install_maven.sh","3.5.2"]
+RUN ["/bin/bash" ,"install_maven.sh","3.5.4"]
 
 #server4dev is for development use
 #Docker uses layered filesystem and each line of Dockerfile is maintained in the image
