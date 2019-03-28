@@ -1,3 +1,9 @@
+The great people of University of Turku have developed a new and better version of the parser, https://turkunlp.github.io/Turku-neural-parser-pipeline/.
+
+New parser is also available as server and as [Docker image](https://turkunlp.org/Turku-neural-parser-pipeline/docker.html).
+
+Because of these reasons, I am happy to say that development of *finnish-dep-parser-docker* is ended and [kazhar/finnish-dep-parser](https://hub.docker.com/r/kazhar/finnish-dep-parser/) is now deprecated and obsolete.
+
 # finnish-dep-parser-docker
 
 Docker container and HTTP server for [Finnish dependency parser](https://github.com/TurkuNLP/Finnish-dep-parser).
